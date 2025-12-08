@@ -332,18 +332,21 @@
             left: 50%;
             transform: translateX(-50%);
             background: white;
-            padding: 8px 12px;
+            padding: 8px 10px;
             border-radius: 50px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
             display: flex;
             gap: 5px;
             z-index: 1000;
+            width: max-content;
+            /* 確保寬度隨內容撐開 */
         }
 
         .nav-btn {
             border: none;
             background: transparent;
-            padding: 10px 20px;
+            padding: 10px 18px;
+            /* 稍微縮小左右間距 */
             border-radius: 40px;
             font-size: 0.9rem;
             font-weight: 600;
@@ -352,6 +355,8 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            white-space: nowrap;
+            /* 🔥 關鍵：強制文字不換行 */
         }
 
         .nav-btn.active {
