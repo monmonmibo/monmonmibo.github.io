@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Chiang Mai Trip 🇹🇭</title>
+    <style>
+        :root {
+            --primary: #2D6A4F;
+            --secondary: #D8F3DC;
+            --accent: #E07A5F;
+            --bg: #F2F4F6;
+            --text: #1B4332;
+            --line-color: #B7E4C7;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding-bottom: 100px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(180deg, var(--primary) 0%, #1B4332 100%);
+            color: white;
+            padding: 30px 20px 20px;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            box-shadow: 0 4px 15px rgba(45, 106, 79, 0.3);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            letter-spacing: 0.5px;
+        }
+
+        .header p {
+            margin: 5px 0 0;
+            opacity: 0.9;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Sticky Tabs */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            z-index: 99;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .date-tabs {
+            display: flex;
+            overflow-x: auto;
+            gap: 12px;
+            padding: 0 20px;
+            scrollbar-width: none;
+        }
+
+        .date-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .date-chip {
+            background: white;
+            border: 1px solid #E0E0E0;
+            border-radius: 16px;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            color: #666;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .date-chip.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 8px rgba(45, 106, 79, 0.2);
+            transform: scale(1.02);
+        }
+
+        /* Timeline UI */
+        .day-section {
+            display: none;
+            animation: fadeIn 0.4s;
+        }
+
+        .day-section.active {
+            display: block;
+        }
+
+        .timeline-container {
+            padding: 0 20px;
+            margin-top: 10px;
+        }
+
+        .timeline {
+            border-left: 3px solid var(--line-color);
+            margin-left: 8px;
+            padding-left: 25px;
+            padding-bottom: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--primary);
+            z-index: 2;
+        }
+
+        .timeline-item.highlight::before {
+            border-color: var(--accent);
+            background: var(--accent);
+        }
+
+        .time-label {
+            display: inline-block;
+            background: #E8F5E9;
+            color: var(--primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 12px 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            border: 1px solid #eee;
+        }
+
+        .title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .item-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.4;
+            color: #333;
+        }
+
+        .nav-icon {
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 1.2rem;
+            padding: 4px;
+        }
+
+        .details {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .tag-row {
+            margin-top: 8px;
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .tag.reserved {
+            background: #FFF3E0;
+            color: #E65100;
+            font-weight: bold;
+            border: 1px solid #FFE0B2;
+        }
+
+        .tag.food {
+            background: #E3F2FD;
+            color: #1565C0;
+        }
+
+        .hotel-header {
+            background: white;
+            margin: 0 20px 20px;
+            padding: 12px 15px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--accent);
+        }
+
+        .hotel-header span {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .hotel-nav-btn {
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-size: 0.75rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 5px rgba(224, 122, 95, 0.3);
+        }
+
+        /* To-Do List */
+        .todo-list-group {
+            padding: 0 20px;
+        }
+
+        .todo-label {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 16px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+            cursor: pointer;
+            transition: transform 0.1s, background 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .todo-label:active {
+            transform: scale(0.98);
+            background-color: #f9f9f9;
+        }
+
+        .todo-label input[type="checkbox"] {
+            display: none;
+        }
+
+        .todo-text-container {
+            flex-grow: 1;
+            margin-right: 15px;
+        }
+
+        .todo-main-text {
+            display: block;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .todo-sub-text {
+            display: block;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .check-circle {
+            width: 26px;
+            height: 26px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            background: white;
+        }
+
+        .todo-label input:checked~.check-circle {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .todo-label input:checked~.check-circle::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .todo-label input:checked~.todo-text-container {
+            opacity: 0.4;
+            text-decoration: line-through;
+        }
+
+        .todo-label:has(input:checked) {
+            border-color: #e8f5e9;
+            background-color: #fafffc;
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 8px 12px;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            gap: 5px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            border: none;
+            background: transparent;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #999;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Chiang Mai Trip 🇹🇭</h1>
+        <p>🌿 慢活・手作・美食 (6 Days)</p>
+    </div>
+
+    <div class="sticky-nav">
+        <div class="date-tabs">
+            <div class="date-chip active" onclick="switchDay('day1', this)">Day 1</div>
+            <div class="date-chip" onclick="switchDay('day2', this)">Day 2</div>
+            <div class="date-chip" onclick="switchDay('day3', this)">Day 3</div>
+            <div class="date-chip" onclick="switchDay('day4', this)">Day 4</div>
+            <div class="date-chip" onclick="switchDay('day5', this)">Day 5</div>
+            <div class="date-chip" onclick="switchDay('day6', this)">Day 6</div>
+            <div class="date-chip" onclick="switchDay('todo', this)">To-Do</div>
+        </div>
+    </div>
+
+    <div id="main-content">
+
+        <div id="day1" class="day-section active">
+            <div class="hotel-header">
+                <span>🏨 住：Hotel MAYU</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Hotel+MAYU+Chiang+Mai" target="_blank"
+                    class="hotel-nav-btn">📍 導航</a>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item highlight">
+                        <div class="time-label">Morning</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🛬 抵達清邁機場 (CNX)</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Chiang+Mai+International+Airport"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">Call Grab 直去酒店 (約15分鐘)</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">11:00</div>
+                        <div class="card">
+                            <span class="item-title">🧳 Hotel MAYU (寄存行李)</span>
+                            <div class="details">先放低行李，輕鬆去食飯</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">11:30</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🦀 午餐：Mae-Jin (金媽媽)</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Mae+Jin+Curry+Chiang+Mai"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">必食：藍蟹肉炒飯、Khao Soi</div>
+                            <div class="tag-row"><span class="tag food">The Wall 商場</span></div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">13:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🛍️ MAYA Lifestyle Mall</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=MAYA+Lifestyle+Shopping+Center"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">逛街、超市買零食、避暑</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">16:30</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">💆‍♀️ Daydream Sleep Salon</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Daydream+Sleep+Salon+Chiang+Mai"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">Head Spa 消除機程疲勞</div>
+                            <div class="tag-row"><span class="tag reserved">需預約</span> <span class="tag">The
+                                    Kannas</span></div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">19:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🍽️ 晚餐：One Nimman</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=One+Nimman"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">Ginger Farm Kitchen 或市集小食</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">20:45</div>
+                        <div class="card">
+                            <span class="item-title">🚶 步行移動 (約 5 分鐘)</span>
+                            <div class="details">前往 Nimman Soi 5</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">21:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">💆 晚間按摩：Vintage Thai</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Vintage+Thai+Massage+Nimman"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">腳底/泰式按摩 (60mins)</div>
+                            <div class="tag-row"><span class="tag reserved">需預約</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="day2" class="day-section">
+            <div class="hotel-header">
+                <span>🏨 住：Hotel MAYU</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Hotel+MAYU+Chiang+Mai" target="_blank"
+                    class="hotel-nav-btn">📍 導航</a>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time-label">Morning</div>
+                        <div class="card"><span class="item-title">☀️ 自然醒 (Slow Morning)</span></div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">12:30</div>
+                        <div class="card">
+                            <span class="item-title">🚗 Call Grab 出發</span>
+                            <div class="details">直達餐廳 (約 25 分鐘)</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">13:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🌿 午餐：Khaomao-Khaofang</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Khaomao-Khaofang+Restaurant"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">黑森林餐廳，絕美瀑布景觀必影相！</div>
+                            <div class="tag-row"><span class="tag reserved">需預約</span></div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">14:45</div>
+                        <div class="card">
+                            <span class="item-title">🚗 Call Grab 去動物園</span>
+                            <div class="details">車程約 5-8 分鐘 (超近)</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item highlight">
+                        <div class="time-label">15:30</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🦒 Chiang Mai Night Safari</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Chiang+Mai+Night+Safari"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">
+                                • 15:30 Jaguar Trail (步行區)<br>
+                                • 17:30 晚餐 Giraffe Restaurant<br>
+                                • 19:00 Night Tram & Laser Show
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">21:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🚗 Call Grab 回酒店</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Hotel+MAYU+Chiang+Mai"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">返 Hotel MAYU 休息</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="day3" class="day-section">
+            <div class="hotel-header">
+                <span>🚚 換酒店：Phra Singh Village</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Phra+Singh+Village+Chiang+Mai" target="_blank"
+                    class="hotel-nav-btn">📍 導航</a>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time-label">09:00</div>
+                        <div class="card"><span class="item-title">🧳 Check-out MAYU</span>
+                            <div class="details">帶行李去 Phra Singh 寄存</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">10:30</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🧺 Jing Jai Market (真心市集)</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Jing+Jai+Market+Chiang+Mai"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">Rustic Market, Good Goods, Live Band</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item highlight">
+                        <div class="time-label">12:30</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🥘 午餐：Kang Jingjai (แกงจริงใจ)</span>
+                                <a href="https://maps.google.com/?cid=7931523731832513567&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ"
+                                    target="_blank" class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">
+                                <strong style="color: #27ae60;">✨ 米芝蓮必比登推介</strong><br>
+                                位置：就在 Jing Jai Market 內<br>
+                                必食：泰式咖哩、脆皮燒肉飯
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">14:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🏨 Check-in Phra Singh Village</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Phra+Singh+Village+Chiang+Mai"
+                                    class="nav-icon">📍</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">14:30</div>
+                        <div class="card">
+                            <div class="title-row"><span class="item-title">🍰 下午茶：Cake Baan Piemsuk</span></div>
+                            <div class="details">招牌椰子批 (Coconut Pie)</div>
+                            <div class="tag-row"><span class="tag food">Grab Food 外賣</span></div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">18:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🏮 Saturday Walking Street</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Wua+Lai+Walking+Street"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">週六夜市 (Wua Lai Road)</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">21:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">💆 Giving Tree Massage</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Giving+Tree+Massage+Chiang+Mai"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">Old City 分店</div>
+                            <div class="tag-row"><span class="tag reserved">需預約</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="day4" class="day-section">
+            <div class="hotel-header">
+                <span>🏨 住：Phra Singh Village</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Phra+Singh+Village+Chiang+Mai" target="_blank"
+                    class="hotel-nav-btn">📍 導航</a>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time-label">10:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🎨 Baan Kang Wat (森林藝術村)</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Baan+Kang+Wat"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">漫步文青社區、陶瓷、影相</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">14:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🍵 The Baristro Asian Style</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=The+Baristro+Asian+Style"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">日系庭院 Cafe (近藝術村)</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">15:30</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">📒 手作：Dibdee Binder</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Dibdee+Binder"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">訂製手作手帳 (塔佩門新址)</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">18:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🏮 Sunday Walking Street</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sunday+Walking+Street+Chiang+Mai"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">週日夜市 (酒店門口主幹道)</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">21:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">💆 Makkha Health & Spa</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Makkha+Health+and+Spa+Ancient+House"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">Ancient House 分店 (近酒店)</div>
+                            <div class="tag-row"><span class="tag reserved">需預約</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="day5" class="day-section">
+            <div class="hotel-header">
+                <span>🏨 住：Phra Singh Village</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Phra+Singh+Village+Chiang+Mai" target="_blank"
+                    class="hotel-nav-btn">📍 導航</a>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time-label">10:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🧺 Warorot Market & 藤編街</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Warorot+Market"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">買炸豬皮、芒果乾、藤編打卡</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">12:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🍫 Chocolate Culture Club</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Chocolate+Culture+Club+Chiang+Mai"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">必飲：Iced Chocolate</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">13:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🥘 Kiti Panit (吉帝帕尼)</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Kiti+Panit"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">百年柚木古宅泰北菜</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">15:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🕊️ 自由活動 / 塔佩門</span>
+                                <a href="https://maps.google.com/maps/contrib/107204508007813181434"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">
+                                • 執行李<br>
+                                • 塔佩門餵白鴿打卡 (Thapae Gate)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">18:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">✨ 晚餐：CHOW CHOW Thai</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=CHOW+CHOW+Thai+Contemporary+Food"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">Contemporary Food</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">21:00</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">💆 Makkha Health & Spa</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Makkha+Health+and+Spa+Ancient+House"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">Ancient House 分店 (Farewell Massage)</div>
+                            <div class="tag-row"><span class="tag reserved">需預約</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="day6" class="day-section">
+            <div class="hotel-header"><span>✈️ 再見清邁</span></div>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time-label">Morning</div>
+                        <div class="card"><span class="item-title">🏨 Check-out</span></div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">--:--</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🚗 出發去機場 (CNX)</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Chiang+Mai+International+Airport"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">提早 2.5 小時出發</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item highlight">
+                        <div class="time-label">Departure</div>
+                        <div class="card">
+                            <span class="item-title">🛫 起飛回程</span>
+                            <div class="details">See you next time!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="todo" class="day-section">
+            <div class="todo-list-group">
+                <h3 style="margin-left:5px">📝 出發前確認</h3>
+                <p style="margin-left:5px; font-size:0.8rem; color:#888; margin-bottom:15px;">系統會自動儲存你的打勾狀態</p>
+
+                <label class="todo-label">
+                    <input type="checkbox" id="todo-1">
+                    <div class="todo-text-container">
+                        <span class="todo-main-text">預約餐廳：黑森林</span>
+                        <span class="todo-sub-text">Day 2 午餐</span>
+                    </div>
+                    <div class="check-circle"></div>
+                </label>
+                <label class="todo-label">
+                    <input type="checkbox" id="todo-2">
+                    <div class="todo-text-container">
+                        <span class="todo-main-text">預約 Salon (Daydream)</span>
+                        <span class="todo-sub-text">Day 1 下午</span>
+                    </div>
+                    <div class="check-circle"></div>
+                </label>
+                <label class="todo-label">
+                    <input type="checkbox" id="todo-3">
+                    <div class="todo-text-container">
+                        <span class="todo-main-text">按摩：Vintage Thai</span>
+                        <span class="todo-sub-text">Day 1</span>
+                    </div>
+                    <div class="check-circle"></div>
+                </label>
+                <label class="todo-label">
+                    <input type="checkbox" id="todo-4">
+                    <div class="todo-text-container">
+                        <span class="todo-main-text">按摩：Giving Tree</span>
+                        <span class="todo-sub-text">Day 3</span>
+                    </div>
+                    <div class="check-circle"></div>
+                </label>
+                <label class="todo-label">
+                    <input type="checkbox" id="todo-5">
+                    <div class="todo-text-container">
+                        <span class="todo-main-text">按摩：Makkha Ancient</span>
+                        <span class="todo-sub-text">Day 4 & 5</span>
+                    </div>
+                    <div class="check-circle"></div>
+                </label>
+                <label class="todo-label">
+                    <input type="checkbox" id="todo-6">
+                    <div class="todo-text-container">
+                        <span class="todo-main-text">下載交通 App</span>
+                        <span class="todo-sub-text">Grab & Bolt</span>
+                    </div>
+                    <div class="check-circle"></div>
+                </label>
+                <label class="todo-label">
+                    <input type="checkbox" id="todo-7">
+                    <div class="todo-text-container">
+                        <span class="todo-main-text">購買 Sim Card</span>
+                        <span class="todo-sub-text">或開通漫遊</span>
+                    </div>
+                    <div class="check-circle"></div>
+                </label>
+                <label class="todo-label">
+                    <input type="checkbox" id="todo-8">
+                    <div class="todo-text-container">
+                        <span class="todo-main-text">兌換泰銖</span>
+                        <span class="todo-sub-text">Superrich</span>
+                    </div>
+                    <div class="check-circle"></div>
+                </label>
+            </div>
+        </div>
+
+        <div id="map-dashboard" class="day-section">
+            <div style="margin: -10px -20px 0; height: 80vh; position: relative;">
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1M5apu5JSHqlIXmFKUZhAPUy9w3szNPg&ehbc=2E312F"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+                <div
+                    style="position: absolute; bottom: 100px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.9); padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; color: #666; pointer-events: none; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    雙指可縮放地圖
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bottom-nav">
+        <button class="nav-btn active" onclick="switchView('timeline', this)">📅 行程</button>
+        <button class="nav-btn" onclick="switchView('map', this)">🗺️ 地圖</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                const savedState = localStorage.getItem(cb.id);
+                if (savedState === 'true') {
+                    cb.checked = true;
+                }
+                cb.addEventListener('change', () => {
+                    localStorage.setItem(cb.id, cb.checked);
+                });
+            });
+        });
+
+        function switchDay(dayId, tab) {
+            document.querySelectorAll('.date-chip').forEach(el => el.classList.remove('active'));
+            tab.classList.add('active');
+            document.querySelectorAll('.day-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(dayId).classList.add('active');
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.nav-btn').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function switchView(viewName, btn) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            if (viewName === 'map') {
+                document.querySelectorAll('.day-section').forEach(el => el.classList.remove('active'));
+                document.getElementById('map-dashboard').classList.add('active');
+            } else {
+                const activeChip = document.querySelector('.date-chip.active');
+                if (activeChip) {
+                    const targetId = activeChip.getAttribute('onclick').match(/'([^']+)'/)[1];
+                    document.querySelectorAll('.day-section').forEach(el => el.classList.remove('active'));
+                    document.getElementById(targetId).classList.add('active');
+                } else {
+                    document.getElementById('day1').classList.add('active');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
