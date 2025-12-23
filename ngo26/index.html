@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nagoya Trip 🇯🇵</title>
+    <style>
+        :root {
+            /* Theme Color: Nagoya Navy Blue */
+            --primary: #1F3A5F;
+            --secondary: #D4E2F0;
+            /* Accent Color: Red for highlights/urgent items */
+            --accent: #E74C3C;
+            --bg: #F4F6F8;
+            --text: #2C3E50;
+            --line-color: #BDC3C7;
+        }
+
+        /* Basic Reset & Font Settings */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding-bottom: 100px;
+            /* Space for bottom nav */
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #16243b 100%);
+            color: white;
+            padding: 30px 20px 20px;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            box-shadow: 0 4px 15px rgba(31, 58, 95, 0.3);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            letter-spacing: 0.5px;
+        }
+
+        .header p {
+            margin: 5px 0 0;
+            opacity: 0.9;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Sticky Date Tabs Navigation */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            z-index: 99;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .date-tabs {
+            display: flex;
+            overflow-x: auto;
+            gap: 12px;
+            padding: 0 20px;
+            scrollbar-width: none;
+            /* Hide scrollbar for cleaner look */
+        }
+
+        .date-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .date-chip {
+            background: white;
+            border: 1px solid #E0E0E0;
+            border-radius: 16px;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            color: #666;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .date-chip.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 8px rgba(31, 58, 95, 0.2);
+            transform: scale(1.02);
+        }
+
+        /* Timeline UI Logic */
+        .day-section {
+            display: none;
+            animation: fadeIn 0.4s;
+        }
+
+        .day-section.active {
+            display: block;
+        }
+
+        .timeline-container {
+            padding: 0 20px;
+            margin-top: 10px;
+        }
+
+        .timeline {
+            border-left: 3px solid var(--line-color);
+            margin-left: 8px;
+            padding-left: 25px;
+            padding-bottom: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        /* Timeline Dot Styling (Aligned Center) */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36.5px;
+            /* Precise alignment */
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--primary);
+            z-index: 2;
+            box-shadow: 0 0 0 2px var(--bg);
+            /* Spacing effect */
+        }
+
+        /* Orange dot for highlights */
+        .timeline-item.highlight::before {
+            border-color: var(--accent);
+            background: var(--accent);
+        }
+
+        .time-label {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        /* Card Styling */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 12px 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            border: 1px solid #eee;
+        }
+
+        .title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .item-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.4;
+            color: #333;
+        }
+
+        .nav-icon {
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 1.2rem;
+            padding: 4px;
+        }
+
+        .details {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Tags Styling */
+        .tag-row {
+            margin-top: 8px;
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .tag.reserved {
+            background: #FADBD8;
+            color: #C0392B;
+            font-weight: bold;
+            border: 1px solid #F1948A;
+        }
+
+        .tag.food {
+            background: #D6EAF8;
+            color: #2980B9;
+        }
+
+        /* Hotel Header Banner */
+        .hotel-header {
+            background: white;
+            margin: 0 20px 20px;
+            padding: 12px 15px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--accent);
+        }
+
+        .hotel-header span {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .hotel-nav-btn {
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-size: 0.75rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 5px rgba(231, 76, 60, 0.3);
+        }
+
+        /* To-Do List Styling */
+        .todo-list-group {
+            padding: 0 20px;
+        }
+
+        .todo-label {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 16px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+            cursor: pointer;
+            transition: transform 0.1s, background 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .todo-label:active {
+            transform: scale(0.98);
+            background-color: #f9f9f9;
+        }
+
+        .todo-label input[type="checkbox"] {
+            display: none;
+        }
+
+        .todo-text-container {
+            flex-grow: 1;
+            margin-right: 15px;
+        }
+
+        .todo-main-text {
+            display: block;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .todo-sub-text {
+            display: block;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .check-circle {
+            width: 26px;
+            height: 26px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            background: white;
+        }
+
+        /* Checked State Logic */
+        .todo-label input:checked~.check-circle {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .todo-label input:checked~.check-circle::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .todo-label input:checked~.todo-text-container {
+            opacity: 0.4;
+            text-decoration: line-through;
+        }
+
+        .todo-label:has(input:checked) {
+            border-color: #D4E2F0;
+            background-color: #F4F8FB;
+        }
+
+        /* Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 8px 10px;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            gap: 5px;
+            z-index: 1000;
+            width: max-content;
+            /* Ensure width fits content */
+        }
+
+        .nav-btn {
+            border: none;
+            background: transparent;
+            padding: 10px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #999;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            /* Prevent text wrapping */
+        }
+
+        .nav-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Nagoya Trip 🇯🇵</h1>
+        <p>5日4夜・中部昇龍道 (Planning)</p>
+    </div>
+
+    <div class="sticky-nav">
+        <div class="date-tabs">
+            <div class="date-chip active" onclick="switchDay('day1', this)">Day 1</div>
+            <div class="date-chip" onclick="switchDay('day2', this)">Day 2</div>
+            <div class="date-chip" onclick="switchDay('day3', this)">Day 3</div>
+            <div class="date-chip" onclick="switchDay('day4', this)">Day 4</div>
+            <div class="date-chip" onclick="switchDay('day5', this)">Day 5</div>
+            <div class="date-chip" onclick="switchDay('todo', this)">To-Do</div>
+        </div>
+    </div>
+
+    <div id="main-content">
+
+        <div id="day1" class="day-section active">
+            <div class="hotel-header">
+                <span>🏨 住宿：待定酒店 (TBD)</span>
+                <a href="https://www.google.com/maps/search/Nagoya+Hotel" target="_blank" class="hotel-nav-btn">📍
+                    搜尋</a>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item highlight">
+                        <div class="time-label">Morning</div>
+                        <div class="card">
+                            <div class="title-row">
+                                <span class="item-title">🛬 抵達名古屋中部機場 (NGO)</span>
+                                <a href="https://www.google.com/maps/search/Chubu+Centrair+International+Airport"
+                                    class="nav-icon">📍</a>
+                            </div>
+                            <div class="details">乘搭名鐵 μ-SKY 前往名古屋站 (約28分鐘)</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">15:00</div>
+                        <div class="card">
+                            <span class="item-title">🏨 酒店 Check-in</span>
+                            <div class="details">放下行李</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">Evening</div>
+                        <div class="card">
+                            <span class="item-title">🍽️ 晚餐 / 自由活動</span>
+                            <div class="details">...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="day2" class="day-section">
+            <div class="hotel-header"><span>🏨 住宿：待定酒店</span></div>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time-label">Morning</div>
+                        <div class="card"><span class="item-title">☀️ 早上行程 (待定)</span>
+                            <div class="details">...</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">Afternoon</div>
+                        <div class="card"><span class="item-title">🚶 下午行程 (待定)</span>
+                            <div class="details">...</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">Evening</div>
+                        <div class="card"><span class="item-title">🌙 晚餐 / 晚上行程</span>
+                            <div class="details">...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="day3" class="day-section">
+            <div class="hotel-header"><span>🏨 住宿：待定酒店</span></div>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time-label">全日</div>
+                        <div class="card">
+                            <span class="item-title">🗺️ 近郊一日遊 (建議)</span>
+                            <div class="details">
+                                (例如：白川鄉、吉卜力公園、犬山城)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="day4" class="day-section">
+            <div class="hotel-header"><span>🏨 住宿：待定酒店</span></div>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time-label">Morning</div>
+                        <div class="card"><span class="item-title">☀️ 早上行程 (待定)</span>
+                            <div class="details">...</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">Afternoon</div>
+                        <div class="card"><span class="item-title">🛍️ 購物 / 最後衝刺</span>
+                            <div class="details">...</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">Evening</div>
+                        <div class="card"><span class="item-title">🍽️ 最後晚餐</span>
+                            <div class="details">...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="day5" class="day-section">
+            <div class="hotel-header"><span>✈️ 回程</span></div>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time-label">Morning</div>
+                        <div class="card"><span class="item-title">🏨 Check-out</span></div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-label">--:--</div>
+                        <div class="card">
+                            <span class="item-title">🚄 前往機場 (NGO)</span>
+                            <div class="details">預留時間買手信</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item highlight">
+                        <div class="time-label">Departure</div>
+                        <div class="card">
+                            <span class="item-title">🛫 起飛回程</span>
+                            <div class="details">Goodbye Nagoya</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="todo" class="day-section">
+            <div class="todo-list-group">
+                <h3 style="margin-left:5px">📝 準備清單</h3>
+                <p style="margin-left:5px; font-size:0.8rem; color:#888; margin-bottom:15px;">Auto-saved locally</p>
+
+                <label class="todo-label">
+                    <input type="checkbox" id="ngo-todo-1">
+                    <div class="todo-text-container">
+                        <span class="todo-main-text">購買機票</span>
+                        <span class="todo-sub-text">Check 航班價錢</span>
+                    </div>
+                    <div class="check-circle"></div>
+                </label>
+
+                <label class="todo-label">
+                    <input type="checkbox" id="ngo-todo-2">
+                    <div class="todo-text-container">
+                        <span class="todo-main-text">預訂酒店</span>
+                        <span class="todo-sub-text">名古屋站附近？</span>
+                    </div>
+                    <div class="check-circle"></div>
+                </label>
+
+                <label class="todo-label">
+                    <input type="checkbox" id="ngo-todo-3">
+                    <div class="todo-text-container">
+                        <span class="todo-main-text">Visit Japan Web</span>
+                        <span class="todo-sub-text">入境申報</span>
+                    </div>
+                    <div class="check-circle"></div>
+                </label>
+            </div>
+        </div>
+
+        <div id="map-dashboard" class="day-section">
+            <div style="margin: -10px -20px 0; height: 80vh; position: relative;">
+                <iframe src="https://www.google.com/maps/search/Nagoya+Hotel" width="100%" height="100%"
+                    style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bottom-nav">
+        <button class="nav-btn active" onclick="switchView('timeline', this)">📅 行程</button>
+        <button class="nav-btn" onclick="switchView('map', this)">🗺️ 地圖</button>
+    </div>
+
+    <script>
+        // Load To-Do status on start
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                const savedState = localStorage.getItem(cb.id);
+                if (savedState === 'true') {
+                    cb.checked = true;
+                }
+                cb.addEventListener('change', () => {
+                    localStorage.setItem(cb.id, cb.checked);
+                });
+            });
+        });
+
+        // Function to switch between Day tabs
+        function switchDay(dayId, tab) {
+            document.querySelectorAll('.date-chip').forEach(el => el.classList.remove('active'));
+            tab.classList.add('active');
+
+            document.querySelectorAll('.day-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(dayId).classList.add('active');
+
+            // Reset bottom nav to "Schedule" view
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.nav-btn').classList.add('active');
+
+            window.scrollTo(0, 0);
+        }
+
+        // Function to switch between Timeline and Map views
+        function switchView(viewName, btn) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (viewName === 'map') {
+                document.querySelectorAll('.day-section').forEach(el => el.classList.remove('active'));
+                document.getElementById('map-dashboard').classList.add('active');
+            } else {
+                // Return to the active day tab
+                const activeChip = document.querySelector('.date-chip.active');
+                if (activeChip) {
+                    const targetId = activeChip.getAttribute('onclick').match(/'([^']+)'/)[1];
+                    document.querySelectorAll('.day-section').forEach(el => el.classList.remove('active'));
+                    document.getElementById(targetId).classList.add('active');
+                } else {
+                    document.getElementById('day1').classList.add('active');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
