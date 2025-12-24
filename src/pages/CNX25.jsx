@@ -82,7 +82,7 @@ export default function CNX25() {
                 <div className={styles.timelineItem}>
                   <div className={styles.timeLabel}>11:00</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🧳 Hotel MAYU (寄存行李)</span>
+                    <span className={styles.itemTitle}>🏨 Hotel MAYU (寄存行李)</span>
                     <div className={styles.details}>先放低行李，輕鬆去食飯</div>
                   </div>
                 </div>
@@ -90,53 +90,35 @@ export default function CNX25() {
                   <div className={styles.timeLabel}>11:30</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🦀 午餐：Mae-Jin (金媽媽)</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Mae+Jin+Curry+Chiang+Mai" className={styles.navIcon}>📍</a>
+                      <span className={styles.itemTitle}>🍜 午餐：Kao Soy Nimman</span>
+                      <a href="https://maps.app.goo.gl/NVS6q3ro3VadMAPV6" className={styles.navIcon}>📍</a>
                     </div>
-                    <div className={styles.details}>必食：藍蟹肉炒飯、Khao Soi</div>
-                    <div className={styles.tagRow}><span className={`${styles.tag} ${styles.food}`}>The Wall 商場</span></div>
+                    <div className={styles.details}>咖哩麵</div>
                   </div>
                 </div>
                 <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>13:00</div>
+                  <div className={styles.timeLabel}>14:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🛍️ MAYA Lifestyle Mall</span>
+                      <span className={styles.itemTitle}>🧱 尼曼一號 One Nimman</span>
+                      <a href="https://maps.app.goo.gl/pxgkSgHCaAvryqo57" className={styles.navIcon}>📍</a>
+                    </div>
+                    <div className={styles.details}>逛街、市集</div>
+                  </div>
+                </div>
+                <div className={styles.timelineItem}>
+                  <div className={styles.timeLabel}>16:00</div>
+                  <div className={styles.card}>
+                    <div className={styles.titleRow}>
+                      <span className={styles.itemTitle}>🏬 MAYA Lifestyle Mall</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=MAYA+Lifestyle+Shopping+Center" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>逛街、超市買零食、避暑</div>
                   </div>
                 </div>
+
                 <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>16:30</div>
-                  <div className={styles.card}>
-                    <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>💆‍♀️ Daydream Sleep Salon</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Daydream+Sleep+Salon+Chiang+Mai" className={styles.navIcon}>📍</a>
-                    </div>
-                    <div className={styles.details}>Head Spa 消除機程疲勞</div>
-                    <div className={styles.tagRow}><span className={`${styles.tag} ${styles.reserved}`}>需預約</span> <span className={styles.tag}>The Kannas</span></div>
-                  </div>
-                </div>
-                <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>19:00</div>
-                  <div className={styles.card}>
-                    <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🍽️ 晚餐：One Nimman</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=One+Nimman" className={styles.navIcon}>📍</a>
-                    </div>
-                    <div className={styles.details}>Ginger Farm Kitchen 或市集小食</div>
-                  </div>
-                </div>
-                <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>20:45</div>
-                  <div className={styles.card}>
-                    <span className={styles.itemTitle}>🚶 步行移動 (約 5 分鐘)</span>
-                    <div className={styles.details}>前往 Nimman Soi 5</div>
-                  </div>
-                </div>
-                <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>21:00</div>
+                  <div className={styles.timeLabel}>18:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
                       <span className={styles.itemTitle}>💆 晚間按摩：Vintage Thai</span>
@@ -146,6 +128,17 @@ export default function CNX25() {
                     <div className={styles.tagRow}><span className={`${styles.tag} ${styles.reserved}`}>需預約</span></div>
                   </div>
                 </div>
+
+                <div className={styles.timelineItem}>
+                  <div className={styles.timeLabel}>20:00</div>
+                  <div className={styles.card}>
+                    <div className={styles.titleRow}>
+                      <span className={styles.itemTitle}>🥗 晚餐：Ginger Farm Kitchen</span>
+                      <a href="https://www.google.com/maps/search/?api=1&query=One+Nimman" className={styles.navIcon}>📍</a>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -162,13 +155,13 @@ export default function CNX25() {
               <div className={styles.timeline}>
                 <div className={styles.timelineItem}>
                   <div className={styles.timeLabel}>Morning</div>
-                  <div className={styles.card}><span className={styles.itemTitle}>☀️ 自然醒 (Slow Morning)</span></div>
+                  <div className={styles.card}><span className={styles.itemTitle}>🛌 自然醒 (Slow Morning)</span></div>
                 </div>
 
                 <div className={styles.timelineItem}>
                   <div className={styles.timeLabel}>12:30</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🚗 Call Grab 出發</span>
+                    <span className={styles.itemTitle}>🚕 Call Grab 出發</span>
                     <div className={styles.details}>直達餐廳 (約 25 分鐘)</div>
                   </div>
                 </div>
@@ -177,7 +170,7 @@ export default function CNX25() {
                   <div className={styles.timeLabel}>13:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🌿 午餐：Khaomao-Khaofang</span>
+                      <span className={styles.itemTitle}>🌲 午餐：Khaomao-Khaofang</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Khaomao-Khaofang+Restaurant" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>黑森林餐廳，絕美瀑布景觀必影相！</div>
@@ -188,7 +181,7 @@ export default function CNX25() {
                 <div className={styles.timelineItem}>
                   <div className={styles.timeLabel}>14:45</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🚗 Call Grab 去動物園</span>
+                    <span className={styles.itemTitle}>🚕 Call Grab 去動物園</span>
                     <div className={styles.details}>車程約 5-8 分鐘 (超近)</div>
                   </div>
                 </div>
@@ -197,7 +190,7 @@ export default function CNX25() {
                   <div className={styles.timeLabel}>15:30</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🦒 Chiang Mai Night Safari</span>
+                      <span className={styles.itemTitle}>🦁 Chiang Mai Night Safari</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Chiang+Mai+Night+Safari" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>
@@ -211,7 +204,7 @@ export default function CNX25() {
                   <div className={styles.timeLabel}>20:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🍝 晚餐：Lumi - Italian Restaurant</span>
+                      <span className={styles.itemTitle}>🍕 晚餐：Lumi - Italian Restaurant</span>
                       <a href="https://maps.google.com/?cid=14823564611868960102" target="_blank" rel="noreferrer" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>尼曼區優質意大利菜</div>
@@ -222,7 +215,7 @@ export default function CNX25() {
                   <div className={styles.timeLabel}>22:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🚗 回酒店休息</span>
+                      <span className={styles.itemTitle}>🚕 回酒店休息</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Hotel+MAYU+Chiang+Mai" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>返 Hotel MAYU</div>
@@ -244,7 +237,7 @@ export default function CNX25() {
               <div className={styles.timeline}>
                 <div className={styles.timelineItem}>
                   <div className={styles.timeLabel}>09:00</div>
-                  <div className={styles.card}><span className={styles.itemTitle}>🧳 Check-out MAYU</span>
+                  <div className={styles.card}><span className={styles.itemTitle}>🔑 Check-out MAYU</span>
                     <div className={styles.details}>帶行李去 Phra Singh 寄存</div>
                   </div>
                 </div>
@@ -253,7 +246,7 @@ export default function CNX25() {
                   <div className={styles.timeLabel}>10:30</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🧺 Jing Jai Market (真心市集)</span>
+                      <span className={styles.itemTitle}>🥬 Jing Jai Market (真心市集)</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Jing+Jai+Market+Chiang+Mai" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>Rustic Market, Good Goods, Live Band</div>
@@ -264,7 +257,7 @@ export default function CNX25() {
                   <div className={styles.timeLabel}>12:30</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🥘 午餐：Jing Jai Market</span>
+                      <span className={styles.itemTitle}>🍢 午餐：Jing Jai Market</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Jing+Jai+Market+Chiang+Mai" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>
@@ -277,7 +270,7 @@ export default function CNX25() {
                   <div className={styles.timeLabel}>14:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🏨 Check-in Phra Singh Village</span>
+                      <span className={styles.itemTitle}>🛎️ Check-in Phra Singh Village</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Phra+Singh+Village+Chiang+Mai" className={styles.navIcon}>📍</a>
                     </div>
                   </div>
@@ -286,20 +279,21 @@ export default function CNX25() {
                 <div className={styles.timelineItem}>
                   <div className={styles.timeLabel}>14:30</div>
                   <div className={styles.card}>
-                    <div className={styles.titleRow}><span className={styles.itemTitle}>🍰 下午茶：Cake Baan Piemsuk</span></div>
+                    <div className={styles.titleRow}><span className={styles.itemTitle}>🥥 下午茶：Cake Baan Piemsuk</span></div>
                     <div className={styles.details}>招牌椰子批 (Coconut Pie)</div>
                     <div className={styles.tagRow}><span className={`${styles.tag} ${styles.food}`}>Grab Food 外賣</span></div>
                   </div>
                 </div>
 
                 <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>18:00</div>
+                  <div className={styles.timeLabel}>16:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🏮 Saturday Walking Street</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Wua+Lai+Walking+Street" className={styles.navIcon}>📍</a>
+                      <span className={styles.itemTitle}>🌳 Giving Tree Massage</span>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Giving+Tree+Massage+Chiang+Mai" className={styles.navIcon}>📍</a>
                     </div>
-                    <div className={styles.details}>週六夜市 (Wua Lai Road)</div>
+                    <div className={styles.details}>Old City 分店</div>
+                    <div className={styles.tagRow}><span className={`${styles.tag} ${styles.reserved}`}>需預約</span></div>
                   </div>
                 </div>
 
@@ -307,7 +301,7 @@ export default function CNX25() {
                   <div className={styles.timeLabel}>19:30</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🍽️ 晚餐：Mr. KAI Restaurant</span>
+                      <span className={styles.itemTitle}>🌶️ 晚餐：Mr. KAI Restaurant</span>
                       <a href="https://maps.google.com/?cid=6867279730715784075" target="_blank" rel="noreferrer" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>古城區人氣泰菜</div>
@@ -315,16 +309,16 @@ export default function CNX25() {
                 </div>
 
                 <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>21:00</div>
+                  <div className={styles.timeLabel}>22:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>💆 Giving Tree Massage</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Giving+Tree+Massage+Chiang+Mai" className={styles.navIcon}>📍</a>
+                      <span className={styles.itemTitle}>🚶 Saturday Walking Street</span>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Wua+Lai+Walking+Street" className={styles.navIcon}>📍</a>
                     </div>
-                    <div className={styles.details}>Old City 分店</div>
-                    <div className={styles.tagRow}><span className={`${styles.tag} ${styles.reserved}`}>需預約</span></div>
+                    <div className={styles.details}>週六夜市 (Wua Lai Road)</div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -343,7 +337,7 @@ export default function CNX25() {
                   <div className={styles.timeLabel}>10:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🎨 Baan Kang Wat (森林藝術村)</span>
+                      <span className={styles.itemTitle}>🖌️ Baan Kang Wat (森林藝術村)</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Baan+Kang+Wat" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>漫步文青社區、陶瓷、影相</div>
@@ -356,53 +350,33 @@ export default function CNX25() {
                       <span className={styles.itemTitle}>🍵 The Baristro Asian Style</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=The+Baristro+Asian+Style" className={styles.navIcon}>📍</a>
                     </div>
-                    <div className={styles.details}>日系庭院 Cafe (近藝術村)</div>
+                    <div className={styles.details}>日系庭院 Cafe (近藝術村) 抹茶</div>
                   </div>
                 </div>
+
                 <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>15:30</div>
+                  <div className={styles.timeLabel}>16:30</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>📒 手作：Dibdee Binder</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Dibdee+Binder" className={styles.navIcon}>📍</a>
+                      <span className={styles.itemTitle}>💇 Daydream sleep salon at The Kannas</span>
+                      <a href="https://maps.app.goo.gl/tWRPDu5qE756xcEv9" className={styles.navIcon}>📍</a>
                     </div>
-                    <div className={styles.details}>訂製手作手帳 (塔佩門新址)</div>
+                    <div className={styles.details}>洗頭、護髮、按摩</div>
+                    <div className={styles.tagRow}><span className={`${styles.tag} ${styles.reserved}`}>需預約</span></div>
                   </div>
                 </div>
 
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
-                  <div className={styles.timeLabel}>19:00</div>
+                  <div className={styles.timeLabel}>20:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🍽️ 晚餐：OWL brasserie</span>
+                      <span className={styles.itemTitle}>🦉 晚餐：OWL brasserie</span>
                       <a href="https://maps.google.com/?cid=6556187270733801292" target="_blank" rel="noreferrer" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>氛圍很好的西式/Fusion料理</div>
                   </div>
                 </div>
 
-                <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>20:30</div>
-                  <div className={styles.card}>
-                    <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🏮 Sunday Walking Street</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Sunday+Walking+Street+Chiang+Mai" className={styles.navIcon}>📍</a>
-                    </div>
-                    <div className={styles.details}>飯後散步週日夜市</div>
-                  </div>
-                </div>
-
-                <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>21:00</div>
-                  <div className={styles.card}>
-                    <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>💆 Makkha Health & Spa</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Makkha+Health+and+Spa+Ancient+House" className={styles.navIcon}>📍</a>
-                    </div>
-                    <div className={styles.details}>Ancient House 分店 (近酒店)</div>
-                    <div className={styles.tagRow}><span className={`${styles.tag} ${styles.reserved}`}>需預約</span></div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -421,7 +395,7 @@ export default function CNX25() {
                   <div className={styles.timeLabel}>10:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🧺 Warorot Market & 藤編街</span>
+                      <span className={styles.itemTitle}>🥭 Warorot Market & 藤編街</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Warorot+Market" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>買炸豬皮、芒果乾、藤編打卡</div>
@@ -460,7 +434,7 @@ export default function CNX25() {
                   <div className={styles.timeLabel}>18:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🍽️ 晚餐：Miss Ju</span>
+                      <span className={styles.itemTitle}>🥘 晚餐：Miss Ju</span>
                       <a href="https://maps.google.com/?cid=4826827489626729623" target="_blank" rel="noreferrer" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>Farewell Dinner</div>
@@ -471,11 +445,9 @@ export default function CNX25() {
                   <div className={styles.timeLabel}>21:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>💆 Makkha Health & Spa</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Makkha+Health+and+Spa+Ancient+House" className={styles.navIcon}>📍</a>
+                      <span className={styles.itemTitle}>🦶 按摩</span>
                     </div>
-                    <div className={styles.details}>Ancient House 分店 (Farewell Massage)</div>
-                    <div className={styles.tagRow}><span className={`${styles.tag} ${styles.reserved}`}>需預約</span></div>
+
                   </div>
                 </div>
               </div>
@@ -491,13 +463,13 @@ export default function CNX25() {
               <div className={styles.timeline}>
                 <div className={styles.timelineItem}>
                   <div className={styles.timeLabel}>Morning</div>
-                  <div className={styles.card}><span className={styles.itemTitle}>🏨 Check-out</span></div>
+                  <div className={styles.card}><span className={styles.itemTitle}>👋 🏨 Check-out</span></div>
                 </div>
                 <div className={styles.timelineItem}>
                   <div className={styles.timeLabel}>--:--</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🚗 出發去機場 (CNX)</span>
+                      <span className={styles.itemTitle}>🚕 出發去機場 (CNX)</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Chiang+Mai+International+Airport" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>提早 2.5 小時出發</div>

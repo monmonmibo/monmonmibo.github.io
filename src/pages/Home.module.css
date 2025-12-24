@@ -83,6 +83,11 @@
     color: #2E7D32;
 }
 
+.status-soon {
+    background: #FFF3E0;
+    color: #E65100;
+}
+
 .statusPlan {
     background: #E3F2FD;
     color: #1565C0;
