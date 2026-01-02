@@ -341,7 +341,7 @@ export default function NGO26() {
           <div className={`${styles.daySection} ${styles.active}`}>
             <div style={{ margin: '-10px -20px 0', height: '80vh', position: 'relative' }}>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d104383.05607248163!2d136.8203534884277!3d35.16616422838848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6003709e107bdf31%3A0x2961d5331597d9e4!2sNagoya%2C%20Aichi%2C%20Japan!5e0!3m2!1sen!2shk!4v1711234567890!5m2!1sen!2shk"
+                src="https://www.google.com/maps/d/u/0/embed?mid=1X_1E8hq9SDRejzJisDuQ7c5HNfUMIXI&ehbc=2E312F"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
