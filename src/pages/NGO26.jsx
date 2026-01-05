@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from './NGO26.module.css';
+import RateConverter from '../components/RateConverter';
 
 export default function NGO26() {
   const [activeTab, setActiveTab] = useState('day1');
@@ -336,6 +337,13 @@ export default function NGO26() {
           </div>
         )}
 
+        {/* Tools */}
+        {view === 'tools' && (
+          <div className={`${styles.daySection} ${styles.active}`} style={{ paddingTop: '20px' }}>
+            <RateConverter />
+          </div>
+        )}
+
         {/* Map */}
         {view === 'map' && (
           <div className={`${styles.daySection} ${styles.active}`}>
@@ -362,6 +370,12 @@ export default function NGO26() {
           onClick={() => handleViewClick('timeline')}
         >
           📅 行程
+        </button>
+        <button
+          className={`${styles.navBtn} ${view === 'tools' ? styles.active : ''}`}
+          onClick={() => handleViewClick('tools')}
+        >
+          🧮 工具
         </button>
         <button
           className={`${styles.navBtn} ${view === 'map' ? styles.active : ''}`}
