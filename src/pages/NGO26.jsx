@@ -98,13 +98,24 @@ export default function NGO26() {
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
-                  <div className={styles.timeLabel}>18:00</div>
+                  <div className={styles.timeLabel}>19:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
                       <span className={styles.itemTitle}>🦀 晚餐：名古屋 かに銀 (Kanigin)</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Nagoya+Kanigin" className={styles.navIcon}>📍</a>
                     </div>
-                    <div className={styles.details}>蟹放題！盡情享受海鮮慶祝第一晚 🎊</div>
+                    <div className={styles.details}>
+                      蟹放題！盡情享受海鮮慶祝第一晚 🎊<br />
+                      <span style={{ color: '#E65100', fontWeight: '500', display: 'block', margin: '5px 0' }}>⏳ 限時：90 分鐘</span>
+                      <span style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginTop: '8px', lineHeight: '1.4' }}>
+                        🕒 營業時間：<br />
+                        • 一：16:00 - 23:30<br />
+                        • 二至五：16:00 - 23:00<br />
+                        • 六、日及節假日：12:00 - 23:00<br />
+                        <span style={{ color: '#888' }}>(L.O. 料理22:00 / 飲品22:30)</span><br />
+                        ✨ 全年無休
+                      </span>
+                    </div>
                     <div className={styles.tagRow}><span className={`${styles.tag} ${styles.reserved}`}>建議預約</span></div>
                   </div>
                 </div>
@@ -112,10 +123,17 @@ export default function NGO26() {
                   <div className={styles.timeLabel}>20:30</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🍗 宵夜：風來坊 (Furaibo)</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Furaibo+Nagoya" className={styles.navIcon}>📍</a>
+                      <span className={styles.itemTitle}>🍗 宵夜：風來坊 (名駅新幹線口店)</span>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Furaibo+Meieki+Shinkansen-guchi" className={styles.navIcon}>📍</a>
                     </div>
-                    <div className={styles.details}>買手羽先回民宿配啤酒 🍺</div>
+                    <div className={styles.details}>
+                      買手羽先回民宿配啤酒 🍺<br />
+                      <span style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginTop: '5px' }}>
+                        🕒 營業時間：<br />
+                        • 一至四：16:00 - 22:30<br />
+                        • 五至日：16:00 - 23:00
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -130,13 +148,10 @@ export default function NGO26() {
             <div className={styles.timelineContainer}>
               <div className={styles.timeline}>
                 <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>08:30</div>
+                  <div className={styles.timeLabel}>Morning</div>
                   <div className={styles.card}>
-                    <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🦊 豐川稻荷 (Toyokawa Inari)</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Toyokawa+Inari" className={styles.navIcon}>📍</a>
-                    </div>
-                    <div className={styles.details}>參觀千本幟，祈求生意興隆 🏮 (車程約1小時)</div>
+                    <span className={styles.itemTitle}>☀️ 慢活早晨 (Slow Morning)</span>
+                    <div className={styles.details}>自然醒，在市區吃個早餐 ☕️</div>
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
@@ -150,13 +165,18 @@ export default function NGO26() {
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
-                  <div className={styles.timeLabel}>18:00</div>
+                  <div className={styles.timeLabel}>19:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
                       <span className={styles.itemTitle}>🥩 晚餐：馬喰一代 名古屋WEST</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Bakuro+Ichidai+Nagoya+West" className={styles.navIcon}>📍</a>
                     </div>
-                    <div className={styles.details}>頂級飛騨牛一頭家 🐄 燒肉/壽喜燒</div>
+                    <div className={styles.details}>
+                      頂級飛騨牛一頭家 🐄 燒肉/壽喜燒<br />
+                      <span style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginTop: '5px' }}>
+                        🕒 營業時間：11:30 - 00:00 (每日)
+                      </span>
+                    </div>
                     <div className={styles.tagRow}><span className={`${styles.tag} ${styles.reserved}`}>務必預約</span></div>
                   </div>
                 </div>
@@ -171,8 +191,26 @@ export default function NGO26() {
             <div className={styles.hotelHeader}><span>🏨 住：名古屋站西口附近民宿</span></div>
             <div className={styles.timelineContainer}>
               <div className={styles.timeline}>
+                <div className={styles.timelineItem}>
+                  <div className={styles.timeLabel}>08:30</div>
+                  <div className={styles.card}>
+                    <div className={styles.titleRow}>
+                      <span className={styles.itemTitle}>🚌 名鐵巴士中心 (4樓)</span>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Meitetsu+Bus+Center" className={styles.navIcon}>📍</a>
+                    </div>
+                    <div className={styles.details}>
+                      準備搭乘高速巴士前往明治村<br />
+                      <span style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginTop: '5px' }}>
+                        🕒 建議班次 (系統111)：<br />
+                        • <strong>08:45</strong> 出發 → 10:15 抵達 (首選)<br />
+                        • 09:40 出發 → 11:10 抵達
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
-                  <div className={styles.timeLabel}>09:00</div>
+                  <div className={styles.timeLabel}>10:15</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
                       <span className={styles.itemTitle}>🏛️ 明治村 (Meiji Mura)</span>
@@ -184,15 +222,37 @@ export default function NGO26() {
                     </div>
                   </div>
                 </div>
+
                 <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>18:00</div>
+                  <div className={styles.timeLabel}>16:00</div>
+                  <div className={styles.card}>
+                    <span className={styles.itemTitle}>👋 明治村閉村 & 準備回程</span>
+                    <div className={styles.details}>
+                      閉園時間：16:00<br />
+                      <span style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginTop: '5px' }}>
+                        🕒 推薦回程巴士 (往名鐵巴士中心)：<br />
+                        • <strong>16:28</strong> 開出 (17:50 抵達) - 最適合<br />
+                        • 15:28 開出 (16:50 抵達)<br />
+                        • 16:58 (冬季加班車 - 18:20 抵達)
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.timelineItem}>
+                  <div className={styles.timeLabel}>19:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🐍 晚餐：炭燒うな富士 (Unafuji)</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Charcoal+Grilled+Unagi+Unafuji" className={styles.navIcon}>📍</a>
+                      <span className={styles.itemTitle}>🐍 晚餐：炭燒うな富士 (名駅太閤口店)</span>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Charcoal+Grilled+Unagi+Unafuji+Meieki+Taikoguchi" className={styles.navIcon}>📍</a>
                     </div>
-                    <div className={styles.details}>超人氣鰻魚飯 🍱 (太閤口店)</div>
-                    <div className={styles.tagRow}><span className={styles.tag}>排隊熱門</span></div>
+                    <div className={styles.details}>
+                      超人氣鰻魚飯 🍱<br />
+                      <span style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginTop: '5px' }}>
+                        🕒 營業時間：11:00 - 22:00 (每日)
+                      </span>
+                    </div>
+                    <div className={styles.tagRow}><span className={`${styles.tag} ${styles.reserved}`}>建議預約</span></div>
                   </div>
                 </div>
               </div>
@@ -223,7 +283,12 @@ export default function NGO26() {
                       <span className={styles.itemTitle}>🍜 午餐：たから (Takara)</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Takara+Osu+Kannon" className={styles.navIcon}>📍</a>
                     </div>
-                    <div className={styles.details}>大須觀音附近的味噌鍋燒烏龍麵</div>
+                    <div className={styles.details}>
+                      大須觀音附近的味噌鍋燒烏龍麵<br />
+                      <span style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginTop: '5px' }}>
+                        🕒 營業時間 (日)：11:30 - 14:45 / 17:00 - 19:00
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
@@ -243,8 +308,16 @@ export default function NGO26() {
                 <div className={styles.timelineItem}>
                   <div className={styles.timeLabel}>18:00</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🍣 晚餐：壽司 (選擇中...)</span>
-                    <div className={styles.details}>在大須或回名站尋找心水壽司店 🍣</div>
+                    <div className={styles.titleRow}>
+                      <span className={styles.itemTitle}>🍣 晚餐：大須鮨 (Osu Sushi)</span>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Osu+Sushi+Nagoya" className={styles.navIcon}>📍</a>
+                    </div>
+                    <div className={styles.details}>
+                      在大須體驗在地壽司 🍣<br />
+                      <span style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginTop: '5px' }}>
+                        🕒 營業時間 (日)：17:30 - 21:30
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -260,42 +333,44 @@ export default function NGO26() {
               <div className={styles.timeline}>
                 <div className={styles.timelineItem}>
                   <div className={styles.timeLabel}>11:00</div>
-                  <div className={`${styles.card} ${styles.highlight}`}>
-                    <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🍜 岩正手打烏龍 (Iwamasu)</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Iwamasu+Teuchi+Udon" className={styles.navIcon}>📍</a>
-                    </div>
-                    <div className={styles.details}>必吃清單第一位！味噌鍋燒麵完美的句號 😋</div>
+                  <div className={styles.card}>
+                    <span className={styles.itemTitle}>🍜 早午餐 (選擇中...)</span>
+                    <div className={styles.details}>尋找心水餐廳，為旅程劃下完美句號 😋</div>
                   </div>
                 </div>
                 <div className={styles.timelineItem}>
                   <div className={styles.timeLabel}>13:30</div>
                   <div className={styles.card}>
                     <span className={styles.itemTitle}>🛍️ 名古屋站周邊最後補貨</span>
-                    <div className={styles.details}>高島屋、Bic Camera 最後衝刺</div>
+                    <div className={styles.details}>高島屋、Bic Camera 最後衝刺，領取行李</div>
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
-                  <div className={styles.timeLabel}>16:00</div>
+                  <div className={styles.timeLabel}>16:30</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>🍜 棊子麺茶寮 いしこん (Ishikon)</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Ishikon+Nagoya+Station" className={styles.navIcon}>📍</a>
+                      <span className={styles.itemTitle}>🚕 出發前往機場 (NGO)</span>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Chubu+Centrair+International+Airport" className={styles.navIcon}>📍</a>
                     </div>
-                    <div className={styles.details}>最後衝刺！名古屋特色棊子麵 (Kishimen) 🍜</div>
+                    <div className={styles.details}>搭乘名鐵 μ-SKY 前往機場</div>
                   </div>
                 </div>
-                <div className={styles.timelineItem}>
+                <div className={`${styles.timelineItem} ${styles.highlight}`}>
                   <div className={styles.timeLabel}>17:30</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🚕 前往機場 (NGO)</span>
-                    <div className={styles.details}>領取行李，搭名鐵出發</div>
+                    <div className={styles.titleRow}>
+                      <span className={styles.itemTitle}>🍽️ 機場晚餐：4F Sky Town</span>
+                    </div>
+                    <div className={styles.details}>
+                      上機前最後衝刺！機場 4 樓有超多名古屋名店 🍱<br />
+                      (矢場丼、雞三和、鰻魚飯等)
+                    </div>
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
                   <div className={styles.timeLabel}>21:00</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🛫 起飛回程</span>
+                    <span className={styles.itemTitle}>🛫 起飛回程 (UO685)</span>
                     <div className={styles.details}>See you Nagoya!</div>
                   </div>
                 </div>
