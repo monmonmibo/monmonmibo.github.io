@@ -148,20 +148,41 @@ export default function NGO26() {
             <div className={styles.timelineContainer}>
               <div className={styles.timeline}>
                 <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>Morning</div>
+                  <div className={styles.timeLabel}>10:30</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>☀️ 慢活早晨 (Slow Morning)</span>
-                    <div className={styles.details}>自然醒，在市區吃個早餐 ☕️</div>
+                    <div className={styles.titleRow}>
+                      <span className={styles.itemTitle}>⛩️ 熱田神宮 (Atsuta Jingu)</span>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Atsuta+Jingu" className={styles.navIcon}>📍</a>
+                    </div>
+                    <div className={styles.details}>
+                      森林中的神宮，環境清幽 🙏<br />
+                      <span style={{ fontSize: '0.9rem', marginTop: '5px', display: 'block', color: '#666' }}>
+                        🍴 <strong>早午餐 (未定)</strong><br />
+                        可考慮在神宮內「宮きしめん」吃寬麵 🍜
+                      </span>
+                    </div>
                   </div>
                 </div>
+
+                <div className={styles.timelineItem}>
+                  <div className={styles.timeLabel}>12:30</div>
+                  <div className={styles.card}>
+                    <span className={styles.itemTitle}>🚇 交通轉乘</span>
+                    <div className={styles.details}>搭乘地鐵前往東山公園站 🐨</div>
+                  </div>
+                </div>
+
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
-                  <div className={styles.timeLabel}>13:30</div>
+                  <div className={styles.timeLabel}>13:15</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
                       <span className={styles.itemTitle}>🦍 東山動植物園</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Higashiyama+Zoo+and+Botanical+Gardens" className={styles.navIcon}>📍</a>
                     </div>
-                    <div className={styles.details}>看帥哥大猩猩 Shabani，逛逛植物園 🌿</div>
+                    <div className={styles.details}>
+                        13:15 - 16:30<br/>
+                        探訪帥哥大猩猩 Shabani 🦍
+                    </div>
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
