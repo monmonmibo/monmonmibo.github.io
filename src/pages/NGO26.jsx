@@ -180,11 +180,13 @@ export default function NGO26() {
                       <a href="https://www.google.com/maps/search/?api=1&query=Higashiyama+Zoo+and+Botanical+Gardens" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>
-                        13:15 - 16:30<br/>
-                        探訪帥哥大猩猩 Shabani 🦍
+                        13:15 - 16:50 (閉園)<br/>
+                        探訪帥哥大猩猩 Shabani 🦍<br/>
+                        <span style={{ fontSize: '0.8rem', color: '#888' }}>*動物通常 16:00 開始回室內</span>
                     </div>
                   </div>
                 </div>
+
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
                   <div className={styles.timeLabel}>19:00</div>
                   <div className={styles.card}>
@@ -353,17 +355,49 @@ export default function NGO26() {
             <div className={styles.timelineContainer}>
               <div className={styles.timeline}>
                 <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>11:00</div>
+                  <div className={styles.timeLabel}>10:30</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🍜 早午餐 (選擇中...)</span>
-                    <div className={styles.details}>尋找心水餐廳，為旅程劃下完美句號 😋</div>
+                    <span className={styles.itemTitle}>🏨 Check-out & 前往榮站</span>
+                    <div className={styles.details}>
+                      帶著行李直奔榮 (Sakae) 🧳<br />
+                      <span style={{ fontSize: '0.8rem', color: '#666' }}>
+                        💡 建議將行李寄放在榮站置物櫃<br />
+                        或百貨公司服務台
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>13:30</div>
+                  <div className={styles.timeLabel}>11:00</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🛍️ 名古屋站周邊最後補貨</span>
-                    <div className={styles.details}>高島屋、Bic Camera 最後衝刺，領取行李</div>
+                    <div className={styles.titleRow}>
+                      <span className={styles.itemTitle}>🍜 早午餐：みこと 栄駅店 (Mikoto)</span>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Mikoto+Ramen+Sakae+Station+Nagoya" className={styles.navIcon}>📍</a>
+                    </div>
+                    <div className={styles.details}>
+                      濃厚雞白湯拉麵 🐔<br />
+                      Day 5 終於食拉麵！
+                    </div>
+                  </div>
+                </div>
+                <div className={`${styles.timelineItem} ${styles.highlight}`}>
+                  <div className={styles.timeLabel}>12:30</div>
+                  <div className={styles.card}>
+                    <div className={styles.titleRow}>
+                      <span className={styles.itemTitle}>👞 BIRKENSTOCK 名古屋</span>
+                      <a href="https://www.google.com/maps/search/?api=1&query=BIRKENSTOCK+Nagoya+Sakae" className={styles.navIcon}>📍</a>
+                    </div>
+                    <div className={styles.details}>
+                      Sakae Place 1F<br />
+                      買完鞋還可以去綠洲21 (Oasis 21) 拍個照 📸
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.timelineItem}>
+                  <div className={styles.timeLabel}>15:30</div>
+                  <div className={styles.card}>
+                    <span className={styles.itemTitle}>🚇 取行李 & 前往名古屋站</span>
+                    <div className={styles.details}>準備搭車去機場</div>
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
@@ -373,7 +407,7 @@ export default function NGO26() {
                       <span className={styles.itemTitle}>🚕 出發前往機場 (NGO)</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Chubu+Centrair+International+Airport" className={styles.navIcon}>📍</a>
                     </div>
-                    <div className={styles.details}>搭乘名鐵 μ-SKY 前往機場</div>
+                    <div className={styles.details}>名鐵 μ-SKY (約28分鐘)</div>
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
