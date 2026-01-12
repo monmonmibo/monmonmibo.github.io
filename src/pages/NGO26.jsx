@@ -148,39 +148,22 @@ export default function NGO26() {
             <div className={styles.timelineContainer}>
               <div className={styles.timeline}>
                 <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>10:30</div>
+                  <div className={styles.timeLabel}>09:30</div>
                   <div className={styles.card}>
-                    <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>⛩️ 熱田神宮 (Atsuta Jingu)</span>
-                      <a href="https://www.google.com/maps/search/?api=1&query=Atsuta+Jingu" className={styles.navIcon}>📍</a>
-                    </div>
-                    <div className={styles.details}>
-                      森林中的神宮，環境清幽 🙏<br />
-                      <span style={{ fontSize: '0.9rem', marginTop: '5px', display: 'block', color: '#666' }}>
-                        🍴 <strong>早午餐 (未定)</strong><br />
-                        可考慮在神宮內「宮きしめん」吃寬麵 🍜
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>12:30</div>
-                  <div className={styles.card}>
-                    <span className={styles.itemTitle}>🚇 交通轉乘</span>
-                    <div className={styles.details}>搭乘地鐵前往東山公園站 🐨</div>
+                    <span className={styles.itemTitle}>🚇 出發往東山公園</span>
+                    <div className={styles.details}>搭東山線直達（約20-25分鐘）🐨</div>
                   </div>
                 </div>
 
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
-                  <div className={styles.timeLabel}>13:15</div>
+                  <div className={styles.timeLabel}>10:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
                       <span className={styles.itemTitle}>🦍 東山動植物園</span>
                       <a href="https://www.google.com/maps/search/?api=1&query=Higashiyama+Zoo+and+Botanical+Gardens" className={styles.navIcon}>📍</a>
                     </div>
                     <div className={styles.details}>
-                        13:15 - 16:50 (閉園)<br/>
+                        10:00 - 16:50 (閉園)<br/>
                         探訪帥哥大猩猩 Shabani 🦍<br/>
                         <span style={{ fontSize: '0.8rem', color: '#888' }}>*動物通常 16:00 開始回室內</span>
                     </div>
