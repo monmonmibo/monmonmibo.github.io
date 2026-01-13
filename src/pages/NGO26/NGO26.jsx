@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from './NGO26.module.css';
-import RateConverter from '../components/RateConverter';
+import RateConverter from '../../components/RateConverter';
 
 export default function NGO26() {
   const [activeTab, setActiveTab] = useState('day1');
@@ -338,7 +338,7 @@ export default function NGO26() {
             <div className={styles.timelineContainer}>
               <div className={styles.timeline}>
                 <div className={styles.timelineItem}>
-                  <div className={styles.timeLabel}>10:30</div>
+                  <div className={styles.timeLabel}>10:00</div>
                   <div className={styles.card}>
                     <span className={styles.itemTitle}>🏨 Check-out & 前往榮站</span>
                     <div className={styles.details}>

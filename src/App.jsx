@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import CNX25 from './pages/CNX25';
-import NGO26 from './pages/NGO26';
+import Home from './pages/Home/Home';
+import CNX25 from './pages/CNX25/CNX25';
+import NGO26 from './pages/NGO26/NGO26';
 import './App.css'; // Keep if you add global app styles later
 
 function App() {
