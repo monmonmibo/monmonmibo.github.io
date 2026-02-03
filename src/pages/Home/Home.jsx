@@ -9,11 +9,11 @@ export default function Home() {
 
 
 
-            <Link to="/ngo26" className={styles.tripCard} style={{ opacity: 1.0 }}>
+            <Link to="/ngo26" className={styles.tripCard} style={{ opacity: 0.5 }}>
                 <div className={styles.tripInfo}>
                     <h2>
                         名古屋5日4夜 🇯🇵
-                        <span className={`${styles.statusTag} ${styles['status-soon']}`}>Soon</span>
+                        <span className={`${styles.statusTag} ${styles.statusDone}`}>Finished</span>
                     </h2>
                     <span className={styles.dateText}>2026 Jan • 市中心</span>
                 </div>
