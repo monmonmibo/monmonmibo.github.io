@@ -21,12 +21,12 @@
 }
 
 .header {
-    background: linear-gradient(135deg, var(--primary) 0%, #0F4C5C 100%);
+    background: linear-gradient(180deg, var(--primary) 0%, #1B4332 100%);
     color: white;
     padding: 30px 20px 20px;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
-    box-shadow: 0 4px 15px rgba(20, 108, 148, 0.3);
+    box-shadow: 0 4px 15px rgba(45, 106, 79, 0.3);
 }
 
 .header h1 {
@@ -101,7 +101,7 @@
     background: var(--primary);
     color: white;
     border-color: var(--primary);
-    box-shadow: 0 4px 8px rgba(20, 108, 148, 0.2);
+    box-shadow: 0 4px 8px rgba(45, 106, 79, 0.2);
     transform: scale(1.02);
 }
 
@@ -130,6 +130,8 @@
     font-weight: 700;
     font-size: 0.9rem;
     color: #333;
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .hotelNavBtn {
@@ -143,7 +145,9 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    box-shadow: 0 2px 5px rgba(255, 140, 66, 0.3);
+    box-shadow: 0 2px 5px rgba(224, 122, 95, 0.3);
+    flex: 0 0 auto;
+    white-space: nowrap;
 }
 
 .timelineContainer {
@@ -205,7 +209,6 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 12px;
 }
 
 .itemTitle {
@@ -221,7 +224,6 @@
     color: var(--primary);
     font-size: 1.2rem;
     padding: 4px;
-    flex: 0 0 auto;
 }
 
 .details {
@@ -266,4 +268,85 @@
 .navBtn.active {
     background-color: var(--primary);
     color: white;
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 24px 16px 18px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    .headerTop {
+        gap: 8px;
+    }
+
+    .header h1 {
+        font-size: 1.35rem;
+    }
+
+    .homeLink {
+        font-size: 0.78rem;
+        padding: 5px 10px;
+    }
+
+    .dateTabs {
+        gap: 8px;
+        padding: 0 14px;
+    }
+
+    .dateChip {
+        padding: 7px 13px;
+        font-size: 0.8rem;
+    }
+
+    .hotelHeader {
+        margin: 0 14px 16px;
+        padding: 12px 12px;
+        gap: 8px;
+    }
+
+    .hotelHeader span {
+        font-size: 0.84rem;
+        line-height: 1.35;
+        padding-right: 4px;
+    }
+
+    .hotelNavBtn {
+        padding: 7px 10px;
+        font-size: 0.72rem;
+        min-width: 0;
+    }
+
+    .timelineContainer {
+        padding: 0 14px;
+    }
+
+    .titleRow {
+        align-items: center;
+    }
+
+    .itemTitle {
+        font-size: 0.95rem;
+    }
+
+    .navIcon {
+        padding: 6px 7px;
+        font-size: 1rem;
+    }
+
+    .bottomNav {
+        bottom: 12px;
+        padding: 7px 8px;
+        gap: 4px;
+        width: calc(100% - 24px);
+        max-width: 360px;
+    }
+
+    .navBtn {
+        flex: 1 1 0;
+        justify-content: center;
+        padding: 10px 12px;
+        font-size: 0.82rem;
+    }
 }
