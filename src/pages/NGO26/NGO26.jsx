@@ -1,21 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './NGO26.module.css';
 import RateConverter from '../../components/RateConverter';
 
 export default function NGO26() {
   const [activeTab, setActiveTab] = useState('day1');
   const [view, setView] = useState('timeline');
-  const [todos, setTodos] = useState({});
-
-  useEffect(() => {
-    // Load todos
+  const [todos, setTodos] = useState(() => {
     const loadedTodos = {};
     const todoIds = ['ngo-todo-1', 'ngo-todo-2', 'ngo-todo-3', 'ngo-todo-4', 'ngo-todo-5', 'ngo-todo-6'];
     todoIds.forEach(id => {
       loadedTodos[id] = localStorage.getItem(id) === 'true';
     });
-    setTodos(loadedTodos);
-  }, []);
+    return loadedTodos;
+  });
 
   const handleTodoChange = (id) => {
     const newState = !todos[id];

@@ -1,20 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './CNX25.module.css';
 
 export default function CNX25() {
   const [activeTab, setActiveTab] = useState('day1');
   const [view, setView] = useState('timeline');
-  const [todos, setTodos] = useState({});
-
-  useEffect(() => {
-    // Load todos
+  const [todos, setTodos] = useState(() => {
     const loadedTodos = {};
     for (let i = 1; i <= 8; i++) {
       const id = `todo-${i}`;
       loadedTodos[id] = localStorage.getItem(id) === 'true';
     }
-    setTodos(loadedTodos);
-  }, []);
+    return loadedTodos;
+  });
 
   const handleTodoChange = (id) => {
     const newState = !todos[id];
@@ -34,9 +31,6 @@ export default function CNX25() {
       setActiveTab('day1');
     }
   };
-
-  // Helper to get class names
-  const cx = (...classes) => classes.filter(Boolean).map(c => styles[c] || c).join(' ');
 
   return (
     <div className={styles.container}>

@@ -4,9 +4,18 @@ import styles from './Home.module.css';
 export default function Home() {
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>My Travels 🌍</h1>
-            <p className={styles.subtitle}>行程總覽 Dashboard</p>
+        <h1 className={styles.title}>My Travels 🌍</h1>
+        <p className={styles.subtitle}>行程總覽 Dashboard</p>
 
+            <Link to="/danang26" className={styles.tripCard}>
+                <div className={styles.tripInfo}>
+                    <h2>
+                        峴港5日4夜 🇻🇳
+                        <span className={`${styles.statusTag} ${styles.statusPlan}`}>Planning</span>
+                    </h2>
+                    <span className={styles.dateText}>2026 • CENTRE POINT Danang Hotel & Residence</span>
+                </div>
+            </Link>
 
 
             <Link to="/ngo26" className={styles.tripCard} style={{ opacity: 0.5 }}>

@@ -1,0 +1,197 @@
+.container {
+    --primary: #146C94;
+    --secondary: #D7F1F8;
+    --accent: #FF8C42;
+    --bg: #F3F8FB;
+    --text: #183B4E;
+    --line-color: #B8DCE8;
+
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding-bottom: 100px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary) 0%, #0F4C5C 100%);
+    color: white;
+    padding: 30px 20px 20px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    box-shadow: 0 4px 15px rgba(20, 108, 148, 0.3);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+}
+
+.header p {
+    margin: 5px 0 0;
+    opacity: 0.9;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+.stickyNav {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 99;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.dateTabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 0 20px;
+    scrollbar-width: none;
+}
+
+.dateTabs::-webkit-scrollbar {
+    display: none;
+}
+
+.dateChip {
+    background: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 16px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    color: #666;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.dateChip.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 4px 8px rgba(20, 108, 148, 0.2);
+    transform: scale(1.02);
+}
+
+.daySection {
+    display: none;
+    animation: fadeIn 0.4s;
+}
+
+.daySection.active {
+    display: block;
+}
+
+.hotelHeader {
+    background: white;
+    margin: 0 20px 20px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--accent);
+}
+
+.hotelHeader span {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.hotelNavBtn {
+    background-color: var(--accent);
+    color: white;
+    text-decoration: none;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 5px rgba(255, 140, 66, 0.3);
+}
+
+.timelineContainer {
+    padding: 0 20px;
+    margin-top: 10px;
+}
+
+.timeline {
+    border-left: 3px solid var(--line-color);
+    margin-left: 8px;
+    padding-left: 25px;
+    padding-bottom: 20px;
+}
+
+.timelineItem {
+    position: relative;
+    margin-bottom: 28px;
+}
+
+.timelineItem::before {
+    content: '';
+    position: absolute;
+    left: -36.5px;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--primary);
+    z-index: 2;
+    box-shadow: 0 0 0 2px var(--bg);
+}
+
+.timelineItem.highlight::before {
+    border-color: var(--accent);
+    background: var(--accent);
+}
+
+.timeLabel {
+    display: inline-block;
+    background: var(--secondary);
+    color: var(--primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 12px 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    border: 1px solid #eee;
+}
+
+.itemTitle {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.4;
+    color: #333;
+}
+
+.details {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.5;
+}
