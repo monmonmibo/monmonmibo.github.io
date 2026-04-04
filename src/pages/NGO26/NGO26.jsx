@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import styles from './NGO26.module.css';
 import RateConverter from '../../components/RateConverter';
@@ -36,7 +37,10 @@ export default function NGO26() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>Nagoya Trip 🇯🇵</h1>
+        <div className={styles.headerTop}>
+          <h1>Nagoya Trip 🇯🇵</h1>
+          <Link to="/" className={styles.homeLink}>🏠 主頁</Link>
+        </div>
         <p>🦀 名古屋 5日4夜 最終完美版</p>
       </div>
 

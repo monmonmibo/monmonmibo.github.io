@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import styles from './DAN26.module.css';
 import VndToHkdConverter from '../../components/VndToHkdConverter';
@@ -38,7 +39,10 @@ export default function DAN26() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>Da Nang Trip 🇻🇳</h1>
+        <div className={styles.headerTop}>
+          <h1>Da Nang Trip 🇻🇳</h1>
+          <Link to="/" className={styles.homeLink}>🏠 主頁</Link>
+        </div>
         <p>🏖️ 峴港 5日4夜</p>
       </div>
 

@@ -36,11 +36,31 @@
     letter-spacing: 0.5px;
 }
 
+.headerTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
 .header p {
     margin: 5px 0 0;
     opacity: 0.9;
     font-size: 0.9rem;
     font-weight: 300;
+}
+
+.homeLink {
+    flex: 0 0 auto;
+    text-decoration: none;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(6px);
 }
 
 /* Sticky Date Tabs Navigation */

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import styles from './CNX25.module.css';
 
@@ -35,7 +36,10 @@ export default function CNX25() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>Chiang Mai Trip 🇹🇭</h1>
+        <div className={styles.headerTop}>
+          <h1>Chiang Mai Trip 🇹🇭</h1>
+          <Link to="/" className={styles.homeLink}>🏠 主頁</Link>
+        </div>
         <p>🌿 慢活・手作・美食 (6 Days)</p>
       </div>
 
