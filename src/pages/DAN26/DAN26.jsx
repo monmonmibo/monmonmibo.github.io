@@ -114,6 +114,23 @@ export default function DAN26() {
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
+                  <div className={styles.timeLabel}>12:50</div>
+                  <div className={styles.card}>
+                    <div className={styles.titleRow}>
+                      <span className={styles.itemTitle}>🍫 ALLUVIA CHOCOLATE ĐÀ NẴNG</span>
+                      <a
+                        href="https://www.google.com/maps/search/?api=1&query=ALLUVIA+CHOCOLATE+DA+NANG"
+                        target="_blank"
+                        rel="noreferrer"
+                        className={styles.navIcon}
+                      >
+                        📍
+                      </a>
+                    </div>
+                    <div className={styles.details}>買埋朱古力做手信</div>
+                  </div>
+                </div>
+                <div className={`${styles.timelineItem} ${styles.highlight}`}>
                   <div className={styles.timeLabel}>13:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
@@ -128,6 +145,23 @@ export default function DAN26() {
                       </a>
                     </div>
                     <div className={styles.details}>漢市場附近食午餐</div>
+                  </div>
+                </div>
+                <div className={`${styles.timelineItem} ${styles.highlight}`}>
+                  <div className={styles.timeLabel}>14:30</div>
+                  <div className={styles.card}>
+                    <div className={styles.titleRow}>
+                      <span className={styles.itemTitle}>⛪ Da Nang Cathedral</span>
+                      <a
+                        href="https://www.google.com/maps/search/?api=1&query=Da+Nang+Cathedral"
+                        target="_blank"
+                        rel="noreferrer"
+                        className={styles.navIcon}
+                      >
+                        📍
+                      </a>
+                    </div>
+                    <div className={styles.details}>峴港大教堂／粉紅大教堂，食完飯去打卡</div>
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
@@ -414,9 +448,9 @@ export default function DAN26() {
                   <div className={styles.timeLabel}>16:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>👐 四手按摩</span>
+                      <span className={styles.itemTitle}>👐 四手按摩：Luxury Herbal Spa</span>
                       <a
-                        href="https://www.google.com/maps/search/?api=1&query=four+hands+massage+Da+Nang"
+                        href="https://www.google.com/maps/search/?api=1&query=Luxury+Herbal+Spa+Da+Nang"
                         target="_blank"
                         rel="noreferrer"
                         className={styles.navIcon}
@@ -454,6 +488,30 @@ export default function DAN26() {
             {renderHotelHeader()}
             <div className={styles.timelineContainer}>
               <div className={styles.timeline}>
+                <div className={styles.timelineItem}>
+                  <div className={styles.timeLabel}>12:00PM</div>
+                  <div className={styles.card}>
+                    <span className={styles.itemTitle}>🏨 Checkout</span>
+                    <div className={styles.details}>Check out 後拎行李出發</div>
+                  </div>
+                </div>
+                <div className={`${styles.timelineItem} ${styles.highlight}`}>
+                  <div className={styles.timeLabel}>12:30PM</div>
+                  <div className={styles.card}>
+                    <div className={styles.titleRow}>
+                      <span className={styles.itemTitle}>🍕 午餐：Pizza 4P's Indochina Da Nang</span>
+                      <a
+                        href="https://www.google.com/maps/search/?api=1&query=Pizza+4P%27s+Indochina+Da+Nang"
+                        target="_blank"
+                        rel="noreferrer"
+                        className={styles.navIcon}
+                      >
+                        📍
+                      </a>
+                    </div>
+                    <div className={styles.details}>Day 5 最後午餐，食完再慢慢去機場</div>
+                  </div>
+                </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
                   <div className={styles.timeLabel}>18:10</div>
                   <div className={styles.card}>

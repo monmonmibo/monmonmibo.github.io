@@ -1,32 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './RateConverter.module.css';
+import useCurrencyRate from './useCurrencyRate';
 
 export default function VndToHkdConverter() {
-  const [rate, setRate] = useState(null);
   const [vnd, setVnd] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [date, setDate] = useState('');
-
-  useEffect(() => {
-    const url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/vnd.json';
-
-    fetch(url)
-      .then((res) => {
-        if (!res.ok) throw new Error('Failed to fetch rate');
-        return res.json();
-      })
-      .then((data) => {
-        setRate(data.vnd.hkd);
-        setDate(data.date);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setError('無法獲取匯率');
-        setLoading(false);
-      });
-  }, []);
+  const { rate, loading, error, date, lastUpdatedAt } = useCurrencyRate('vnd');
 
   const handleChange = (e) => {
     const val = e.target.value;
@@ -90,9 +68,10 @@ export default function VndToHkdConverter() {
         <span className={styles.currency}>HKD</span>
       </div>
 
-      <div className={styles.rateInfo}>
+  <div className={styles.rateInfo}>
         1,000 VND ≈ {formatHKD(oneThousandVnd)} HKD<br />
         更新日期: {date}
+        {lastUpdatedAt ? <><br/>最後更新: {lastUpdatedAt}</> : null}
       </div>
     </div>
   );

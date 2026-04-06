@@ -1,35 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './RateConverter.module.css';
+import useCurrencyRate from './useCurrencyRate';
 
 export default function RateConverter() {
-  const [rate, setRate] = useState(null);
   const [jpy, setJpy] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [date, setDate] = useState('');
-
-  useEffect(() => {
-    // API URL for JPY base currency
-    const url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/jpy.json';
-
-    fetch(url)
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to fetch rate');
-        return res.json();
-      })
-      .then(data => {
-        // Access nested data: data.jpy.hkd
-        const hkdRate = data.jpy.hkd;
-        setRate(hkdRate);
-        setDate(data.date);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error(err);
-        setError('無法獲取匯率');
-        setLoading(false);
-      });
-  }, []);
+  const { rate, loading, error, date, lastUpdatedAt } = useCurrencyRate('jpy');
 
   const handleJpyChange = (e) => {
     const val = e.target.value;
@@ -93,6 +68,7 @@ export default function RateConverter() {
       <div className={styles.rateInfo}>
         100 JPY ≈ {(rate * 100).toFixed(2)} HKD<br/>
         更新日期: {date}
+        {lastUpdatedAt ? <><br/>最後更新: {lastUpdatedAt}</> : null}
       </div>
     </div>
   );
