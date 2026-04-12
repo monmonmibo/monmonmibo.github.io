@@ -448,9 +448,9 @@ export default function DAN26() {
                   <div className={styles.timeLabel}>16:00</div>
                   <div className={styles.card}>
                     <div className={styles.titleRow}>
-                      <span className={styles.itemTitle}>👐 四手按摩：Luxury Herbal Spa</span>
+                      <span className={styles.itemTitle}>👐 四手按摩：Oani Spa (Thai Phien)</span>
                       <a
-                        href="https://www.google.com/maps/search/?api=1&query=Luxury+Herbal+Spa+Da+Nang"
+                        href="https://www.google.com/maps/search/?api=1&query=61+Thai+Phien%2C+Phuoc+Ninh%2C+Hai+Chau%2C+Da+Nang+550000%2C+Vietnam"
                         target="_blank"
                         rel="noreferrer"
                         className={styles.navIcon}
@@ -458,7 +458,7 @@ export default function DAN26() {
                         📍
                       </a>
                     </div>
-                    <div className={styles.details}>用一個重點活動放鬆成日</div>
+                    <div className={styles.details}>61 Thái Phiên, Phước Ninh, Hải Châu, Đà Nẵng 550000, Vietnam</div>
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
