@@ -13,7 +13,7 @@ export default function Home() {
                         神戶淡路島6日5夜 🇯🇵
                         <span className={`${styles.statusTag} ${styles.statusPlan}`}>Planning</span>
                     </h2>
-                    <span className={styles.dateText}>2026 Sep • ⚓ 港口・🐄 和牛・🎡 淡路島</span>
+                    <span className={styles.dateText}>2026 Sep • 六甲山豪華露營・淡路島</span>
                 </div>
             </Link>
 
