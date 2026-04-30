@@ -68,12 +68,13 @@ export default function UKB26() {
             <div className={styles.timelineContainer}>
               <div className={styles.timeline}>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
-                  <div className={styles.timeLabel}>14:00 / 14:15</div>
+                  <div className={styles.timeLabel}>14:00 / 14:20</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🚌 高速巴士：機場 → 三宮</span>
+                    <span className={styles.itemTitle}>🚌 機場巴士：機場 → 三宮</span>
                     <div className={styles.details}>
-                        在關西機場第 1 航站樓搭乘利木津巴士。<br/>
-                        • 14:00 / 14:15 班次：預計 15:05 / 15:20 抵達 <strong>神戶三宮</strong>。
+                        在關西機場第 1 航站樓 <strong>6 號乘車處</strong> 搭乘。<br/>
+                        • 14:00 / 14:20 班次：預計 15:05 / 15:25 抵達 <strong>神戶三宮</strong>。<br/>
+                        <a href="https://www.kate.co.jp/tcn/kix_busstop/#terminal1" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '5px', display: 'block' }}>🔗 關西機場巴士站地圖 (6 號位)</a>
                     </div>
                   </div>
                 </div>
@@ -81,7 +82,7 @@ export default function UKB26() {
                   <div className={styles.timeLabel}>15:30</div>
                   <div className={styles.card}>
                     <span className={styles.itemTitle}>🏨 酒店 Check-in & 休息</span>
-                    <div className={styles.details}>先到酒店辦理入註並放下行李，稍作休息回一回電。</div>
+                    <div className={styles.details}>先到酒店辦理入住並放下行李，稍作休息回一回電。</div>
                   </div>
                 </div>
                 <div className={styles.timelineItem}>
@@ -278,9 +279,9 @@ export default function UKB26() {
                   <div className={styles.card}>
                     <span className={styles.itemTitle}>🛍️ Highway Oasis：買物與午餐</span>
                     <div className={styles.details}>
-                        <strong>食：</strong>推薦「みけ家」淡路牛或海鮮丼。<br/>
+                        <strong>食：</strong>餐廳選擇極多 (推薦：みけ家和食、Ponte Mar 景觀餐廳、尊拉麵)。<br/>
                         <strong>買：</strong>洋蔥湯粉、黑蒜咖哩、真洋蔥大掃貨！🧅<br/>
-                        欣賞完大橋美景後，準備前往下一站。
+                        <a href="http://www.awajishimahighwayoasis.com/food/" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '5px', display: 'block' }}>🔗 Highway Oasis 餐廳一覽</a>
                     </div>
                   </div>
                 </div>
@@ -355,7 +356,7 @@ export default function UKB26() {
                   <div className={styles.card}>
                     <span className={styles.itemTitle}>🚌 高速巴士：三宮 → 關西機場</span>
                     <div className={styles.details}>
-                        搭乘 13:40 的利木津巴士。<br/>
+                        搭乘 13:40 的機場巴士。<br/>
                         <strong>14:45</strong> 抵達關西機場第 1 航站樓，準備登機。
                     </div>
                   </div>
