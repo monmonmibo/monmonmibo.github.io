@@ -5,9 +5,10 @@ Personal travel dashboard built with Vite + React.
 ## Entry Points
 
 - [Home](https://monmonmibo.github.io/)
-- [Nagoya Trip](https://monmonmibo.github.io/ngo26)
-- [Chiang Mai Trip](https://monmonmibo.github.io/cnx25)
-- [Da Nang Trip](https://monmonmibo.github.io/danang26)
+- [Kobe & Awaji Trip](https://monmonmibo.github.io/ukb26) 🇯🇵 (New!)
+- [Nagoya Trip](https://monmonmibo.github.io/ngo26) 🇯🇵
+- [Chiang Mai Trip](https://monmonmibo.github.io/cnx25) 🇹🇭
+- [Da Nang Trip](https://monmonmibo.github.io/danang26) 🇻🇳
 
 ## Local Development
 
