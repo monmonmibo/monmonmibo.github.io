@@ -7,11 +7,21 @@ export default function Home() {
         <h1 className={styles.title}>My Travels 🌍</h1>
         <p className={styles.subtitle}>行程總覽 Dashboard</p>
 
-            <Link to="/danang26" className={styles.tripCard}>
+            <Link to="/ukb26" className={styles.tripCard}>
+                <div className={styles.tripInfo}>
+                    <h2>
+                        神戶淡路島6日5夜 🇯🇵
+                        <span className={`${styles.statusTag} ${styles.statusPlan}`}>Planning</span>
+                    </h2>
+                    <span className={styles.dateText}>2026 Sep • ⚓ 港口・🐄 和牛・🎡 淡路島</span>
+                </div>
+            </Link>
+
+            <Link to="/danang26" className={styles.tripCard} style={{ opacity: 0.5 }}>
                 <div className={styles.tripInfo}>
                     <h2>
                         峴港5日4夜 🇻🇳
-                        <span className={`${styles.statusTag} ${styles.statusPlan}`}>Planning</span>
+                        <span className={`${styles.statusTag} ${styles.statusDone}`}>Finished</span>
                     </h2>
                     <span className={styles.dateText}>2026 • CENTRE POINT Danang Hotel & Residence</span>
                 </div>
