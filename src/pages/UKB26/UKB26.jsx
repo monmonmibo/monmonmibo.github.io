@@ -21,6 +21,22 @@ export default function UKB26() {
     localStorage.setItem(id, newState);
   };
 
+  const hotelName = 'Hotel Monterey Kobe';
+  const hotelQuery = 'Hotel+Monterey+Kobe';
+  const renderHotelHeader = (note) => (
+    <div className={styles.hotelHeader}>
+      <span>{note ? `🏨 住：${hotelName} ｜ ${note}` : `🏨 住：${hotelName}`}</span>
+      <a
+        href={`https://www.google.com/maps/search/?api=1&query=${hotelQuery}`}
+        target="_blank"
+        rel="noreferrer"
+        className={styles.hotelNavBtn}
+      >
+        📍 導航
+      </a>
+    </div>
+  );
+
   const handleTabClick = (day) => {
     setActiveTab(day);
     setView('timeline');
@@ -62,9 +78,7 @@ export default function UKB26() {
         {/* Day 1: Arrival */}
         {view === 'timeline' && activeTab === 'day1' && (
           <div className={`${styles.daySection} ${styles.active}`}>
-            <div className={styles.hotelHeader}>
-              <span>🏨 住：神戶三宮 (建議三宮站附近)</span>
-            </div>
+            {renderHotelHeader('15:00 check-in')}
             <div className={styles.timelineContainer}>
               <div className={styles.timeline}>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
@@ -81,8 +95,8 @@ export default function UKB26() {
                 <div className={styles.timelineItem}>
                   <div className={styles.timeLabel}>15:30</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🏨 酒店 Check-in & 休息</span>
-                    <div className={styles.details}>先到酒店辦理入住並放下行李，稍作休息回一回電。</div>
+                    <span className={styles.itemTitle}>🏨 Hotel Monterey Kobe Check-in & 休息</span>
+                    <div className={styles.details}>15:00 後辦理入住並放下行李，稍作休息回一回電。</div>
                   </div>
                 </div>
                 <div className={styles.timelineItem}>
@@ -123,17 +137,23 @@ export default function UKB26() {
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
                   <div className={styles.timeLabel}>13:30</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🚉 三宮 → 六甲道站 → 的士</span>
+                    <span className={styles.itemTitle}>🚌 三宮 → 六甲山・停車場接駁車</span>
                     <div className={styles.details}>
-                        1. 從 <strong>JR 三宮站</strong> 搭電車往 <strong>JR 六甲道站</strong> (約5分鐘)。<br/>
-                        2. 在站前搭乘的士直達露營地 (約20分鐘)。<br/>
+                        <strong>前往本設施，我們將提供「接駁車」服務，接送地點為下方指定的停車場。</strong><br/>
+                        無論是開車或搭乘大眾運輸工具前往的賓客，請依照下方停車場的引導看板指示前往。<br/>
+                        <br/>
+                        <strong>ネイチャーライブ六甲 駐車場 所在地：</strong><br/>
+                        兵庫県神戸市灘区六甲山町南六甲1034駐車場<br/>
+                        Nature Live 六甲停車場位於「六甲山郵局」正對面。<br/>
+                        （步行前往）從摩耶觀光 Sky Shuttle Bus「紀念碑台」站步行約 3 分鐘<br/>
+                        <br/>
                         <span style={{ fontSize: '0.85rem', color: '#C0392B', fontWeight: '800', display: 'block', marginTop: '5px' }}>
-                            🔴 重要：下車請領取「的士收據」！
+                            🔴 重要：請預留充足時間，15:00 前到達停車場集合。
                         </span>
                         <span style={{ fontSize: '0.85rem', color: '#C0392B', fontWeight: '800', display: 'block' }}>
-                            🔴 Check-in 時必須出示收據以獲取 2,000 日圓回贈 💰
+                            🔴 Check-in 時按官方指示辦理接駁及入住安排。
                         </span>
-                        <a href="https://naturelive.co.jp/en/access/" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '8px', display: 'block' }}>🔗 官方交通指引</a>
+                        <a href="https://naturelive.co.jp/access/" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '8px', display: 'block' }}>🔗 官方交通指引</a>
                     </div>
                   </div>
                 </div>
@@ -152,9 +172,7 @@ export default function UKB26() {
         {/* Day 3: Kitano & Shopping */}
         {view === 'timeline' && activeTab === 'day3' && (
           <div className={`${styles.daySection} ${styles.active}`}>
-            <div className={styles.hotelHeader}>
-              <span>🏨 住：神戶三宮酒店</span>
-            </div>
+            {renderHotelHeader('15:00 check-in / 再 check-in')}
             <div className={styles.timelineContainer}>
               <div className={styles.timeline}>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
@@ -165,16 +183,16 @@ export default function UKB26() {
                         <strong>方案 A：酒店接駁車 (需預約)</strong><br/>
                         搭乘酒店接駁車往「六甲山上站」，轉乘纜車及巴士回三宮。<br/>
                         <br/>
-                        <strong>方案 B：的士直接回三宮酒店 (最輕鬆)</strong><br/>
-                        請酒店代叫的士，由露營地直達 <strong>三宮酒店 (待定)</strong> (約 35-45 分鐘)。<br/>
-                        <span style={{ fontSize: '0.8rem', color: '#27AE60', fontWeight: '600' }}>✅ 點對點直達：行李直接送達新酒店，放下即開始下午行程。</span>
+                        <strong>方案 B：的士直接回 Hotel Monterey Kobe (最輕鬆)</strong><br/>
+                        請酒店代叫的士，由露營地直達 <strong>Hotel Monterey Kobe</strong> (約 35-45 分鐘)。<br/>
+                        <span style={{ fontSize: '0.8rem', color: '#27AE60', fontWeight: '600' }}>✅ 點對點直達：下山後直接再 check-in 同一間酒店，放下行李即開始下午行程。</span>
                     </div>
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
                   <div className={styles.timeLabel}>中午</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🏨 到達三宮酒店放置行李</span>
+                    <span className={styles.itemTitle}>🏨 到達 Hotel Monterey Kobe 再 check-in</span>
                     <div className={styles.details}>建議先在酒店寄存行李，然後享用神戶著名的「洋食」午餐。</div>
                   </div>
                 </div>
@@ -329,9 +347,7 @@ export default function UKB26() {
         {/* Day 6: Final Day */}
         {view === 'timeline' && activeTab === 'day6' && (
           <div className={`${styles.daySection} ${styles.active}`}>
-            <div className={styles.hotelHeader}>
-              <span>✈️ 歸途 (Departure 17:10)</span>
-            </div>
+            {renderHotelHeader('11:00 checkout')}
             <div className={styles.timelineContainer}>
               <div className={styles.timeline}>
                 <div className={styles.timelineItem}>
@@ -339,7 +355,7 @@ export default function UKB26() {
                   <div className={styles.card}>
                     <span className={styles.itemTitle}>🏨 Check-out & 午餐</span>
                     <div className={styles.details}>
-                        辦理退房並將行李寄存在酒店。<br/>
+                        11:00 辦理退房並將行李寄存在 Hotel Monterey Kobe。<br/>
                         在三宮商圈享用最後一頓午餐（推薦試試神戶沾麵或明石燒）。
                     </div>
                   </div>
