@@ -262,6 +262,8 @@
     align-items: center;
     gap: 4px;
     box-shadow: 0 2px 5px rgba(231, 76, 60, 0.3);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 /* To-Do List Styling */

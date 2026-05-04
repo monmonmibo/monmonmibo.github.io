@@ -146,8 +146,8 @@
     align-items: center;
     gap: 4px;
     box-shadow: 0 2px 5px rgba(224, 122, 95, 0.3);
-    flex: 0 0 auto;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .timelineContainer {

@@ -109,9 +109,8 @@ export default function UKB26() {
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
                   <div className={styles.timeLabel}>晚上</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🥩 晚餐：神戶牛大餐</span>
-                    <div className={styles.details}>推薦：Mouriya 或 Steak Land。</div>
-                    <div className={styles.tagRow}><span className={`${styles.tag} ${styles.reserved}`}>建議預約</span></div>
+                    <span className={styles.itemTitle}>🍱 晚餐：炭燒鰻魚飯</span>
+                    <div className={styles.details}>推薦：青葉 (Aoba) 或三宮周邊的名店，品嚐香脆肥美的炭燒鰻魚。</div>
                   </div>
                 </div>
               </div>
@@ -178,41 +177,52 @@ export default function UKB26() {
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
                   <div className={styles.timeLabel}>11:00</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🚠 退房下山</span>
+                    <span className={styles.itemTitle}>🚠 退房 & 前往六甲空中庭園</span>
                     <div className={styles.details}>
-                        <strong>方案 A：酒店接駁車 (需預約)</strong><br/>
-                        搭乘酒店接駁車往「六甲山上站」，轉乘纜車及巴士回三宮。<br/>
-                        <br/>
-                        <strong>方案 B：的士直接回 Hotel Monterey Kobe (最輕鬆)</strong><br/>
-                        請酒店代叫的士，由露營地直達 <strong>Hotel Monterey Kobe</strong> (約 35-45 分鐘)。<br/>
-                        <span style={{ fontSize: '0.8rem', color: '#27AE60', fontWeight: '600' }}>✅ 點對點直達：下山後直接再 check-in 同一間酒店，放下行李即開始下午行程。</span>
+                        辦理退房，請酒店職員開車接載前往 <strong>六甲空中庭園 (Rokko Garden Terrace)</strong>。<br/>
+                        在這裡可以俯瞰神戶與大阪灣的全景。
                     </div>
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
                   <div className={styles.timeLabel}>中午</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🏨 到達 Hotel Monterey Kobe 再 check-in</span>
-                    <div className={styles.details}>建議先在酒店寄存行李，然後享用神戶著名的「洋食」午餐。</div>
+                    <span className={styles.itemTitle}>🏃‍♂️ 六甲山アスレチックパーク GREENIA</span>
+                    <div className={styles.details}>
+                        前往日本最大的運動冒險公園 GREENIA (Main Area)。<br/>
+                        挑戰各種水上、陸上戶外活動，大玩特玩一番！
+                    </div>
                   </div>
                 </div>
                 <div className={`${styles.timelineItem} ${styles.highlight}`}>
                   <div className={styles.timeLabel}>下午</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🛍️ 三宮商圈深度遊</span>
+                    <span className={styles.itemTitle}>🚠 步行 → 六甲有馬空中纜車 → 有馬溫泉</span>
                     <div className={styles.details}>
-                        逛大丸 (DAIMARU) 神戶店、SOGO 或三宮中心街。<br/>
-                        這裡集中了各大品牌、服飾及文具，適合悠閒閒逛。
+                        1. 從 GREENIA 步行約 8-10 分鐘前往 <strong>六甲山頂站</strong>。<br/>
+                        2. 搭乘索道下山直達有馬溫泉 (約 12 分鐘)。<br/>
+                        3. 在古老的溫泉街散策，感受大正浪漫氛圍 (不浸溫泉)。<br/>
+                        ✅ 必試：炭酸煎餅、黑豆甜點、金之湯/銀之湯周邊小店。
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.timelineItem}>
+                  <div className={styles.timeLabel}>傍晚</div>
+                  <div className={styles.card}>
+                    <span className={styles.itemTitle}>🚌 回到三宮酒店</span>
+                    <div className={styles.details}>
+                        從有馬溫泉搭乘「有馬急行巴士」或電車回到三宮 (約 30 分鐘)。<br/>
+                        抵達後辦理入住並放置行李。
                     </div>
                   </div>
                 </div>
                 <div className={styles.timelineItem}>
                   <div className={styles.timeLabel}>晚上</div>
                   <div className={styles.card}>
-                    <span className={styles.itemTitle}>🍽️ 繼續品嚐神戶美食</span>
+                    <span className={styles.itemTitle}>🍣 晚餐：新鮮壽司大餐</span>
                     <div className={styles.details}>
-                        除了洋食，三宮還有許多居酒屋或甜點店。<br/>
-                        逛完百貨公司後，找間舒服的餐廳慢慢享受晚餐。
+                        回到三宮後，享用高品質的日本壽司。<br/>
+                        推薦：三宮站周邊的職人手作壽司店或人氣迴轉壽司。
                     </div>
                   </div>
                 </div>
@@ -266,6 +276,16 @@ export default function UKB26() {
                         <strong>2. 原站轉乘：</strong>17:27 到達 <strong>洲本 ＩＣ</strong>，原地等候 <strong>17:44</strong> 的高速巴士。<br/>
                         <strong>3. 回到神戶：</strong>18:45 抵達 <strong>三宮BT(ミント)</strong>。<br/>
                         <span style={{ fontSize: '0.8rem', color: '#27AE60', fontWeight: '600' }}>✅ 完美對接：無需走路轉站，全家輕鬆即日來回。</span>
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.timelineItem}>
+                  <div className={styles.timeLabel}>晚上</div>
+                  <div className={styles.card}>
+                    <span className={styles.itemTitle}>🥩 晚餐：日式燒肉大餐</span>
+                    <div className={styles.details}>
+                        回到三宮後，享用豐富的燒肉料理。<br/>
+                        推薦：三宮站附近的「燒肉一蘭」或其他高品質和牛燒肉店。
                     </div>
                   </div>
                 </div>
