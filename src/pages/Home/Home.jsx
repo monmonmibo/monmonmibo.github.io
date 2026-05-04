@@ -13,7 +13,17 @@ export default function Home() {
                         神戶淡路島6日5夜 🇯🇵
                         <span className={`${styles.statusTag} ${styles.statusPlan}`}>Planning</span>
                     </h2>
-                    <span className={styles.dateText}>2026 Sep • 六甲山豪華露營・淡路島</span>
+                    <span className={styles.dateText}>2026 Nov • ⚓ 港口・🐄 和牛・🎡 淡路島</span>
+                </div>
+            </Link>
+
+            <Link to="/tak26" className={styles.tripCard}>
+                <div className={styles.tripInfo}>
+                    <h2>
+                        高松5日4夜 🇯🇵
+                        <span className={`${styles.statusTag} ${styles.statusPlan}`}>Planning</span>
+                    </h2>
+                    <span className={styles.dateText}>2026 Sep • ⛰️ 栗林公園・🍜 烏冬・🏝️ 小豆島</span>
                 </div>
             </Link>
 
@@ -23,7 +33,7 @@ export default function Home() {
                         峴港5日4夜 🇻🇳
                         <span className={`${styles.statusTag} ${styles.statusDone}`}>Finished</span>
                     </h2>
-                    <span className={styles.dateText}>2026 • CENTRE POINT Danang Hotel & Residence</span>
+                    <span className={styles.dateText}>2026 Apr • CENTRE POINT Danang Hotel & Residence</span>
                 </div>
             </Link>
 
