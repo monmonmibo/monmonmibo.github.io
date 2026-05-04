@@ -1,10 +1,10 @@
 .container {
-    --primary: #2D6A4F;
-    --secondary: #D8F3DC;
-    --accent: #E07A5F;
-    --bg: #F2F4F6;
-    --text: #1B4332;
-    --line-color: #B7E4C7;
+    --primary: #003366;
+    --secondary: #E6F2FF;
+    --accent: #D94124;
+    --bg: #F8F9FA;
+    --text: #2C3E50;
+    --line-color: #BDC3C7;
 
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg);
@@ -20,14 +20,13 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Header */
 .header {
-    background: linear-gradient(180deg, var(--primary) 0%, #1B4332 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, #001f3f 100%);
     color: white;
     padding: 30px 20px 20px;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
-    box-shadow: 0 4px 15px rgba(45, 106, 79, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
 }
 
 .header h1 {
@@ -63,7 +62,6 @@
     backdrop-filter: blur(6px);
 }
 
-/* Sticky Tabs */
 .stickyNav {
     position: sticky;
     top: 0;
@@ -103,11 +101,10 @@
     background: var(--primary);
     color: white;
     border-color: var(--primary);
-    box-shadow: 0 4px 8px rgba(45, 106, 79, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 51, 102, 0.2);
     transform: scale(1.02);
 }
 
-/* Timeline UI */
 .daySection {
     display: none;
     animation: fadeIn 0.4s;
@@ -155,7 +152,7 @@
 
 .timeLabel {
     display: inline-block;
-    background: #E8F5E9;
+    background: var(--secondary);
     color: var(--primary);
     padding: 2px 8px;
     border-radius: 4px;
@@ -172,12 +169,6 @@
     border: 1px solid #eee;
 }
 
-.titleRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
 .itemTitle {
     font-size: 1rem;
     font-weight: 700;
@@ -186,45 +177,11 @@
     color: #333;
 }
 
-.navIcon {
-    text-decoration: none;
-    color: var(--primary);
-    font-size: 1.2rem;
-    padding: 4px;
-}
-
 .details {
     margin-top: 8px;
     font-size: 0.85rem;
     color: #666;
     line-height: 1.5;
-}
-
-.tagRow {
-    margin-top: 8px;
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-}
-
-.tag {
-    font-size: 0.7rem;
-    padding: 2px 8px;
-    border-radius: 4px;
-    background: #f0f0f0;
-    color: #666;
-}
-
-.tag.reserved {
-    background: #FFF3E0;
-    color: #E65100;
-    font-weight: bold;
-    border: 1px solid #FFE0B2;
-}
-
-.tag.food {
-    background: #E3F2FD;
-    color: #1565C0;
 }
 
 .hotelHeader {
@@ -256,12 +213,11 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    box-shadow: 0 2px 5px rgba(224, 122, 95, 0.3);
+    box-shadow: 0 2px 5px rgba(217, 65, 36, 0.3);
     white-space: nowrap;
     flex-shrink: 0;
 }
 
-/* To-Do List */
 .todoListGroup {
     padding: 0 20px;
 }
@@ -337,11 +293,10 @@
 }
 
 .todoLabel:has(input:checked) {
-    border-color: #e8f5e9;
-    background-color: #fafffc;
+    border-color: var(--secondary);
+    background-color: #F4F8FB;
 }
 
-/* Bottom Nav */
 .bottomNav {
     position: fixed;
     bottom: 25px;
