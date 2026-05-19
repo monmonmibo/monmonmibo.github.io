@@ -37,6 +37,68 @@ export const tak26Data = {
       hotelQuery: "WeBase+TAKAMATSU",
       timeline: [
         {
+          time: "08:02 → 09:02",
+          title: "⛴️ 高松港 → 土庄港",
+          type: "highlight",
+          details: (
+            <>
+              一早先去高松のりば（高松港・小豆島行き営業所），建議班次：08:02 由高松港出發，09:02 抵達土庄港。落船後步行到巴士站，先前往天使之路，再轉車去 Olive Park。
+              <a href="https://www.shikokuferry.com/route2#schedule" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '6px', display: 'block' }}>🔗 高松↔土庄 船班時刻表（官方）</a>
+            </>
+          )
+        },
+        {
+          time: "上午",
+          title: "👼 先去天使之路 (Angel Road)",
+          type: "highlight",
+          details: (
+            <>
+              主方案（直達）：西浦線 U「9:20（U1 土庄港）→ 9:33（U9 国際ホテル・エンジェルロード前）」。<br/>
+              第二後備：坂手線 S「9:40（S1 土庄港）→ 9:46（S4 土庄本町）」，再步行約 13 分鐘。<br/>
+              第三後備：田ノ浦映画村線 T「10:10（T1 土庄港）→ 10:21（T7 国際ホテル・エンジェルロード前）」。建議配合當日退潮可見時段，停留約 45-60 分鐘。
+              <a href="https://www.town.tonosho.kagawa.jp/kanko/index.html" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '6px', display: 'block' }}>🔗 天使之路官方資訊（土庄町觀光）</a>
+              <a href="https://www.shodoshima-olive-bus.com/" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '6px', display: 'block' }}>🔗 小豆島全島巴士路線總覽（官方）</a>
+              <a href="https://www.shodoshima-olive-bus.com/wp/wp-content/uploads/2021/09/dia_nishiura.pdf" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '6px', display: 'block' }}>🔗 西浦線時刻表（官方 PDF）</a>
+              <a href="https://www.shodoshima-olive-bus.com/wp/wp-content/uploads/2021/09/dia_tanoura.pdf" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '4px', display: 'block' }}>🔗 田ノ浦映画村線時刻表（官方 PDF）</a>
+            </>
+          )
+        },
+        {
+          time: "中午前後",
+          title: "🚌 土庄本町（S4/F4）→ オリーブ公園口",
+          type: "highlight",
+          details: (
+            <>
+              玩完天使之路後，直接步行到土庄本町上車去 Olive Park，避免回頭返土庄港。建議 2 個班次：11:35（坂手線 S4）→ 11:58（S22 オリーブ公園口），或 12:05（南廻り福田線 F4）→ 12:30（F22 オリーブ公園口）。<br/>
+              <a href="https://www.shodoshima-olive-bus.com/" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '6px', display: 'block' }}>🔗 小豆島全島巴士路線總覽（官方）</a>
+            </>
+          )
+        },
+        {
+          time: "下午",
+          title: "🧹 小豆島オリーブ公園（魔女宅急便掃把飛天）",
+          type: "highlight",
+          details: "先到雑貨コリコ借掃把，再去希臘風車草坡位拍連拍飛天照；之後可慢行園區、食輕食，保留充足時間回程"
+        },
+        {
+          time: "下午",
+          title: "🚌 オリーブ公園口(F22) → 土庄港(F1)",
+          details: "回程首選：南廻り福田線 F「16:00（F22 オリーブ公園口）→ 16:30（F1 土庄港）」。後備：田ノ浦映画村線 T「16:36（T25 オリーブ公園口）→ 17:09（T1 土庄港）」。"
+        },
+        {
+          time: "傍晚",
+          title: "⛴️ 土庄港 → 高松港",
+          details: "建議回程班次：17:30 由土庄港出發，18:30 抵達高松港；之後可安排高松站周邊晚餐。"
+        }
+      ]
+    },
+    {
+      id: "day3",
+      label: "Day 3",
+      hotel: "WeBase 高松 (WeBase TAKAMATSU)",
+      hotelQuery: "WeBase+TAKAMATSU",
+      timeline: [
+        {
           time: "09:30",
           title: "🚉 高松 → 兒島",
           details: "搭乘 JR 瀨戶大橋線前往兒島站 (約 30 分鐘)"
@@ -62,20 +124,6 @@ export const tak26Data = {
           time: "18:00",
           title: "🚉 返回高松",
           details: "搭乘電車回到高松市區"
-        }
-      ]
-    },
-    {
-      id: "day3",
-      label: "Day 3",
-      hotel: "WeBase 高松 (WeBase TAKAMATSU)",
-      hotelQuery: "WeBase+TAKAMATSU",
-      timeline: [
-        {
-          time: "全日",
-          title: "🏝️ 小豆島一日遊",
-          type: "highlight",
-          details: "搭船前往小豆島：橄欖公園、寒霞溪纜車、天使之路"
         }
       ]
     },
