@@ -2,7 +2,7 @@ export const tak26Data = {
   id: "tak26",
   header: {
     title: "Takamatsu Trip 🇯🇵",
-    subtitle: "⛰️ 栗林公園・🍜 烏冬・🏝️ 小豆島 5日4夜"
+    subtitle: "👖 兒島牛仔・🏝️ 小豆島・⚡ Pokémon Center 5日4夜"
   },
   days: [
     {
@@ -99,31 +99,50 @@ export const tak26Data = {
       hotelQuery: "WeBase+TAKAMATSU",
       timeline: [
         {
-          time: "09:30",
+          time: "上午",
           title: "🚉 高松 → 兒島",
-          details: "搭乘 JR 瀨戶大橋線前往兒島站 (約 30 分鐘)"
+          details: "建議早一點由高松出發，搭 JR 瀨戶大橋線前往兒島站"
         },
         {
-          time: "10:30",
+          time: "上午",
           title: "👖 兒島牛仔褲街 (Jeans Street)",
           type: "highlight",
-          details: "漫步於日本單寧聖地，尋找高品質的牛仔製品，吊掛的牛仔褲是必拍打卡位"
+          details: "漫步於日本單寧聖地，尋找高品質牛仔製品，吊掛牛仔褲是必拍打卡位"
         },
         {
-          time: "13:00",
-          title: "🍜 午餐：兒島當地料理",
-          details: "在牛仔褲街或車站附近享用午餐"
+          time: "中午",
+          title: "🍱 午餐：兒島",
+          details: "在牛仔褲街周邊享用午餐，節奏更輕鬆"
         },
         {
-          time: "15:00",
-          title: "🌉 鷲羽山展望台",
+          time: "午後",
+          title: "🍦 RIVETS 雪糕休息",
+          details: "到 RIVETS（岡山県倉敷市児島味野2-5-3）食雪糕，作為兒島行程中段休息"
+        },
+        {
+          time: "下午",
+          title: "🚉 兒島 → 倉敷（行街）",
+          details: "由兒島移動到倉敷，於美觀地區與商店街散策"
+        },
+        {
+          time: "晚上",
+          title: "🍱 晚餐：鰻北倉敷店",
           type: "highlight",
-          details: "搭乘巴士前往鷲羽山，欣賞瀨戶大橋與瀨戶內海群島交織的絕景"
+          details: (
+            <>
+              地址：1-32 Honmachi, Kurashiki, Okayama 710-0054 日本<br/>
+              電話：+81 86-454-4545<br/>
+              營業時間：11:00-15:00，17:00-19:30（每天）<br/>
+              建議提早到店或先預約。
+              <a href="https://unagi-nobori.shop" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '6px', display: 'block' }}>🔗 官方選單 / 官網</a>
+              <a href="https://www.hotpepper.jp/" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '4px', display: 'block' }}>🔗 預約（Hotpepper）</a>
+            </>
+          )
         },
         {
-          time: "18:00",
-          title: "🚉 返回高松",
-          details: "搭乘電車回到高松市區"
+          time: "晚間",
+          title: "🚉 倉敷 → 高松",
+          details: "晚餐後由倉敷返回高松"
         }
       ]
     },
@@ -135,14 +154,25 @@ export const tak26Data = {
       timeline: [
         {
           time: "上午",
-          title: "🏯 高松城 (玉藻公園)",
-          details: "日本三大「水城」之一，欣賞與海相連的護城河"
+          title: "🛍️ 高松市內百貨 / 商場行街",
+          type: "highlight",
+          details: "高松站與瓦町一帶自由購物，可先逛百貨公司、生活雜貨與藥妝"
+        },
+        {
+          time: "中午",
+          title: "🍜 午餐：高松市區",
+          details: "於商場或市區餐廳用餐，保持慢節奏"
         },
         {
           time: "下午",
-          title: "🎨 屋島 (Yashima)",
+          title: "⚡ Pokémon Center KAGAWA",
           type: "highlight",
-          details: "前往屋島展望台，俯瞰瀨戶內海的壯麗景致"
+          details: "到 Pokémon Center KAGAWA 朝聖，選購限定周邊與手信"
+        },
+        {
+          time: "傍晚",
+          title: "☕ 市區散步 + 晚餐",
+          details: "傍晚可在高松港/商店街散步，晚餐安排於高松站或瓦町周邊"
         }
       ]
     },
