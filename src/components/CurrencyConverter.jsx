@@ -11,7 +11,7 @@ export default function CurrencyConverter({
   summaryLine,
 }) {
   const [value, setValue] = useState('');
-  const { rate, loading, error, date, lastUpdatedAt } = useCurrencyRate(baseCurrency);
+  const { rate, loading, error, date, lastUpdatedAt, isOffline } = useCurrencyRate(baseCurrency);
 
   const handleChange = (e) => {
     const nextValue = e.target.value;
@@ -83,6 +83,11 @@ export default function CurrencyConverter({
         <span className={styles.currency}>HKD</span>
       </div>
 
+      {isOffline && (
+        <div className={styles.offlineBanner}>
+          📵 離線中，顯示上次儲存匯率
+        </div>
+      )}
       <div className={styles.rateInfo}>
         {summaryLine(rate, date)}
         {lastUpdatedAt ? <><br />最後更新: {lastUpdatedAt}</> : null}
