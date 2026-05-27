@@ -59,7 +59,7 @@ export const ngo26Data = {
             <>
               10:00 - 16:50 (閉園)<br/>
               探訪帥哥大猩猩 Shabani 🦍<br/>
-              <span style={{ fontSize: '0.8rem', color: '#888' }}>*動物通常 16:00 開始回室內</span>
+              <span className="trip-note-muted">*動物通常 16:00 開始回室內</span>
             </>
           )
         },

@@ -19,7 +19,7 @@ export const ukb26Data = {
             <>
               在關西機場第 1 航站樓 <strong>6 號乘車處</strong> 搭乘。<br/>
               • 14:00 / 14:20 班次：預計 15:05 / 15:25 抵達 <strong>神戶三宮</strong>。<br/>
-              <a href="https://www.kate.co.jp/tcn/kix_busstop/#terminal1" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '5px', display: 'block' }}>🔗 關西機場巴士站地圖 (6 號位)</a>
+              <a href="https://www.kate.co.jp/tcn/kix_busstop/#terminal1" target="_blank" rel="noreferrer" className="trip-link">🔗 關西機場巴士站地圖 (6 號位)</a>
             </>
           )
         },
@@ -64,13 +64,9 @@ export const ukb26Data = {
               Nature Live 六甲停車場位於「六甲山郵局」正對面。<br/>
               （步行前往）從摩耶觀光 Sky Shuttle Bus「紀念碑台」站步行約 3 分鐘<br/>
               <br/>
-              <span style={{ fontSize: '0.85rem', color: '#C0392B', fontWeight: '800', display: 'block', marginTop: '5px' }}>
-                  🔴 重要：請預留充足時間，15:00 前到達停車場集合。
-              </span>
-              <span style={{ fontSize: '0.85rem', color: '#C0392B', fontWeight: '800', display: 'block' }}>
-                  🔴 Check-in 時按官方指示辦理接駁及入住安排。
-              </span>
-              <a href="https://naturelive.co.jp/access/" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '8px', display: 'block' }}>🔗 官方交通指引</a>
+              <span className="trip-note-red">🔴 重要：請預留充足時間，15:00 前到達停車場集合。</span>
+              <span className="trip-note-red">🔴 Check-in 時按官方指示辦理接駁及入住安排。</span>
+              <a href="https://naturelive.co.jp/access/" target="_blank" rel="noreferrer" className="trip-link">🔗 官方交通指引</a>
             </>
           )
         },
@@ -155,12 +151,12 @@ export const ukb26Data = {
           type: "highlight",
           details: (
             <>
-              搭乘高速巴士往 **洲本巴士中心**。<br/>
+              搭乘高速巴士往 <strong>洲本巴士中心</strong>。<br/>
               • 07:40 班次：預計 09:46 抵達農場 (最接近開門時間)<br/>
               • 08:40 班次：預計 10:46 抵達農場<br/>
               <div style={{ marginTop: '8px' }}>
-                <a href="https://www.awaji-kotsu.co.jp/_assets/d762e18f435947a5af53e214e409edf2/0c50cf8694ae41b6a85e8b00cb1ddbfe/l_1010-1070_current.pdf" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', display: 'block' }}>🔗 1. 三宮-洲本 高速巴士時刻表</a>
-                <a href="https://www.awaji-kotsu.co.jp/_assets/d762e18f435947a5af53e214e409edf2/aef10707c452426b93836da12d372fba/l_2010_0_current.pdf" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', display: 'block', marginTop: '4px' }}>🔗 2. 洲本-農場 轉乘巴士時刻表</a>
+                <a href="https://www.awaji-kotsu.co.jp/_assets/d762e18f435947a5af53e214e409edf2/0c50cf8694ae41b6a85e8b00cb1ddbfe/l_1010-1070_current.pdf" target="_blank" rel="noreferrer" className="trip-link">🔗 1. 三宮-洲本 高速巴士時刻表</a>
+                <a href="https://www.awaji-kotsu.co.jp/_assets/d762e18f435947a5af53e214e409edf2/aef10707c452426b93836da12d372fba/l_2010_0_current.pdf" target="_blank" rel="noreferrer" className="trip-link">🔗 2. 洲本-農場 轉乘巴士時刻表</a>
               </div>
             </>
           )
@@ -173,7 +169,7 @@ export const ukb26Data = {
             <>
               <strong>1. 上車地點：</strong>神姬三宮ＢＴ (<strong>神姬三宮ＢＴ</strong> - 鐵路高架橋下)。<br/>
               <strong>2. 落車地點：</strong>在 <strong>洲本 ＩＣ</strong> 落車 (09:08)。<br/>
-              <span style={{ fontSize: '0.8rem', color: '#27AE60', fontWeight: '600' }}>✅ 原站轉乘 (極之方便)：</span><br/>
+              <span className="trip-note-green">✅ 原站轉乘 (極之方便)：</span><br/>
               落車位置即為轉乘站，原地等候 <strong>09:30</strong> 往「福良」方向的巴士即可。<br/>
               <strong>3. 抵達農場：</strong>預計 <strong>09:46</strong> 抵達「イングランドの丘」。
             </>
@@ -188,7 +184,7 @@ export const ukb26Data = {
               <strong>1. 農場發車：</strong>17:11 搭乘往洲本方向巴士。<br/>
               <strong>2. 原站轉乘：</strong>17:27 到達 <strong>洲本 ＩＣ</strong>，原地等候 <strong>17:44</strong> 的高速巴士。<br/>
               <strong>3. 回到神戶：</strong>18:45 抵達 <strong>三宮BT(ミント)</strong>。<br/>
-              <span style={{ fontSize: '0.8rem', color: '#27AE60', fontWeight: '600' }}>✅ 完美對接：無需走路轉站，全家輕鬆即日來回。</span>
+              <span className="trip-note-green">✅ 完美對接：無需走路轉站，全家輕鬆即日來回。</span>
             </>
           )
         },
@@ -227,7 +223,7 @@ export const ukb26Data = {
             <>
               <strong>食：</strong>餐廳選擇極多 (推薦：みけ家和食、Ponte Mar 景觀餐廳、尊拉麵)。<br/>
               <strong>買：</strong>洋蔥湯粉、黑蒜咖哩、真洋蔥大掃貨！🧅<br/>
-              <a href="http://www.awajishimahighwayoasis.com/food/" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '5px', display: 'block' }}>🔗 Highway Oasis 餐廳一覽</a>
+              <a href="http://www.awajishimahighwayoasis.com/food/" target="_blank" rel="noreferrer" className="trip-link">🔗 Highway Oasis 餐廳一覽</a>
             </>
           )
         },
@@ -240,8 +236,8 @@ export const ukb26Data = {
               在 Highway Oasis 的 <strong>A1 停車場</strong> 搭乘「反時計」方向巴士。<br/>
               • 12:59 班次：13:41 抵達夢舞台<br/>
               • 14:49 班次：15:31 抵達夢舞台<br/>
-              <span style={{ fontSize: '0.8rem', color: '#E65100', fontWeight: '600' }}>⚠️ 班次較疏，請務必看準時間上車。</span><br/>
-              <a href="https://www.honshi-bus.co.jp/local/view/11" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '4px', display: 'block' }}>🔗 北部周遊巴士 (Route 10) 詳情</a>
+              <span className="trip-note-orange">⚠️ 班次較疏，請務必看準時間上車。</span><br/>
+              <a href="https://www.honshi-bus.co.jp/local/view/11" target="_blank" rel="noreferrer" className="trip-link">🔗 北部周遊巴士 (Route 10) 詳情</a>
             </>
           )
         },
@@ -254,7 +250,7 @@ export const ukb26Data = {
               就在百段苑旁的大樓內，有多間優質餐廳：<br/>
               • <strong>2F KITORA：</strong>新鮮海鮮、壽司 🍣<br/>
               • <strong>1F YUME TERRACE：</strong>優質淡路牛料理 🥩<br/>
-              <span style={{ fontSize: '0.8rem', color: '#888' }}>*營業至 21:00，吃飽後走幾步即達巴士站。</span>
+              <span className="trip-note-muted">*營業至 21:00，吃飽後走幾步即達巴士站。</span>
             </>
           )
         },
@@ -265,7 +261,7 @@ export const ukb26Data = {
           details: (
             <>
               在「淡路夢舞台前」站搭乘高速巴士。<br/>
-              <span style={{ fontSize: '0.8rem', color: '#27AE60', fontWeight: '600' }}>✅ 吃飽就走：建議搭乘 20:15 班次，21:02 即可回到三宮。</span><br/>
+              <span className="trip-note-green">✅ 吃飽就走：建議搭乘 20:15 班次，21:02 即可回到三宮。</span><br/>
               • 回程班次：19:15 或 20:15
             </>
           )

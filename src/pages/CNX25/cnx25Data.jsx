@@ -42,7 +42,7 @@ export const cnx25Data = {
           details: (
             <>
               腳底/泰式按摩 (60mins)<br/>
-              <span style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: '4px', background: '#FADBD8', color: '#C0392B', fontWeight: 'bold', border: '1px solid #F1948A', marginTop: '5px', display: 'inline-block' }}>需預約</span>
+              <span className="trip-badge-warn">需預約</span>
             </>
           )
         },
@@ -74,7 +74,7 @@ export const cnx25Data = {
           details: (
             <>
               黑森林餐廳，絕美瀑布景觀必影相！<br/>
-              <span style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: '4px', background: '#FADBD8', color: '#C0392B', fontWeight: 'bold', border: '1px solid #F1948A', marginTop: '5px', display: 'inline-block' }}>需預約</span>
+              <span className="trip-badge-warn">需預約</span>
             </>
           )
         },
@@ -139,7 +139,7 @@ export const cnx25Data = {
           details: (
             <>
               招牌椰子批 (Coconut Pie)<br/>
-              <span style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: '4px', background: '#D6EAF8', color: '#2980B9', marginTop: '5px', display: 'inline-block' }}>Grab Food 外賣</span>
+              <span className="trip-badge-info">Grab Food 外賣</span>
             </>
           )
         },
@@ -149,7 +149,7 @@ export const cnx25Data = {
           details: (
             <>
               Old City 分店<br/>
-              <span style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: '4px', background: '#FADBD8', color: '#C0392B', fontWeight: 'bold', border: '1px solid #F1948A', marginTop: '5px', display: 'inline-block' }}>需預約</span>
+              <span className="trip-badge-warn">需預約</span>
             </>
           )
         },
@@ -186,7 +186,7 @@ export const cnx25Data = {
           details: (
             <>
               洗頭、護髮、按摩<br/>
-              <span style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: '4px', background: '#FADBD8', color: '#C0392B', fontWeight: 'bold', border: '1px solid #F1948A', marginTop: '5px', display: 'inline-block' }}>需預約</span>
+              <span className="trip-badge-warn">需預約</span>
             </>
           )
         },
@@ -215,7 +215,7 @@ export const cnx25Data = {
           details: (
             <>
               必飲 Iced Chocolate<br />
-              <span style={{ fontSize: '0.85rem', color: '#888' }}>(太飽了，直接甜品當午餐 😋)</span>
+              <span className="trip-note-muted">(太飽了，直接甜品當午餐 😋)</span>
             </>
           )
         },

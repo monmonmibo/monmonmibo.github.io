@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import styles from './TravelLayout.module.css';
-import RateConverter from '../RateConverter';
+import JpyToHkdConverter from '../JpyToHkdConverter';
 
 export default function TravelLayout({ data }) {
   const [activeTab, setActiveTab] = useState('day1');
@@ -34,9 +34,6 @@ export default function TravelLayout({ data }) {
 
   const handleViewClick = (newView) => {
     setView(newView);
-    if (newView === 'timeline' && !activeTab) {
-      setActiveTab('day1');
-    }
   };
 
   const renderHotelHeader = (day) => {
@@ -141,7 +138,7 @@ export default function TravelLayout({ data }) {
         {/* Tools */}
         {view === 'tools' && (
           <div className={`${styles.daySection} ${styles.active}`} style={{ paddingTop: '20px' }}>
-            {data.customTools ? data.customTools : <RateConverter />}
+            {data.customTools ? data.customTools : <JpyToHkdConverter />}
           </div>
         )}
 

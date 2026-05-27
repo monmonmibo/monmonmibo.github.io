@@ -43,7 +43,7 @@ export const tak26Data = {
           details: (
             <>
               一早先去高松のりば（高松港・小豆島行き営業所），建議班次：08:02 由高松港出發，09:02 抵達土庄港。落船後步行到巴士站，先前往天使之路，再轉車去 Olive Park。
-              <a href="https://www.shikokuferry.com/route2#schedule" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '6px', display: 'block' }}>🔗 高松↔土庄 船班時刻表（官方）</a>
+              <a href="https://www.shikokuferry.com/route2#schedule" target="_blank" rel="noreferrer" className="trip-link">🔗 高松↔土庄 船班時刻表（官方）</a>
             </>
           )
         },
@@ -56,10 +56,10 @@ export const tak26Data = {
               主方案（直達）：西浦線 U「9:20（U1 土庄港）→ 9:33（U9 国際ホテル・エンジェルロード前）」。<br/>
               第二後備：坂手線 S「9:40（S1 土庄港）→ 9:46（S4 土庄本町）」，再步行約 13 分鐘。<br/>
               第三後備：田ノ浦映画村線 T「10:10（T1 土庄港）→ 10:21（T7 国際ホテル・エンジェルロード前）」。建議配合當日退潮可見時段，停留約 45-60 分鐘。
-              <a href="https://www.town.tonosho.kagawa.jp/kanko/index.html" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '6px', display: 'block' }}>🔗 天使之路官方資訊（土庄町觀光）</a>
-              <a href="https://www.shodoshima-olive-bus.com/" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '6px', display: 'block' }}>🔗 小豆島全島巴士路線總覽（官方）</a>
-              <a href="https://www.shodoshima-olive-bus.com/wp/wp-content/uploads/2021/09/dia_nishiura.pdf" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '6px', display: 'block' }}>🔗 西浦線時刻表（官方 PDF）</a>
-              <a href="https://www.shodoshima-olive-bus.com/wp/wp-content/uploads/2021/09/dia_tanoura.pdf" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '4px', display: 'block' }}>🔗 田ノ浦映画村線時刻表（官方 PDF）</a>
+              <a href="https://www.town.tonosho.kagawa.jp/kanko/index.html" target="_blank" rel="noreferrer" className="trip-link">🔗 天使之路官方資訊（土庄町觀光）</a>
+              <a href="https://www.shodoshima-olive-bus.com/" target="_blank" rel="noreferrer" className="trip-link">🔗 小豆島全島巴士路線總覽（官方）</a>
+              <a href="https://www.shodoshima-olive-bus.com/wp/wp-content/uploads/2021/09/dia_nishiura.pdf" target="_blank" rel="noreferrer" className="trip-link">🔗 西浦線時刻表（官方 PDF）</a>
+              <a href="https://www.shodoshima-olive-bus.com/wp/wp-content/uploads/2021/09/dia_tanoura.pdf" target="_blank" rel="noreferrer" className="trip-link">🔗 田ノ浦映画村線時刻表（官方 PDF）</a>
             </>
           )
         },
@@ -70,7 +70,7 @@ export const tak26Data = {
           details: (
             <>
               玩完天使之路後，直接步行到土庄本町上車去 Olive Park，避免回頭返土庄港。建議 2 個班次：11:35（坂手線 S4）→ 11:58（S22 オリーブ公園口），或 12:05（南廻り福田線 F4）→ 12:30（F22 オリーブ公園口）。<br/>
-              <a href="https://www.shodoshima-olive-bus.com/" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '6px', display: 'block' }}>🔗 小豆島全島巴士路線總覽（官方）</a>
+              <a href="https://www.shodoshima-olive-bus.com/" target="_blank" rel="noreferrer" className="trip-link">🔗 小豆島全島巴士路線總覽（官方）</a>
             </>
           )
         },
@@ -134,8 +134,8 @@ export const tak26Data = {
               電話：+81 86-454-4545<br/>
               營業時間：11:00-15:00，17:00-19:30（每天）<br/>
               建議提早到店或先預約。
-              <a href="https://unagi-nobori.shop" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '6px', display: 'block' }}>🔗 官方選單 / 官網</a>
-              <a href="https://www.hotpepper.jp/" target="_blank" rel="noreferrer" style={{ fontSize: '0.75rem', color: '#3498DB', textDecoration: 'underline', marginTop: '4px', display: 'block' }}>🔗 預約（Hotpepper）</a>
+              <a href="https://unagi-nobori.shop" target="_blank" rel="noreferrer" className="trip-link">🔗 官方選單 / 官網</a>
+              <a href="https://www.hotpepper.jp/" target="_blank" rel="noreferrer" className="trip-link">🔗 預約（Hotpepper）</a>
             </>
           )
         },

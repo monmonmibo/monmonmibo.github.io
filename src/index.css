@@ -7,3 +7,59 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Shared trip utility classes used in data files */
+.trip-link {
+  font-size: 0.75rem;
+  color: #3498db;
+  text-decoration: underline;
+  margin-top: 6px;
+  display: block;
+}
+
+.trip-badge-warn {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #fadbd8;
+  color: #c0392b;
+  font-weight: bold;
+  border: 1px solid #f1948a;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.trip-badge-info {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #d6eaf8;
+  color: #2980b9;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.trip-note-red {
+  font-size: 0.85rem;
+  color: #c0392b;
+  font-weight: 800;
+  display: block;
+  margin-top: 5px;
+}
+
+.trip-note-green {
+  font-size: 0.8rem;
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.trip-note-orange {
+  font-size: 0.8rem;
+  color: #e65100;
+  font-weight: 600;
+}
+
+.trip-note-muted {
+  font-size: 0.8rem;
+  color: #888;
+}
