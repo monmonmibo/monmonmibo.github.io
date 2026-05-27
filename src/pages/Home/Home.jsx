@@ -11,7 +11,7 @@ export default function Home() {
                 <div className={styles.tripInfo}>
                     <h2>
                         神戶淡路島6日5夜 🇯🇵
-                        <span className={`${styles.statusTag} ${styles.statusPlan}`}>Planning</span>
+                        <span className={`${styles.statusTag} ${styles.statusUpcoming}`}>Upcoming</span>
                     </h2>
                     <span className={styles.dateText}>2026 Nov • ⚓ 港口・🐄 和牛・🎡 淡路島</span>
                 </div>
@@ -21,7 +21,7 @@ export default function Home() {
                 <div className={styles.tripInfo}>
                     <h2>
                         高松5日4夜 🇯🇵
-                        <span className={`${styles.statusTag} ${styles.statusPlan}`}>Planning</span>
+                        <span className={`${styles.statusTag} ${styles.statusUpcoming}`}>Upcoming</span>
                     </h2>
                     <span className={styles.dateText}>2026 Sep • ⛰️ 栗林公園・🍜 烏冬・🏝️ 小豆島</span>
                 </div>

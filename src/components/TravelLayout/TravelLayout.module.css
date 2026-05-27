@@ -7,7 +7,10 @@
     --line-color: #BDC3C7;
 
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg);
+    background:
+        radial-gradient(ellipse at 90% 0%,  rgba(100, 160, 240, 0.3)  0%, transparent 52%),
+        radial-gradient(ellipse at 8%  92%, rgba(255, 180, 50,  0.25) 0%, transparent 52%),
+        #EDF2FF;
     color: var(--text);
     margin: 0;
     padding-bottom: 100px;
@@ -26,7 +29,21 @@
     padding: 30px 20px 20px;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
-    box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
+    box-shadow: 0 4px 24px rgba(0, 51, 102, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle shimmer on header top edge */
+.header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+    pointer-events: none;
 }
 
 .header h1 {
@@ -58,18 +75,22 @@
     padding: 6px 12px;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.35);
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .stickyNav {
     position: sticky;
     top: 0;
-    background: var(--bg);
+    background: rgba(237, 242, 255, 0.7);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
     z-index: 99;
     padding: 10px 0;
     margin-bottom: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
 }
 
 .dateTabs {
@@ -85,8 +106,10 @@
 }
 
 .dateChip {
-    background: white;
-    border: 1px solid #E0E0E0;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border-radius: 16px;
     padding: 8px 16px;
     display: flex;
@@ -99,13 +122,14 @@
     transition: all 0.2s ease;
     font-weight: 500;
     cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .dateChip.active {
     background: var(--primary);
     color: white;
-    border-color: var(--primary);
-    box-shadow: 0 4px 8px rgba(0, 51, 102, 0.2);
+    border-color: transparent;
+    box-shadow: 0 4px 14px rgba(0, 51, 102, 0.35);
     transform: scale(1.02);
 }
 
@@ -124,7 +148,7 @@
 }
 
 .timeline {
-    border-left: 3px solid var(--line-color);
+    border-left: 3px solid rgba(189, 195, 199, 0.6);
     margin-left: 8px;
     padding-left: 25px;
     padding-bottom: 20px;
@@ -146,12 +170,13 @@
     background: white;
     border: 3px solid var(--primary);
     z-index: 2;
-    box-shadow: 0 0 0 2px var(--bg);
+    box-shadow: 0 0 0 2px rgba(232, 239, 255, 0.8);
 }
 
 .timelineItem.highlight::before {
     border-color: var(--accent);
     background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(217, 65, 36, 0.15);
 }
 
 .timeLabel {
@@ -166,11 +191,13 @@
 }
 
 .card {
-    background: white;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 14px;
     padding: 12px 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-    border: 1px solid #eee;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.75);
 }
 
 .itemTitle {
@@ -189,14 +216,17 @@
 }
 
 .hotelHeader {
-    background: white;
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     margin: 0 20px 20px;
     padding: 12px 15px;
-    border-radius: 12px;
+    border-radius: 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-left: 5px solid var(--accent);
 }
 
@@ -217,7 +247,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    box-shadow: 0 2px 5px rgba(217, 65, 36, 0.3);
+    box-shadow: 0 2px 8px rgba(217, 65, 36, 0.35);
     white-space: nowrap;
     flex-shrink: 0;
 }
@@ -229,19 +259,21 @@
 .todoLabel {
     display: flex;
     align-items: center;
-    background: white;
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     padding: 16px;
     margin-bottom: 12px;
     border-radius: 16px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
     cursor: pointer;
     transition: transform 0.1s, background 0.2s;
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .todoLabel:active {
     transform: scale(0.98);
-    background-color: #f9f9f9;
+    background-color: rgba(249, 249, 249, 0.9);
 }
 
 .todoLabel input[type="checkbox"] {
@@ -282,6 +314,7 @@
 .todoLabel input:checked ~ .checkCircle {
     background-color: var(--primary);
     border-color: var(--primary);
+    box-shadow: 0 2px 8px rgba(0, 51, 102, 0.3);
 }
 
 .todoLabel input:checked ~ .checkCircle::after {
@@ -298,7 +331,7 @@
 
 .todoLabel:has(input:checked) {
     border-color: var(--secondary);
-    background-color: #F4F8FB;
+    background-color: rgba(244, 248, 251, 0.85);
 }
 
 .bottomNav {
@@ -306,10 +339,13 @@
     bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
-    background: white;
+    background: rgba(255, 255, 255, 0.52);
+    backdrop-filter: saturate(180%) blur(28px);
+    -webkit-backdrop-filter: saturate(180%) blur(28px);
     padding: 8px 10px;
     border-radius: 50px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.55);
     display: flex;
     gap: 5px;
     z-index: 1000;
@@ -335,6 +371,7 @@
 .navBtn.active {
     background-color: var(--primary);
     color: white;
+    box-shadow: 0 2px 12px rgba(0, 51, 102, 0.4);
 }
 
 @keyframes fadeIn {
