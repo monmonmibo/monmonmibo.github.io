@@ -8,6 +8,56 @@ export default function TravelLayout({ data }) {
   const [view, setView] = useState('timeline');
   const [todos, setTodos] = useState({});
 
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+  // Inject trip-specific manifest + update document/iOS title
+  useEffect(() => {
+    const prevDocTitle = document.title;
+    document.title = data.header.title;
+
+    const metaTitle = document.querySelector('meta[name="apple-mobile-web-app-title"]');
+    const prevMetaTitle = metaTitle?.content;
+    if (metaTitle) metaTitle.content = data.header.title;
+
+    // Derive short name: "Kobe & Awaji Trip 🇯🇵" → "Kobe & Awaji 🇯🇵"
+    const shortName = data.header.title.replace(/\s*Trip\s*/i, ' ').trim();
+
+    const tripManifest = {
+      name: data.header.title,
+      short_name: shortName,
+      start_url: window.location.pathname,
+      scope: '/',
+      display: 'standalone',
+      background_color: '#003366',
+      theme_color: '#003366',
+      icons: [
+        { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+        { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+      ],
+    };
+    const blob = new Blob([JSON.stringify(tripManifest)], { type: 'application/manifest+json' });
+    const blobUrl = URL.createObjectURL(blob);
+    const existing = document.querySelector('link[rel="manifest"]');
+    const prevHref = existing?.href;
+    const link = document.createElement('link');
+    link.rel = 'manifest';
+    link.href = blobUrl;
+    if (existing) existing.parentNode.replaceChild(link, existing);
+    else document.head.appendChild(link);
+
+    return () => {
+      document.title = prevDocTitle;
+      URL.revokeObjectURL(blobUrl);
+      if (metaTitle && prevMetaTitle) metaTitle.content = prevMetaTitle;
+      if (prevHref) {
+        const restore = document.createElement('link');
+        restore.rel = 'manifest';
+        restore.href = prevHref;
+        link.parentNode?.replaceChild(restore, link);
+      }
+    };
+  }, [data.id, data.header.title]);
+
   // Initialize todos from localStorage
   useEffect(() => {
     const loadedTodos = {};
@@ -62,7 +112,7 @@ export default function TravelLayout({ data }) {
       <div className={styles.header}>
         <div className={styles.headerTop}>
           <h1>{data.header.title}</h1>
-          <Link to="/" className={styles.homeLink}>🏠 主頁</Link>
+          {!isStandalone && <Link to="/" className={styles.homeLink}>🏠 主頁</Link>}
         </div>
         <p>{data.header.subtitle}</p>
       </div>

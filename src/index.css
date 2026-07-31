@@ -1,6 +1,12 @@
-/* Reserve scrollbar space to prevent layout shift when content height changes */
 html {
-  scrollbar-gutter: stable;
+  background-color: #EDF2FF; /* fills safe-area and overscroll bounce on iOS */
+}
+
+/* Reserve scrollbar space on desktop only — mobile uses overlay scrollbars */
+@media (hover: hover) {
+  html {
+    scrollbar-gutter: stable;
+  }
 }
 
 /* Reset defaults */
@@ -11,6 +17,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100dvh;
+  background:
+    radial-gradient(ellipse at 90% 0%,  rgba(100, 160, 240, 0.3)  0%, transparent 52%),
+    radial-gradient(ellipse at 8%  92%, rgba(255, 180, 50,  0.25) 0%, transparent 52%),
+    #EDF2FF;
 }
 
 /* Shared trip utility classes used in data files */
