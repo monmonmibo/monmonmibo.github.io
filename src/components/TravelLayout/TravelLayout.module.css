@@ -493,28 +493,6 @@
     transform: scale(0.96);
 }
 
-/* Long details collapse behind the 睇多啲 toggle */
-.detailsClamped {
-    /* ~6.5 lines at .details 1rem/1.5 (was 132px when .details was 0.85rem) */
-    max-height: 156px;
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 68%, transparent 100%);
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 68%, transparent 100%);
-}
-
-.detailsToggle {
-    margin-top: 6px;
-    border: none;
-    background: transparent;
-    padding: 8px 0;
-    min-height: var(--control-height);
-    font-family: inherit;
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    cursor: pointer;
-}
-
 /* Tools tab needs breathing room under the sticky date rail */
 .toolsSection {
     padding-top: var(--space-5);
@@ -620,8 +598,3 @@
     box-shadow: var(--focus-ring);
 }
 
-.detailsToggle:focus-visible {
-    border-radius: 8px;
-    outline: 2px solid var(--color-focus);
-    outline-offset: 2px;
-}

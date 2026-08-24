@@ -1,45 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import styles from './TravelLayout.module.css';
 import JpyToHkdConverter from '../JpyToHkdConverter';
 
 const mapsUrl = (query) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
-
-// Collapse long details behind a "睇多啲" toggle so the timeline stays scannable on the road.
-const COLLAPSE_MAX_PX = 132;
-
-function Details({ children, id }) {
-  const ref = useRef(null);
-  const [needsToggle, setNeedsToggle] = useState(false);
-  const [open, setOpen] = useState(false);
-
-  useLayoutEffect(() => {
-    const el = ref.current;
-    if (el) setNeedsToggle(el.scrollHeight > COLLAPSE_MAX_PX + 24);
-  }, [children]);
-
-  const clamped = needsToggle && !open;
-
-  return (
-    <>
-      <div id={id} ref={ref} className={`${styles.details} ${clamped ? styles.detailsClamped : ''}`}>
-        {children}
-      </div>
-      {needsToggle && (
-        <button
-          type="button"
-          className={styles.detailsToggle}
-          aria-expanded={open}
-          aria-controls={id}
-          onClick={() => setOpen(o => !o)}
-        >
-          {open ? '▴ 收起' : '▾ 睇多啲'}
-        </button>
-      )}
-    </>
-  );
-}
 
 function readTodos(data) {
   const loaded = {};
@@ -247,7 +212,7 @@ export default function TravelLayout({ data }) {
                             </a>
                           )}
                         </div>
-                        <Details id={`details-${day.id}-${idx}`}>{item.details}</Details>
+                        <div className={styles.details}>{item.details}</div>
                       </div>
                     </div>
                   ))}

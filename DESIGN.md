@@ -725,7 +725,7 @@ html { scroll-behavior: smooth; }
 ```
 
 - Checkbox、日期 tab 及 bottom navigation 的狀態切換應在 `120–200ms` 完成。
-- 「睇多啲」展開可用 `max-height`/opacity 過渡，但內容不可因動畫而延遲超過 `250ms`。
+- 行程詳情一律完整顯示，不設「睇多啲」摺疊。實測 105 張卡只有 20% 會觸發摺疊，而嗰批正正係交通班次、後備方案同外部連結最密嘅卡 —— 摺疊藏起咗 20 條連結。頁面本來就要捲動，摺疊慳唔到捲動，只係喺捲動之前加一下點擊。
 - Loading 狀態使用靜態文字或低調 opacity pulse；error 狀態不可震動或持續閃爍。
 
 ### Reduced motion
@@ -778,6 +778,7 @@ html { scroll-behavior: smooth; }
 - ❌ 不要令按鈕或可點擊列的觸控區小於 `44 × 44px`。
 - ❌ 不要把固定 bottom navigation 疊在最後一張卡、keyboard 或 safe area 上。
 - ❌ 不要以 hover 才顯示關鍵資訊，手機沒有可靠 hover。
+- ❌ 不要把班次、地址、外部連結摺疊喺展開掣後面。掃讀靠的是時間標籤同標題，唔係靠收起內文。
 - ❌ 不要為視覺一致而刪減班次方向、站號或後備方案等實用資料。
 
 ## 9. Responsive Behavior
