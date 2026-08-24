@@ -4,7 +4,7 @@
 
 本文件是 MonMonMibo 的設計規範與後續 UI 實作依據。
 
-**文件狀態**：色彩方向、環境漸層同三級 liquid glass 已經喺 code 落實，本文件記錄的是實際 ship 咗的系統；typography、focus 狀態、a11y 同 token 收斂仍未套用，屬待實作目標。§1 分開列出兩者。實作前後均須在真實桌面與手機瀏覽器驗證。
+**文件狀態**：本文件記錄的係實際 ship 咗的系統，唔係理想版。色彩 tokens、環境漸層、三級 liquid glass、typography、focus 狀態、觸控區同 760px 閱讀軸都已經喺 code 落實。實作前後均須在真實桌面與手機瀏覽器驗證。
 
 ## 1. Visual Theme & Atmosphere
 
@@ -26,12 +26,20 @@
 - `body` 上的雙 radial-gradient 環境光（右上冷藍 + 左下暖橙）是全站唯一漸層來源，令下層 glass 有嘢可以折射。冇咗佢，所有半透明卡片會變成一片死白。
 - 三級 liquid glass（chip / card / nav）已經喺 `TravelLayout.module.css` 同 `Home.module.css` 一致實作，包括 `inset 0 1px 0` 頂部高光。呢個係產品的視覺簽名，唔係要清走的技術債。
 
+**已收斂的落差：**
+
+- 所有產品顏色收斂到 `src/index.css` 的 `:root`；元件內零硬編 hex，`.container` 內重複的本地變數已刪。
+- 正文基準 `16px`、行高 `1.7`；輔助文字下限 `15px`（`0.9375rem`），badge 下限 `0.75rem`。
+- Noto Sans TC 由 `index.html` 載入，離線時退回 PingFang TC。
+- 全站零 JSX inline style；狀態樣式全部由 class 管理。
+- 每個互動元件有 focus-visible 環，全域有 `prefers-reduced-motion` block。
+- 所有 button、link、tab、checkbox label 觸控區 ≥ `44 × 44px`。
+- 行程頁同首頁收窄到 `760px` 單欄閱讀軸。
+
 **仍然要補的落差：**
 
-- 首頁、行程、匯率工具目前各自喺 `.container` 內重複定義 `--primary` / `--text`（`#003366` vs `#2C3E50`、`#2C3E50` vs `#333`），全站約 56 個硬編 hex；要收斂到本文件的全域 tokens。
-- 行程詳情及輔助資料目前最低到 `0.65rem`，共 22 處細過 `0.9rem`，戶外閱讀偏細；正文基準提升至 `16px`，輔助文字下限 `15px`。
-- 全部 CSS 只有 1 條 focus 規則、0 條 `prefers-reduced-motion`；hover、focus-visible、disabled 狀態未齊，所有互動元件必須補齊。
-- 只有 5 個 `aria-*` 屬性；13 處 JSX inline style 令狀態樣式無法由 class 管理。
+- `aria-*` 覆蓋仍然疏落；tab 列尚未用完整 tab semantics。
+- `.todoLabel input:checked ~ .todoTextContainer` 仍然用 `opacity: 0.4` 表示已完成，違反 §8「不可單靠 opacity」；應改為中性色 + 刪除線。
 - Emoji 可保留作行程類別與快速辨識，但不可單獨承擔意思；重要按鈕必須同時有文字或 `aria-label`。
 
 ## 2. Color Palette & Roles
@@ -61,8 +69,8 @@
   --color-primary-active: #001f3f;
   --color-primary-soft: #e6f2ff;
   --gradient-header: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-deep) 100%);
-  --color-accent: #d94124;
-  --color-accent-rgb: 217, 65, 36;
+  --color-accent: #ce3a1d;       /* 白字按鈕底：#d94124 只有 4.44:1，呢個 4.94:1 */
+  --color-accent-rgb: 206, 58, 29;
   --color-accent-hover: #b8341a;
   --color-accent-active: #9c2b13;
   --color-accent-soft: #ffebe6;
@@ -128,6 +136,7 @@
 - 環境漸層 `--gradient-ambient` 只出現喺 `body` 一次。卡片、header 以外的元件不得自行加 gradient，否則多層漸層互相打架，glass 會失去折射對象。
 - 卡片正文必須使用 `--color-text` 或 `--color-text-secondary`。半透明底之上禁止用 `#888` 一類低對比灰：glass 背後的環境色會令實際對比比預期低，所有 glass 上的文字要按最淺的可能底色驗算。
 - **對比驗算基準底色**：`--gradient-ambient` 最淺處係左下暖橙角，實測像素 `#f0e7da`。任何直接坐喺漸層上（冇 glass 卡承托）的文字，一律以呢個值驗算，唔可以用 `--color-bg` 或白色代替 —— 差別足以令一個色由 PASS 變 FAIL。
+- **`--color-border-strong`（`#a9bacb`）不得用作互動元件邊界**：喺白色填充上只有 `1.99:1`，未達 UI 元件所需的 `3:1`。checkbox 圈一類邊界用 `--color-control-border`（`#7e93aa`，`3.16:1`）。
 - **`--color-text-tertiary`（`#6b7c8d`）不得用於正文或連結**：喺 `#f0e7da` 上只有 `3.50:1`，未達 AA。佢只可用於已經坐喺實色卡面上的極次要標示。漸層上的次要文字用 `--color-text-secondary`（`#4a5f73`，`5.40:1`）。
 - semantic 顏色必須同時配合文字、圖示或形狀，不能只靠顏色傳達狀態。
 - finished 行程以中性樣式及清楚標籤表示，不可單靠整張卡片降低 opacity，避免可讀性下降。
@@ -573,7 +582,7 @@ input:focus-visible + .checkControl {
 
 ### Container
 
-- Application max width：`760px`，讓桌面版保持單一、易追蹤的行程閱讀軸。**（未實作：`.container` 現時冇 `max-width`，桌面版正文會拉到成個視窗闊，係真實需要修正的落差。）**
+- Application max width：`760px`，讓桌面版保持單一、易追蹤的行程閱讀軸。
 - Home card list max width：`360px`（現況 `350px`／匯率工具 `360px`，統一到 `360px`）。行程卡係掃讀用的入口，唔需要拉闊。
 - Text-heavy narrow variant：`680px`。
 - Desktop inline padding：`clamp(1.5rem, 4vw, 2rem)`。

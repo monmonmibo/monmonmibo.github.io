@@ -46,7 +46,7 @@ export default function CurrencyConverter({
 
       <div className={styles.inputGroup}>
         <label className={styles.label}>{inputLabel}</label>
-        <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+        <div className={styles.inputWrap}>
           <input
             type="text"
             inputMode="decimal"
@@ -58,16 +58,7 @@ export default function CurrencyConverter({
           {value && (
             <button
               onClick={handleReset}
-              style={{
-                position: 'absolute',
-                right: '10px',
-                background: 'none',
-                border: 'none',
-                color: '#999',
-                fontSize: '1.2rem',
-                cursor: 'pointer',
-                padding: '5px',
-              }}
+              className={styles.clearBtn}
               aria-label="Clear input"
             >
               ✕

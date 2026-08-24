@@ -28,13 +28,13 @@ export const ngo26Data = {
           details: (
             <>
               蟹放題！盡情享受海鮮慶祝第一晚 🎊<br />
-              <span style={{ color: '#E65100', fontWeight: '500', display: 'block', margin: '5px 0' }}>⏳ 限時：90 分鐘</span>
-              <span style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginTop: '8px', lineHeight: '1.4' }}>
+              <span className="trip-note-orange">⏳ 限時：90 分鐘</span>
+              <span className="trip-subnote">
                 🕒 營業時間：<br />
                 • 一：16:00 - 23:30<br />
                 • 二至五：16:00 - 23:00<br />
                 • 六、日及節假日：12:00 - 23:00<br />
-                <span style={{ color: '#888' }}>(L.O. 料理22:00 / 飲品22:30)</span><br />
+                <span className="trip-note-muted">(L.O. 料理22:00 / 飲品22:30)</span><br />
                 ✨ 全年無休
               </span>
             </>
@@ -70,7 +70,7 @@ export const ngo26Data = {
           details: (
             <>
               頂級飛騨牛一頭家 🐄 燒肉/壽喜燒<br />
-              <span style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginTop: '5px' }}>
+              <span className="trip-subnote">
                 🕒 營業時間：11:30 - 00:00 (每日)
               </span>
             </>

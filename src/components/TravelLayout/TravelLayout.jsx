@@ -232,7 +232,7 @@ export default function TravelLayout({ data }) {
         {view === 'timeline' && activeTab === 'todo' && data.todos && (
           <div className={`${styles.daySection} ${styles.active}`}>
             <div className={styles.todoListGroup}>
-              <h3 style={{ marginLeft: '5px' }}>📝 必買 & 準備清單</h3>
+              <h3 className={styles.todoListTitle}>📝 必買 & 準備清單</h3>
               {data.todos.map(todo => (
                 <label key={todo.id} className={styles.todoLabel}>
                   <input
@@ -253,7 +253,7 @@ export default function TravelLayout({ data }) {
 
         {/* Tools */}
         {view === 'tools' && (
-          <div className={`${styles.daySection} ${styles.active}`} style={{ paddingTop: '20px' }}>
+          <div className={`${styles.daySection} ${styles.active} ${styles.toolsSection}`}>
             {data.customTools ? data.customTools : <JpyToHkdConverter />}
           </div>
         )}
@@ -267,7 +267,7 @@ export default function TravelLayout({ data }) {
                   src={data.mapIframe}
                   width="100%"
                   height="100%"
-                  style={{ border: 0 }}
+                  className={styles.mapIframe}
                   allowFullScreen=""
                   loading="lazy"
                   title="Map"

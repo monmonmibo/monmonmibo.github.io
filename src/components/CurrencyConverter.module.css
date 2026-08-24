@@ -1,20 +1,18 @@
 .container {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  width: min(100%, 360px);
-  max-width: 360px;
+  width: min(100%, var(--card-max));
   margin: 0 auto;
   text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow: hidden;
 }
 
 .title {
   margin: 0 0 15px 0;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +28,7 @@
 
 .label {
   font-size: 0.875rem;
-  color: #666;
+  color: var(--color-text-secondary);
   text-align: left;
   margin-left: 5px;
 }
@@ -39,7 +37,7 @@
   width: 100%;
   padding: 12px;
   font-size: clamp(1rem, 4.5vw, 1.4rem);
-  border: 2px solid #eee;
+  border: 2px solid var(--color-border);
   border-radius: 12px;
   text-align: left;
   outline: none;
@@ -49,7 +47,7 @@
 }
 
 .input:focus {
-  border-color: #646cff;
+  border-color: var(--color-focus);
 }
 
 /* base rule sets outline:none, so restore an equivalent ring here */
@@ -60,15 +58,15 @@
 
 .divider {
   font-size: 1.5rem;
-  color: #ccc;
+  color: var(--color-border-strong);
   margin: -5px 0 5px;
 }
 
 .result {
-  background: #f5f9ff;
+  background: var(--color-surface-alt);
   padding: 15px;
   border-radius: 12px;
-  color: #1a1a1a;
+  color: var(--color-text);
   display: flex;
   align-items: baseline;
   justify-content: center;
@@ -79,7 +77,7 @@
 .amount {
   font-size: clamp(1.4rem, 5vw, 2rem);
   font-weight: bold;
-  color: #213547;
+  color: var(--color-text);
   line-height: 1.1;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -88,33 +86,66 @@
 
 .currency {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--color-text-secondary);
   flex: 0 0 auto;
 }
 
 .rateInfo {
   margin-top: 15px;
   font-size: 0.9375rem;
-  color: #888;
+  color: var(--color-text-secondary);
 }
 
 .offlineBanner {
-  background: #fff8e1;
-  border: 1px solid #ffe082;
-  color: #795548;
+  background: var(--color-warning-soft);
+  border: 1px solid rgba(154, 91, 0, 0.3);
+  color: var(--color-warning);
   font-size: 0.9375rem;
   padding: 6px 10px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   margin-top: 12px;
   text-align: center;
 }
 
 .loading {
-  color: #888;
-  padding: 20px;
+  color: var(--color-text-secondary);
+  padding: var(--space-5);
 }
 
 .error {
-  color: #ff4d4f;
+  color: var(--color-error);
   font-size: 0.9rem;
+}
+
+/* Input row: holds the field and its absolutely-positioned clear button */
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.clearBtn {
+  position: absolute;
+  right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Full 44px target — it used to be a 5px-padded glyph */
+  min-width: var(--control-height);
+  min-height: var(--control-height);
+  background: none;
+  border: none;
+  border-radius: var(--radius-pill);
+  color: var(--color-text-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.clearBtn:hover {
+  color: var(--color-text);
+}
+
+.clearBtn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
 }

@@ -154,7 +154,7 @@ export const ukb26Data = {
               搭乘高速巴士往 <strong>洲本巴士中心</strong>。<br/>
               • 07:40 班次：預計 09:46 抵達農場 (最接近開門時間)<br/>
               • 08:40 班次：預計 10:46 抵達農場<br/>
-              <div style={{ marginTop: '8px' }}>
+              <div className="trip-link-group">
                 <a href="https://www.awaji-kotsu.co.jp/_assets/d762e18f435947a5af53e214e409edf2/0c50cf8694ae41b6a85e8b00cb1ddbfe/l_1010-1070_current.pdf" target="_blank" rel="noreferrer" className="trip-link">🔗 1. 三宮-洲本 高速巴士時刻表</a>
                 <a href="https://www.awaji-kotsu.co.jp/_assets/d762e18f435947a5af53e214e409edf2/aef10707c452426b93836da12d372fba/l_2010_0_current.pdf" target="_blank" rel="noreferrer" className="trip-link">🔗 2. 洲本-農場 轉乘巴士時刻表</a>
               </div>
