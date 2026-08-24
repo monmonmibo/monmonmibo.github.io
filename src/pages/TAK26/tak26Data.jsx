@@ -37,6 +37,27 @@ export const tak26Data = {
           )
         },
         {
+          time: "17:00",
+          title: "🍜 讚岐烏冬：うどん市場 兵庫町店",
+          type: "highlight",
+          mapQuery: "うどん市場 兵庫町店",
+          details: (
+            <>
+              落機第一碗讚岐烏冬。地址：香川県高松市兵庫町2-8｜電話：087-823-0388<br/>
+              由 WeBase 沿中央商店街一路往北行約 15 分鐘，全程有上蓋，落雨都唔怕。
+              <span className="trip-badge-warn">⚠️ 星期日休息</span>
+              <span className="trip-subnote">
+                🕒 營業時間：<br/>
+                • 星期一：11:00 - 16:00<br/>
+                • 星期二至六：11:00 - 20:00<br/>
+                <span className="trip-note-muted">星期日全日休息</span>
+              </span>
+              <span className="trip-note-orange">⏳ 20:00 收工，同 19:00 骨付鳥 之間要預時間；想食得鬆動可以調早到 16:30。</span>
+              <a href="https://www.udon-ichiba.jp/hyogo/shopinfo.html" target="_blank" rel="noreferrer" className="trip-link">🔗 うどん市場 兵庫町店 官方店舖資訊</a>
+            </>
+          )
+        },
+        {
           time: "19:00",
           title: "🍗 晚餐：骨付鳥 一鶴",
           type: "highlight",
