@@ -7,7 +7,7 @@ export const tak26Data = {
   days: [
     {
       id: "day1",
-      label: "Day 1",
+      label: "Day 1 (四)",
       hotel: "WeBase 高松 (WeBase TAKAMATSU)",
       hotelQuery: "WeBase+TAKAMATSU",
       timeline: [
@@ -46,12 +46,12 @@ export const tak26Data = {
               落機第一碗讚岐烏冬，人均 ¥1,000 以下。<br/>
               地址：香川県高松市兵庫町2-8 <strong>ひらのやビル</strong>（〒760-0024）｜電話：087-823-0388<br/>
               由 WeBase 沿中央商店街一路往北行約 15 分鐘，全程有上蓋，落雨都唔怕。認住幢樓個名，門口係暖簾。
-              <span className="trip-badge-warn">⚠️ 星期日休息</span>
+              <span className="trip-badge-info">✅ Day 1 星期四：11:00-20:00 照常營業</span>
               <span className="trip-subnote">
                 🕒 營業時間：<br/>
                 • 星期一：11:00 - 16:00<br/>
                 • 星期二至六：11:00 - 20:00<br/>
-                <span className="trip-note-muted">星期日全日休息</span>
+                <span className="trip-note-muted">星期日全日休息（今程唔撞正）</span>
               </span>
               <span className="trip-note-orange">⏳ 20:00 收工，同 19:00 骨付鳥 之間要預時間；想食得鬆動可以調早到 16:30。</span>
               <a href="https://www.udon-ichiba.jp/hyogo/shopinfo.html" target="_blank" rel="noreferrer" className="trip-link">🔗 うどん市場 兵庫町店 官方店舖資訊</a>
@@ -69,7 +69,7 @@ export const tak26Data = {
     },
     {
       id: "day2",
-      label: "Day 2",
+      label: "Day 2 (五)",
       hotel: "WeBase 高松 (WeBase TAKAMATSU)",
       hotelQuery: "WeBase+TAKAMATSU",
       timeline: [
@@ -135,7 +135,7 @@ export const tak26Data = {
     },
     {
       id: "day3",
-      label: "Day 3",
+      label: "Day 3 (六)",
       hotel: "WeBase 高松 (WeBase TAKAMATSU)",
       hotelQuery: "WeBase+TAKAMATSU",
       timeline: [
@@ -193,7 +193,7 @@ export const tak26Data = {
     },
     {
       id: "day4",
-      label: "Day 4",
+      label: "Day 4 (日)",
       hotel: "WeBase 高松 (WeBase TAKAMATSU)",
       hotelQuery: "WeBase+TAKAMATSU",
       timeline: [
@@ -226,6 +226,7 @@ export const tak26Data = {
             <>
               搭琴電返回瓦町站，之後沿中央商店街（有蓋）向北行約 7 分鐘就到丸亀町グリーン東館 1F —— 由 WeBase 行過去同樣是這條街，落雨都唔怕。四國第一間 Pokémon Center，門口有比卡超與呆呆獸迎賓。<br/>
               地址：香川県高松市丸亀町8番地23 丸亀町グリーン東館 1F｜營業時間：10:00-20:00
+              <span className="trip-note-orange">⏳ Day 4 係星期日，四國唯一一間 Pokémon Center 週日人最多；想影門口比卡超同呆呆獸，一開門就到最穩陣。</span>
               <a href="https://www.pokemon.co.jp/sp/kagawa_2025/" target="_blank" rel="noreferrer" className="trip-link">🔗 Pokémon Center KAGAWA（官方）</a>
             </>
           )
@@ -240,7 +241,7 @@ export const tak26Data = {
     },
     {
       id: "day5",
-      label: "Day 5 (✈️)",
+      label: "Day 5 (一) ✈️",
       hotel: "WeBase 高松 (WeBase TAKAMATSU)",
       hotelQuery: "WeBase+TAKAMATSU",
       hotelNote: "Check-out",
