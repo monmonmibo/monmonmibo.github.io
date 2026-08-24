@@ -1,3 +1,30 @@
+/* Keyboard users land here first; visible only while focused */
+.skipLink {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 2000;
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--control-height);
+}
+
+.skipLink:focus {
+    left: var(--space-3);
+    top: var(--space-3);
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--control-height);
+    padding: 0 var(--space-4);
+    border-radius: var(--radius-pill);
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: var(--shadow-floating);
+}
+
 .container {
     /* A single reading column; an itinerary is linear, so widening it on
        desktop only makes the eye travel further per line. */
@@ -353,9 +380,21 @@
     font-size: 14px;
 }
 
+/* Done state carries on three signals — the filled tick, the strike-through
+   and a softer title colour. opacity: 0.4 used to do it alone, which put the
+   text at roughly 2:1. */
 .todoLabel input:checked ~ .todoTextContainer {
-    opacity: 0.4;
     text-decoration: line-through;
+}
+
+.todoLabel input:checked ~ .todoTextContainer .todoMainText {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+/* Stays on secondary: tertiary measures 3.93:1 on this surface */
+.todoLabel input:checked ~ .todoTextContainer .todoSubText {
+    color: var(--color-text-secondary);
 }
 
 .todoLabel:has(input:checked) {

@@ -35,11 +35,13 @@
 - 每個互動元件有 focus-visible 環，全域有 `prefers-reduced-motion` block。
 - 所有 button、link、tab、checkbox label 觸控區 ≥ `44 × 44px`。
 - 行程頁同首頁收窄到 `760px` 單欄閱讀軸。
+- 日期列用完整 ARIA tabs pattern（`tablist` / `tab` / `tabpanel`、方向鍵、Home/End、roving tabindex）。
+- `header` / `main` / `nav` landmark、skip link、所有外部連結標示「（新視窗）」。
+- 已完成的 To-Do 靠勾號、刪除線同較柔文字色表達，唔再用 `opacity`。
 
 **仍然要補的落差：**
 
-- `aria-*` 覆蓋仍然疏落；tab 列尚未用完整 tab semantics。
-- `.todoLabel input:checked ~ .todoTextContainer` 仍然用 `opacity: 0.4` 表示已完成，違反 §8「不可單靠 opacity」；應改為中性色 + 刪除線。
+- 首頁 `Home.jsx` 的行程卡仍然逐張手寫，未由資料驅動；新增行程要改兩處。
 - Emoji 可保留作行程類別與快速辨識，但不可單獨承擔意思；重要按鈕必須同時有文字或 `aria-label`。
 
 ## 2. Color Palette & Roles
@@ -750,7 +752,10 @@ html { scroll-behavior: smooth; }
 - 所有 icon-only control 提供可讀的 `aria-label`，可見文字優先。
 - 日期、價錢與匯率使用 tabular numerals。
 - 每個互動元件提供 default、hover、active、focus-visible 和 disabled 狀態。
-- 使用 semantic HTML；tab 選擇以 `aria-pressed` 或合適 tab semantics 表達。
+- 使用 semantic HTML。日期列用完整 tabs pattern：`role="tablist"` + `role="tab"` + `aria-selected` + `aria-controls`，配方向鍵、Home/End 同 roving tabindex（只有選中的 tab 進入 Tab 次序）。`role="tab"` 一旦加上就必須連鍵盤行為一齊做，否則等於向螢幕閱讀器承諾一個唔存在的操作方式。
+- 底部檢視切換用 `aria-pressed` toggle button，唔用 tabs —— 佢哋切換的係整個 view，唔係同一組 tabpanel。
+- 每頁提供 skip link 同 `header` / `main` / `nav` landmark。
+- 會開新視窗的連結必須喺可存取名稱內註明「（新視窗）」。
 - 在真實 iPhone safe area、窄螢幕、桌面 keyboard navigation 下驗證。
 - 對交通警告、後備方案和離線資料使用一致的 semantic badge。
 - 保留旅程 Emoji 作掃讀提示，但配合清楚文字。

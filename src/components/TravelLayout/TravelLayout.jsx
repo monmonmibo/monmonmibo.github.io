@@ -9,7 +9,7 @@ const mapsUrl = (query) =>
 // Collapse long details behind a "睇多啲" toggle so the timeline stays scannable on the road.
 const COLLAPSE_MAX_PX = 132;
 
-function Details({ children }) {
+function Details({ children, id }) {
   const ref = useRef(null);
   const [needsToggle, setNeedsToggle] = useState(false);
   const [open, setOpen] = useState(false);
@@ -23,7 +23,7 @@ function Details({ children }) {
 
   return (
     <>
-      <div ref={ref} className={`${styles.details} ${clamped ? styles.detailsClamped : ''}`}>
+      <div id={id} ref={ref} className={`${styles.details} ${clamped ? styles.detailsClamped : ''}`}>
         {children}
       </div>
       {needsToggle && (
@@ -31,6 +31,7 @@ function Details({ children }) {
           type="button"
           className={styles.detailsToggle}
           aria-expanded={open}
+          aria-controls={id}
           onClick={() => setOpen(o => !o)}
         >
           {open ? '▴ 收起' : '▾ 睇多啲'}
@@ -131,6 +132,25 @@ export default function TravelLayout({ data }) {
     window.scrollTo(0, 0);
   };
 
+  // Every id in the date rail, in visual order — drives arrow-key navigation
+  const tabIds = [...data.days.map(d => d.id), ...(data.todos ? ['todo'] : [])];
+
+  // Arrow keys move between tabs, per the ARIA tabs pattern. Without this,
+  // role="tab" would promise a keyboard behaviour the rail did not have.
+  const handleTabKeyDown = (e) => {
+    const map = { ArrowRight: 1, ArrowLeft: -1, Home: 'first', End: 'last' };
+    const move = map[e.key];
+    if (move === undefined) return;
+    e.preventDefault();
+    const i = tabIds.indexOf(activeTab);
+    const next =
+      move === 'first' ? tabIds[0]
+      : move === 'last' ? tabIds[tabIds.length - 1]
+      : tabIds[(i + move + tabIds.length) % tabIds.length];
+    handleTabClick(next);
+    requestAnimationFrame(() => document.getElementById(`tab-${next}`)?.focus());
+  };
+
   const handleViewClick = (newView) => {
     setView(newView);
   };
@@ -148,6 +168,7 @@ export default function TravelLayout({ data }) {
             target="_blank"
             rel="noreferrer"
             className={styles.hotelNavBtn}
+            aria-label={`在 Google Maps 開啟 ${day.hotel}（新視窗）`}
           >
             📍 導航
           </a>
@@ -158,45 +179,53 @@ export default function TravelLayout({ data }) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
+      <a href="#main-content" className={styles.skipLink}>跳至行程內容</a>
+
+      <header className={styles.header}>
         <div className={styles.headerTop}>
           <h1>{data.header.title}</h1>
           {!isStandalone && <Link to="/" className={styles.homeLink}>🏠 主頁</Link>}
         </div>
         <p>{data.header.subtitle}</p>
-      </div>
+      </header>
 
       <div className={styles.stickyNav}>
-        <div className={styles.dateTabs}>
-          {data.days.map(day => (
-            <button
-              key={day.id}
-              type="button"
-              aria-pressed={activeTab === day.id && view === 'timeline'}
-              className={`${styles.dateChip} ${activeTab === day.id && view === 'timeline' ? styles.active : ''}`}
-              onClick={() => handleTabClick(day.id)}
-            >
-              {day.label || day.id.replace('day', 'Day ')}
-            </button>
-          ))}
-          {data.todos && (
-            <button
-              type="button"
-              aria-pressed={activeTab === 'todo' && view === 'timeline'}
-              className={`${styles.dateChip} ${activeTab === 'todo' && view === 'timeline' ? styles.active : ''}`}
-              onClick={() => handleTabClick('todo')}
-            >
-              To-Do
-            </button>
-          )}
+        <div className={styles.dateTabs} role="tablist" aria-label="行程日期" onKeyDown={handleTabKeyDown}>
+          {tabIds.map(id => {
+            const day = data.days.find(d => d.id === id);
+            const selected = activeTab === id;
+            const shown = selected && view === 'timeline';
+            return (
+              <button
+                key={id}
+                id={`tab-${id}`}
+                type="button"
+                role="tab"
+                aria-selected={selected}
+                aria-controls={shown ? `panel-${id}` : undefined}
+                tabIndex={selected ? 0 : -1}
+                className={`${styles.dateChip} ${shown ? styles.active : ''}`}
+                onClick={() => handleTabClick(id)}
+              >
+                {day ? (day.label || id.replace('day', 'Day ')) : 'To-Do'}
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      <div id="main-content">
+      <main id="main-content">
         {/* Day Sections */}
         {view === 'timeline' && data.days.map(day => (
           activeTab === day.id && (
-            <div key={day.id} className={`${styles.daySection} ${styles.active}`}>
+            <div
+              key={day.id}
+              id={`panel-${day.id}`}
+              role="tabpanel"
+              aria-labelledby={`tab-${day.id}`}
+              tabIndex={0}
+              className={`${styles.daySection} ${styles.active}`}
+            >
               {renderHotelHeader(day)}
               <div className={styles.timelineContainer}>
                 <div className={styles.timeline}>
@@ -212,13 +241,13 @@ export default function TravelLayout({ data }) {
                               target="_blank"
                               rel="noreferrer"
                               className={styles.itemNavBtn}
-                              aria-label={`在 Google Maps 開啟 ${item.mapQuery}`}
+                              aria-label={`在 Google Maps 開啟 ${item.mapQuery}（新視窗）`}
                             >
                               📍 導航
                             </a>
                           )}
                         </div>
-                        <Details>{item.details}</Details>
+                        <Details id={`details-${day.id}-${idx}`}>{item.details}</Details>
                       </div>
                     </div>
                   ))}
@@ -230,7 +259,13 @@ export default function TravelLayout({ data }) {
 
         {/* To-Do Section */}
         {view === 'timeline' && activeTab === 'todo' && data.todos && (
-          <div className={`${styles.daySection} ${styles.active}`}>
+          <div
+            id="panel-todo"
+            role="tabpanel"
+            aria-labelledby="tab-todo"
+            tabIndex={0}
+            className={`${styles.daySection} ${styles.active}`}
+          >
             <div className={styles.todoListGroup}>
               <h3 className={styles.todoListTitle}>📝 必買 & 準備清單</h3>
               {data.todos.map(todo => (
@@ -270,7 +305,7 @@ export default function TravelLayout({ data }) {
                   className={styles.mapIframe}
                   allowFullScreen=""
                   loading="lazy"
-                  title="Map"
+                  title={`${data.header.title} 地圖`}
                 ></iframe>
               </div>
             ) : (
@@ -283,6 +318,7 @@ export default function TravelLayout({ data }) {
                     target="_blank"
                     rel="noreferrer"
                     className={styles.spotListOpenAll}
+                    aria-label={`在 Google Maps 開啟${data.mapQuery}（新視窗）`}
                   >
                     🌏 在 Google Maps 開啟{data.mapQuery}
                   </a>
@@ -295,6 +331,7 @@ export default function TravelLayout({ data }) {
                       target="_blank"
                       rel="noreferrer"
                       className={styles.spotRow}
+                      aria-label={`${spot.dayLabel}：在 Google Maps 開啟 ${spot.title}（新視窗）`}
                     >
                       <span className={styles.spotDay}>{spot.dayLabel}</span>
                       <span className={styles.spotName}>{spot.title}</span>
@@ -308,28 +345,25 @@ export default function TravelLayout({ data }) {
             )}
           </div>
         )}
-      </div>
+      </main>
 
-      <div className={styles.bottomNav}>
-        <button
-          className={`${styles.navBtn} ${view === 'timeline' ? styles.active : ''}`}
-          onClick={() => handleViewClick('timeline')}
-        >
-          📅 行程
-        </button>
-        <button
-          className={`${styles.navBtn} ${view === 'tools' ? styles.active : ''}`}
-          onClick={() => handleViewClick('tools')}
-        >
-          🧮 工具
-        </button>
-        <button
-          className={`${styles.navBtn} ${view === 'map' ? styles.active : ''}`}
-          onClick={() => handleViewClick('map')}
-        >
-          🗺️ 地圖
-        </button>
-      </div>
+      <nav className={styles.bottomNav} aria-label="主要檢視">
+        {[
+          { id: 'timeline', label: '📅 行程' },
+          { id: 'tools', label: '🧮 工具' },
+          { id: 'map', label: '🗺️ 地圖' },
+        ].map(v => (
+          <button
+            key={v.id}
+            type="button"
+            aria-pressed={view === v.id}
+            className={`${styles.navBtn} ${view === v.id ? styles.active : ''}`}
+            onClick={() => handleViewClick(v.id)}
+          >
+            {v.label}
+          </button>
+        ))}
+      </nav>
     </div>
   );
 }
