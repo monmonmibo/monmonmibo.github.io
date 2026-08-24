@@ -15,17 +15,32 @@ export const tak26Data = {
           time: "下午",
           title: "🛬 抵達高松機場 (TAK)",
           type: "highlight",
-          details: "搭乘機場利木津巴士前往高松站 (約40分鐘)"
+          mapQuery: "高松空港",
+          details: (
+            <>
+              搭機場利木津巴士入市區，坐到「県庁通り中央公園前」下車，步行 6 分鐘就到 WeBase 高松 —— 比坐到 JR 高松站再折返更快更順。車程約 35-40 分鐘。<br/>
+              巴士班次按航班每月調整，出發前請再對一次官方時刻表。
+              <a href="https://www.kotoden.co.jp/publichtm/bus/limousine/index.html" target="_blank" rel="noreferrer" className="trip-link">🔗 高松機場利木津巴士 時刻表（ことでんバス官方）</a>
+              <a href="https://www.takamatsu-airport.com/access/bus/index.php" target="_blank" rel="noreferrer" className="trip-link">🔗 高松機場 巴士交通指南（機場官方）</a>
+            </>
+          )
         },
         {
           time: "16:00",
-          title: "🏨 酒店 Check-in",
-          details: "在高松站或瓦町站附近辦理入住"
+          title: "🏨 酒店 Check-in：WeBase 高松",
+          mapQuery: "WeBase 高松",
+          details: (
+            <>
+              地址：香川県高松市瓦町1-2-3｜電話：087-813-4415<br/>
+              交通：琴電「瓦町」站步行 5 分鐘；機場利木津巴士可在「県庁通り中央公園前」下車步行 6 分鐘（JR 高松站車程約 6 分鐘）。位置就在中央商店街旁，出入食飯購物都方便。
+            </>
+          )
         },
         {
           time: "19:00",
           title: "🍗 晚餐：骨付鳥 一鶴",
           type: "highlight",
+          mapQuery: "一鶴 高松店",
           details: "香川縣名物，外脆內嫩的帶骨烤雞腿"
         }
       ]
@@ -40,6 +55,7 @@ export const tak26Data = {
           time: "08:02 → 09:02",
           title: "⛴️ 高松港 → 土庄港",
           type: "highlight",
+          mapQuery: "高松港 小豆島フェリーのりば",
           details: (
             <>
               一早先去高松のりば（高松港・小豆島行き営業所），建議班次：08:02 由高松港出發，09:02 抵達土庄港。落船後步行到巴士站，先前往天使之路，再轉車去 Olive Park。
@@ -51,10 +67,11 @@ export const tak26Data = {
           time: "上午",
           title: "👼 先去天使之路 (Angel Road)",
           type: "highlight",
+          mapQuery: "エンジェルロード 土庄町",
           details: (
             <>
-              主方案（直達）：西浦線 U「9:20（U1 土庄港）→ 9:33（U9 国際ホテル・エンジェルロード前）」。<br/>
-              第二後備：坂手線 S「9:40（S1 土庄港）→ 9:46（S4 土庄本町）」，再步行約 13 分鐘。<br/>
+              主方案（直達）：西浦線 U（東廻り）「9:20（U1 土庄港）→ 9:33（U9 国際ホテル・エンジェルロード前）」。<br/>
+              第二後備：坂手線 S（坂手港方面）「9:40（S1 土庄港）→ 9:45（S4 土庄本町）」，再步行約 13 分鐘。<br/>
               第三後備：田ノ浦映画村線 T「10:10（T1 土庄港）→ 10:21（T7 国際ホテル・エンジェルロード前）」。建議配合當日退潮可見時段，停留約 45-60 分鐘。
               <a href="https://www.town.tonosho.kagawa.jp/kanko/index.html" target="_blank" rel="noreferrer" className="trip-link">🔗 天使之路官方資訊（土庄町觀光）</a>
               <a href="https://www.shodoshima-olive-bus.com/" target="_blank" rel="noreferrer" className="trip-link">🔗 小豆島全島巴士路線總覽（官方）</a>
@@ -78,6 +95,7 @@ export const tak26Data = {
           time: "下午",
           title: "🧹 小豆島オリーブ公園（魔女宅急便掃把飛天）",
           type: "highlight",
+          mapQuery: "道の駅 小豆島オリーブ公園",
           details: "先到雑貨コリコ借掃把，再去希臘風車草坡位拍連拍飛天照；之後可慢行園區、食輕食，保留充足時間回程"
         },
         {
@@ -88,6 +106,7 @@ export const tak26Data = {
         {
           time: "傍晚",
           title: "⛴️ 土庄港 → 高松港",
+          mapQuery: "土庄港",
           details: "建議回程班次：17:30 由土庄港出發，18:30 抵達高松港；之後可安排高松站周邊晚餐。"
         }
       ]
@@ -107,6 +126,7 @@ export const tak26Data = {
           time: "上午",
           title: "👖 兒島牛仔褲街 (Jeans Street)",
           type: "highlight",
+          mapQuery: "児島ジーンズストリート",
           details: "漫步於日本單寧聖地，尋找高品質牛仔製品，吊掛牛仔褲是必拍打卡位"
         },
         {
@@ -117,17 +137,20 @@ export const tak26Data = {
         {
           time: "午後",
           title: "🍦 RIVETS 雪糕休息",
+          mapQuery: "岡山県倉敷市児島味野2-5-3 RIVETS",
           details: "到 RIVETS（岡山県倉敷市児島味野2-5-3）食雪糕，作為兒島行程中段休息"
         },
         {
           time: "下午",
           title: "🚉 兒島 → 倉敷（行街）",
+          mapQuery: "倉敷美観地区",
           details: "由兒島移動到倉敷，於美觀地區與商店街散策"
         },
         {
           time: "晚上",
           title: "🍱 晚餐：鰻北倉敷店",
           type: "highlight",
+          mapQuery: "岡山県倉敷市本町1-32",
           details: (
             <>
               地址：1-32 Honmachi, Kurashiki, Okayama 710-0054 日本<br/>
@@ -154,25 +177,42 @@ export const tak26Data = {
       timeline: [
         {
           time: "上午",
-          title: "🛍️ 高松市內百貨 / 商場行街",
+          title: "🎀 Sanrio ゆめタウン高松店",
           type: "highlight",
-          details: "高松站與瓦町一帶自由購物，可先逛百貨公司、生活雜貨與藥妝"
+          mapQuery: "ゆめタウン高松",
+          details: (
+            <>
+              由酒店步行 5 分鐘到瓦町站，搭琴電琴平線去「三条」站（約 5 分鐘），落車再步行約 13 分鐘到ゆめタウン高松，Sanrio 專門店在 2/F。<br/>
+              地址：香川県高松市三条町608-1 ゆめタウン高松 2F｜電話：087-868-5689<br/>
+              商場營業時間：本館 9:30-21:30，專門店 10:00-21:00。四國最大規模商場（約 170 間專門店），可順道逛百貨、生活雜貨與藥妝。
+              <a href="https://stores.sanrio.co.jp/8474100" target="_blank" rel="noreferrer" className="trip-link">🔗 Sanrio ゆめタウン高松店（官方）</a>
+              <a href="https://www.izumi.jp/tenpo/takamatsu/access" target="_blank" rel="noreferrer" className="trip-link">🔗 ゆめタウン高松 交通指南（官方）</a>
+            </>
+          )
         },
         {
           time: "中午",
-          title: "🍜 午餐：高松市區",
-          details: "於商場或市區餐廳用餐，保持慢節奏"
+          title: "🍜 午餐：ゆめタウン高松",
+          details: "在商場內解決：フードコート 10:00-21:00，レストラン街 11:00-21:00，不用走出走入"
         },
         {
           time: "下午",
           title: "⚡ Pokémon Center KAGAWA",
           type: "highlight",
-          details: "到 Pokémon Center KAGAWA 朝聖，選購限定周邊與手信"
+          mapQuery: "ポケモンセンターカガワ 丸亀町グリーン",
+          details: (
+            <>
+              搭琴電返回瓦町站，之後沿中央商店街（有蓋）向北行約 7 分鐘就到丸亀町グリーン東館 1F —— 由 WeBase 行過去同樣是這條街，落雨都唔怕。四國第一間 Pokémon Center，門口有比卡超與呆呆獸迎賓。<br/>
+              地址：香川県高松市丸亀町8番地23 丸亀町グリーン東館 1F｜營業時間：10:00-20:00
+              <a href="https://www.pokemon.co.jp/sp/kagawa_2025/" target="_blank" rel="noreferrer" className="trip-link">🔗 Pokémon Center KAGAWA（官方）</a>
+            </>
+          )
         },
         {
           time: "傍晚",
-          title: "☕ 市區散步 + 晚餐",
-          details: "傍晚可在高松港/商店街散步，晚餐安排於高松站或瓦町周邊"
+          title: "☕ 丸亀町 / 中央商店街散步 + 晚餐",
+          mapQuery: "高松丸亀町商店街",
+          details: "Pokémon Center 就在高松中央商店街內，沿住條街行返落瓦町即回到酒店，晚餐就在這一段商店街或瓦町周邊解決"
         }
       ]
     },
@@ -190,9 +230,16 @@ export const tak26Data = {
         },
         {
           time: "下午",
-          title: "🚕 前往高松機場",
+          title: "🚌 前往高松機場",
           type: "highlight",
-          details: "結束瀨戶內海悠閒之旅"
+          mapQuery: "県庁通り中央公園前 バス停 高松",
+          details: (
+            <>
+              由酒店步行約 6 分鐘到「県庁通り中央公園前」站，直接搭機場利木津巴士去高松機場（約 35-40 分鐘），唔使特登返 JR 高松站轉車。<br/>
+              建議班次前 10 分鐘到站排隊；行李多亦可由酒店直接叫的士（約 30 分鐘）。班次每月按航班調整，出發前請再確認。結束瀨戶內海悠閒之旅。
+              <a href="https://www.kotoden.co.jp/publichtm/bus/limousine/index.html" target="_blank" rel="noreferrer" className="trip-link">🔗 高松機場利木津巴士 時刻表（ことでんバス官方）</a>
+            </>
+          )
         }
       ]
     }
@@ -202,5 +249,6 @@ export const tak26Data = {
     { id: 'tak-todo-2', main: '查閱渡輪時間', sub: '前往小豆島/直島' },
     { id: 'tak-todo-3', main: 'Visit Japan Web', sub: '入境手續' },
   ],
+  mapQuery: "高松市",
   mapText: "🗺️ 高松 & 瀨戶內海地圖"
 };

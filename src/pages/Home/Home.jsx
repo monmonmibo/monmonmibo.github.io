@@ -27,7 +27,7 @@ export default function Home() {
                 </div>
             </Link>
 
-            <Link to="/danang26" className={styles.tripCard} style={{ opacity: 0.5 }}>
+            <Link to="/danang26" className={`${styles.tripCard} ${styles.tripCardFinished}`}>
                 <div className={styles.tripInfo}>
                     <h2>
                         峴港5日4夜 🇻🇳
@@ -38,7 +38,7 @@ export default function Home() {
             </Link>
 
 
-            <Link to="/ngo26" className={styles.tripCard} style={{ opacity: 0.5 }}>
+            <Link to="/ngo26" className={`${styles.tripCard} ${styles.tripCardFinished}`}>
                 <div className={styles.tripInfo}>
                     <h2>
                         名古屋5日4夜 🇯🇵
@@ -48,7 +48,7 @@ export default function Home() {
                 </div>
             </Link>
 
-            <Link to="/cnx25" className={styles.tripCard} style={{ opacity: 0.5 }}>
+            <Link to="/cnx25" className={`${styles.tripCard} ${styles.tripCardFinished}`}>
                 <div className={styles.tripInfo}>
                     <h2>
                         清邁6日5夜 🇹🇭

@@ -1,7 +1,44 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import styles from './TravelLayout.module.css';
 import JpyToHkdConverter from '../JpyToHkdConverter';
+
+const mapsUrl = (query) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+
+// Collapse long details behind a "睇多啲" toggle so the timeline stays scannable on the road.
+const COLLAPSE_MAX_PX = 132;
+
+function Details({ children }) {
+  const ref = useRef(null);
+  const [needsToggle, setNeedsToggle] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (el) setNeedsToggle(el.scrollHeight > COLLAPSE_MAX_PX + 24);
+  }, [children]);
+
+  const clamped = needsToggle && !open;
+
+  return (
+    <>
+      <div ref={ref} className={`${styles.details} ${clamped ? styles.detailsClamped : ''}`}>
+        {children}
+      </div>
+      {needsToggle && (
+        <button
+          type="button"
+          className={styles.detailsToggle}
+          aria-expanded={open}
+          onClick={() => setOpen(o => !o)}
+        >
+          {open ? '▴ 收起' : '▾ 睇多啲'}
+        </button>
+      )}
+    </>
+  );
+}
 
 export default function TravelLayout({ data }) {
   const [activeTab, setActiveTab] = useState('day1');
@@ -70,6 +107,20 @@ export default function TravelLayout({ data }) {
     setTodos(loadedTodos);
   }, [data]);
 
+  // Every timeline stop that carries a mapQuery, deduped — powers the map tab fallback.
+  const spots = useMemo(() => {
+    const seen = new Set();
+    const out = [];
+    data.days.forEach(day => {
+      (day.timeline || []).forEach(item => {
+        if (!item.mapQuery || seen.has(item.mapQuery)) return;
+        seen.add(item.mapQuery);
+        out.push({ dayLabel: day.label || day.id, title: item.title, query: item.mapQuery });
+      });
+    });
+    return out;
+  }, [data]);
+
   const handleTodoChange = (todoId) => {
     const newState = !todos[todoId];
     setTodos(prev => ({ ...prev, [todoId]: newState }));
@@ -120,21 +171,25 @@ export default function TravelLayout({ data }) {
       <div className={styles.stickyNav}>
         <div className={styles.dateTabs}>
           {data.days.map(day => (
-            <div
+            <button
               key={day.id}
+              type="button"
+              aria-pressed={activeTab === day.id && view === 'timeline'}
               className={`${styles.dateChip} ${activeTab === day.id && view === 'timeline' ? styles.active : ''}`}
               onClick={() => handleTabClick(day.id)}
             >
               {day.label || day.id.replace('day', 'Day ')}
-            </div>
+            </button>
           ))}
           {data.todos && (
-            <div
+            <button
+              type="button"
+              aria-pressed={activeTab === 'todo' && view === 'timeline'}
               className={`${styles.dateChip} ${activeTab === 'todo' && view === 'timeline' ? styles.active : ''}`}
               onClick={() => handleTabClick('todo')}
             >
               To-Do
-            </div>
+            </button>
           )}
         </div>
       </div>
@@ -151,8 +206,21 @@ export default function TravelLayout({ data }) {
                     <div key={idx} className={`${styles.timelineItem} ${item.type === 'highlight' ? styles.highlight : ''}`}>
                       <div className={styles.timeLabel}>{item.time}</div>
                       <div className={styles.card}>
-                        <span className={styles.itemTitle}>{item.title}</span>
-                        <div className={styles.details}>{item.details}</div>
+                        <div className={styles.cardHead}>
+                          <span className={styles.itemTitle}>{item.title}</span>
+                          {item.mapQuery && (
+                            <a
+                              href={mapsUrl(item.mapQuery)}
+                              target="_blank"
+                              rel="noreferrer"
+                              className={styles.itemNavBtn}
+                              aria-label={`在 Google Maps 開啟 ${item.mapQuery}`}
+                            >
+                              📍 導航
+                            </a>
+                          )}
+                        </div>
+                        <Details>{item.details}</Details>
                       </div>
                     </div>
                   ))}
@@ -195,8 +263,8 @@ export default function TravelLayout({ data }) {
         {/* Map */}
         {view === 'map' && (
           <div className={`${styles.daySection} ${styles.active}`}>
-            <div style={{ margin: '-10px -20px 0', height: '80vh', position: 'relative' }}>
-              {data.mapIframe ? (
+            {data.mapIframe ? (
+              <div className={styles.mapFrame}>
                 <iframe
                   src={data.mapIframe}
                   width="100%"
@@ -206,12 +274,40 @@ export default function TravelLayout({ data }) {
                   loading="lazy"
                   title="Map"
                 ></iframe>
-              ) : (
-                <div style={{ padding: '40px', textAlign: 'center' }}>
-                  <p>{data.mapText || '🗺️ 景點地圖'}</p>
-                </div>
-              )}
-            </div>
+              </div>
+            ) : (
+              // No custom My Map for this trip — fall back to a tappable list of every stop.
+              <div className={styles.spotList}>
+                <h3 className={styles.spotListTitle}>{data.mapText || '🗺️ 景點地圖'}</h3>
+                {data.mapQuery && (
+                  <a
+                    href={mapsUrl(data.mapQuery)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={styles.spotListOpenAll}
+                  >
+                    🌏 在 Google Maps 開啟{data.mapQuery}
+                  </a>
+                )}
+                {spots.length > 0 ? (
+                  spots.map(spot => (
+                    <a
+                      key={spot.query}
+                      href={mapsUrl(spot.query)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={styles.spotRow}
+                    >
+                      <span className={styles.spotDay}>{spot.dayLabel}</span>
+                      <span className={styles.spotName}>{spot.title}</span>
+                      <span className={styles.spotArrow}>📍</span>
+                    </a>
+                  ))
+                ) : (
+                  <p className={styles.spotEmpty}>這個行程未加地點資料。</p>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>

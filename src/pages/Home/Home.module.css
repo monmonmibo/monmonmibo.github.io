@@ -53,6 +53,24 @@
     border-color: rgba(255, 255, 255, 0.85);
 }
 
+/* Finished trips recede through a neutral, flatter surface — never through
+   card-level opacity, which dragged every child below AA
+   (title 11.69:1 -> 2.80:1, date 3.27:1 -> 1.71:1, badge 4.58:1 -> 1.98:1). */
+.tripCardFinished {
+    background: rgba(246, 247, 249, 0.55);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.tripCardFinished:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.tripCardFinished .tripInfo h2 {
+    color: #3D5266;
+    font-weight: 600;
+}
+
 .tripInfo h2 {
     margin: 0;
     font-size: 1.1rem;
@@ -63,14 +81,15 @@
 }
 
 .tripInfo span.dateText {
-    font-size: 0.8rem;
-    color: #888;
+    font-size: 0.9375rem;
+    /* #888 was only 3.27:1 on the card surface — below AA for body text */
+    color: #4A5F73;
     margin-top: 6px;
     display: block;
 }
 
 .statusTag {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     padding: 4px 10px;
     border-radius: 20px;
     font-weight: bold;
@@ -91,7 +110,15 @@
 
 .footer {
     margin-top: auto;
-    font-size: 0.75rem;
-    color: #aaa;
+    font-size: 0.9375rem;
+    /* Sits directly on the ambient gradient, whose warm corner measures #f0e7da.
+       #aaa was 1.90:1 there and tertiary #6B7C8D only 3.50:1 — both below AA. */
+    color: #4A5F73;
     padding-top: 20px;
+}
+
+.tripCard:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+    box-shadow: var(--focus-ring);
 }

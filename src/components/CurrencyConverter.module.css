@@ -29,7 +29,7 @@
 }
 
 .label {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: #666;
   text-align: left;
   margin-left: 5px;
@@ -50,6 +50,12 @@
 
 .input:focus {
   border-color: #646cff;
+}
+
+/* base rule sets outline:none, so restore an equivalent ring here */
+.input:focus-visible {
+  border-color: var(--color-focus);
+  box-shadow: var(--focus-ring);
 }
 
 .divider {
@@ -88,7 +94,7 @@
 
 .rateInfo {
   margin-top: 15px;
-  font-size: 0.75rem;
+  font-size: 0.9375rem;
   color: #888;
 }
 
@@ -96,7 +102,7 @@
   background: #fff8e1;
   border: 1px solid #ffe082;
   color: #795548;
-  font-size: 0.75rem;
+  font-size: 0.9375rem;
   padding: 6px 10px;
   border-radius: 8px;
   margin-top: 12px;

@@ -1,5 +1,18 @@
+:root {
+  --color-focus: #176FC1;
+  --color-focus-rgb: 23, 111, 193;
+  --focus-ring: 0 0 0 3px rgba(var(--color-focus-rgb), 0.24);
+}
+
 html {
   background-color: #EDF2FF; /* fills safe-area and overscroll bounce on iOS */
+}
+
+/* Global focus-visible baseline. Components may adjust offset/radius,
+   but must never drop the ring without an equivalent replacement. */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
 }
 
 /* Reserve scrollbar space on desktop only — mobile uses overlay scrollbars */
@@ -26,7 +39,7 @@ body {
 
 /* Shared trip utility classes used in data files */
 .trip-link {
-  font-size: 0.75rem;
+  font-size: 0.9375rem;
   color: #3498db;
   text-decoration: underline;
   margin-top: 6px;
@@ -34,7 +47,7 @@ body {
 }
 
 .trip-badge-warn {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   padding: 2px 8px;
   border-radius: 4px;
   background: #fadbd8;
@@ -46,7 +59,7 @@ body {
 }
 
 .trip-badge-info {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   padding: 2px 8px;
   border-radius: 4px;
   background: #d6eaf8;
@@ -56,7 +69,7 @@ body {
 }
 
 .trip-note-red {
-  font-size: 0.85rem;
+  font-size: 0.9375rem;
   color: #c0392b;
   font-weight: 800;
   display: block;
@@ -64,18 +77,38 @@ body {
 }
 
 .trip-note-green {
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
   color: #27ae60;
   font-weight: 600;
 }
 
 .trip-note-orange {
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
   color: #e65100;
   font-weight: 600;
 }
 
 .trip-note-muted {
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
   color: #888;
+}
+
+.trip-link:focus-visible {
+  border-radius: 2px;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

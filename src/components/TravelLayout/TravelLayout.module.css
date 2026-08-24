@@ -67,7 +67,7 @@
     flex: 0 0 auto;
     text-decoration: none;
     color: white;
-    font-size: 0.85rem;
+    font-size: 0.875rem;
     font-weight: 700;
     padding: 6px 12px;
     border-radius: 999px;
@@ -108,11 +108,13 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-radius: 16px;
-    padding: 8px 16px;
+    padding: 8px 18px;
+    min-height: 44px;
+    font-family: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     line-height: 1;
     white-space: nowrap;
     color: #666;
@@ -182,7 +184,7 @@
     color: var(--primary);
     padding: 2px 8px;
     border-radius: 4px;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 700;
     margin-bottom: 6px;
 }
@@ -207,7 +209,7 @@
 
 .details {
     margin-top: 8px;
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: #666;
     line-height: 1.5;
 }
@@ -237,7 +239,7 @@
     background-color: var(--accent);
     color: white;
     text-decoration: none;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     padding: 6px 12px;
     border-radius: 20px;
     font-weight: bold;
@@ -254,6 +256,7 @@
 }
 
 .todoLabel {
+    position: relative;
     display: flex;
     align-items: center;
     background: rgba(255, 255, 255, 0.62);
@@ -273,8 +276,18 @@
     background-color: rgba(249, 249, 249, 0.9);
 }
 
+/* Visually hidden, but still focusable and exposed to assistive tech.
+   `display: none` removed it from the a11y tree entirely. */
 .todoLabel input[type="checkbox"] {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
 .todoTextContainer {
@@ -292,7 +305,7 @@
 
 .todoSubText {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.9375rem;
     color: #888;
 }
 
@@ -329,6 +342,12 @@
 .todoLabel:has(input:checked) {
     border-color: var(--secondary);
     background-color: rgba(244, 248, 251, 0.85);
+}
+
+.todoLabel input:focus-visible ~ .checkCircle {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+    box-shadow: var(--focus-ring);
 }
 
 .bottomNav {
@@ -380,4 +399,155 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Title row of a timeline card: title on the left, optional 導航 button on the right */
+.cardHead {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.itemNavBtn {
+    background-color: var(--primary);
+    color: white;
+    text-decoration: none;
+    font-size: 0.875rem;
+    padding: 8px 12px;
+    min-height: 36px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 8px rgba(0, 51, 102, 0.3);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.itemNavBtn:active {
+    transform: scale(0.96);
+}
+
+/* Long details collapse behind the 睇多啲 toggle */
+.detailsClamped {
+    /* ~6.5 lines at .details 1rem/1.5 (was 132px when .details was 0.85rem) */
+    max-height: 156px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 68%, transparent 100%);
+}
+
+.detailsToggle {
+    margin-top: 6px;
+    border: none;
+    background: transparent;
+    padding: 8px 0;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+/* Map tab */
+.mapFrame {
+    margin: -10px -20px 0;
+    height: 80vh;
+    position: relative;
+}
+
+.spotList {
+    padding: 10px 20px calc(110px + env(safe-area-inset-bottom));
+}
+
+.spotListTitle {
+    margin: 0 0 12px 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.spotListOpenAll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 48px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(0, 51, 102, 0.3);
+}
+
+.spotRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+}
+
+.spotRow:active {
+    transform: scale(0.99);
+}
+
+.spotDay {
+    flex-shrink: 0;
+    background: var(--secondary);
+    color: var(--primary);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.spotName {
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.35;
+}
+
+.spotArrow {
+    flex-shrink: 0;
+    font-size: 0.95rem;
+}
+
+.spotEmpty {
+    text-align: center;
+    padding: 30px 0;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* ---- Focus states (DESIGN.md §4) ---- */
+.homeLink:focus-visible,
+.dateChip:focus-visible,
+.navBtn:focus-visible,
+.hotelNavBtn:focus-visible,
+.itemNavBtn:focus-visible,
+.spotRow:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+    box-shadow: var(--focus-ring);
+}
+
+.detailsToggle:focus-visible {
+    border-radius: 8px;
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
 }
