@@ -38,7 +38,7 @@ export const tak26Data = {
         },
         {
           time: "17:00",
-          title: "🍜 讚岐烏冬：うどん市場 兵庫町店",
+          title: "🍜 晚餐：うどん市場 兵庫町店（烏龍麵市場）",
           type: "highlight",
           mapQuery: "うどん市場 兵庫町店",
           details: (
@@ -53,17 +53,10 @@ export const tak26Data = {
                 • 星期二至六：11:00 - 20:00<br/>
                 <span className="trip-note-muted">星期日全日休息（今程唔撞正）</span>
               </span>
-              <span className="trip-note-orange">⏳ 20:00 收工，同 19:00 骨付鳥 之間要預時間；想食得鬆動可以調早到 16:30。</span>
+              <span className="trip-note-orange">⏳ 20:00 收工，唔好拖得太夜；16:00 check-in 後直接行過去最順。</span>
               <a href="https://www.udon-ichiba.jp/hyogo/shopinfo.html" target="_blank" rel="noreferrer" className="trip-link">🔗 うどん市場 兵庫町店 官方店舖資訊</a>
             </>
           )
-        },
-        {
-          time: "19:00",
-          title: "🍗 晚餐：骨付鳥 一鶴",
-          type: "highlight",
-          mapQuery: "一鶴 高松店",
-          details: "香川縣名物，外脆內嫩的帶骨烤雞腿"
         }
       ]
     },
@@ -129,7 +122,23 @@ export const tak26Data = {
           time: "傍晚",
           title: "⛴️ 土庄港 → 高松港",
           mapQuery: "土庄港",
-          details: "建議回程班次：17:30 由土庄港出發，18:30 抵達高松港；之後可安排高松站周邊晚餐。"
+          details: "建議回程班次：17:30 由土庄港出發，18:30 抵達高松港。"
+        },
+        {
+          time: "19:00",
+          title: "🍣 晚餐：瀬戸の祭寿し 兵庫町店（瀨戶祭迴轉壽司）",
+          type: "highlight",
+          mapQuery: "瀬戸の祭寿し 兵庫町店",
+          details: (
+            <>
+              瀨戶內海當造魚生迴轉壽司，人均 ¥2,000-3,000。玩足一日小豆島返到高松，落船直接食。<br/>
+              地址：香川県高松市兵庫町11-5 <strong>中島ビル</strong>（〒760-0024）｜電話：087-813-2880<br/>
+              由高松港沿海岸行返市區約 10 分鐘就到兵庫町商店街，同 Day 1 嗰間うどん市場 同一條街。106 席，係成條商店街最大間，唔使點排隊。
+              <span className="trip-badge-info">✅ 11:00-22:00 年中無休</span>
+              <a href="https://yumekubo.com/store/hyogomachi/" target="_blank" rel="noreferrer" className="trip-link">🔗 瀬戸の祭寿し 兵庫町店（夢喰房官方）</a>
+              <a href="http://www.hyougomachi.com/shop/food/entry-144.html" target="_blank" rel="noreferrer" className="trip-link">🔗 兵庫町商店街 店舖介紹</a>
+            </>
+          )
         }
       ]
     },
