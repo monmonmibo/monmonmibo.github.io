@@ -242,9 +242,30 @@ export const tak26Data = {
         },
         {
           time: "傍晚",
-          title: "☕ 丸亀町 / 中央商店街散步 + 晚餐",
+          title: "☕ 丸亀町 / 中央商店街散步",
           mapQuery: "高松丸亀町商店街",
-          details: "Pokémon Center 就在高松中央商店街內，沿住條街行返落瓦町即回到酒店，晚餐就在這一段商店街或瓦町周邊解決"
+          details: "Pokémon Center 就在高松中央商店街內，沿住條街行返落瓦町即回到酒店，一路行一路睇舖"
+        },
+        {
+          time: "19:00",
+          title: "🥩 晚餐：炭焼き 肉の近どう 高松古馬場店（橄欖牛炭火燒肉）",
+          type: "highlight",
+          mapQuery: "炭焼き 肉の近どう 高松古馬場店",
+          details: (
+            <>
+              A5 級<strong>橄欖牛</strong>炭火燒肉，配自家製燒肉汁。香川縣產品振興協議會認證嘅「三星橄欖餐廳」。<br/>
+              地址：香川県高松市古馬場町5-12｜電話：087-813-9029<br/>
+              由 WeBase 行過去約 5 分鐘，就喺瓦町隔籬嘅古馬場一帶；行完丸亀町商店街落嚟啱啱好。
+              <span className="trip-badge-info">✅ 年中無休．星期日 14:00-23:00（L.O. 22:00）</span>
+              <span className="trip-subnote">
+                🕒 營業時間：<br/>
+                • 星期一至六：14:00 - 24:00（L.O. 23:00）<br/>
+                • 星期日：14:00 - 23:00（L.O. 22:00）<br/>
+                <span className="trip-note-muted">Day 4 係星期日，照開，但週末夜市中心較旺，建議去之前打電話留位。</span>
+              </span>
+              <a href="https://www.kensanpin.org/umaimon/oliverestaurant/food/olive_gyu/%E7%82%AD%E7%84%BC-%E8%82%89%E3%81%AE%E8%BF%91%E3%81%A9%E3%81%86-%E5%AE%87%E5%A4%9A%E6%B4%A5%E5%BA%97-2/" target="_blank" rel="noreferrer" className="trip-link">🔗 三星橄欖餐廳認證頁（香川縣產品振興協議會）</a>
+            </>
+          )
         }
       ]
     },
