@@ -40,10 +40,20 @@ function Details({ children }) {
   );
 }
 
+function readTodos(data) {
+  const loaded = {};
+  (data.todos || []).forEach(todo => {
+    loaded[todo.id] = localStorage.getItem(`${data.id}-${todo.id}`) === 'true';
+  });
+  return loaded;
+}
+
 export default function TravelLayout({ data }) {
   const [activeTab, setActiveTab] = useState('day1');
   const [view, setView] = useState('timeline');
-  const [todos, setTodos] = useState({});
+  // Read straight from localStorage on first render. Doing this in an effect
+  // instead made the list flash every box unchecked before correcting itself.
+  const [todos, setTodos] = useState(() => readTodos(data));
 
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
 
@@ -94,18 +104,6 @@ export default function TravelLayout({ data }) {
       }
     };
   }, [data.id, data.header.title]);
-
-  // Initialize todos from localStorage
-  useEffect(() => {
-    const loadedTodos = {};
-    if (data.todos) {
-      data.todos.forEach(todo => {
-        const id = `${data.id}-${todo.id}`;
-        loadedTodos[todo.id] = localStorage.getItem(id) === 'true';
-      });
-    }
-    setTodos(loadedTodos);
-  }, [data]);
 
   // Every timeline stop that carries a mapQuery, deduped — powers the map tab fallback.
   const spots = useMemo(() => {
