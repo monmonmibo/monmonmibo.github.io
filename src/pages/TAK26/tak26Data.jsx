@@ -43,8 +43,9 @@ export const tak26Data = {
           mapQuery: "うどん市場 兵庫町店",
           details: (
             <>
-              落機第一碗讚岐烏冬。地址：香川県高松市兵庫町2-8｜電話：087-823-0388<br/>
-              由 WeBase 沿中央商店街一路往北行約 15 分鐘，全程有上蓋，落雨都唔怕。
+              落機第一碗讚岐烏冬，人均 ¥1,000 以下。<br/>
+              地址：香川県高松市兵庫町2-8 <strong>ひらのやビル</strong>（〒760-0024）｜電話：087-823-0388<br/>
+              由 WeBase 沿中央商店街一路往北行約 15 分鐘，全程有上蓋，落雨都唔怕。認住幢樓個名，門口係暖簾。
               <span className="trip-badge-warn">⚠️ 星期日休息</span>
               <span className="trip-subnote">
                 🕒 營業時間：<br/>
