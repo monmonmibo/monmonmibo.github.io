@@ -304,5 +304,6 @@ export const tak26Data = {
     { id: 'tak-todo-3', main: 'Visit Japan Web', sub: '入境手續' },
   ],
   mapQuery: "高松市",
-  mapText: "🗺️ 高松 & 瀨戶內海地圖"
+  mapText: "🗺️ 高松 & 瀨戶內海地圖",
+  mapIframe: "https://www.google.com/maps/d/u/0/embed?mid=1Egg8PNx5OGPt2XjXV1QNvT4hipOHQkg&ehbc=2E312F"
 };

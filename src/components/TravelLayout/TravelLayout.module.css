@@ -498,14 +498,18 @@
     padding-top: var(--space-5);
 }
 
-/* Map tab */
+/* Map tab. The horizontal margin used to cancel out a padded ancestor that
+   no longer exists, so it was pushing the frame past the viewport. */
 .mapFrame {
-    margin: -10px calc(-1 * var(--space-5)) 0;
+    margin-top: -10px;
     height: 80vh;
     position: relative;
 }
 
 .mapIframe {
+    display: block;
+    width: 100%;
+    height: 100%;
     border: 0;
 }
 
