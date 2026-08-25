@@ -499,6 +499,70 @@ button.card:focus-visible {
 }
 ```
 
+### Data tables
+
+用於車費、匯率、班次一類「標籤 + 數值」資料。承載喺 card 級 glass 上，數值右對齊並使用 tabular numerals。
+
+```css
+.dataTable {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: var(--glass-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--glass-card-bg);
+  backdrop-filter: var(--glass-card-blur);
+  -webkit-backdrop-filter: var(--glass-card-blur);
+  box-shadow: var(--shadow-card), var(--glass-highlight);
+
+  /* 必須係 separate。用 collapse 嘅話瀏覽器會完全忽略 table 自身的
+     padding（CSS 規範明文規定），padding 宣告唔會報錯但亦唔會生效。 */
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.dataTable caption {
+  padding-bottom: var(--space-2);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: left;
+}
+
+.dataTable th[scope="row"] {
+  padding: 5px 0;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  text-align: left;
+}
+
+.dataTable td {
+  padding: 5px 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 小計行靠一條上邊線分隔，唔靠底色 */
+.dataTableTotal th,
+.dataTableTotal td {
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-weight: 700;
+}
+```
+
+### Data table rules
+
+- 用真 `<table>`：`<caption>` 做分組標題、`<th scope="row">` 做標籤欄。唔好用 `<div>` 砌格仔 —— 螢幕閱讀器會讀唔到行列關係。
+- 數值欄一律 `text-align: right` + `font-variant-numeric: tabular-nums` + `white-space: nowrap`，方便垂直比較同避免金額斷行。
+- 金額用字串儲存，唔好用數字：咁「¥900-1,500」一類範圍先可以同定額排喺同一欄，唔使兩套渲染邏輯。
+- 總計橫額用實色 `--color-primary` + `--color-text-inverse`，同表身區分；唔好靠加粗或者放大字體嚟做總計。
+
 ### Forms and checklist controls
 
 ```css
@@ -779,6 +843,7 @@ html { scroll-behavior: smooth; }
 - ❌ 不要把固定 bottom navigation 疊在最後一張卡、keyboard 或 safe area 上。
 - ❌ 不要以 hover 才顯示關鍵資訊，手機沒有可靠 hover。
 - ❌ 不要把班次、地址、外部連結摺疊喺展開掣後面。掃讀靠的是時間標籤同標題，唔係靠收起內文。
+- ❌ 表格不要用 `border-collapse: collapse` —— 佢會令 `<table>` 自身的 padding 靜靜地失效，文字會貼住卡邊。用 `separate` + `border-spacing: 0`。
 - ❌ 不要為視覺一致而刪減班次方向、站號或後備方案等實用資料。
 
 ## 9. Responsive Behavior

@@ -626,7 +626,9 @@
     backdrop-filter: var(--glass-card-blur);
     -webkit-backdrop-filter: var(--glass-card-blur);
     box-shadow: var(--shadow-card), var(--glass-highlight);
-    border-collapse: collapse;
+    /* Not `collapse` — that makes the browser ignore the table's own padding */
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
 @supports not (backdrop-filter: blur(1px)) {
