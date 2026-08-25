@@ -314,7 +314,8 @@ export const tak26Data = {
           mapQuery: "炭焼き 肉の近どう 高松古馬場店",
           details: (
             <>
-              A5 級<strong>橄欖牛</strong>炭火燒肉，配自家製燒肉汁。香川縣產品振興協議會認證嘅「三星橄欖餐廳」。<br/>
+              A5 級<strong>橄欖牛</strong>，用<strong>備長炭</strong>自己喺枱上燒，配自家製燒肉汁同喜馬拉雅岩鹽。香川縣產品振興協議會認證嘅「三星橄欖餐廳」。<br/>
+              有<strong>掘りごたつ個室</strong>（挖低式，腳可以伸直，唔使跪坐）。全店 100 席、全席禁煙。<br/>
               地址：香川県高松市古馬場町5-12｜電話：087-813-9029<br/>
               交通：琴電瓦町站（志度線口）步行 5-6 分鐘、片原町站步行 5 分鐘。<br/>
               WeBase 本身距瓦町站 5 分鐘，所以由酒店直接行過去約 10 分鐘。<strong>但唔使特登由酒店出發</strong> —— 行完丸亀町商店街由北往南落嚟，古馬場就喺瓦町前面，順路；食完再行 10 分鐘返酒店。
@@ -323,7 +324,7 @@ export const tak26Data = {
                 🕒 營業時間：<br/>
                 • 星期一至六：14:00 - 24:00（L.O. 23:00）<br/>
                 • 星期日：14:00 - 23:00（L.O. 22:00）<br/>
-                <span className="trip-note-muted">Day 4 係星期日，照開，但週末夜市中心較旺，建議去之前打電話留位。</span>
+                <span className="trip-note-muted">Day 4 係星期日，照開，但週末夜市中心較旺。打電話留位時<strong>指定要掘りごたつ個室</strong> —— 個室數量有限，唔講多數安排普通枱。</span>
               </span>
               <a href="https://www.kensanpin.org/umaimon/oliverestaurant/food/olive_gyu/%E7%82%AD%E7%84%BC-%E8%82%89%E3%81%AE%E8%BF%91%E3%81%A9%E3%81%86-%E5%AE%87%E5%A4%9A%E6%B4%A5%E5%BA%97-2/" target="_blank" rel="noreferrer" className="trip-link">🔗 三星橄欖餐廳認證頁（香川縣產品振興協議會）</a>
             </>
