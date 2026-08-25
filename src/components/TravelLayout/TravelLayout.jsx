@@ -6,6 +6,45 @@ import JpyToHkdConverter from '../JpyToHkdConverter';
 const mapsUrl = (query) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
+// Per-day transport costs. Amounts are strings so a leg with a range
+// ("¥900-1,500") reads the same as a fixed one.
+function FareTable({ fares }) {
+  return (
+    <section className={styles.fareBlock} aria-labelledby="fareHeading">
+      <h3 id="fareHeading" className={styles.fareHeading}>🚃 車費預算（每人）</h3>
+
+      {fares.days.map(day => (
+        <table key={day.day} className={styles.fareTable}>
+          <caption className={styles.fareCaption}>{day.day}</caption>
+          <tbody>
+            {day.items.map((item, i) => (
+              <tr key={i}>
+                <th scope="row" className={styles.fareLabel}>{item.label}</th>
+                <td className={styles.fareAmount}>{item.amount}</td>
+              </tr>
+            ))}
+            <tr className={styles.fareSubtotal}>
+              <th scope="row" className={styles.fareLabel}>小計</th>
+              <td className={styles.fareAmount}>{day.total}</td>
+            </tr>
+          </tbody>
+        </table>
+      ))}
+
+      <p className={styles.fareGrand}>
+        <span>{fares.totalLabel || '合計'}</span>
+        <strong className={styles.fareAmount}>{fares.total}</strong>
+      </p>
+
+      {fares.notes && (
+        <ul className={styles.fareNotes}>
+          {fares.notes.map((note, i) => <li key={i}>{note}</li>)}
+        </ul>
+      )}
+    </section>
+  );
+}
+
 function readTodos(data) {
   const loaded = {};
   (data.todos || []).forEach(todo => {
@@ -255,6 +294,7 @@ export default function TravelLayout({ data }) {
         {view === 'tools' && (
           <div className={`${styles.daySection} ${styles.active} ${styles.toolsSection}`}>
             {data.customTools ? data.customTools : <JpyToHkdConverter />}
+            {data.fares && <FareTable fares={data.fares} />}
           </div>
         )}
 

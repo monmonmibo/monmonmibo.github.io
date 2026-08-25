@@ -366,5 +366,59 @@ export const tak26Data = {
   ],
   mapQuery: "高松市",
   mapText: "🗺️ 高松 & 瀨戶內海地圖",
-  mapIframe: "https://www.google.com/maps/d/u/0/embed?mid=1Egg8PNx5OGPt2XjXV1QNvT4hipOHQkg&ehbc=2E312F"
+  mapIframe: "https://www.google.com/maps/d/u/0/embed?mid=1Egg8PNx5OGPt2XjXV1QNvT4hipOHQkg&ehbc=2E312F",
+  fares: {
+    totalLabel: "五日合計",
+    total: "約 ¥8,400-9,000",
+    days: [
+      {
+        day: "Day 1（四）",
+        items: [
+          { label: "高松機場 → 県庁通り中央公園前（利木津巴士）", amount: "¥1,000" },
+          { label: "酒店、兵庫町烏冬 全程步行", amount: "¥0" },
+        ],
+        total: "¥1,000",
+      },
+      {
+        day: "Day 2（五）",
+        items: [
+          { label: "高松港 → 土庄港（渡輪）", amount: "¥700" },
+          { label: "小豆島巴士 ×3 程（每程上限 ¥500）", amount: "¥900-1,500" },
+          { label: "土庄港 → 高松港（渡輪）", amount: "¥700" },
+        ],
+        total: "¥2,300-2,900",
+      },
+      {
+        day: "Day 3（六）",
+        items: [
+          { label: "高松 → 児島（マリンライナー）", amount: "¥1,090" },
+          { label: "児島 → 倉敷（岡山轉車）", amount: "¥770" },
+          { label: "倉敷 → 高松", amount: "¥1,840" },
+        ],
+        total: "¥3,700",
+      },
+      {
+        day: "Day 4（日）",
+        items: [
+          { label: "琴電 瓦町 ⇄ 三条（來回）", amount: "¥400" },
+          { label: "寶可夢中心、古馬場晚餐 全程步行", amount: "¥0" },
+        ],
+        total: "¥400",
+      },
+      {
+        day: "Day 5（一）",
+        items: [
+          { label: "県庁通り中央公園前 → 高松機場", amount: "¥1,000" },
+        ],
+        total: "¥1,000",
+      },
+    ],
+    notes: [
+      "小豆島巴士只公佈「大人運賃上限 ¥500」，冇逐段公佈，所以 Day 2 畀範圍。你哋三程都係中短距離，實際多數平過上限。",
+      "小豆島一日券 ¥1,600 唔抵買：只搭三程，最貴都係 ¥1,500。除非臨時加去二十四之瞳映画村或寒霞溪。",
+      "Day 3 佔咗全程一半車費，因為過海又過縣。想慳就只有呢日有得減。",
+      "未計：酒店（瓦町）去高松港 —— 行路約 20 分鐘，或琴電 瓦町→高松築港 約 ¥200（Day 2 來回 ¥400）。",
+      "Day 3 児島→倉敷 用咗 JR ¥770。改搭下電直達巴士嘅話車費未查到，未必一樣。",
+    ],
+  }
 };

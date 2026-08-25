@@ -602,3 +602,99 @@
     box-shadow: var(--focus-ring);
 }
 
+
+/* ---- Fare table (tools tab) ---- */
+.fareBlock {
+    width: min(100%, var(--card-max));
+    margin: var(--space-6) auto 0;
+    text-align: left;
+}
+
+.fareHeading {
+    margin: 0 0 var(--space-3);
+    font-size: 1rem;
+    color: var(--color-text);
+}
+
+.fareTable {
+    width: 100%;
+    margin-bottom: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border: var(--glass-border-strong);
+    border-radius: var(--radius-md);
+    background: var(--glass-card-bg);
+    backdrop-filter: var(--glass-card-blur);
+    -webkit-backdrop-filter: var(--glass-card-blur);
+    box-shadow: var(--shadow-card), var(--glass-highlight);
+    border-collapse: collapse;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+    .fareTable { background: rgba(var(--color-surface-rgb), 0.94); }
+}
+
+.fareCaption {
+    padding-bottom: var(--space-2);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: left;
+}
+
+.fareLabel {
+    padding: 5px 0;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    text-align: left;
+}
+
+.fareAmount {
+    padding: 5px 0;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.fareSubtotal th,
+.fareSubtotal td {
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-weight: 700;
+}
+
+.fareGrand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    box-shadow: var(--shadow-primary);
+}
+
+.fareGrand .fareAmount {
+    color: var(--color-text-inverse);
+    font-size: 1.05rem;
+}
+
+.fareNotes {
+    margin: var(--space-3) 0 0;
+    padding-left: 1.2em;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+}
+
+.fareNotes li {
+    margin-bottom: var(--space-2);
+}
