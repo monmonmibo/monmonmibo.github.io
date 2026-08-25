@@ -198,7 +198,7 @@ export const tak26Data = {
           )
         },
         {
-          time: "14:10-17:30",
+          time: "14:10-17:00",
           title: "🛍️ 美観地区三間值得行嘅店",
           mapQuery: "倉敷デニムストリート",
           details: (
@@ -213,7 +213,7 @@ export const tak26Data = {
           )
         },
         {
-          time: "18:30 前入座",
+          time: "17:00 一開門",
           title: "🍱 晚餐：うな北 倉敷店（鰻北）",
           type: "highlight",
           mapQuery: "岡山県倉敷市本町1-32",
@@ -221,14 +221,15 @@ export const tak26Data = {
             <>
               地址：岡山県倉敷市本町1-32（〒710-0054）｜電話：086-454-4545｜人均 ¥3,001-4,000<br/>
               由 JR 倉敷駅步行 13 分鐘，就喺美観地区本町一帶。
-              <span className="trip-badge-warn">⚠️ 不定休．晚市 L.O. 19:00</span>
+              <span className="trip-badge-warn">⚠️ 不定休 —— 出發前務必網上訂位或打電話</span>
+              <span className="trip-note-green">✅ 訂 17:00 一開門嗰轉：唔使排隊，而且肯收訂就代表當日照開，一次過解決人多同不定休兩個問題。</span>
               <span className="trip-subnote">
                 🕒 營業時間（每日）：<br/>
                 • 午市 11:00 - 15:00（L.O. 14:30）<br/>
                 • 晚市 17:00 - 19:30（<strong>L.O. 19:00</strong>）<br/>
-                <span className="trip-note-muted">19:30 係關門，唔係落單死線；最遲 18:30 坐低先穩陣。</span>
+                <span className="trip-note-muted">19:30 係關門，唔係落單死線。訂唔到位就最遲 18:30 坐低。</span>
               </span>
-              <span className="trip-note-red">冇固定休息日（不定休），出發前一定要打電話確認同訂位。撲空就去下面嗰間後備。</span>
+              <span className="trip-note-red">訂唔到位又打唔通，就直接去下面嗰間後備，唔好賭。</span>
               <a href="https://unagi-nobori.shop" target="_blank" rel="noreferrer" className="trip-link">🔗 官方選單 / 官網</a>
               <a href="https://www.hotpepper.jp/strJ003560531/" target="_blank" rel="noreferrer" className="trip-link">🔗 うな北 倉敷店（HotPepper 可網上訂位）</a>
             </>
@@ -254,9 +255,9 @@ export const tak26Data = {
           )
         },
         {
-          time: "20:00 左右",
+          time: "19:00 前後",
           title: "🚉 倉敷 → 高松",
-          details: "倉敷 → 岡山（JR 山陽本線約 16 分）→ 高松（マリンライナー約 55 分），連轉車約 1 小時 20 分。19:30 出發，返到高松約 20:50。"
+          details: "食完約 18:00，可以再行返轉頭睇美観地区夜燈先走。倉敷 → 岡山（JR 山陽本線約 16 分）→ 高松（マリンライナー約 55 分），連轉車約 1 小時 20 分。19:00 出發約 20:20 到，19:30 出發約 20:50 到。"
         }
       ]
     },
