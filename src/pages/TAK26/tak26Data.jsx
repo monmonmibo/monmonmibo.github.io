@@ -266,16 +266,15 @@ export const tak26Data = {
           details: (
             <>
               高松出名嘅深夜烏冬，專做飲完酒之後嗰碗「締めのうどん」。香川多數烏冬店下午就收，佢做到凌晨。<br/>
-              地址：香川県高松市古馬場町9-34（〒760-0045）｜由琴電瓦町站沿フェリー通り步行 <strong>5 分鐘</strong> —— WeBase 官網自己都推介呢間。<br/>
+              地址：香川県高松市古馬場町9-34（〒760-0045）｜電話：087-821-3780｜由琴電瓦町站沿フェリー通り步行 5 分鐘。<br/>
               招牌係<strong>咖喱烏冬</strong>，九成客都叫呢碗：和風高湯打底，微甜但後味帶辣，老闆自家調香料。唔食辣可以叫 bukkake。麵唔預先煮，全部即叫即灼。
-              <span className="trip-badge-warn">⚠️ 逢星期日及假日休息 —— 所以只有 Day 3 食得到，Day 4 去會摸門釘</span>
+              <span className="trip-badge-warn">⚠️ 逢星期日休息 —— 所以只有 Day 3 食得到，Day 4 去會摸門釘</span>
               <span className="trip-subnote">
-                🕒 20:00 開門，做到凌晨 2:00-3:00（來源有出入，愈夜愈要留意）。<br/>
+                🕒 營業時間：星期一至六 20:00 - 02:00，星期日休息。<br/>
                 <span className="trip-note-muted">20:00 開門前門口已經有人排隊。你哋 20:20 左右返到高松，過去大約 21:00，頭一輪人潮多數已散。</span>
               </span>
               <span className="trip-note-green">同 Day 4 晚餐嘅 肉の近どう 同樣喺古馬場町，行過去順路，返酒店都係 5 分鐘。</span>
-              <a href="https://teuchiudon-tsurumaru.com/" target="_blank" rel="noreferrer" className="trip-link">🔗 手打ちうどん 鶴丸（官方）</a>
-              <a href="https://we-base.jp/takamatsu/gourmet/udon-tsurumaru/" target="_blank" rel="noreferrer" className="trip-link">🔗 WeBase 高松 官網介紹</a>
+              <a href="https://teuchiudon-tsurumaru.com/menu/" target="_blank" rel="noreferrer" className="trip-link">🔗 手打ちうどん 鶴丸 選單（官方）</a>
             </>
           )
         }
