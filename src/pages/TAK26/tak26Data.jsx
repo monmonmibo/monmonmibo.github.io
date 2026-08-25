@@ -199,9 +199,28 @@ export const tak26Data = {
                 • 晚市 17:00 - 19:30（<strong>L.O. 19:00</strong>）<br/>
                 <span className="trip-note-muted">19:30 係關門，唔係落單死線；最遲 18:30 坐低先穩陣。</span>
               </span>
-              <span className="trip-note-red">冇固定休息日（不定休），出發前一定要打電話確認同訂位。</span>
+              <span className="trip-note-red">冇固定休息日（不定休），出發前一定要打電話確認同訂位。撲空就去下面嗰間後備。</span>
               <a href="https://unagi-nobori.shop" target="_blank" rel="noreferrer" className="trip-link">🔗 官方選單 / 官網</a>
               <a href="https://www.hotpepper.jp/strJ003560531/" target="_blank" rel="noreferrer" className="trip-link">🔗 うな北 倉敷店（HotPepper 可網上訂位）</a>
+            </>
+          )
+        },
+        {
+          time: "後備",
+          title: "🍱 鰻魚飯後備：ゆうなぎ倉敷本店",
+          mapQuery: "ゆうなぎ倉敷本店 倉敷市中央2-1-18",
+          details: (
+            <>
+              うな北 不定休，撲空就轉呢間 —— 倉敷觀光官方網站有介紹，同樣做鰻魚飯。<br/>
+              地址：岡山県倉敷市中央2-1-18｜電話：086-427-3100｜由 JR 倉敷駅步行 <strong>7 分鐘</strong>（比うな北仲近）。
+              <span className="trip-badge-info">✅ 星期六 17:00-22:00（L.O. 22:00），冇時間壓力</span>
+              <span className="trip-subnote">
+                🕒 營業時間：<br/>
+                • 星期二至六：11:30 - 14:00 ／ 17:00 - 22:00（L.O. 22:00）<br/>
+                • 星期日及假日：11:30 - 14:00 ／ 17:00 - 21:30（L.O. 21:00）<br/>
+                <span className="trip-note-muted">定休日：星期一（遇假日順延至星期二）—— Day 3 係星期六，照開。</span>
+              </span>
+              <a href="https://www.kurashiki-tabi.jp/eat/eat-1130/" target="_blank" rel="noreferrer" className="trip-link">🔗 ゆうなぎ倉敷本店（倉敷觀光 WEB 官方）</a>
             </>
           )
         },
