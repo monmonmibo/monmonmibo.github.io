@@ -7,7 +7,7 @@ export const tak26Data = {
   days: [
     {
       id: "day1",
-      label: "Day 1",
+      label: "Day 1 (四)",
       hotel: "WeBase 高松 (WeBase TAKAMATSU)",
       hotelQuery: "WeBase+TAKAMATSU",
       timeline: [
@@ -46,12 +46,12 @@ export const tak26Data = {
               落機第一碗讚岐烏冬，人均 ¥1,000 以下。<br/>
               地址：香川県高松市兵庫町2-8 <strong>ひらのやビル</strong>（〒760-0024）｜電話：087-823-0388<br/>
               由 WeBase 沿中央商店街一路往北行約 15 分鐘，全程有上蓋，落雨都唔怕。認住幢樓個名，門口係暖簾。
-              <span className="trip-badge-info">✅ 出發當日照常營業（已對過營業時間）</span>
+              <span className="trip-badge-info">✅ Day 1 星期四：11:00-20:00 照常營業</span>
               <span className="trip-subnote">
                 🕒 營業時間：<br/>
                 • 星期一：11:00 - 16:00<br/>
                 • 星期二至六：11:00 - 20:00<br/>
-                <span className="trip-note-muted">星期日全日休息</span>
+                <span className="trip-note-muted">星期日全日休息（今程唔撞正）</span>
               </span>
               <span className="trip-note-orange">⏳ 20:00 收工，唔好拖得太夜；16:00 check-in 後直接行過去最順。</span>
               <a href="https://www.udon-ichiba.jp/hyogo/shopinfo.html" target="_blank" rel="noreferrer" className="trip-link">🔗 うどん市場 兵庫町店 官方店舖資訊</a>
@@ -62,7 +62,7 @@ export const tak26Data = {
     },
     {
       id: "day2",
-      label: "Day 2",
+      label: "Day 2 (五)",
       hotel: "WeBase 高松 (WeBase TAKAMATSU)",
       hotelQuery: "WeBase+TAKAMATSU",
       timeline: [
@@ -144,7 +144,7 @@ export const tak26Data = {
     },
     {
       id: "day3",
-      label: "Day 3",
+      label: "Day 3 (六)",
       hotel: "WeBase 高松 (WeBase TAKAMATSU)",
       hotelQuery: "WeBase+TAKAMATSU",
       timeline: [
@@ -203,7 +203,7 @@ export const tak26Data = {
           mapQuery: "倉敷デニムストリート",
           details: (
             <>
-              <strong>如竹堂</strong>（本町14-5，10:00-17:30）：倉敷名物紙膠帶，<strong>800 種以上</strong>。星期六、日及假日有貼紙膠帶裝飾襟章／紙盒嘅小手作體驗。<br/>
+              <strong>如竹堂</strong>（本町14-5，10:00-17:30）：倉敷名物紙膠帶，<strong>800 種以上</strong>。星期六仲有貼紙膠帶裝飾襟章／紙盒嘅小手作體驗 —— Day 3 啱啱好係星期六。<br/>
               <strong>倉敷帆布 美観地区店</strong>（本町通り）：倉敷帆布織造廠嘅直營店，袋類手信一流，耐用。<br/>
               <strong>倉敷デニムストリート</strong>：由白壁通り一入美観地区就見到，集合十幾個國產同海外丹寧品牌，仲有藍色嘅丹寧包同軟雪糕。同上午児島牛仔褲街同一條線索。
               <span className="trip-note-green">呢三間行落嚟輕鬆，唔使趕，啱慢慢揀手信。剪走咗児島 RIVETS 嗰杯雪糕？デニムストリート 有藍色丹寧軟雪糕，喺呢度食返都一樣。</span>
@@ -243,12 +243,12 @@ export const tak26Data = {
             <>
               うな北 不定休，撲空就轉呢間 —— 倉敷觀光官方網站有介紹，同樣做鰻魚飯。<br/>
               地址：岡山県倉敷市中央2-1-18｜電話：086-427-3100｜由 JR 倉敷駅步行 <strong>7 分鐘</strong>（比うな北仲近）。
-              <span className="trip-badge-info">✅ 晚市做到 22:00，冇時間壓力</span>
+              <span className="trip-badge-info">✅ 星期六 17:00-22:00（L.O. 22:00），冇時間壓力</span>
               <span className="trip-subnote">
                 🕒 營業時間：<br/>
                 • 星期二至六：11:30 - 14:00 ／ 17:00 - 22:00（L.O. 22:00）<br/>
                 • 星期日及假日：11:30 - 14:00 ／ 17:00 - 21:30（L.O. 21:00）<br/>
-                <span className="trip-note-muted">定休日：星期一（遇假日順延至星期二）。</span>
+                <span className="trip-note-muted">定休日：星期一（遇假日順延至星期二）—— Day 3 係星期六，照開。</span>
               </span>
               <a href="https://www.kurashiki-tabi.jp/eat/eat-1130/" target="_blank" rel="noreferrer" className="trip-link">🔗 ゆうなぎ倉敷本店（倉敷觀光 WEB 官方）</a>
             </>
@@ -263,7 +263,7 @@ export const tak26Data = {
     },
     {
       id: "day4",
-      label: "Day 4",
+      label: "Day 4 (日)",
       hotel: "WeBase 高松 (WeBase TAKAMATSU)",
       hotelQuery: "WeBase+TAKAMATSU",
       timeline: [
@@ -296,7 +296,7 @@ export const tak26Data = {
             <>
               搭琴電返回瓦町站，之後沿中央商店街（有蓋）向北行約 7 分鐘就到丸亀町グリーン東館 1F —— 由 WeBase 行過去同樣是這條街，落雨都唔怕。四國第一間 Pokémon Center，門口有比卡超與呆呆獸迎賓。<br/>
               地址：香川県高松市丸亀町8番地23 丸亀町グリーン東館 1F｜營業時間：10:00-20:00
-              <span className="trip-note-orange">⏳ 四國唯一一間 Pokémon Center，週末同假日人最多；想影門口比卡超同呆呆獸，一開門就到最穩陣。</span>
+              <span className="trip-note-orange">⏳ Day 4 係星期日，四國唯一一間 Pokémon Center 週日人最多；想影門口比卡超同呆呆獸，一開門就到最穩陣。</span>
               <a href="https://www.pokemon.co.jp/sp/kagawa_2025/" target="_blank" rel="noreferrer" className="trip-link">🔗 Pokémon Center KAGAWA（官方）</a>
             </>
           )
@@ -318,12 +318,12 @@ export const tak26Data = {
               地址：香川県高松市古馬場町5-12｜電話：087-813-9029<br/>
               交通：琴電瓦町站（志度線口）步行 5-6 分鐘、片原町站步行 5 分鐘。<br/>
               WeBase 本身距瓦町站 5 分鐘，所以由酒店直接行過去約 10 分鐘。<strong>但唔使特登由酒店出發</strong> —— 行完丸亀町商店街由北往南落嚟，古馬場就喺瓦町前面，順路；食完再行 10 分鐘返酒店。
-              <span className="trip-badge-info">✅ 年中無休</span>
+              <span className="trip-badge-info">✅ 年中無休．星期日 14:00-23:00（L.O. 22:00）</span>
               <span className="trip-subnote">
                 🕒 營業時間：<br/>
                 • 星期一至六：14:00 - 24:00（L.O. 23:00）<br/>
                 • 星期日：14:00 - 23:00（L.O. 22:00）<br/>
-                <span className="trip-note-muted">週末夜市中心較旺，建議去之前打電話留位。</span>
+                <span className="trip-note-muted">Day 4 係星期日，照開，但週末夜市中心較旺，建議去之前打電話留位。</span>
               </span>
               <a href="https://www.kensanpin.org/umaimon/oliverestaurant/food/olive_gyu/%E7%82%AD%E7%84%BC-%E8%82%89%E3%81%AE%E8%BF%91%E3%81%A9%E3%81%86-%E5%AE%87%E5%A4%9A%E6%B4%A5%E5%BA%97-2/" target="_blank" rel="noreferrer" className="trip-link">🔗 三星橄欖餐廳認證頁（香川縣產品振興協議會）</a>
             </>
@@ -333,7 +333,7 @@ export const tak26Data = {
     },
     {
       id: "day5",
-      label: "Day 5 ✈️",
+      label: "Day 5 (一) ✈️",
       hotel: "WeBase 高松 (WeBase TAKAMATSU)",
       hotelQuery: "WeBase+TAKAMATSU",
       hotelNote: "Check-out",
@@ -372,7 +372,7 @@ export const tak26Data = {
     total: "約 ¥8,400-9,000",
     days: [
       {
-        day: "Day 1",
+        day: "Day 1（四）",
         items: [
           { label: "高松機場 → 県庁通り中央公園前（利木津巴士）", amount: "¥1,000" },
           { label: "酒店、兵庫町烏冬 全程步行", amount: "¥0" },
@@ -380,7 +380,7 @@ export const tak26Data = {
         total: "¥1,000",
       },
       {
-        day: "Day 2",
+        day: "Day 2（五）",
         items: [
           { label: "高松港 → 土庄港（渡輪）", amount: "¥700" },
           { label: "小豆島巴士 ×3 程（每程上限 ¥500）", amount: "¥900-1,500" },
@@ -389,7 +389,7 @@ export const tak26Data = {
         total: "¥2,300-2,900",
       },
       {
-        day: "Day 3",
+        day: "Day 3（六）",
         items: [
           { label: "高松 → 児島（マリンライナー）", amount: "¥1,090" },
           { label: "児島 → 倉敷（岡山轉車）", amount: "¥770" },
@@ -398,7 +398,7 @@ export const tak26Data = {
         total: "¥3,700",
       },
       {
-        day: "Day 4",
+        day: "Day 4（日）",
         items: [
           { label: "琴電 瓦町 ⇄ 三条（來回）", amount: "¥400" },
           { label: "寶可夢中心、古馬場晚餐 全程步行", amount: "¥0" },
@@ -406,7 +406,7 @@ export const tak26Data = {
         total: "¥400",
       },
       {
-        day: "Day 5",
+        day: "Day 5（一）",
         items: [
           { label: "県庁通り中央公園前 → 高松機場", amount: "¥1,000" },
         ],
