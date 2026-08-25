@@ -177,8 +177,12 @@ export const tak26Data = {
           mapQuery: "倉敷美観地区",
           details: (
             <>
-              児島 → 倉敷 <strong>約 56 分鐘、需喺岡山轉一次車</strong>（マリンライナー 児島→岡山，轉 JR 山陽本線 岡山→倉敷），車費 ¥770。<br/>
-              係回頭路：由児島北上岡山再向西去倉敷，夜晚返高松又要經岡山南下。
+児島 同 倉敷 雖然同屬倉敷市，但中間隔住山，兩種方法都要約一個鐘：<br/>
+              • <strong>JR</strong>：児島→岡山（マリンライナー）→倉敷（山陽本線），約 <strong>56 分鐘</strong>、岡山轉一次車、¥770。<br/>
+              • <strong>下電巴士（直達，唔使轉車）</strong>：天城線 [62] 約 55 分鐘／塩生線 [51] 約 57-62 分鐘，JR児島駅前 ↔ 倉敷駅前。
+              <span className="trip-note-green">同媽咪去建議搭巴士：時間同 JR 一樣，但一程坐到底，唔使喺岡山搬行李轉車。</span>
+              <a href="https://shimoden.net/rosen/rosen/amaki.html" target="_blank" rel="noreferrer" className="trip-link">🔗 下電巴士 天城線 路線案內（官方）</a>
+              <a href="https://www.navitime.co.jp/bus/diagram/timelist?departure=00081133&arrival=00448676&line=00072631" target="_blank" rel="noreferrer" className="trip-link">🔗 JR児島駅前 → 倉敷駅前 巴士時刻表</a>
               <span className="trip-note-orange">⏳ 美観地区多數商店 17:00-18:00 就收，想行到街就最遲 15:00 由児島出發，16:00 前到倉敷。</span>
             </>
           )
