@@ -154,9 +154,19 @@
 
 **Font import and stack**：
 
-```css
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap');
+字體由 `index.html` 的 `<link>` 載入，唔用 CSS `@import` —— `@import` 會阻塞樣式表解析，多一個來回先開始下載字體。
 
+```html
+<!-- index.html <head> -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" />
+```
+
+`display=swap` 令字體未到之前先用本地中文字族顯示，唔會白畫面。呢個 PWA 離線時字體攞唔到，會一直用 PingFang TC —— 屬預期行為，所以 fallback stack 必須自己企得住。
+
+```css
 :root {
   --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
@@ -615,32 +625,6 @@ input:focus-visible + .checkControl {
   outline: 2px solid var(--color-focus);
   outline-offset: 3px;
   box-shadow: var(--focus-ring);
-}
-```
-
-### Details disclosure
-
-```css
-.detailsToggle {
-  min-height: 44px;
-  padding: 0.5rem 0;
-  border: 0;
-  background: transparent;
-  color: var(--color-primary);
-  font: 700 0.875rem/1.4 var(--font-sans);
-  cursor: pointer;
-}
-
-.detailsToggle:hover { color: var(--color-primary-hover); }
-.detailsToggle:active { color: var(--color-primary-active); }
-.detailsToggle:focus-visible {
-  border-radius: var(--radius-sm);
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
-}
-.detailsToggle:disabled {
-  color: var(--color-text-disabled);
-  cursor: not-allowed;
 }
 ```
 

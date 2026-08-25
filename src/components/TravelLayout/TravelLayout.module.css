@@ -700,3 +700,50 @@
 .fareNotes li {
     margin-bottom: var(--space-2);
 }
+
+/* ---- Hover states ----
+   Gated on (hover: hover) so a tap on a phone does not leave the state
+   stuck on the element after the finger lifts. */
+@media (hover: hover) {
+    .homeLink:hover {
+        background: rgba(var(--color-surface-rgb), 0.28);
+        border-color: rgba(var(--color-surface-rgb), 0.55);
+    }
+
+    .dateChip:hover {
+        background: rgba(var(--color-surface-rgb), 0.78);
+        color: var(--color-primary);
+    }
+
+    .dateChip.active:hover {
+        background: var(--color-primary-hover);
+        color: var(--color-text-inverse);
+    }
+
+    .navBtn:hover {
+        color: var(--color-primary);
+    }
+
+    .navBtn.active:hover {
+        background-color: var(--color-primary-hover);
+        color: var(--color-text-inverse);
+    }
+
+    .hotelNavBtn:hover {
+        background-color: var(--color-accent-hover);
+    }
+
+    .itemNavBtn:hover,
+    .spotListOpenAll:hover {
+        background-color: var(--color-primary-hover);
+    }
+
+    .spotRow:hover {
+        background: rgba(var(--color-surface-rgb), 0.78);
+        box-shadow: var(--shadow-raised), var(--glass-highlight);
+    }
+
+    .todoLabel:hover {
+        background: rgba(var(--color-surface-rgb), 0.78);
+    }
+}

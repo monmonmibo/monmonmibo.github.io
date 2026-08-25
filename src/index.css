@@ -23,12 +23,14 @@
   --color-primary: #003366;
   --color-primary-rgb: 0, 51, 102;
   --color-primary-deep: #001F3F;
+  --color-primary-hover: #00284F;
   --color-primary-soft: #E6F2FF;
   --gradient-header: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-deep) 100%);
   /* Darkened from the shipped #D94124, which gave white button text only
      4.44:1. This reaches 4.94:1; the hue shift is imperceptible. */
   --color-accent: #CE3A1D;
   --color-accent-rgb: 206, 58, 29;
+  --color-accent-hover: #B8341A;
 
   /* Text */
   --color-text: #2C3E50;
