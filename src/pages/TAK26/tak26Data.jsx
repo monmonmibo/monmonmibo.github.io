@@ -197,35 +197,24 @@ export const tak26Data = {
               <strong>本町通り</strong>（河北面）係老町屋改成嘅店：mt 紙膠帶、倉敷帆布、國產牛仔褲店同水果 parfait 咖啡室 —— 同上午嘅児島牛仔褲街啱啱好呼應。<br/>
               <strong>倉敷アイビースクエア</strong>：爬滿常春藤嘅紅磚舊紡織廠改建，喺美観地区東南角。
               <span className="trip-note-orange">⏳ 大部分商店 17:00-18:00 收舖，想買嘢就要趁 17:00 前。</span>
-              <span className="trip-note-green">☀️ 但夜晚唔使急住走 —— 美観地区有石井幹子（東京鐵塔照明設計師）做嘅夜間燈光，食完飯行返轉頭係另一種景。</span>
+              <span className="trip-note-green">☀️ 夜晚唔使急住走 —— 美観地区有石井幹子（東京鐵塔照明設計師）做嘅夜間燈光，食完飯行返轉頭係另一種景。</span>
+              <span className="trip-note-muted">＊川舟遊河只賣當日券、朝早 9:00 喺倉敷館開賣，下午到多數已賣晒，唔使白行去問。</span>
               <a href="https://www.kurashiki-tabi.jp/standard/kurashiki-bikan-historical-quarter/" target="_blank" rel="noreferrer" className="trip-link">🔗 倉敷美観地区（倉敷觀光 WEB 官方）</a>
             </>
           )
         },
         {
-          time: "16:30 前入館",
-          title: "🖼️ 大原美術館（想入就要趁早）",
-          mapQuery: "大原美術館",
+          time: "行街",
+          title: "🛍️ 美観地区三間值得行嘅店",
+          mapQuery: "倉敷デニムストリート",
           details: (
             <>
-              日本第一間私立西洋美術館，藏 El Greco《受胎告知》、莫奈《睡蓮》、畢加索、雷諾瓦、高更，約 3,000 件。<br/>
-              開館 9:00-17:00（<strong>最終入館 16:30</strong>）｜休館日 星期一（假日照開，Day 3 星期六照開）｜大人 ¥2,000、學生 ¥500｜由倉敷駅步行 15 分鐘。
-              <span className="trip-badge-warn">⚠️ 最終入館 16:30</span>
-              <span className="trip-note-muted">睇齊要 1.5-2 個鐘，同行街實際上二揀一。淨係想行街影相就跳過。</span>
-              <a href="https://www.okayama-kanko.jp/spot/detail_10397.html" target="_blank" rel="noreferrer" className="trip-link">🔗 大原美術館（岡山觀光 WEB 官方）</a>
-            </>
-          )
-        },
-        {
-          time: "留意",
-          title: "⛵ くらしき川舟流し（下午多數已賣晒）",
-          mapQuery: "倉敷館 観光案内所",
-          details: (
-            <>
-              坐江戶時代樣式川舟遊倉敷川，由水面睇白牆町並，係美観地区最受歡迎嘅體驗。
-              <span className="trip-note-red">船票只有<strong>當日券</strong>，朝早 9:00 喺倉敷館（觀光案內所）開賣。你哋星期六下午先到，好大機會已經賣晒。</span>
-              <span className="trip-note-muted">網上預約要 2026 年 10 月乘船分先部分開放，你哋 9 月去仲未有。真係好想坐就要放棄児島、朝早直接去倉敷。</span>
-              <a href="https://www.kurashiki-tabi.jp/standard/kurashiki-bikan-historical-quarter/" target="_blank" rel="noreferrer" className="trip-link">🔗 倉敷觀光 WEB（川舟資訊）</a>
+              <strong>如竹堂</strong>（本町14-5，10:00-17:30）：倉敷名物紙膠帶，<strong>800 種以上</strong>。星期六仲有貼紙膠帶裝飾襟章／紙盒嘅小手作體驗 —— Day 3 啱啱好係星期六。<br/>
+              <strong>倉敷帆布 美観地区店</strong>（本町通り）：倉敷帆布織造廠嘅直營店，袋類手信一流，耐用。<br/>
+              <strong>倉敷デニムストリート</strong>：由白壁通り一入美観地区就見到，集合十幾個國產同海外丹寧品牌，仲有藍色嘅丹寧包同軟雪糕。同上午児島牛仔褲街同一條線索。
+              <span className="trip-note-green">呢三間行落嚟輕鬆，唔使趕，啱慢慢揀手信。</span>
+              <a href="https://www.kurashiki-tabi.jp/buy/buy-1152/" target="_blank" rel="noreferrer" className="trip-link">🔗 如竹堂（倉敷觀光 WEB 官方）</a>
+              <a href="https://www.kurashiki-tabi.jp/buy/buy-12563/" target="_blank" rel="noreferrer" className="trip-link">🔗 倉敷デニムストリート（倉敷觀光 WEB 官方）</a>
             </>
           )
         },
