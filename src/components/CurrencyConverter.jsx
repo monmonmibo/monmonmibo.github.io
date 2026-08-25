@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import styles from './CurrencyConverter.module.css';
 import useCurrencyRate from './useCurrencyRate';
 
@@ -10,6 +10,8 @@ export default function CurrencyConverter({
   formatResult,
   summaryLine,
 }) {
+  // Ties the visible label to the field; without it the input has no name
+  const inputId = useId();
   const [value, setValue] = useState('');
   const { rate, loading, error, date, lastUpdatedAt, isOffline } = useCurrencyRate(baseCurrency);
 
@@ -45,9 +47,10 @@ export default function CurrencyConverter({
       <h3 className={styles.title}>{title}</h3>
 
       <div className={styles.inputGroup}>
-        <label className={styles.label}>{inputLabel}</label>
+        <label className={styles.label} htmlFor={inputId}>{inputLabel}</label>
         <div className={styles.inputWrap}>
           <input
+            id={inputId}
             type="text"
             inputMode="decimal"
             value={value}
@@ -57,9 +60,10 @@ export default function CurrencyConverter({
           />
           {value && (
             <button
+              type="button"
               onClick={handleReset}
               className={styles.clearBtn}
-              aria-label="Clear input"
+              aria-label="清除輸入"
             >
               ✕
             </button>

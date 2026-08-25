@@ -124,3 +124,16 @@
     outline-offset: 3px;
     box-shadow: var(--focus-ring);
 }
+
+.pageHeader {
+    width: 100%;
+    text-align: center;
+}
+
+/* Keeps the card column centred now that it is a landmark, not a bare div */
+.tripList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}

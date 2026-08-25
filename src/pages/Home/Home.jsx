@@ -4,8 +4,12 @@ import styles from './Home.module.css';
 export default function Home() {
     return (
         <div className={styles.container}>
-        <h1 className={styles.title}>My Travels 🌍</h1>
-        <p className={styles.subtitle}>行程總覽 Dashboard</p>
+            <header className={styles.pageHeader}>
+                <h1 className={styles.title}>My Travels 🌍</h1>
+                <p className={styles.subtitle}>行程總覽 Dashboard</p>
+            </header>
+
+            <main className={styles.tripList} aria-label="行程列表">
 
             <Link to="/ukb26" className={styles.tripCard}>
                 <div className={styles.tripInfo}>
@@ -58,9 +62,11 @@ export default function Home() {
                 </div>
             </Link>
 
-            <div className={styles.footer}>
+            </main>
+
+            <footer className={styles.footer}>
                 Built for my own adventures
-            </div>
+            </footer>
         </div>
     );
 }
