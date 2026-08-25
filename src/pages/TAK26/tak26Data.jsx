@@ -149,30 +149,24 @@ export const tak26Data = {
       hotelQuery: "WeBase+TAKAMATSU",
       timeline: [
         {
-          time: "上午",
+          time: "08:30 高松発",
           title: "🚉 高松 → 兒島",
-          details: "建議早一點由高松出發，搭 JR 瀨戶大橋線前往兒島站"
+          details: "JR 快速マリンライナー 直達，約 30 分鐘、¥1,090，唔使轉車。09:00 左右到児島。"
         },
         {
-          time: "上午",
+          time: "09:00-12:00",
           title: "👖 兒島牛仔褲街 (Jeans Street)",
           type: "highlight",
           mapQuery: "児島ジーンズストリート",
-          details: "漫步於日本單寧聖地，尋找高品質牛仔製品，吊掛牛仔褲是必拍打卡位"
+          details: "漫步於日本單寧聖地，尋找高品質牛仔製品，吊掛牛仔褲是必拍打卡位。約 400 米一條街，行足三個鐘綽綽有餘。"
         },
         {
-          time: "中午",
+          time: "12:00",
           title: "🍱 午餐：兒島",
-          details: "在牛仔褲街周邊享用午餐，節奏更輕鬆"
+          details: "在牛仔褲街周邊享用午餐。13:00 左右出發去倉敷，就有成個下午行美観地区。"
         },
         {
-          time: "午後",
-          title: "🍦 RIVETS 雪糕休息",
-          mapQuery: "岡山県倉敷市児島味野2-5-3 RIVETS",
-          details: "到 RIVETS（岡山県倉敷市児島味野2-5-3）食雪糕，作為兒島行程中段休息"
-        },
-        {
-          time: "15:00 前出發",
+          time: "13:00 児島発",
           title: "🚉 兒島 → 倉敷（行街）",
           mapQuery: "倉敷美観地区",
           details: (
@@ -187,7 +181,7 @@ export const tak26Data = {
           )
         },
         {
-          time: "到埗後",
+          time: "14:10 到美観地区",
           title: "🏯 倉敷美観地区",
           type: "highlight",
           mapQuery: "倉敷美観地区",
@@ -204,7 +198,7 @@ export const tak26Data = {
           )
         },
         {
-          time: "行街",
+          time: "14:10-17:30",
           title: "🛍️ 美観地区三間值得行嘅店",
           mapQuery: "倉敷デニムストリート",
           details: (
@@ -212,7 +206,7 @@ export const tak26Data = {
               <strong>如竹堂</strong>（本町14-5，10:00-17:30）：倉敷名物紙膠帶，<strong>800 種以上</strong>。星期六仲有貼紙膠帶裝飾襟章／紙盒嘅小手作體驗 —— Day 3 啱啱好係星期六。<br/>
               <strong>倉敷帆布 美観地区店</strong>（本町通り）：倉敷帆布織造廠嘅直營店，袋類手信一流，耐用。<br/>
               <strong>倉敷デニムストリート</strong>：由白壁通り一入美観地区就見到，集合十幾個國產同海外丹寧品牌，仲有藍色嘅丹寧包同軟雪糕。同上午児島牛仔褲街同一條線索。
-              <span className="trip-note-green">呢三間行落嚟輕鬆，唔使趕，啱慢慢揀手信。</span>
+              <span className="trip-note-green">呢三間行落嚟輕鬆，唔使趕，啱慢慢揀手信。剪走咗児島 RIVETS 嗰杯雪糕？デニムストリート 有藍色丹寧軟雪糕，喺呢度食返都一樣。</span>
               <a href="https://www.kurashiki-tabi.jp/buy/buy-1152/" target="_blank" rel="noreferrer" className="trip-link">🔗 如竹堂（倉敷觀光 WEB 官方）</a>
               <a href="https://www.kurashiki-tabi.jp/buy/buy-12563/" target="_blank" rel="noreferrer" className="trip-link">🔗 倉敷デニムストリート（倉敷觀光 WEB 官方）</a>
             </>
@@ -262,7 +256,7 @@ export const tak26Data = {
         {
           time: "20:00 左右",
           title: "🚉 倉敷 → 高松",
-          details: "倉敷 → 岡山（JR 山陽本線約 16 分）→ 高松（マリンライナー約 55 分），連轉車約 1 小時 20 分。食完 19:30 出發，返到高松約 21:00-21:30。"
+          details: "倉敷 → 岡山（JR 山陽本線約 16 分）→ 高松（マリンライナー約 55 分），連轉車約 1 小時 20 分。19:30 出發，返到高松約 20:50。"
         }
       ]
     },
