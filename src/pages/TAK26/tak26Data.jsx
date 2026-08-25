@@ -172,31 +172,43 @@ export const tak26Data = {
           details: "到 RIVETS（岡山県倉敷市児島味野2-5-3）食雪糕，作為兒島行程中段休息"
         },
         {
-          time: "下午",
+          time: "15:00 前出發",
           title: "🚉 兒島 → 倉敷（行街）",
           mapQuery: "倉敷美観地区",
-          details: "由兒島移動到倉敷，於美觀地區與商店街散策"
-        },
-        {
-          time: "晚上",
-          title: "🍱 晚餐：鰻北倉敷店",
-          type: "highlight",
-          mapQuery: "岡山県倉敷市本町1-32",
           details: (
             <>
-              地址：1-32 Honmachi, Kurashiki, Okayama 710-0054 日本<br/>
-              電話：+81 86-454-4545<br/>
-              營業時間：11:00-15:00，17:00-19:30（每天）<br/>
-              建議提早到店或先預約。
-              <a href="https://unagi-nobori.shop" target="_blank" rel="noreferrer" className="trip-link">🔗 官方選單 / 官網</a>
-              <a href="https://www.hotpepper.jp/" target="_blank" rel="noreferrer" className="trip-link">🔗 預約（Hotpepper）</a>
+              児島 → 倉敷 <strong>約 56 分鐘、需喺岡山轉一次車</strong>（マリンライナー 児島→岡山，轉 JR 山陽本線 岡山→倉敷），車費 ¥770。<br/>
+              係回頭路：由児島北上岡山再向西去倉敷，夜晚返高松又要經岡山南下。
+              <span className="trip-note-orange">⏳ 美観地区多數商店 17:00-18:00 就收，想行到街就最遲 15:00 由児島出發，16:00 前到倉敷。</span>
             </>
           )
         },
         {
-          time: "晚間",
+          time: "18:30 前入座",
+          title: "🍱 晚餐：うな北 倉敷店（鰻北）",
+          type: "highlight",
+          mapQuery: "岡山県倉敷市本町1-32",
+          details: (
+            <>
+              地址：岡山県倉敷市本町1-32（〒710-0054）｜電話：086-454-4545｜人均 ¥3,001-4,000<br/>
+              由 JR 倉敷駅步行 13 分鐘，就喺美観地区本町一帶。
+              <span className="trip-badge-warn">⚠️ 不定休．晚市 L.O. 19:00</span>
+              <span className="trip-subnote">
+                🕒 營業時間（每日）：<br/>
+                • 午市 11:00 - 15:00（L.O. 14:30）<br/>
+                • 晚市 17:00 - 19:30（<strong>L.O. 19:00</strong>）<br/>
+                <span className="trip-note-muted">19:30 係關門，唔係落單死線；最遲 18:30 坐低先穩陣。</span>
+              </span>
+              <span className="trip-note-red">冇固定休息日（不定休），出發前一定要打電話確認同訂位。</span>
+              <a href="https://unagi-nobori.shop" target="_blank" rel="noreferrer" className="trip-link">🔗 官方選單 / 官網</a>
+              <a href="https://www.hotpepper.jp/strJ003560531/" target="_blank" rel="noreferrer" className="trip-link">🔗 うな北 倉敷店（HotPepper 可網上訂位）</a>
+            </>
+          )
+        },
+        {
+          time: "20:00 左右",
           title: "🚉 倉敷 → 高松",
-          details: "晚餐後由倉敷返回高松"
+          details: "倉敷 → 岡山（JR 山陽本線約 16 分）→ 高松（マリンライナー約 55 分），連轉車約 1 小時 20 分。食完 19:30 出發，返到高松約 21:00-21:30。"
         }
       ]
     },
