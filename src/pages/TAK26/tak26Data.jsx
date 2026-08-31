@@ -74,7 +74,15 @@ export const tak26Data = {
           details: (
             <>
               一早先去高松のりば（高松港・小豆島行き営業所），建議班次：08:02 由高松港出發，09:02 抵達土庄港。落船後步行到巴士站，先前往天使之路，再轉車去 Olive Park。
+              <span className="trip-note-red">☔ 出發朝早一定要先睇渡輪運航情報 —— 荒天會欠航，去到碼頭先知就好蝕。官方 X 帳號出即時消息最快。</span>
+              <span className="trip-subnote">
+                小豆島呢一日係全程<strong>最怕落雨</strong>嗰日：天使之路係退潮先行得到嘅沙洲、橄欖公園騎掃把位係戶外草坡、島上三程巴士接駁都要喺室外等。<br/>
+                如果當日大雨或者有雷，<strong>同 Day 4 對調</strong>最化算 —— Day 4 係商場 + 寶可夢中心 + 有蓋商店街，落雨都照玩，兩日都係由同一間酒店出發，冇行程綁死。<br/>
+                <span className="trip-note-muted">要對調就記住：① 近どう 燒肉訂位跟住搬；② 島上巴士平日同土日祝時刻表唔同，下面列嘅班次要重新對過。</span>
+              </span>
               <a href="https://www.shikokuferry.com/route2#schedule" target="_blank" rel="noreferrer" className="trip-link">🔗 高松↔土庄 船班時刻表（官方）</a>
+              <a href="https://www.shikokuferry.com/" target="_blank" rel="noreferrer" className="trip-link">🔗 四國渡輪 運航情報（官方）</a>
+              <a href="https://x.com/skferry1956" target="_blank" rel="noreferrer" className="trip-link">🔗 四國渡輪 X（欠航即時公布）</a>
             </>
           )
         },
