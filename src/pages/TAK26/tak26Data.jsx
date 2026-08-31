@@ -119,7 +119,23 @@ export const tak26Data = {
           title: "🧹 小豆島オリーブ公園（魔女宅急便掃把飛天）",
           type: "highlight",
           mapQuery: "道の駅 小豆島オリーブ公園",
-          details: "先到雑貨コリコ借掃把，再去希臘風車草坡位拍連拍飛天照；之後可慢行園區、食輕食，保留充足時間回程"
+          details: (
+            <>
+              先到雑貨コリコ借掃把，再去希臘風車草坡位拍連拍飛天照；之後可慢行園區、食輕食，保留充足時間回程。
+              <span className="trip-note-green">☔ 落大雨唔使放棄呢個站 —— 園區本身有唔少室內內容，掃把飛天照拍唔成，其餘照玩。</span>
+              <span className="trip-subnote">
+                <strong>室內備案（同一個園區內）：</strong><br/>
+                • <strong>雑貨コリコ</strong>：魔女宅急便原景改成嘅雑貨店，本身就係室內，借掃把嗰度。<br/>
+                • <strong>オリーブ記念館</strong>：8:30 - 17:00，講橄欖歷史。<br/>
+                • 橄欖油咖啡室：坐低避雨食嘢。<br/>
+                • <strong>サン・オリーブ温泉</strong>：就喺園區內，10 種浴（香草浴、寢湯、打たせ湯、桑拿、露天）。大人 ¥1,000、小學及以下 ¥700、3 歲以下免費，毛巾套裝租借 ¥200。
+              </span>
+              <span className="trip-badge-warn">⚠️ 温泉 15:00 先開（受付到 19:30）．水曜全館休、木曜温泉休</span>
+              <span className="trip-note-orange">⏳ 温泉同回程夾得好緊：15:00 開門，但回程巴士 16:00（F22）或 16:36（T25）就要走，即係最多浸 1-1.5 個鐘而且要趕。真係想浸鬆啲，就要改搭遲一班船。</span>
+              <a href="https://www.olive-pk.jp/map/sunolive.html" target="_blank" rel="noreferrer" className="trip-link">🔗 サン・オリーブ温泉（官方）</a>
+              <a href="https://www.olive-pk.jp/" target="_blank" rel="noreferrer" className="trip-link">🔗 道の駅 小豆島オリーブ公園（官方）</a>
+            </>
+          )
         },
         {
           time: "下午",
