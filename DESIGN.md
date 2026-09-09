@@ -436,6 +436,47 @@ button.card:focus-visible {
 }
 ```
 
+### Tab strip edge controls
+
+日期 tab 條係橫向捲動容器，捲軸永遠隱藏（`scrollbar-width: none`）。喺觸控裝置掃得郁，但用滑鼠就等於冇任何捲動途徑 —— 六日行程加 To-Do 一定溢出。兩邊各浮一個圓形箭嘴掣，只喺嗰個方向仲有內容時出現。
+
+```css
+.tabScroller { position: relative; }
+
+.tabNav {
+  position: absolute;
+  inset-block-start: 50%;
+  z-index: 2;
+  display: none;               /* 由 JS 按捲動位置切換 */
+  inline-size: 34px;
+  block-size: 34px;
+  border: var(--glass-border-strong);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  box-shadow: 0 2px 10px rgba(var(--color-text-rgb), 0.18);
+  transform: translateY(-50%);
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.tabNavShown { display: flex; }
+.tabNav:hover { background: var(--color-primary); color: var(--color-text-inverse); }
+.tabNavLeft { inset-inline-start: 8px; }
+.tabNavRight { inset-inline-end: 8px; }
+
+/* 觸控本身掃得郁，兩個掣淨係阻住 tab */
+@media (pointer: coarse) {
+  .tabNavShown { display: none; }
+}
+
+/* chip 唔可以被壓扁：nowrap + 可縮 = 文字爆出格 */
+.dateChip { flex: 0 0 auto; }
+```
+
+- 捲動位置用 `scroll` 事件加 `ResizeObserver` 監住，改視窗大細或者換咗日數唔同嘅行程都會重算。
+- 呢兩個掣係 `aria-hidden="true"` + `tabIndex={-1}`，**唔畀 aria-label**。tablist 本身已經有方向鍵、Home/End 同 roving tabindex，鍵盤同螢幕閱讀器用嗰條路；再曝露兩個掣只會喺 Tab 次序度多兩個冗餘停站。呢個係「icon-only control 必須有 aria-label」嘅唯一豁免 —— 前提係已經有等效鍵盤操作。
+- `34 × 34px` 細過 44px 觸控下限，但佢喺 `pointer: coarse` 之下唔會出現，所以只服務滑鼠。任何會喺觸控出現嘅 icon 掣仍然要 44px。
+
 ### Links
 
 ```css
@@ -572,6 +613,124 @@ button.card:focus-visible {
 - 數值欄一律 `text-align: right` + `font-variant-numeric: tabular-nums` + `white-space: nowrap`，方便垂直比較同避免金額斷行。
 - 金額用字串儲存，唔好用數字：咁「¥900-1,500」一類範圍先可以同定額排喺同一欄，唔使兩套渲染邏輯。
 - 總計橫額用實色 `--color-primary` + `--color-text-inverse`，同表身區分；唔好靠加粗或者放大字體嚟做總計。
+
+### Timetable grids
+
+同上面 `.dataTable` **唔同 pattern，唔好混淆**。`.dataTable` 係「標籤 + 數值」清單（車費、匯率）；呢個係由官方時刻表抄落嚟嘅**矩陣** —— 一個軸係站或者班次，另一個軸係時間。兩者規則相反，各有各嘅理由。
+
+```css
+.trip-timetable-wrap {
+  display: block;
+  overflow-x: auto;                    /* 表自己捲，唔好撐爆版面 */
+  overscroll-behavior-x: contain;      /* 捲到盡唔好觸發瀏覽器返回手勢 */
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.trip-timetable {
+  border-collapse: collapse;
+  inline-size: max-content;
+  min-inline-size: 100%;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.trip-timetable th,
+.trip-timetable td {
+  padding: 5px var(--space-2);
+  border-block-end: 1px solid var(--color-border);
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* 首欄釘住，其餘直行喺佢後面捲 */
+.trip-timetable thead th:first-child,
+.trip-timetable tbody th {
+  position: sticky;
+  inset-inline-start: 0;
+  z-index: 2;
+  background: var(--color-surface);
+  box-shadow: 3px 0 5px -2px rgba(var(--color-text-rgb), 0.25);
+}
+
+/* 首欄係地名：靠左、准摺行、封頂闊度 */
+.trip-timetable tbody th {
+  text-align: left;
+  white-space: normal;
+  min-inline-size: 6em;
+  max-inline-size: 8.5em;
+  line-height: 1.25;
+}
+
+/* 首欄係時間：同其餘直行一樣置中 */
+.trip-timetable-num tbody th {
+  text-align: center;
+  white-space: nowrap;
+  min-inline-size: 0;
+  max-inline-size: none;
+}
+
+.trip-timetable tr.is-key th,
+.trip-timetable tr.is-key td { background: var(--color-info-soft); color: var(--color-info); font-weight: 700; }
+
+.trip-timetable tr.is-off th,
+.trip-timetable tr.is-off td { color: var(--color-text-tertiary); font-weight: 400; }
+
+.trip-timetable .is-taken { color: var(--color-info); font-weight: 700; }
+.trip-timetable .is-taken-start { border-inline-start: 2px solid var(--color-info); }
+.trip-timetable .is-taken-end   { border-inline-end: 2px solid var(--color-info); }
+```
+
+### Timetable grid rules
+
+- **時間置中，唔係右對齊。** `.dataTable` 嘅右對齊係為咗令長短不一嘅金額個位對齊；矩陣入面每格都係 `H:MM` 等寬，置中先同表頭對得正。
+- **呢類表用 `border-collapse: collapse`。** §8 嗰條禁令針對嘅係 `<table>` 自身帶 padding 嘅情況（`separate` 先生效）。呢度 padding 全部落喺格仔，邊框同圓角由 `.trip-timetable-wrap` 負責，`<table>` 本身冇 padding，所以個陷阱唔成立 —— 而且畫格線一定要 `collapse`。
+- **首欄釘住要有陰影邊。** 冇嘅話後面捲過嚟嘅時間會露半截喺文字底下，睇落似渲染爆咗而唔似釘住。釘住嘅格仔背景必須唔透明，`is-key` 一類有底色嘅行要再明確落一次底色。
+- **表頭角落格要一齊釘。** 淨係釘 `tbody th` 嘅話，捲動時直行標題會同下面啲值錯開。
+- **三種標示各有分工：** `is-key` 標你實際上落車嗰行（成行藍底）、`is-taken` 加 `is-taken-start/end` 框住實際搭嗰幾個直行（只畫左右兩條線，唔好逐格 outline —— 圓角 outline 疊落成直行會變一串波浪）、`is-off` 灰化當日唔行嘅班次（保留住等人一眼睇得出唔關事，唔好刪走）。
+- **只剪走物理上唔可能嘅班次。** 太早到唔到、太夜嘅仍然係後備，剪走等於㩒住人哋唔准改主意；剪咗要喺表底寫明剪咗咩同點解，並附官方時刻表連結。
+
+### Collapsible panels
+
+```css
+.trip-collapse {
+  display: block;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+
+.trip-collapse > summary {
+  display: flex;
+  align-items: center;
+  min-block-size: var(--control-height);
+  padding: 6px var(--space-2);
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  list-style: none;                                  /* Firefox */
+}
+
+.trip-collapse > summary::-webkit-details-marker { display: none; }
+.trip-collapse > summary::after {
+  content: '\25BE';
+  margin-inline-start: auto;
+  transition: transform 200ms ease;
+}
+.trip-collapse[open] > summary::after { transform: rotate(180deg); }
+
+/* 面板已經有邊框，入面張表唔好再畫多一層 */
+.trip-collapse .trip-timetable-wrap {
+  border: 0;
+  border-block-start: 1px solid var(--color-border);
+  border-radius: 0;
+}
+```
+
+- 用原生 `<details>` / `<summary>`，唔好自己砌 —— 免費得到鍵盤操作、螢幕閱讀器展開狀態同瀏覽器內搜尋。
+- **只准摺完整時刻表呢一類大塊參考資料**，而且同一個 timeline item 入面必須已經有純文字寫住實際要搭嗰幾班。摺埋嘅係「全部班次」，唔係「你要搭嗰班」。
+- `summary` 至少 `var(--control-height)` 高，箭嘴用 `::after` 唔好用 emoji（方向要跟 `[open]` 轉）。
 
 ### Forms and checklist controls
 
@@ -755,6 +914,8 @@ html { scroll-behavior: smooth; }
 
 - 不使用 scroll reveal、parallax、scroll-jacking 或 pinned narrative。
 - 切換日期後可回到內容起點，但須避免蓋過 sticky navigation；焦點管理應跟隨新內容。
+- 橫向捲動容器唔准淨係靠隱藏捲軸交差：滑鼠冇替代操作。要就補邊緣箭嘴掣，並按實際捲動位置顯示／收起。
+- 貼落嚟嘅時刻表喺切換日期後自動捲到標記嘅班次，唔好停喺朝早第一班。用 `getBoundingClientRect()` 差值計，唔好用 `offsetLeft` —— `<td>` 嘅 `offsetParent` 係 `<table>`，遇到 sticky 首欄會計錯。
 
 ### Hover, press and state feedback
 
@@ -826,8 +987,8 @@ html { scroll-behavior: smooth; }
 - ❌ 不要令按鈕或可點擊列的觸控區小於 `44 × 44px`。
 - ❌ 不要把固定 bottom navigation 疊在最後一張卡、keyboard 或 safe area 上。
 - ❌ 不要以 hover 才顯示關鍵資訊，手機沒有可靠 hover。
-- ❌ 不要把班次、地址、外部連結摺疊喺展開掣後面。掃讀靠的是時間標籤同標題，唔係靠收起內文。
-- ❌ 表格不要用 `border-collapse: collapse` —— 佢會令 `<table>` 自身的 padding 靜靜地失效，文字會貼住卡邊。用 `separate` + `border-spacing: 0`。
+- ❌ 不要把班次、地址、外部連結摺疊喺展開掣後面。掃讀靠的是時間標籤同標題，唔係靠收起內文。唯一例外係整份官方時刻表：條件係實際要搭嗰幾班已經以純文字寫喺同一個 item 入面，摺埋嘅只係其餘班次（見 Collapsible panels）。
+- ❌ 帶 padding 嘅表格不要用 `border-collapse: collapse` —— 佢會令 `<table>` 自身的 padding 靜靜地失效，文字會貼住卡邊。用 `separate` + `border-spacing: 0`。班次矩陣係例外：padding 落喺格仔、邊框由外層 wrapper 畫，而且畫格線必須用 `collapse`。
 - ❌ 不要為視覺一致而刪減班次方向、站號或後備方案等實用資料。
 
 ## 9. Responsive Behavior

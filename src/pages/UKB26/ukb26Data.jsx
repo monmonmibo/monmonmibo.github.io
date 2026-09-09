@@ -464,7 +464,7 @@ export const ukb26Data = {
               <details className="trip-collapse">
                 <summary>🚌 回程時刻表：夢舞台前 → 三宮（大磯号）</summary>
                 <span className="trip-timetable-wrap">
-                  <table className="trip-timetable">
+                  <table className="trip-timetable trip-timetable-num">
                     <thead>
                       <tr>
                         <th scope="col">夢舞台前</th>

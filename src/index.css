@@ -352,6 +352,15 @@ body {
   background: var(--color-info-soft);
 }
 
+/* A timetable keyed by departure time rather than by place — the row header
+   is a time, so it centres like every other column. */
+.trip-timetable-num tbody th {
+  text-align: center;
+  white-space: nowrap;
+  min-width: 0;
+  max-width: none;
+}
+
 /* Runs that don't operate on this trip's day — kept for context, dimmed */
 .trip-timetable tr.is-off th,
 .trip-timetable tr.is-off td {
