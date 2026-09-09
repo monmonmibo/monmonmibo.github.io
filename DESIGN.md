@@ -210,6 +210,37 @@ body {
 
 ## 4. Component Stylings
 
+### Spec names vs the code
+
+本章嘅 selector 係**規範用嘅語意名**，唔係 `src/` 入面真實嘅 class 名。呢份係設計規範，
+唔係 API 文檔 —— 揀語意名係為咗講「一個 badge 應該點」，而唔係綁死某個檔案叫咩。
+
+代價係查唔返轉頭。所以對照表放喺呢度，改 code 之前先對一對：
+
+| 規範名 | 實際 class | 位置 |
+|---|---|---|
+| `.pageShell` | `.container` | TravelLayout / Home / CurrencyConverter |
+| `.tripGrid` | `.tripList` | Home |
+| `.interactiveCard` | `.card`、`.tripCard` | TravelLayout / Home |
+| `.dayPanel` | `.daySection` | TravelLayout |
+| `.timelineMarker` | `.timelineItem::before` | TravelLayout（偽元素，唔係獨立 class） |
+| `.navItem` | `.navBtn` | TravelLayout 底部導航 |
+| `.button` | `.itemNavBtn`、`.hotelNavBtn` | TravelLayout 導航掣 |
+| `.textLink` | `.trip-link` | **全域**（`index.css`），資料檔要用呢個 |
+| `.badge` + `data-tone` | `.trip-badge-info`、`.trip-badge-warn` | **全域**（`index.css`） |
+| `.dataTable` | `.fareTable` | TravelLayout 車費表 |
+| `.dataTableTotal` | `.fareSubtotal`、`.fareGrand` | TravelLayout |
+| `.field` | `.input`、`.inputGroup` | CurrencyConverter |
+| `.checkControl` | `.checkCircle` | TravelLayout to-do |
+| `.pageEnter` | `fadeIn` keyframe | TravelLayout |
+
+**未建成嘅：** `.buttonSecondary`（surface 底 + primary 字）喺 code 冇對應 —— 現有掣得
+實色 primary（`.itemNavBtn`）同無邊框 icon 掣（`.clearBtn`）兩種。要做次要掣就跟返本章
+規格，唔好即興再開一種。`.pressable` 同樣係通用按壓行為，唔係一個真 class。
+
+資料檔（`src/pages/*/​*Data.jsx`）嘅 `details` 只可以用**全域** `trip-*` class，
+因為佢哋唔經 CSS modules。
+
 ### Shared geometry
 
 ```css
@@ -362,7 +393,9 @@ button.card:focus-visible {
 .stickyNav {
   position: sticky;
   inset-block-start: 0;
-  z-index: 100;
+  z-index: 99;                 /* 低過 bottomNav 嘅 1000 */
+  padding-block: 10px;
+  margin-block-end: 10px;
   background: var(--glass-sticky-bg);
   border-block-end: 1px solid rgba(var(--color-surface-rgb), 0.50);
   backdrop-filter: var(--glass-sticky-blur);
@@ -1071,3 +1104,6 @@ html { scroll-behavior: smooth; }
 - Keyboard：所有 links、buttons、tabs、checkboxes 的 focus 次序清楚可見。
 - Content stress：長地名、兩行標題、四位數時間／金額、離線及 error 狀態不破版。
 - Contrast：正文、secondary text、badges、disabled state 以 WCAG AA 為最低目標。
+- Spec 合規：新增／改動嘅 CSS 冇違反 §8 Do's and Don'ts；有例外就喺 §4 寫低理由。
+- Token 合規：冇硬編 hex、px 圓角、px 陰影；一律經 `src/index.css` 嘅變數。
+- 文檔同步：新增 component 或改動既有 pattern 後，§4 已補返對應章節同對照表。

@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // empty' | { read -r f; case \"$f\" in *.css|*.jsx) jq -nc '{hookSpecificOutput:{hookEventName:\"PreToolUse\",additionalContext:\"Read DESIGN.md before changing visual code — section 4 covers components, section 8 the Do and Do-not rules. If you add or change a component, update section 4 to match.\"}}' ;; esac; } 2>/dev/null || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
