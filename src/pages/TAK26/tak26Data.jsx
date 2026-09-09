@@ -67,6 +67,77 @@ export const tak26Data = {
       hotelQuery: "WeBase+TAKAMATSU",
       timeline: [
         {
+          time: "上午",
+          title: "🎀 Sanrio ゆめタウン高松店",
+          type: "highlight",
+          mapQuery: "ゆめタウン高松",
+          details: (
+            <>
+              由酒店步行 5 分鐘到瓦町站，搭琴電琴平線去「三条」站（約 5 分鐘），落車再步行約 13 分鐘到ゆめタウン高松，Sanrio 專門店在 2/F。<br/>
+              地址：香川県高松市三条町608-1 ゆめタウン高松 2F｜電話：087-868-5689<br/>
+              商場營業時間：本館 9:30-21:30，專門店 10:00-21:00。四國最大規模商場（約 170 間專門店），可順道逛百貨、生活雜貨與藥妝。
+              <a href="https://stores.sanrio.co.jp/8474100" target="_blank" rel="noreferrer" className="trip-link">🔗 Sanrio ゆめタウン高松店（官方）</a>
+              <a href="https://www.izumi.jp/tenpo/takamatsu/access" target="_blank" rel="noreferrer" className="trip-link">🔗 ゆめタウン高松 交通指南（官方）</a>
+            </>
+          )
+        },
+        {
+          time: "中午",
+          title: "🍜 午餐：ゆめタウン高松",
+          details: "在商場內解決：フードコート 10:00-21:00，レストラン街 11:00-21:00，不用走出走入"
+        },
+        {
+          time: "下午",
+          title: "⚡ Pokémon Center KAGAWA",
+          type: "highlight",
+          mapQuery: "ポケモンセンターカガワ 丸亀町グリーン",
+          details: (
+            <>
+              搭琴電返回瓦町站，之後沿中央商店街（有蓋）向北行約 7 分鐘就到丸亀町グリーン東館 1F —— 由 WeBase 行過去同樣是這條街，落雨都唔怕。四國第一間 Pokémon Center，門口有比卡超與呆呆獸迎賓。<br/>
+              地址：香川県高松市丸亀町8番地23 丸亀町グリーン東館 1F｜營業時間：10:00-20:00
+              <span className="trip-note-orange">⏳ Day 2 係星期五，四國唯一一間 Pokémon Center 平日人流鬆過週末；想影門口比卡超同呆呆獸，一開門就到最穩陣。</span>
+              <a href="https://www.pokemon.co.jp/sp/kagawa_2025/" target="_blank" rel="noreferrer" className="trip-link">🔗 Pokémon Center KAGAWA（官方）</a>
+            </>
+          )
+        },
+        {
+          time: "傍晚",
+          title: "☕ 丸亀町 / 中央商店街散步",
+          mapQuery: "高松丸亀町商店街",
+          details: "Pokémon Center 就在高松中央商店街內，沿住條街行返落瓦町即回到酒店，一路行一路睇舖"
+        },
+        {
+          time: "19:00",
+          title: "🥩 晚餐：炭焼き 肉の近どう 高松古馬場店（橄欖牛炭火燒肉）",
+          type: "highlight",
+          mapQuery: "炭焼き 肉の近どう 高松古馬場店",
+          details: (
+            <>
+              A5 級<strong>橄欖牛</strong>，用<strong>備長炭</strong>自己喺枱上燒，配自家製燒肉汁同喜馬拉雅岩鹽。香川縣產品振興協議會認證嘅「三星橄欖餐廳」。<br/>
+              有<strong>掘りごたつ個室</strong>（挖低式，腳可以伸直，唔使跪坐）。全店 100 席、全席禁煙。<br/>
+              地址：香川県高松市古馬場町5-12｜電話：087-813-9029<br/>
+              交通：琴電瓦町站（志度線口）步行 5-6 分鐘、片原町站步行 5 分鐘。<br/>
+              WeBase 本身距瓦町站 5 分鐘，所以由酒店直接行過去約 10 分鐘。<strong>但唔使特登由酒店出發</strong> —— 行完丸亀町商店街由北往南落嚟，古馬場就喺瓦町前面，順路；食完再行 10 分鐘返酒店。
+              <span className="trip-badge-info">✅ 年中無休．星期五 14:00-24:00（L.O. 23:00）</span>
+              <span className="trip-subnote">
+                🕒 營業時間：<br/>
+                • 星期一至六：14:00 - 24:00（L.O. 23:00）<br/>
+                • 星期日：14:00 - 23:00（L.O. 22:00）<br/>
+                <span className="trip-note-muted">Day 2 係星期五，收到 24:00（L.O. 23:00），比星期日夜一個鐘，唔使趕。打電話留位時<strong>指定要掘りごたつ個室</strong> —— 個室數量有限，唔講多數安排普通枱。</span>
+              </span>
+              <a href="https://www.kensanpin.org/umaimon/oliverestaurant/food/olive_gyu/%E7%82%AD%E7%84%BC-%E8%82%89%E3%81%AE%E8%BF%91%E3%81%A9%E3%81%86-%E5%AE%87%E5%A4%9A%E6%B4%A5%E5%BA%97-2/" target="_blank" rel="noreferrer" className="trip-link">🔗 三星橄欖餐廳認證頁（香川縣產品振興協議會）</a>
+            </>
+          )
+        }
+      ]
+    },
+    {
+      id: "day3",
+      label: "Day 3 (六)",
+      hotel: "WeBase 高松 (WeBase TAKAMATSU)",
+      hotelQuery: "WeBase+TAKAMATSU",
+      timeline: [
+        {
           time: "08:02 → 09:02",
           title: "⛴️ 高松港 → 土庄港",
           type: "highlight",
@@ -77,9 +148,10 @@ export const tak26Data = {
               <span className="trip-note-red">☔ 出發朝早一定要先睇渡輪運航情報 —— 荒天會欠航，去到碼頭先知就好蝕。官方 X 帳號出即時消息最快。</span>
               <span className="trip-subnote">
                 小豆島呢一日係全程<strong>最怕落雨</strong>嗰日：天使之路係退潮先行得到嘅沙洲、橄欖公園騎掃把位係戶外草坡、島上三程巴士接駁都要喺室外等。<br/>
-                如果當日大雨或者有雷，<strong>同 Day 4 對調</strong>最化算 —— Day 4 係商場 + 寶可夢中心 + 有蓋商店街，落雨都照玩，兩日都係由同一間酒店出發，冇行程綁死。<br/>
+                如果當日大雨或者有雷，<strong>同 Day 2 對調</strong>最化算 —— Day 2 係商場 + 寶可夢中心 + 有蓋商店街，落雨都照玩，兩日都係由同一間酒店出發，冇行程綁死。<br/>
                 <span className="trip-note-muted">要對調就記住：① 近どう 燒肉訂位跟住搬；② 島上巴士平日同土日祝時刻表唔同，下面列嘅班次要重新對過。</span>
               </span>
+              <span className="trip-badge-warn">⚠️ 調完之後 Day 3 係星期六 —— 下面列嘅島上巴士班次原本按平日時刻表，土日祝班次唔同，要逐程重對</span>
               <a href="https://www.shikokuferry.com/route2#schedule" target="_blank" rel="noreferrer" className="trip-link">🔗 高松↔土庄 船班時刻表（官方）</a>
               <a href="https://www.shikokuferry.com/" target="_blank" rel="noreferrer" className="trip-link">🔗 四國渡輪 運航情報（官方）</a>
               <a href="https://x.com/skferry1956" target="_blank" rel="noreferrer" className="trip-link">🔗 四國渡輪 X（欠航即時公布）</a>
@@ -167,8 +239,8 @@ export const tak26Data = {
       ]
     },
     {
-      id: "day3",
-      label: "Day 3 (六)",
+      id: "day4",
+      label: "Day 4 (日)",
       hotel: "WeBase 高松 (WeBase TAKAMATSU)",
       hotelQuery: "WeBase+TAKAMATSU",
       timeline: [
@@ -227,7 +299,7 @@ export const tak26Data = {
           mapQuery: "倉敷デニムストリート",
           details: (
             <>
-              <strong>如竹堂</strong>（本町14-5，10:00-17:30）：倉敷名物紙膠帶，<strong>800 種以上</strong>。星期六仲有貼紙膠帶裝飾襟章／紙盒嘅小手作體驗 —— Day 3 啱啱好係星期六。<br/>
+              <strong>如竹堂</strong>（本町14-5，10:00-17:30）：倉敷名物紙膠帶，<strong>800 種以上</strong>。星期六仲有貼紙膠帶裝飾襟章／紙盒嘅小手作體驗 —— 但 Day 4 係星期日，撞唔到，淨係行舖買紙膠帶。<br/>
               <strong>倉敷帆布 美観地区店</strong>（本町通り）：倉敷帆布織造廠嘅直營店，袋類手信一流，耐用。<br/>
               <strong>倉敷デニムストリート</strong>：由白壁通り一入美観地区就見到，集合十幾個國產同海外丹寧品牌，仲有藍色嘅丹寧包同軟雪糕。同上午児島牛仔褲街同一條線索。
               <span className="trip-note-green">呢三間行落嚟輕鬆，唔使趕，啱慢慢揀手信。剪走咗児島 RIVETS 嗰杯雪糕？デニムストリート 有藍色丹寧軟雪糕，喺呢度食返都一樣。</span>
@@ -267,12 +339,12 @@ export const tak26Data = {
             <>
               うな北 不定休，撲空就轉呢間 —— 倉敷觀光官方網站有介紹，同樣做鰻魚飯。<br/>
               地址：岡山県倉敷市中央2-1-18｜電話：086-427-3100｜由 JR 倉敷駅步行 <strong>7 分鐘</strong>（比うな北仲近）。
-              <span className="trip-badge-info">✅ 星期六 17:00-22:00（L.O. 22:00），冇時間壓力</span>
+              <span className="trip-badge-info">✅ 星期日 17:00-21:30（L.O. 21:00）</span>
               <span className="trip-subnote">
                 🕒 營業時間：<br/>
                 • 星期二至六：11:30 - 14:00 ／ 17:00 - 22:00（L.O. 22:00）<br/>
                 • 星期日及假日：11:30 - 14:00 ／ 17:00 - 21:30（L.O. 21:00）<br/>
-                <span className="trip-note-muted">定休日：星期一（遇假日順延至星期二）—— Day 3 係星期六，照開。</span>
+                <span className="trip-note-muted">定休日：星期一（遇假日順延至星期二）—— Day 4 係星期日，照開，但比星期六早收 30 分鐘。</span>
               </span>
               <a href="https://www.kurashiki-tabi.jp/eat/eat-1130/" target="_blank" rel="noreferrer" className="trip-link">🔗 ゆうなぎ倉敷本店（倉敷觀光 WEB 官方）</a>
             </>
@@ -285,91 +357,21 @@ export const tak26Data = {
         },
         {
           time: "21:00 宵夜",
-          title: "🍜 宵夜：手打ちうどん 鶴丸（咖喱烏冬）",
-          mapQuery: "手打ちうどん 鶴丸 高松 古馬場町",
+          title: "🍜 宵夜：麺や 神龍 古馬場町店（深夜拉麵）",
+          mapQuery: "麺や 神龍 高松 古馬場町",
           details: (
             <>
-              高松出名嘅深夜烏冬，專做飲完酒之後嗰碗「締めのうどん」。香川多數烏冬店下午就收，佢做到凌晨。<br/>
-              地址：香川県高松市古馬場町9-34（〒760-0045）｜電話：087-821-3780｜由琴電瓦町站沿フェリー通り步行 5 分鐘。<br/>
-              招牌係<strong>咖喱烏冬</strong>，九成客都叫呢碗：和風高湯打底，微甜但後味帶辣，老闆自家調香料。唔食辣可以叫 bukkake。麵唔預先煮，全部即叫即灼。
-              <span className="trip-badge-warn">⚠️ 逢星期日休息 —— 所以只有 Day 3 食得到，Day 4 去會摸門釘</span>
-              <span className="trip-subnote">
-                🕒 營業時間：星期一至六 20:00 - 02:00，星期日休息。<br/>
-                <span className="trip-note-muted">20:00 開門前門口已經有人排隊。你哋 20:20 左右返到高松，過去大約 21:00，頭一輪人潮多數已散。</span>
-              </span>
-              <span className="trip-note-green">同 Day 4 晚餐嘅 肉の近どう 同樣喺古馬場町，行過去順路，返酒店都係 5 分鐘。</span>
-              <a href="https://teuchiudon-tsurumaru.com/menu/" target="_blank" rel="noreferrer" className="trip-link">🔗 手打ちうどん 鶴丸 選單（官方）</a>
-            </>
-          )
-        }
-      ]
-    },
-    {
-      id: "day4",
-      label: "Day 4 (日)",
-      hotel: "WeBase 高松 (WeBase TAKAMATSU)",
-      hotelQuery: "WeBase+TAKAMATSU",
-      timeline: [
-        {
-          time: "上午",
-          title: "🎀 Sanrio ゆめタウン高松店",
-          type: "highlight",
-          mapQuery: "ゆめタウン高松",
-          details: (
-            <>
-              由酒店步行 5 分鐘到瓦町站，搭琴電琴平線去「三条」站（約 5 分鐘），落車再步行約 13 分鐘到ゆめタウン高松，Sanrio 專門店在 2/F。<br/>
-              地址：香川県高松市三条町608-1 ゆめタウン高松 2F｜電話：087-868-5689<br/>
-              商場營業時間：本館 9:30-21:30，專門店 10:00-21:00。四國最大規模商場（約 170 間專門店），可順道逛百貨、生活雜貨與藥妝。
-              <a href="https://stores.sanrio.co.jp/8474100" target="_blank" rel="noreferrer" className="trip-link">🔗 Sanrio ゆめタウン高松店（官方）</a>
-              <a href="https://www.izumi.jp/tenpo/takamatsu/access" target="_blank" rel="noreferrer" className="trip-link">🔗 ゆめタウン高松 交通指南（官方）</a>
-            </>
-          )
-        },
-        {
-          time: "中午",
-          title: "🍜 午餐：ゆめタウン高松",
-          details: "在商場內解決：フードコート 10:00-21:00，レストラン街 11:00-21:00，不用走出走入"
-        },
-        {
-          time: "下午",
-          title: "⚡ Pokémon Center KAGAWA",
-          type: "highlight",
-          mapQuery: "ポケモンセンターカガワ 丸亀町グリーン",
-          details: (
-            <>
-              搭琴電返回瓦町站，之後沿中央商店街（有蓋）向北行約 7 分鐘就到丸亀町グリーン東館 1F —— 由 WeBase 行過去同樣是這條街，落雨都唔怕。四國第一間 Pokémon Center，門口有比卡超與呆呆獸迎賓。<br/>
-              地址：香川県高松市丸亀町8番地23 丸亀町グリーン東館 1F｜營業時間：10:00-20:00
-              <span className="trip-note-orange">⏳ Day 4 係星期日，四國唯一一間 Pokémon Center 週日人最多；想影門口比卡超同呆呆獸，一開門就到最穩陣。</span>
-              <a href="https://www.pokemon.co.jp/sp/kagawa_2025/" target="_blank" rel="noreferrer" className="trip-link">🔗 Pokémon Center KAGAWA（官方）</a>
-            </>
-          )
-        },
-        {
-          time: "傍晚",
-          title: "☕ 丸亀町 / 中央商店街散步",
-          mapQuery: "高松丸亀町商店街",
-          details: "Pokémon Center 就在高松中央商店街內，沿住條街行返落瓦町即回到酒店，一路行一路睇舖"
-        },
-        {
-          time: "19:00",
-          title: "🥩 晚餐：炭焼き 肉の近どう 高松古馬場店（橄欖牛炭火燒肉）",
-          type: "highlight",
-          mapQuery: "炭焼き 肉の近どう 高松古馬場店",
-          details: (
-            <>
-              A5 級<strong>橄欖牛</strong>，用<strong>備長炭</strong>自己喺枱上燒，配自家製燒肉汁同喜馬拉雅岩鹽。香川縣產品振興協議會認證嘅「三星橄欖餐廳」。<br/>
-              有<strong>掘りごたつ個室</strong>（挖低式，腳可以伸直，唔使跪坐）。全店 100 席、全席禁煙。<br/>
-              地址：香川県高松市古馬場町5-12｜電話：087-813-9029<br/>
-              交通：琴電瓦町站（志度線口）步行 5-6 分鐘、片原町站步行 5 分鐘。<br/>
-              WeBase 本身距瓦町站 5 分鐘，所以由酒店直接行過去約 10 分鐘。<strong>但唔使特登由酒店出發</strong> —— 行完丸亀町商店街由北往南落嚟，古馬場就喺瓦町前面，順路；食完再行 10 分鐘返酒店。
-              <span className="trip-badge-info">✅ 年中無休．星期日 14:00-23:00（L.O. 22:00）</span>
+              返到高松食嘅深夜拉麵。原本諗住去 鶴丸 食咖喱烏冬，但佢逢星期日休息，Day 4 撞正，所以改咗嚟呢間。<br/>
+              地址：香川県高松市古馬場町8-19 <strong>吉川ビル1階</strong>（〒760-0045）｜電話：050-5499-2543｜由琴電瓦町站步行約 5 分鐘。
+              <span className="trip-badge-info">✅ 年中無休．星期日 18:00 - 翌 03:30</span>
               <span className="trip-subnote">
                 🕒 營業時間：<br/>
-                • 星期一至六：14:00 - 24:00（L.O. 23:00）<br/>
-                • 星期日：14:00 - 23:00（L.O. 22:00）<br/>
-                <span className="trip-note-muted">Day 4 係星期日，照開，但週末夜市中心較旺。打電話留位時<strong>指定要掘りごたつ個室</strong> —— 個室數量有限，唔講多數安排普通枱。</span>
+                • 星期一至四、日、假日：18:00 - 翌 03:30<br/>
+                • 星期五、六、假日前夕：18:00 - 翌 04:30<br/>
+                <span className="trip-note-muted">20:20 左右返到高松，過去大約 21:00，時間好鬆。</span>
               </span>
-              <a href="https://www.kensanpin.org/umaimon/oliverestaurant/food/olive_gyu/%E7%82%AD%E7%84%BC-%E8%82%89%E3%81%AE%E8%BF%91%E3%81%A9%E3%81%86-%E5%AE%87%E5%A4%9A%E6%B4%A5%E5%BA%97-2/" target="_blank" rel="noreferrer" className="trip-link">🔗 三星橄欖餐廳認證頁（香川縣產品振興協議會）</a>
+              <span className="trip-note-green">同 Day 2 晚餐嘅 肉の近どう 同樣喺古馬場町，行過去順路，返酒店都係 5 分鐘。</span>
+              <a href="https://map.yahoo.co.jp/v3/place/mFYomHrW1Rc" target="_blank" rel="noreferrer" className="trip-link">🔗 麺や 神龍 古馬場町店（Yahoo!マップ）</a>
             </>
           )
         }
@@ -404,7 +406,6 @@ export const tak26Data = {
     }
   ],
   todos: [
-    { id: 'tak-todo-1', main: '預約餐廳：骨付鳥 一鶴', sub: '晚餐熱門選' },
     { id: 'tak-todo-2', main: '查閱渡輪時間', sub: '前往小豆島/直島' },
     { id: 'tak-todo-3', main: 'Visit Japan Web', sub: '入境手續' },
   ],
@@ -426,6 +427,14 @@ export const tak26Data = {
       {
         day: "Day 2（五）",
         items: [
+          { label: "琴電 瓦町 ⇄ 三条（來回）", amount: "¥400" },
+          { label: "寶可夢中心、古馬場晚餐 全程步行", amount: "¥0" },
+        ],
+        total: "¥400",
+      },
+      {
+        day: "Day 3（六）",
+        items: [
           { label: "高松港 → 土庄港（渡輪）", amount: "¥700" },
           { label: "小豆島巴士 ×3 程（每程上限 ¥500）", amount: "¥900-1,500" },
           { label: "土庄港 → 高松港（渡輪）", amount: "¥700" },
@@ -433,21 +442,13 @@ export const tak26Data = {
         total: "¥2,300-2,900",
       },
       {
-        day: "Day 3（六）",
+        day: "Day 4（日）",
         items: [
           { label: "高松 → 児島（マリンライナー）", amount: "¥1,090" },
           { label: "児島 → 倉敷（岡山轉車）", amount: "¥770" },
           { label: "倉敷 → 高松", amount: "¥1,840" },
         ],
         total: "¥3,700",
-      },
-      {
-        day: "Day 4（日）",
-        items: [
-          { label: "琴電 瓦町 ⇄ 三条（來回）", amount: "¥400" },
-          { label: "寶可夢中心、古馬場晚餐 全程步行", amount: "¥0" },
-        ],
-        total: "¥400",
       },
       {
         day: "Day 5（一）",
@@ -458,11 +459,11 @@ export const tak26Data = {
       },
     ],
     notes: [
-      "小豆島巴士只公佈「大人運賃上限 ¥500」，冇逐段公佈，所以 Day 2 畀範圍。你哋三程都係中短距離，實際多數平過上限。",
+      "小豆島巴士只公佈「大人運賃上限 ¥500」，冇逐段公佈，所以 Day 3 畀範圍。你哋三程都係中短距離，實際多數平過上限。",
       "小豆島一日券 ¥1,600 唔抵買：只搭三程，最貴都係 ¥1,500。除非臨時加去二十四之瞳映画村或寒霞溪。",
-      "Day 3 佔咗全程一半車費，因為過海又過縣。想慳就只有呢日有得減。",
-      "未計：酒店（瓦町）去高松港 —— 行路約 20 分鐘，或琴電 瓦町→高松築港 約 ¥200（Day 2 來回 ¥400）。",
-      "Day 3 児島→倉敷 用咗 JR ¥770。改搭下電直達巴士嘅話車費未查到，未必一樣。",
+      "Day 4 佔咗全程一半車費，因為過海又過縣。想慳就只有呢日有得減。",
+      "未計：酒店（瓦町）去高松港 —— 行路約 20 分鐘，或琴電 瓦町→高松築港 約 ¥200（Day 3 來回 ¥400）。",
+      "Day 4 児島→倉敷 用咗 JR ¥770。改搭下電直達巴士嘅話車費未查到，未必一樣。",
     ],
   }
 };
