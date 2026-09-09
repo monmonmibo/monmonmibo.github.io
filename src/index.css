@@ -229,6 +229,167 @@ body {
   color: var(--color-text-secondary);
 }
 
+/* A long timetable that only matters later in the day — folded away by default */
+.trip-collapse {
+  display: block;
+  margin-top: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+
+.trip-collapse > summary {
+  display: flex;
+  align-items: center;
+  min-height: var(--control-height);
+  padding: 6px var(--space-2);
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  list-style: none;
+}
+
+.trip-collapse > summary::-webkit-details-marker {
+  display: none;
+}
+
+.trip-collapse > summary::after {
+  content: '\25BE';
+  margin-left: auto;
+  transition: transform 0.2s ease;
+}
+
+.trip-collapse[open] > summary::after {
+  transform: rotate(180deg);
+}
+
+/* Table already has the panel's border — don't double it up */
+.trip-collapse .trip-timetable-wrap {
+  margin-top: 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0;
+}
+
+/* Full timetable pasted into a details block — wide, so it scrolls on its own */
+.trip-timetable-title {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+
+.trip-timetable-wrap {
+  display: block;
+  margin-top: 4px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.trip-timetable {
+  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.trip-timetable th,
+.trip-timetable td {
+  padding: 5px var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+  text-align: center;
+}
+
+.trip-timetable thead th {
+  background: var(--color-surface);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+
+/* Stop names stay put while the run columns scroll under them. The header's
+   own corner cell has to pin too, or the column labels drift out of line. */
+.trip-timetable thead th:first-child,
+.trip-timetable tbody th {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: var(--color-surface);
+  /* Reads as a pinned edge, so the times sliding under look deliberate */
+  box-shadow: 3px 0 5px -2px rgba(var(--color-text-rgb), 0.25);
+}
+
+.trip-timetable tbody th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: normal;
+  min-width: 6em;
+  max-width: 8.5em;
+  line-height: 1.25;
+}
+
+.trip-timetable tbody tr:last-child th,
+.trip-timetable tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* The two stops this trip actually uses */
+.trip-timetable tr.is-key th,
+.trip-timetable tr.is-key td {
+  background: var(--color-info-soft);
+  font-weight: 700;
+  color: var(--color-info);
+}
+
+/* Pinned cell must stay opaque over the scrolling times */
+.trip-timetable tbody tr.is-key th {
+  background: var(--color-info-soft);
+}
+
+/* Runs that don't operate on this trip's day — kept for context, dimmed */
+.trip-timetable tr.is-off th,
+.trip-timetable tr.is-off td {
+  color: var(--color-text-tertiary);
+  font-weight: 400;
+}
+
+/* The two runs the plan is built around — bracket the columns with a rule
+   rather than outlining every cell, which chains into scallops. */
+.trip-timetable .is-taken {
+  font-weight: 700;
+  color: var(--color-info);
+}
+
+.trip-timetable .is-taken-start {
+  border-left: 2px solid var(--color-info);
+}
+
+.trip-timetable .is-taken-end {
+  border-right: 2px solid var(--color-info);
+}
+
+@media (max-width: 480px) {
+  .trip-timetable {
+    font-size: 0.75rem;
+  }
+
+  .trip-timetable th,
+  .trip-timetable td {
+    padding: 4px 6px;
+  }
+
+  .trip-timetable tbody th {
+    min-width: 5.5em;
+    max-width: 7.5em;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

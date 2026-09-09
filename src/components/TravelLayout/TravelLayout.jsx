@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import styles from './TravelLayout.module.css';
 import JpyToHkdConverter from '../JpyToHkdConverter';
 
@@ -141,6 +141,55 @@ export default function TravelLayout({ data }) {
 
   // Arrow keys move between tabs, per the ARIA tabs pattern. Without this,
   // role="tab" would promise a keyboard behaviour the rail did not have.
+  // Tab 條兩邊嘅圓形箭嘴掣：捲到邊就收起嗰邊個掣（Google Maps 果種）
+  const tabsRef = useRef(null);
+  const [tabOverflow, setTabOverflow] = useState({ left: false, right: false });
+
+  const syncTabOverflow = useCallback(() => {
+    const el = tabsRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setTabOverflow({ left: el.scrollLeft > 1, right: el.scrollLeft < max - 1 });
+  }, []);
+
+  useEffect(() => {
+    const el = tabsRef.current;
+    if (!el) return;
+    syncTabOverflow();
+    el.addEventListener('scroll', syncTabOverflow, { passive: true });
+    const ro = new ResizeObserver(syncTabOverflow);
+    ro.observe(el);
+    return () => {
+      el.removeEventListener('scroll', syncTabOverflow);
+      ro.disconnect();
+    };
+  }, [syncTabOverflow, tabIds.length]);
+
+  const scrollTabs = (dir) => {
+    const el = tabsRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * Math.max(el.clientWidth * 0.6, 180), behavior: 'smooth' });
+  };
+
+  // A pasted timetable opens on 1便, but the run that matters is deep to the
+  // right. Nudge each one so the marked column is the first thing in view.
+  useEffect(() => {
+    if (view !== 'timeline') return;
+    const panel = document.getElementById(`panel-${activeTab}`);
+    if (!panel) return;
+    panel.querySelectorAll('.trip-timetable-wrap').forEach(wrap => {
+      const target = wrap.querySelector('.is-taken-start');
+      if (!target) return;
+      const pinned = wrap.querySelector('tbody th');
+      const pinnedWidth = pinned ? pinned.getBoundingClientRect().width : 0;
+      const delta =
+        target.getBoundingClientRect().left -
+        wrap.getBoundingClientRect().left -
+        pinnedWidth;
+      wrap.scrollLeft += delta;
+    });
+  }, [activeTab, view]);
+
   const handleTabKeyDown = (e) => {
     const map = { ArrowRight: 1, ArrowLeft: -1, Home: 'first', End: 'last' };
     const move = map[e.key];
@@ -194,7 +243,26 @@ export default function TravelLayout({ data }) {
       </header>
 
       <div className={styles.stickyNav}>
-        <div className={styles.dateTabs} role="tablist" aria-label="行程日期" onKeyDown={handleTabKeyDown}>
+        <div className={styles.tabScroller}>
+          <button
+            type="button"
+            aria-hidden="true"
+            tabIndex={-1}
+            className={`${styles.tabNav} ${styles.tabNavLeft} ${tabOverflow.left ? styles.tabNavShown : ''}`}
+            onClick={() => scrollTabs(-1)}
+          >
+            <span aria-hidden="true">‹</span>
+          </button>
+          <button
+            type="button"
+            aria-hidden="true"
+            tabIndex={-1}
+            className={`${styles.tabNav} ${styles.tabNavRight} ${tabOverflow.right ? styles.tabNavShown : ''}`}
+            onClick={() => scrollTabs(1)}
+          >
+            <span aria-hidden="true">›</span>
+          </button>
+        <div className={styles.dateTabs} ref={tabsRef} role="tablist" aria-label="行程日期" onKeyDown={handleTabKeyDown}>
           {tabIds.map(id => {
             const day = data.days.find(d => d.id === id);
             const selected = activeTab === id;
@@ -215,6 +283,7 @@ export default function TravelLayout({ data }) {
               </button>
             );
           })}
+        </div>
         </div>
       </div>
 

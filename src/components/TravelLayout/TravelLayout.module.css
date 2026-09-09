@@ -125,13 +125,67 @@
     gap: 12px;
     padding: 0 var(--space-5);
     scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    scroll-padding-inline: var(--space-5);
 }
 
 .dateTabs::-webkit-scrollbar {
     display: none;
 }
 
+/* Tab 條 + 兩邊浮起嘅箭嘴掣 */
+.tabScroller {
+    position: relative;
+}
+
+.tabNav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 34px;
+    height: 34px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: var(--glass-border-strong);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(var(--color-text-rgb), 0.18);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.tabNav.tabNavShown {
+    display: flex;
+}
+
+.tabNav:hover {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+}
+
+.tabNavLeft {
+    left: 8px;
+}
+
+.tabNavRight {
+    right: 8px;
+}
+
+/* 觸控裝置本身掃得郁，唔使多兩個掣阻住 */
+@media (pointer: coarse) {
+    .tabNav.tabNavShown {
+        display: none;
+    }
+}
+
 .dateChip {
+    flex: 0 0 auto;
     background: var(--glass-chip-bg);
     border: var(--glass-border-strong);
     backdrop-filter: var(--glass-chip-blur);
