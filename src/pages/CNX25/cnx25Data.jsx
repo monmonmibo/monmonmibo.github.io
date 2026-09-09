@@ -1,3 +1,5 @@
+import ThbToHkdConverter from '../../components/ThbToHkdConverter';
+
 export const cnx25Data = {
   id: "cnx25",
   header: {
@@ -274,6 +276,7 @@ export const cnx25Data = {
     { id: 'todo-7', main: '購買 Sim Card', sub: '或開通漫遊' },
     { id: 'todo-8', main: '兌換泰銖', sub: 'Superrich' },
   ],
+  customTools: <ThbToHkdConverter />,
   mapIframe: "https://www.google.com/maps/d/u/0/embed?mid=1M5apu5JSHqlIXmFKUZhAPUy9w3szNPg&ehbc=2E312F",
   mapText: "雙指可縮放地圖"
 };
