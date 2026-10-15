@@ -38,6 +38,18 @@ export const ukb26Data = {
           details: "行下 Mint Kobe、三宮中心街或百貨公司，感受神戶市中心的熱鬧氣氛。"
         },
         {
+          time: "傍晚",
+          title: "🎀 Sanrio 神戸三宮店",
+          mapQuery: "Sanrio 神戸三宮店",
+          details: (
+            <>
+              逛完三宮中心街，晚飯前去 Sanrio 神戸三宮店睇下角色精品、買手信。<br/>
+              🕒 營業時間：平日、土日祝 11:30 - 20:00。<br/>
+              <a href="https://stores.sanrio.co.jp/8420100" target="_blank" rel="noreferrer" className="trip-link">🔗 Sanrio 神戸三宮店（官方）</a>
+            </>
+          )
+        },
+        {
           time: "晚上",
           title: "🍱 晚餐：炭燒鰻魚飯",
           type: "highlight",
