@@ -134,34 +134,46 @@ export const ukb26Data = {
           )
         },
         {
-          time: "下午",
-          title: "🚠 步行 → 六甲有馬空中纜車 → 有馬溫泉",
+          time: "15:30 左右",
+          title: "🚌 GREENIA → 六甲ケーブル → 三宮",
           type: "highlight",
-          mapQuery: "六甲有馬ロープウェー 六甲山頂駅",
+          mapQuery: "六甲山上バス アスレチックパークGREENIA",
           details: (
             <>
-              1. 從 GREENIA 步行約 8-10 分鐘前往 <strong>六甲山頂站</strong>。<br/>
-              2. 搭乘索道下山直達有馬溫泉 (約 12 分鐘)。<br/>
-              3. 在古老的溫泉街散策，感受大正浪漫氛圍 (不浸溫泉)。<br/>
-              ✅ 必試：炭酸煎餅、黑豆甜點、金之湯/銀之湯周邊小店。
-              <span className="trip-note-orange">⏳ 三條死線幾乎撞埋一齊：GREENIA 17:00 閉園、纜車尾班 17:10、湯本坂手信舖 17:00 收 —— 玩到閉園先落山，到有馬條街已經散晒。</span>
-              <span className="trip-subnote">
-                🕒 湯本坂（有馬本街道）手信舖：大部分 10:00 - 17:00，部分老舖到 17:30。<br/>
-                <span className="trip-note-muted">Day 3 係星期五，纜車唔延長（10-11 月只有星期六延到 20:30），尾班 17:10。建議 15:00 左右離開 GREENIA，約 15:30 到有馬，仲有個半鐘行街。因為唔浸溫泉，金の湯開到 22:00 對行程冇幫助。</span>
-              </span>
+              1. 從 GREENIA 正門步行約 <strong>4 分鐘</strong>，到「アスレチックパークGREENIA」巴士站。<br/>
+              2. 搭乘六甲山上巴士 <strong>①系統（R06 → R01）</strong>，往 <strong>六甲ケーブル山上駅</strong> 方向。<br/>
+              3. 轉乘 <strong>六甲ケーブル</strong> 下山，到「六甲ケーブル下駅」（約 10 分鐘）。<br/>
+              4. 搭乘神戶市巴士 <strong>16 系統（往阪神御影方向）</strong>，在「阪急六甲」落車。<br/>
+              5. 轉乘阪急神戶線 <strong>往神戸三宮方向的普通列車</strong>，到「神戸三宮」站。<br/>
+              6. 從神戸三宮站 <strong>西出口</strong> 步行約 4 分鐘，抵達 Hotel Monterey Kobe。
+              <span className="trip-note-muted">連等車及轉乘預留約 1.5 小時；15:30 左右離開 GREENIA，預計約 17:00 到酒店，實際視乎接駁班次及路況。</span>
+              <div className="trip-link-group">
+                <a href="https://www.rokkosan.com/greenia/access/" target="_blank" rel="noreferrer" className="trip-link">🔗 GREENIA 官方交通指引</a>
+                <a href="https://www.rokkocable.com/wp-content/uploads/2026/08/13timetable20260806.pdf" target="_blank" rel="noreferrer" className="trip-link">🔗 六甲山上巴士①③系統時刻表（①系統見第 1 頁）</a>
+                <a href="https://www.rokkocable.com/" target="_blank" rel="noreferrer" className="trip-link">🔗 六甲ケーブル時刻表・運行狀況</a>
+                <a href="https://www.rokkocable.com/access/" target="_blank" rel="noreferrer" className="trip-link">🔗 六甲ケーブル下站・市巴士轉乘指引</a>
+                <a href="https://kotsu.city.kobe.lg.jp/wp-content/uploads/nextyear/015101.pdf?v=1792486980" target="_blank" rel="noreferrer" className="trip-link">🔗 神戶市巴士16系統時刻表（六甲ケーブル下 → 阪神御影方向）</a>
+              </div>
+            </>
+          )
+        },
+        {
+          time: "17:00 左右",
+          title: "🏨 Hotel Monterey Kobe Check-in & 放行李",
+          type: "highlight",
+          mapQuery: "ホテルモントレ神戸",
+          details: (
+            <>
+              六甲山玩完後直接回到三宮，前往 <strong>Hotel Monterey Kobe</strong>。<br/>
+              15:00 後辦理入住並放低行李，稍作休息再出門。
             </>
           )
         },
         {
           time: "傍晚",
-          title: "🚌 回到三宮酒店",
-          mapQuery: "ホテルモントレ神戸",
-          details: (
-            <>
-              從有馬溫泉搭乘「有馬急行巴士」或電車回到三宮 (約 30 分鐘)。<br/>
-              抵達後辦理入住並放置行李。
-            </>
-          )
+          title: "🛍️ 三宮 Shopping",
+          mapQuery: "三宮センター街",
+          details: "放低行李後輕裝出發，行下三宮中心街、Mint Kobe 或百貨公司，慢慢 Shopping、買手信。"
         },
         {
           time: "晚上",
