@@ -765,6 +765,17 @@ button.card:focus-visible {
 - **只准摺完整時刻表呢一類大塊參考資料**，而且同一個 timeline item 入面必須已經有純文字寫住實際要搭嗰幾班。摺埋嘅係「全部班次」，唔係「你要搭嗰班」。
 - `summary` 至少 `var(--control-height)` 高，箭嘴用 `::after` 唔好用 emoji（方向要跟 `[open]` 轉）。
 
+### Structured itinerary — UKB26
+
+- Opt-in `days[].presentation: "structured"`; all UKB26 days enable it; other trips retain their existing layout. Existing glass/card tokens and L1 motion remain in use.
+- Cards show time + optional `category` above a semantic h2 title and navigation action; optional `summary` sits between the heading and body. Body line-height is 1.7; title 1.125rem; metadata and summaries at least 0.9375rem.
+- Transport uses global `.trip-route`: semantic ordered list, station names in bold and each onward leg below it, with a continuous line and station markers. Direction, station code, interchange and estimates remain visible.
+- `.trip-route-reference` is an explicit UKB26 exception to the general no-hidden-links rule: only official reference links may collapse under “時刻表與官方交通資料”. No boarding instructions, direction, station, warning or selected departure time may be hidden. No actual departure timetable was added in this preview.
+- Use existing tokens for all color, radius, spacing and elevation. Keep navigation targets ≥44px. At ≤360px, long titles and navigation wrap onto separate rows; route text wraps without horizontal scrolling.
+- Reference summary supports default/hover/active/focus-visible; native details supplies keyboard/expanded state. No disabled state is offered for this always-available disclosure. All route content remains readable without interaction.
+
+- `.trip-departure-options` shows alternative departure/arrival pairs as separate blocks, with a visible action explanation. Both options remain expanded; existing full timetable disclosures are preserved. Day 4 conflicting source times remain explicitly labelled unverified, rather than silently choosing a departure.
+
 ### Forms and checklist controls
 
 ```css

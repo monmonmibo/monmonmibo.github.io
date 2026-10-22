@@ -8,12 +8,14 @@ export const ukb26Data = {
     {
       id: "day1",
       label: "Day 1 (三)",
+      presentation: "structured",
       hotel: "Hotel Monterey Kobe",
       hotelQuery: "Hotel+Monterey+Kobe",
       hotelNote: "15:00 check-in",
       timeline: [
         {
           time: "14:00 / 14:20",
+          category: "交通",
           title: "🚌 機場巴士：機場 → 三宮",
           type: "highlight",
           mapQuery: "関西国際空港 第1ターミナル",
@@ -21,36 +23,40 @@ export const ukb26Data = {
             <>
               在關西機場第 1 航站樓 <strong>6 號乘車處</strong> 搭乘。<br/>
               • 14:00 / 14:20 班次：預計 15:05 / 15:25 抵達 <strong>神戶三宮</strong>。<br/>
-              <a href="https://www.kate.co.jp/tcn/kix_busstop/#terminal1" target="_blank" rel="noreferrer" className="trip-link">🔗 關西機場巴士站地圖 (6 號位)</a>
+              <a href="https://www.kate.co.jp/tcn/kix_busstop/#terminal1" target="_blank" rel="noreferrer" className="trip-link" aria-label="關西機場巴士站地圖 (6 號位)（新視窗）">🔗 關西機場巴士站地圖 (6 號位)</a>
             </>
           )
         },
         {
           time: "15:30",
+          category: "酒店",
           title: "🏨 Hotel Monterey Kobe Check-in & 休息",
           mapQuery: "ホテルモントレ神戸",
           details: "15:00 後辦理入住並放下行李，稍作休息回一回電。"
         },
         {
           time: "17:00",
+          category: "Shopping",
           title: "🛍️ 三宮站周邊散策",
           mapQuery: "三宮センター街",
           details: "行下 Mint Kobe、三宮中心街或百貨公司，感受神戶市中心的熱鬧氣氛。"
         },
         {
           time: "傍晚",
+          category: "Shopping",
           title: "🎀 Sanrio 神戸三宮店",
           mapQuery: "Sanrio 神戸三宮店",
           details: (
             <>
               逛完三宮中心街，晚飯前去 Sanrio 神戸三宮店睇下角色精品、買手信。<br/>
               🕒 營業時間：平日、土日祝 11:30 - 20:00。<br/>
-              <a href="https://stores.sanrio.co.jp/8420100" target="_blank" rel="noreferrer" className="trip-link">🔗 Sanrio 神戸三宮店（官方）</a>
+              <a href="https://stores.sanrio.co.jp/8420100" target="_blank" rel="noreferrer" className="trip-link" aria-label="Sanrio 神戸三宮店（官方）（新視窗）">🔗 Sanrio 神戸三宮店（官方）</a>
             </>
           )
         },
         {
           time: "晚上",
+          category: "晚餐",
           title: "🍱 晚餐：炭燒鰻魚飯",
           type: "highlight",
           mapQuery: "神戸三宮 うなぎ",
@@ -61,38 +67,42 @@ export const ukb26Data = {
     {
       id: "day2",
       label: "Day 2 (四)",
+      presentation: "structured",
       hotel: "Naturelive Rokko (豪華露營)",
       hotelQuery: "ネイチャーライブ六甲",
       timeline: [
         {
           time: "上午",
+          category: "早餐",
           title: "🍳 三宮悠閒早餐",
           mapQuery: "神戸三宮駅",
           details: "將大行李寄存在酒店或儲物櫃，輕裝上山（或攜帶必要行李）。"
         },
         {
           time: "13:30",
-          title: "🚌 三宮 → 六甲山・停車場接駁車",
+          category: "交通",
+          title: "🚌 三宮 → Naturelive 六甲",
+          summary: "15:00 前到停車場集合 · 接駁按預約指示",
           type: "highlight",
           mapQuery: "兵庫県神戸市灘区六甲山町南六甲1034",
           details: (
             <>
-              <strong>前往本設施，我們將提供「接駁車」服務，接送地點為下方指定的停車場。</strong><br/>
-              無論是開車或搭乘大眾運輸工具前往的賓客，請依照下方停車場的引導看板指示前往。<br/>
-              <br/>
-              <strong>ネイチャーライブ六甲 駐車場 所在地：</strong><br/>
-              兵庫県神戸市灘区六甲山町南六甲1034駐車場<br/>
-              Nature Live 六甲停車場位於「六甲山郵局」正對面。<br/>
-              （步行前往）從摩耶觀光 Sky Shuttle Bus「紀念碑台」站步行約 3 分鐘<br/>
-              <br/>
+              <ol className="trip-route" aria-label="交通路線">
+                <li><strong>三宮出發</strong><span>13:30 為行程預留出發時間，並非指定巴士班次</span></li>
+                <li><strong>紀念碑台站</strong><span>原定方案：摩耶觀光 Sky Shuttle Bus 落車後步行約 3 分鐘</span></li>
+                <li><strong>Naturelive 六甲停車場</strong><span>六甲山郵局正對面；兵庫県神戸市灘区六甲山町南六甲1034駐車場</span></li>
+                <li><strong>Naturelive Rokko</strong><span>按引導看板到停車場集合，再搭設施接駁車入住</span></li>
+              </ol>
               <span className="trip-note-red">🔴 重要：請預留充足時間，15:00 前到達停車場集合。</span>
               <span className="trip-note-red">🔴 Check-in 時按官方指示辦理接駁及入住安排。</span>
-              <a href="https://naturelive.co.jp/access/" target="_blank" rel="noreferrer" className="trip-link">🔗 官方交通指引</a>
+              <span className="trip-note-muted">官方另提供六甲山上駅接送（須事先預約）；如已安排停車場集合，以住宿預約確認為準。</span>
+              <a href="https://naturelive.co.jp/access/" target="_blank" rel="noreferrer" className="trip-link" aria-label="官方交通指引（新視窗）">🔗 官方交通指引</a>
             </>
           )
         },
         {
           time: "15:00",
+          category: "酒店",
           title: "✨ Naturelive Rokko Check-in",
           type: "highlight",
           mapQuery: "ネイチャーライブ六甲",
@@ -103,12 +113,14 @@ export const ukb26Data = {
     {
       id: "day3",
       label: "Day 3 (五)",
+      presentation: "structured",
       hotel: "Hotel Monterey Kobe",
       hotelQuery: "Hotel+Monterey+Kobe",
       hotelNote: "15:00 check-in / 再 check-in",
       timeline: [
         {
           time: "11:00",
+          category: "景點",
           title: "🚠 退房 & 前往六甲空中庭園",
           type: "highlight",
           mapQuery: "六甲ガーデンテラス",
@@ -121,6 +133,7 @@ export const ukb26Data = {
         },
         {
           time: "中午",
+          category: "戶外活動",
           title: "🏃‍♂️ 六甲山アスレチックパーク GREENIA",
           type: "highlight",
           mapQuery: "六甲山アスレチックパークGREENIA",
@@ -135,30 +148,39 @@ export const ukb26Data = {
         },
         {
           time: "15:30 左右",
-          title: "🚌 GREENIA → 六甲ケーブル → 三宮",
+          category: "交通",
+          title: "🚌 GREENIA → 三宮",
+          summary: "預留約 1.5 小時 · 包括等車及轉乘",
           type: "highlight",
           mapQuery: "六甲山上バス アスレチックパークGREENIA",
           details: (
             <>
-              1. 從 GREENIA 正門步行約 <strong>4 分鐘</strong>，到「アスレチックパークGREENIA」巴士站。<br/>
-              2. 搭乘六甲山上巴士 <strong>①系統（R06 → R01）</strong>，往 <strong>六甲ケーブル山上駅</strong> 方向。<br/>
-              3. 轉乘 <strong>六甲ケーブル</strong> 下山，到「六甲ケーブル下駅」（約 10 分鐘）。<br/>
-              4. 搭乘神戶市巴士 <strong>16 系統（往阪神御影方向）</strong>，在「阪急六甲」落車。<br/>
-              5. 轉乘阪急神戶線 <strong>往神戸三宮方向的普通列車</strong>，到「神戸三宮」站。<br/>
-              6. 從神戸三宮站 <strong>西出口</strong> 步行約 4 分鐘，抵達 Hotel Monterey Kobe。
+              <ol className="trip-route" aria-label="GREENIA 返回酒店路線">
+                <li><strong>GREENIA 正門</strong><span>步行約 4 分鐘到巴士站</span></li>
+                <li><strong>R06 アスレチックパークGREENIA</strong><span><b>山上巴士①系統</b> · 往六甲ケーブル山上駅</span></li>
+                <li><strong>R01 六甲ケーブル山上駅</strong><span><b>六甲ケーブル</b> · 下山約 10 分鐘</span></li>
+                <li><strong>六甲ケーブル下駅</strong><span><b>神戶市巴士16系統</b> · 往阪神御影方向</span></li>
+                <li><strong>阪急六甲（落車轉電車）</strong><span><b>阪急神戶線普通列車</b> · 往神戸三宮方向</span></li>
+                <li><strong>神戸三宮站 · 西出口</strong><span>步行約 4 分鐘到酒店</span></li>
+                <li><strong>Hotel Monterey Kobe</strong><span>Check-in、放行李，稍作休息</span></li>
+              </ol>
               <span className="trip-note-muted">連等車及轉乘預留約 1.5 小時；15:30 左右離開 GREENIA，預計約 17:00 到酒店，實際視乎接駁班次及路況。</span>
-              <div className="trip-link-group">
-                <a href="https://www.rokkosan.com/greenia/access/" target="_blank" rel="noreferrer" className="trip-link">🔗 GREENIA 官方交通指引</a>
-                <a href="https://www.rokkocable.com/wp-content/uploads/2026/08/13timetable20260806.pdf" target="_blank" rel="noreferrer" className="trip-link">🔗 六甲山上巴士①③系統時刻表（①系統見第 1 頁）</a>
-                <a href="https://www.rokkocable.com/" target="_blank" rel="noreferrer" className="trip-link">🔗 六甲ケーブル時刻表・運行狀況</a>
-                <a href="https://www.rokkocable.com/access/" target="_blank" rel="noreferrer" className="trip-link">🔗 六甲ケーブル下站・市巴士轉乘指引</a>
-                <a href="https://kotsu.city.kobe.lg.jp/wp-content/uploads/nextyear/015101.pdf?v=1792486980" target="_blank" rel="noreferrer" className="trip-link">🔗 神戶市巴士16系統時刻表（六甲ケーブル下 → 阪神御影方向）</a>
-              </div>
+              <details className="trip-collapse trip-route-reference">
+                <summary>時刻表與官方交通資料</summary>
+                <div className="trip-link-group">
+                <a href="https://www.rokkosan.com/greenia/access/" target="_blank" rel="noreferrer" className="trip-link" aria-label="GREENIA 官方交通指引（新視窗）">🔗 GREENIA 官方交通指引</a>
+                <a href="https://www.rokkocable.com/wp-content/uploads/2026/08/13timetable20260806.pdf" target="_blank" rel="noreferrer" className="trip-link" aria-label="六甲山上巴士①③系統時刻表（①系統見第 1 頁）（新視窗）">🔗 六甲山上巴士①③系統時刻表（①系統見第 1 頁）</a>
+                <a href="https://www.rokkocable.com/" target="_blank" rel="noreferrer" className="trip-link" aria-label="六甲ケーブル時刻表・運行狀況（新視窗）">🔗 六甲ケーブル時刻表・運行狀況</a>
+                <a href="https://www.rokkocable.com/access/" target="_blank" rel="noreferrer" className="trip-link" aria-label="六甲ケーブル下站・市巴士轉乘指引（新視窗）">🔗 六甲ケーブル下站・市巴士轉乘指引</a>
+                <a href="https://kotsu.city.kobe.lg.jp/wp-content/uploads/nextyear/015101.pdf?v=1792486980" target="_blank" rel="noreferrer" className="trip-link" aria-label="神戶市巴士16系統時刻表（六甲ケーブル下 → 阪神御影方向）（新視窗）">🔗 神戶市巴士16系統時刻表（六甲ケーブル下 → 阪神御影方向）</a>
+                </div>
+              </details>
             </>
           )
         },
         {
           time: "17:00 左右",
+          category: "酒店",
           title: "🏨 Hotel Monterey Kobe Check-in & 放行李",
           type: "highlight",
           mapQuery: "ホテルモントレ神戸",
@@ -171,12 +193,14 @@ export const ukb26Data = {
         },
         {
           time: "傍晚",
+          category: "Shopping",
           title: "🛍️ 三宮 Shopping",
           mapQuery: "三宮センター街",
           details: "放低行李後輕裝出發，行下三宮中心街、Mint Kobe 或百貨公司，慢慢 Shopping、買手信。"
         },
         {
           time: "晚上",
+          category: "晚餐",
           title: "🍣 晚餐：新鮮壽司大餐",
           mapQuery: "神戸三宮 寿司",
           details: (
@@ -191,58 +215,66 @@ export const ukb26Data = {
     {
       id: "day4",
       label: "Day 4 (六)",
+      presentation: "structured",
       hotel: "Hotel Monterey Kobe",
       hotelQuery: "Hotel+Monterey+Kobe",
       hotelNote: "淡路島南下 即日來回",
       timeline: [
         {
           time: "07:40 / 08:40",
-          title: "🚌 三宮出發 (拼最早入場)",
+          category: "交通",
+          title: "🚌 淡路島去程・出發前確認",
+          summary: "星期六出發 · 先核對高速巴士班次及轉乘站",
           type: "highlight",
           mapQuery: "神姫バス 神戸三宮バスターミナル",
           details: (
             <>
-              搭乘高速巴士往 <strong>洲本巴士中心</strong>。<br/>
+              <span className="trip-note-orange">⚠️ 班次待核對：原計劃列 07:40 / 08:40，下一段列 07:55；轉乘地點亦曾寫洲本巴士中心。下方路線按洲本 IC 方案整理，請先對照官方表確認，唔好將三個出發時間當成已核實班次。</span>
               • 07:40 班次：預計 09:46 抵達農場 (最接近開門時間)<br/>
               • 08:40 班次：預計 10:46 抵達農場<br/>
               <div className="trip-link-group">
-                <a href="https://www.awaji-kotsu.co.jp/_assets/d762e18f435947a5af53e214e409edf2/0c50cf8694ae41b6a85e8b00cb1ddbfe/l_1010-1070_current.pdf" target="_blank" rel="noreferrer" className="trip-link">🔗 1. 三宮-洲本 高速巴士時刻表</a>
-                <a href="https://www.awaji-kotsu.co.jp/_assets/d762e18f435947a5af53e214e409edf2/aef10707c452426b93836da12d372fba/l_2010_0_current.pdf" target="_blank" rel="noreferrer" className="trip-link">🔗 2. 洲本-農場 轉乘巴士時刻表</a>
+                <a href="https://www.awaji-kotsu.co.jp/_assets/d762e18f435947a5af53e214e409edf2/0c50cf8694ae41b6a85e8b00cb1ddbfe/l_1010-1070_current.pdf" target="_blank" rel="noreferrer" className="trip-link" aria-label="1. 三宮-洲本 高速巴士時刻表（新視窗）">🔗 1. 三宮-洲本 高速巴士時刻表</a>
+                <a href="https://www.awaji-kotsu.co.jp/_assets/d762e18f435947a5af53e214e409edf2/aef10707c452426b93836da12d372fba/l_2010_0_current.pdf" target="_blank" rel="noreferrer" className="trip-link" aria-label="2. 洲本-農場 轉乘巴士時刻表（新視窗）">🔗 2. 洲本-農場 轉乘巴士時刻表</a>
               </div>
             </>
           )
         },
         {
-          time: "07:55 / 09:08",
+          time: "去程（班次待核對）",
+          category: "交通",
           title: "🚌 高速巴士：神姬三宮ＢＴ → 洲本 IC",
           type: "highlight",
           mapQuery: "イングランドの丘",
           details: (
             <>
-              <strong>1. 上車地點：</strong>神姬三宮ＢＴ (<strong>神姬三宮ＢＴ</strong> - 鐵路高架橋下)。<br/>
-              <strong>2. 落車地點：</strong>在 <strong>洲本 ＩＣ</strong> 落車 (09:08)。<br/>
-              <span className="trip-note-green">✅ 原站轉乘 (極之方便)：</span><br/>
-              落車位置即為轉乘站，原地等候 <strong>09:30</strong> 往「福良」方向的巴士即可。<br/>
-              <strong>3. 抵達農場：</strong>預計 <strong>09:46</strong> 抵達「イングランドの丘」。
+              <ol className="trip-route" aria-label="交通路線">
+                <li><strong>神姬三宮ＢＴ（鐵路高架橋下）</strong><span>原計劃 07:55 出發；與前項 07:40 / 08:40 有出入，待核對</span></li>
+                <li><strong>洲本 IC · 原計劃 09:08 到達</strong><span>原站等候 09:30 往「福良」方向巴士</span></li>
+                <li><strong>イングランドの丘 · 原計劃 09:46 到達</strong><span>農場遊覽；回程轉乘資料見下一張卡</span></li>
+              </ol>
             </>
           )
         },
         {
           time: "17:11 / 17:44",
+          category: "交通",
           title: "🏠 回程：農場 → 洲本 IC → 三宮",
           type: "highlight",
           mapQuery: "ミント神戸",
           details: (
             <>
-              <strong>1. 農場發車：</strong>17:11 搭乘往洲本方向巴士。<br/>
-              <strong>2. 原站轉乘：</strong>17:27 到達 <strong>洲本 ＩＣ</strong>，原地等候 <strong>17:44</strong> 的高速巴士。<br/>
-              <strong>3. 回到神戶：</strong>18:45 抵達 <strong>三宮BT(ミント)</strong>。<br/>
-              <span className="trip-note-green">✅ 完美對接：無需走路轉站，全家輕鬆即日來回。</span>
+              <ol className="trip-route" aria-label="交通路線">
+                <li><strong>イングランドの丘 · 17:11</strong><span>搭乘往洲本方向巴士</span></li>
+                <li><strong>洲本 IC · 17:27 到達</strong><span>原計劃原站轉乘 17:44 高速巴士</span></li>
+                <li><strong>三宮BT（ミント）· 18:45</strong><span>返回神戶，之後食晚餐</span></li>
+              </ol>
+              <span className="trip-note-muted">以上保留原計劃班次；原站轉乘位置及當日班次請對照官方交通資料，預留延誤緩衝。</span>
             </>
           )
         },
         {
           time: "晚上",
+          category: "晚餐",
           title: "🥩 晚餐：日式燒肉大餐",
           mapQuery: "神戸三宮 焼肉",
           details: (
@@ -257,45 +289,57 @@ export const ukb26Data = {
     {
       id: "day5",
       label: "Day 5 (日)",
+      presentation: "structured",
       hotel: "Hotel Monterey Kobe",
       hotelQuery: "Hotel+Monterey+Kobe",
       hotelNote: "淡路島洋蔥盛宴 即日來回",
       timeline: [
         {
           time: "09:25",
+          category: "交通",
           title: "🚌 三宮出發 (神姬總站)",
           type: "highlight",
           mapQuery: "神姫バス 神戸三宮バスターミナル",
           details: (
             <>
-              在 <strong>神姬三宮ＢＴ</strong> 上車，享受輕鬆的早晨。<br/>
-              目的地：<strong>淡路 ＩＣ</strong> (10:02 抵達)。
+              <ol className="trip-route" aria-label="交通路線">
+                <li><strong>神姬三宮ＢＴ · 09:25</strong><span>搭乘高速巴士往淡路 IC</span></li>
+                <li><strong>淡路 IC · 10:02</strong><span>落車後前往 Highway Oasis；原計劃約 10:15 開始逛街</span></li>
+              </ol>
             </>
           )
         },
         {
-          time: "10:15 - 13:30",
+          time: "10:15 起",
+          category: "Shopping",
           title: "🛍️ Highway Oasis：買物與午餐",
+          summary: "早走：趕 12:59 車 · 慢慢逛：搭 14:49 車",
           type: "highlight",
           mapQuery: "淡路ハイウェイオアシス",
           details: (
             <>
               <strong>食：</strong>餐廳選擇極多 (推薦：みけ家和食、Ponte Mar 景觀餐廳、尊拉麵)。<br/>
               <strong>買：</strong>洋蔥湯粉、黑蒜咖哩、真洋蔥大掃貨！🧅<br/>
-              <a href="http://www.awajishimahighwayoasis.com/food/" target="_blank" rel="noreferrer" className="trip-link">🔗 Highway Oasis 餐廳一覽</a>
+              <a href="http://www.awajishimahighwayoasis.com/food/" target="_blank" rel="noreferrer" className="trip-link" aria-label="Highway Oasis 餐廳一覽（新視窗）">🔗 Highway Oasis 餐廳一覽</a>
             </>
           )
         },
         {
           time: "12:59 / 14:49",
+          category: "交通",
           title: "⛪ 轉乘：淡路夢舞台",
           type: "highlight",
           mapQuery: "淡路夢舞台",
           details: (
             <>
-              在 Highway Oasis 的 <strong>A1 停車場</strong> 搭乘「反時計」方向巴士。<br/>
-              • 12:59 班次：13:41 抵達夢舞台<br/>
-              • 14:49 班次：15:31 抵達夢舞台<br/>
+              <div className="trip-departure-options" aria-label="去夢舞台兩個班次方案">
+                <p><strong>早走 · 12:59 → 13:41</strong><span>午餐及購物提早完成，12:59 前到 A1 停車場候車。</span></p>
+                <p><strong>慢慢逛 · 14:49 → 15:31</strong><span>可留多啲時間買物、午餐；14:49 前到站。</span></p>
+              </div>
+              <ol className="trip-route" aria-label="交通路線">
+                <li><strong>Highway Oasis · A1 停車場</strong><span>搭乘北部周遊巴士「反時計回り」方向，兩個方案擇一</span></li>
+                <li><strong>淡路夢舞台前</strong><span>早班 13:41／遲班 15:31 到達，落車後遊覽夢舞台</span></li>
+              </ol>
               <span className="trip-note-orange">⚠️ 班次較疏，請務必看準時間上車。</span><br/>
               <span className="trip-badge-warn">⚠️ 「反時計回り」只喺 3-11 月嘅土日祝運行 —— Day 5 係星期日先有車，平日完全冇</span>
               <span className="trip-note-muted">藍色兩行係上車（A1駐車場）同落車（淡路夢舞台前）嘅站，框住嘅 4便 / 5便 就係行程用嗰兩班。</span>
@@ -455,13 +499,14 @@ export const ukb26Data = {
                 </span>
                 <span className="trip-note-muted">只剪走 1便/2便 —— 佢哋喺你哋到 Highway Oasis（10:15）之前已經開走。6便/7便 留低做保險。</span>
               </details>
-              <a href="https://www.honshi-bus.co.jp/local/view/11" target="_blank" rel="noreferrer" className="trip-link">🔗 北部周遊巴士 (Route 10) 詳情</a>
-              <a href="https://www.city.awaji.lg.jp/soshiki/toshisoumu/26263.html" target="_blank" rel="noreferrer" className="trip-link">🔗 あわ神あわ姫バス 路線圖・時刻表（淡路市官方・令和8年3月1日起）</a>
+              <a href="https://www.honshi-bus.co.jp/local/view/11" target="_blank" rel="noreferrer" className="trip-link" aria-label="北部周遊巴士 (Route 10) 詳情（新視窗）">🔗 北部周遊巴士 (Route 10) 詳情</a>
+              <a href="https://www.city.awaji.lg.jp/soshiki/toshisoumu/26263.html" target="_blank" rel="noreferrer" className="trip-link" aria-label="あわ神あわ姫バス 路線圖・時刻表（淡路市官方・令和8年3月1日起）（新視窗）">🔗 あわ神あわ姫バス 路線圖・時刻表（淡路市官方・令和8年3月1日起）</a>
             </>
           )
         },
         {
           time: "18:00",
+          category: "晚餐",
           title: "🍽️ 晚餐：夢舞台展望臺餐廳",
           type: "highlight",
           mapQuery: "淡路夢舞台 百段苑",
@@ -476,14 +521,16 @@ export const ukb26Data = {
         },
         {
           time: "19:15 / 20:15",
+          category: "交通",
           title: "🚌 夢舞台晚間回神戶",
           type: "highlight",
           mapQuery: "淡路夢舞台前 バス停",
           details: (
             <>
-              在「淡路夢舞台前」站搭乘高速巴士。<br/>
-              <span className="trip-note-green">✅ 吃飽就走：建議搭乘 20:15 班次，21:02 即可回到三宮。</span><br/>
-              • 回程班次：19:15 或 20:15
+              <ol className="trip-route" aria-label="交通路線">
+                <li><strong>淡路夢舞台前</strong><span>晚餐後搭高速巴士返三宮</span></li>
+                <li><strong>建議 20:15 → 21:02 三宮</strong><span>早走可揀 19:15 → 20:02 三宮；兩班擇一</span></li>
+              </ol>
               <span className="trip-note-muted">Day 5 係星期日 —— 灰色「平日」班次搭唔到，藍色兩行係行程用嗰兩班。</span>
               <details className="trip-collapse">
                 <summary>🚌 回程時刻表：夢舞台前 → 三宮（大磯号）</summary>
@@ -579,9 +626,9 @@ export const ukb26Data = {
                     </tbody>
                   </table>
                 </span>
-                <span className="trip-note-muted">只列 16:15 之後 —— 你哋最早 15:31 先到夢舞台。更早班次見下面官方 PDF。</span>
+                <span className="trip-note-muted">只列 16:15 之後嘅回程班次；去程早班 13:41、遲班 15:31 到夢舞台。更早回程班次見下面官方 PDF。</span>
               </details>
-              <a href="https://www.yumebutai.co.jp/wp/wp-content/themes/yumebutai/images/access/pdf/bus_timetable_maiko2024_12.pdf" target="_blank" rel="noreferrer" className="trip-link">🔗 淡路夢舞台前 → 三宮 回程時刻表（夢舞台官方 PDF・2024年12月版）</a>
+              <a href="https://www.yumebutai.co.jp/wp/wp-content/themes/yumebutai/images/access/pdf/bus_timetable_maiko2024_12.pdf" target="_blank" rel="noreferrer" className="trip-link" aria-label="淡路夢舞台前 → 三宮 回程時刻表（夢舞台官方 PDF・2024年12月版）（新視窗）">🔗 淡路夢舞台前 → 三宮 回程時刻表（夢舞台官方 PDF・2024年12月版）</a>
             </>
           )
         }
@@ -590,12 +637,14 @@ export const ukb26Data = {
     {
       id: "day6",
       label: "Day 6 (一) ✈️",
+      presentation: "structured",
       hotel: "Hotel Monterey Kobe",
       hotelQuery: "Hotel+Monterey+Kobe",
       hotelNote: "11:00 checkout",
       timeline: [
         {
           time: "11:00",
+          category: "酒店",
           title: "🏨 Check-out & 午餐",
           mapQuery: "ホテルモントレ神戸",
           details: (
@@ -606,21 +655,26 @@ export const ukb26Data = {
           )
         },
         {
-          time: "13:30",
+          time: "13:00",
+          category: "準備",
           title: "💼 取回行李 & 往巴士站",
           type: "highlight",
           mapQuery: "神姫バス 神戸三宮バスターミナル",
-          details: "回到酒店提取行李，步行前往三宮高速巴士站。"
+          details: "13:00 回酒店取行李，預留步行、購票及候車時間；建議 13:20 前到機場巴士乘車處，準備搭 13:40 班次。"
         },
         {
           time: "13:40",
+          category: "交通",
           title: "🚌 高速巴士：三宮 → 關西機場",
           type: "highlight",
           mapQuery: "関西国際空港 第1ターミナル",
           details: (
             <>
-              搭乘 13:40 的機場巴士。<br/>
-              <strong>14:45</strong> 抵達關西機場第 1 航站樓，準備登機。
+              <ol className="trip-route" aria-label="交通路線">
+                <li><strong>神戶三宮 · 13:40 開車</strong><span>機場巴士直達關西機場第 1 航站樓；提早到站候車</span></li>
+                <li><strong>關西機場第 1 航站樓 · 14:45</strong><span>預計車程約 65 分鐘，抵達後辦理登機</span></li>
+              </ol>
+              <a href="https://www.kate.co.jp/tcn/timetable/detail/KB" target="_blank" rel="noreferrer" className="trip-link" aria-label="神戶三宮 → 關西機場時刻表（官方）（新視窗）">🔗 神戶三宮 → 關西機場時刻表（官方）</a>
             </>
           )
         }

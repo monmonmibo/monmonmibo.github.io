@@ -297,17 +297,24 @@ export default function TravelLayout({ data }) {
               role="tabpanel"
               aria-labelledby={`tab-${day.id}`}
               tabIndex={0}
-              className={`${styles.daySection} ${styles.active}`}
+              className={`${styles.daySection} ${styles.active} ${day.presentation === 'structured' ? styles.structuredDay : ''}`}
             >
               {renderHotelHeader(day)}
               <div className={styles.timelineContainer}>
                 <div className={styles.timeline}>
                   {day.timeline.map((item, idx) => (
                     <div key={idx} className={`${styles.timelineItem} ${item.type === 'highlight' ? styles.highlight : ''}`}>
-                      <div className={styles.timeLabel}>{item.time}</div>
+                      <div className={styles.itemMeta}>
+                        <div className={styles.timeLabel}>{item.time}</div>
+                        {day.presentation === 'structured' && item.category && (
+                          <span className={styles.itemCategory}>{item.category}</span>
+                        )}
+                      </div>
                       <div className={styles.card}>
                         <div className={styles.cardHead}>
-                          <span className={styles.itemTitle}>{item.title}</span>
+                          {day.presentation === 'structured' ? (
+                            <h2 className={styles.itemTitle}>{item.title}</h2>
+                          ) : <span className={styles.itemTitle}>{item.title}</span>}
                           {item.mapQuery && (
                             <a
                               href={mapsUrl(item.mapQuery)}
@@ -320,6 +327,9 @@ export default function TravelLayout({ data }) {
                             </a>
                           )}
                         </div>
+                        {day.presentation === 'structured' && item.summary && (
+                          <p className={styles.itemSummary}>{item.summary}</p>
+                        )}
                         <div className={styles.details}>{item.details}</div>
                       </div>
                     </div>

@@ -413,3 +413,55 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Data-authored route steps share global trip-* styles. */
+.trip-route {
+  list-style: none;
+  margin: var(--space-4) 0;
+  padding: 0;
+}
+.trip-route > li {
+  position: relative;
+  padding: 0 0 var(--space-5) var(--space-6);
+  margin-inline-start: var(--space-2);
+  border-inline-start: 2px solid var(--color-border-strong);
+}
+.trip-route > li:last-child { border-color: transparent; padding-bottom: 0; }
+.trip-route > li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: calc(-1 * var(--space-2));
+  inset-block-start: var(--space-1);
+  width: var(--space-3);
+  height: var(--space-3);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+}
+.trip-route > li:last-child::before { background: var(--color-primary); }
+.trip-route strong, .trip-route span { display: block; overflow-wrap: anywhere; }
+.trip-route strong { color: var(--color-text); font-weight: 700; }
+.trip-route span { margin-top: var(--space-1); font-size: 0.9375rem; color: var(--color-text-secondary); }
+.trip-route b { color: var(--color-primary); font-weight: 600; }
+.trip-route-reference > summary { padding: var(--space-3); font-size: 0.9375rem; }
+.trip-route-reference > summary:hover { background: var(--color-surface-hover); }
+.trip-route-reference > summary:active { background: var(--color-primary-soft); }
+.trip-route-reference > summary:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.trip-route-reference .trip-link-group { margin: 0; padding: 0 var(--space-3) var(--space-3); border-top: 1px solid var(--color-border); }
+.trip-route-reference .trip-link { overflow-wrap: anywhere; }
+
+.trip-departure-options {
+  display: grid;
+  gap: var(--space-2);
+  margin-block: var(--space-3);
+}
+.trip-departure-options > p {
+  margin: 0;
+  padding: var(--space-3);
+  border-inline-start: 3px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-soft);
+}
+.trip-departure-options strong, .trip-departure-options span { display: block; }
+.trip-departure-options strong { color: var(--color-primary); font-variant-numeric: tabular-nums; }
+.trip-departure-options span { margin-top: var(--space-1); font-size: 0.9375rem; }

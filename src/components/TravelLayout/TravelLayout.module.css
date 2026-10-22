@@ -801,3 +801,45 @@
         background: rgba(var(--color-surface-rgb), 0.78);
     }
 }
+
+/* Opt-in card hierarchy: UKB26 Day 3 preview. */
+.itemMeta { display: contents; }
+
+.structuredDay .itemMeta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+}
+
+.structuredDay .timeLabel { margin-bottom: 0; }
+
+.itemCategory {
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+
+.structuredDay .card { padding: var(--space-4); }
+.structuredDay .cardHead { align-items: center; }
+.structuredDay .itemTitle {
+    min-width: 0;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+.structuredDay .details { line-height: 1.7; }
+.itemSummary {
+    margin: var(--space-3) 0;
+    padding-block: var(--space-2);
+    border-block: 1px solid var(--color-border);
+    color: var(--color-primary);
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+
+@media (max-width: 360px) {
+    .structuredDay .cardHead { flex-wrap: wrap; }
+    .structuredDay .itemTitle { flex-basis: 100%; }
+}
