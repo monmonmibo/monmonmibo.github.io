@@ -55,12 +55,12 @@ export const ukb26Data = {
           )
         },
         {
-          time: "晚上",
+          time: "20:00",
           category: "晚餐",
-          title: "🍱 晚餐：炭燒鰻魚飯",
+          title: "🍣 晚餐：三宮スシエビス",
           type: "highlight",
-          mapQuery: "神戸三宮 うなぎ",
-          details: "推薦：青葉 (Aoba) 或三宮周邊的名店，品嚐香脆肥美的炭燒鰻魚。"
+          mapQuery: "三宮スシエビス",
+          details: "逛完 Sanrio 神戸三宮店後，20:00 前往三宮スシエビス食晚餐。"
         }
       ]
     },
