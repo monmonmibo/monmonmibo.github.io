@@ -1,48 +1,28 @@
 # MonMonMibo Design System
 
-> 一個在旅途中可以單手操作、快速掃讀、即使戶外強光下仍然清楚可靠的個人行程工具。
+> 將每次旅程整理成一本安靜、精準、值得收藏的數碼旅程冊。
 
-本文件是 MonMonMibo 的設計規範與後續 UI 實作依據。
-
-**文件狀態**：本文件記錄的係實際 ship 咗的系統，唔係理想版。色彩 tokens、環境漸層、三級 liquid glass、typography、focus 狀態、觸控區同 760px 閱讀軸都已經喺 code 落實。實作前後均須在真實桌面與手機瀏覽器驗證。
+本文件是 MonMonMibo 全站視覺、互動與響應式實作的唯一設計依據。設計方向融合 Airbnb 的旅行溫度、Apple 的克制留白，以及 Stripe 的精準層級；功能與可讀性仍然優先。
 
 ## 1. Visual Theme & Atmosphere
 
-**Style**：Travel Utility Glass（清爽旅行工具感）  
-**Keywords**：清楚、可靠、輕盈、親切、快速掃讀、手機優先、旅程感、克制  
-**Tone**：像整理完善的隨身旅程卡冊，資訊密集但不壓迫；不是宣傳網站、社交平台或華麗旅遊雜誌。  
-**Feel**：像在清晨港口打開一本防水、分頁清楚的小型行程手冊。
+**Style**：Beskar Travel Archive（復古太空旅程檔案風）
 
-**Interaction Tier**：L1 精緻靜態  
-**Dependencies**：CSS only；不新增 GSAP、Lenis、WebGL 或其他動畫依賴。
+**Keywords**：克制、風化金屬、舊米白、軍用精準、觸感、旅程感、收藏感、可信賴
 
-### 現況審視摘要
+**Tone**：像賞金獵人太空船內保存良好的私人旅程檔案——粗獷但精準，不是霓虹科幻介面，也不是常見 AI SaaS。
+**Feel**：像打開一冊由風化金屬、舊米紙和皮革保護的星際航行紀錄。
 
-本節記錄「已經 ship 咗嘅嘢」同「仲要補嘅嘢」，兩者要分開睇。
+**Interaction Tier**：L2 流暢互動
+**Dependencies**：React + CSS Modules + 原生 `IntersectionObserver`；不新增 GSAP、Lenis、Three.js 或 WebGL。動效概念參考 reactbits/vue-bits，但以輕量 CSS 和現有 React 實作。
 
-**已經確立、必須保留的方向：**
+### Design direction
 
-- 深海軍藍 `#003366`（header gradient 起點、PWA `theme_color`）、陶紅 `#D94124` accent、圓角卡片同 timeline，已建立可靠的旅行工具辨識度。
-- `body` 上的雙 radial-gradient 環境光（右上冷藍 + 左下暖橙）是全站唯一漸層來源，令下層 glass 有嘢可以折射。冇咗佢，所有半透明卡片會變成一片死白。
-- 三級 liquid glass（chip / card / nav）已經喺 `TravelLayout.module.css` 同 `Home.module.css` 一致實作，包括 `inset 0 1px 0` 頂部高光。呢個係產品的視覺簽名，唔係要清走的技術債。
-
-**已收斂的落差：**
-
-- 所有產品顏色收斂到 `src/index.css` 的 `:root`；元件內零硬編 hex，`.container` 內重複的本地變數已刪。
-- 正文基準 `16px`、行高 `1.7`；輔助文字下限 `15px`（`0.9375rem`），badge 下限 `0.75rem`。
-- Noto Sans TC 由 `index.html` 載入，離線時退回 PingFang TC。
-- 全站零 JSX inline style；狀態樣式全部由 class 管理。
-- 每個互動元件有 focus-visible 環，全域有 `prefers-reduced-motion` block。
-- 所有 button、link、tab、checkbox label 觸控區 ≥ `44 × 44px`。
-- 行程頁同首頁收窄到 `760px` 單欄閱讀軸。
-- 日期列用完整 ARIA tabs pattern（`tablist` / `tab` / `tabpanel`、方向鍵、Home/End、roving tabindex）。
-- `header` / `main` / `nav` landmark、skip link、所有外部連結標示「（新視窗）」。
-- 已完成的 To-Do 靠勾號、刪除線同較柔文字色表達，唔再用 `opacity`。
-
-**仍然要補的落差：**
-
-- 首頁 `Home.jsx` 的行程卡仍然逐張手寫，未由資料驅動；新增行程要改兩處。
-- Emoji 可保留作行程類別與快速辨識，但不可單獨承擔意思；重要按鈕必須同時有文字或 `aria-label`。
+- 由「藍橙玻璃工具感」轉為「Beskar 銀灰 + 舊米白 + Grogu 橄欖綠點綴」。
+- 大部分介面改用近實色 surface；玻璃只保留於 sticky navigation，避免全頁半透明造成廉價感。
+- 首頁以大型編輯式標題、旅程數字摘要及有節奏的旅程卡建立第一印象。
+- 行程頁維持單欄掃讀，但用更清晰的日期層級、細緻 timeline、酒店資訊卡及目的地 hero 提升質感。
+- Emoji 只作快速辨識的輔助訊號，不作主要圖示、標題裝飾或唯一語意來源。
 
 ## 2. Color Palette & Roles
 
@@ -50,217 +30,156 @@
 :root {
   color-scheme: light;
 
-  /* Ambient background —— 全站唯一漸層來源，套喺 body，卡片不得各自加漸層 */
-  --color-bg: #edf2ff;
-  --color-bg-rgb: 237, 242, 255;
-  --gradient-ambient:
-    radial-gradient(ellipse at 90% 0%,  rgba(100, 160, 240, 0.30) 0%, transparent 52%),
-    radial-gradient(ellipse at 8%  92%, rgba(255, 180, 50,  0.25) 0%, transparent 52%);
+  /* Canvas and surfaces */
+  --color-bg: #cfc7b8;
+  --color-bg-rgb: 207, 199, 184;
+  --color-surface: #e8e3d9;
+  --color-surface-rgb: 232, 227, 217;
+  --color-surface-elevated: #f2eee5;
+  --color-surface-muted: #d8d0c1;
+  --color-surface-hover: #e0d9cc;
 
-  /* Surfaces —— solid 同 glass 並存 */
-  --color-surface: #ffffff;
-  --color-surface-rgb: 255, 255, 255;
-  --color-surface-alt: #f5f8ff;
-  --color-surface-hover: #f0f5ff;
+  /* Ink */
+  --color-text: #252827;
+  --color-text-rgb: 37, 40, 39;
+  --color-text-secondary: #59605c;
+  --color-text-tertiary: #737872;
+  --color-text-inverse: #f2eee5;
+  --color-text-disabled: #929690;
 
-  /* Brand and action —— primary 必須同 PWA theme_color 一致 */
-  --color-primary: #003366;
-  --color-primary-rgb: 0, 51, 102;
-  --color-primary-deep: #001f3f;
-  --color-primary-hover: #00284f;
-  --color-primary-active: #001f3f;
-  --color-primary-soft: #e6f2ff;
-  --gradient-header: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-deep) 100%);
-  --color-accent: #ce3a1d;       /* 白字按鈕底：#d94124 只有 4.44:1，呢個 4.94:1 */
-  --color-accent-rgb: 206, 58, 29;
-  --color-accent-hover: #b8341a;
-  --color-accent-active: #9c2b13;
-  --color-accent-soft: #ffebe6;
+  /* Brand: Mandalorian helmet charcoal */
+  --color-primary: #2a3031;
+  --color-primary-rgb: 42, 48, 49;
+  --color-primary-hover: #1e2324;
+  --color-primary-active: #141718;
+  --color-primary-soft: #d8dcda;
 
-  /* Text —— 取代散落各處的 #333 / #666 / #888 */
-  --color-text: #2c3e50;
-  --color-text-rgb: 44, 62, 80;
-  --color-text-secondary: #4a5f73;
-  --color-text-tertiary: #6b7c8d;
-  --color-text-inverse: #ffffff;
-  --color-text-disabled: #8d9aaa;
+  /* Accent: Grogu olive, decorative and selected-state use only */
+  --color-accent: #74834d;
+  --color-accent-rgb: 116, 131, 77;
+  --color-accent-hover: #5f6d3d;
+  --color-accent-active: #4a562e;
+  --color-accent-soft: #dde2ce;
+
+  /* Leather: high-contrast secondary action */
+  --color-leather: #79543e;
+  --color-leather-rgb: 121, 84, 62;
+  --color-leather-hover: #624130;
+  --color-leather-active: #4e3225;
 
   /* Borders and focus */
-  --color-border: #ccd8e5;
-  --color-border-strong: #a9bacb;
-  --color-border-hover: #7895b2;
-  --color-focus: #176fc1;
-  --color-focus-rgb: 23, 111, 193;
+  --color-border: #aaa79e;
+  --color-border-rgb: 170, 167, 158;
+  --color-border-strong: #85847f;
+  --color-border-hover: #676b69;
+  --color-control-border: #626765;
+  --color-focus: #596f3a;
+  --color-focus-rgb: 89, 111, 58;
 
   /* Semantic */
-  --color-success: #247a49;
-  --color-success-rgb: 36, 122, 73;
-  --color-success-soft: #e6f5ec;
-  --color-warning: #9a5b00;
-  --color-warning-rgb: 154, 91, 0;
-  --color-warning-soft: #fff3d6;
-  --color-error: #b52d32;
-  --color-error-rgb: 181, 45, 50;
-  --color-error-soft: #fde9ea;
-  --color-info: #176fc1;
-  --color-info-rgb: 23, 111, 193;
-  --color-info-soft: #e7f2fd;
+  --color-success: #526233;
+  --color-success-rgb: 82, 98, 51;
+  --color-success-soft: #dce2cc;
+  --color-warning: #8c5a13;
+  --color-warning-rgb: 140, 90, 19;
+  --color-warning-soft: #eadbbc;
+  --color-error: #9a3e35;
+  --color-error-rgb: 154, 62, 53;
+  --color-error-soft: #f4dfdb;
+  --color-info: #52666d;
+  --color-info-rgb: 82, 102, 109;
+  --color-info-soft: #dce3e4;
 
-  /* Glass tiers —— 只有三級，不得自創第四級 */
-  --glass-chip-bg: rgba(var(--color-surface-rgb), 0.55);
-  --glass-chip-blur: blur(8px);
-  --glass-card-bg: rgba(var(--color-surface-rgb), 0.62);
-  --glass-card-blur: blur(16px);
-  --glass-nav-bg: rgba(var(--color-surface-rgb), 0.52);
-  --glass-nav-blur: saturate(180%) blur(28px);
-  --glass-sticky-bg: rgba(var(--color-bg-rgb), 0.70);
-  --glass-sticky-blur: saturate(180%) blur(20px);
+  /* Atmospheric layers */
+  --gradient-hero:
+    radial-gradient(circle at 82% 12%, rgba(var(--color-accent-rgb), 0.18), transparent 34%),
+    linear-gradient(145deg, var(--color-primary) 0%, var(--color-primary-active) 100%);
+  --gradient-page:
+    radial-gradient(circle at 90% 4%, rgba(var(--color-accent-rgb), 0.07), transparent 30%),
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
 
-  /* Glass 外框同頂部高光 —— liquid glass 的簽名細節，缺一不可 */
-  --glass-border: 1px solid rgba(var(--color-surface-rgb), 0.70);
-  --glass-border-strong: 1px solid rgba(var(--color-surface-rgb), 0.75);
-  --glass-highlight: inset 0 1px 0 rgba(var(--color-surface-rgb), 0.90);
+  /* Geometry */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
+  --radius-pill: 999px;
+  --control-height: 44px;
 
-  /* Depth —— glass 之下用低 alpha 黑，solid 之下用品牌色 */
-  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
-  --shadow-raised: 0 6px 20px rgba(0, 0, 0, 0.09);
-  --shadow-floating: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-header: 0 4px 24px rgba(var(--color-primary-rgb), 0.40);
-  --focus-ring: 0 0 0 3px rgba(var(--color-focus-rgb), 0.24);
+  /* Elevation */
+  --shadow-subtle: 0 1px 2px rgba(var(--color-text-rgb), 0.05);
+  --shadow-card:
+    0 1px 0 rgba(var(--color-surface-rgb), 0.90) inset,
+    0 10px 30px rgba(var(--color-text-rgb), 0.07);
+  --shadow-raised:
+    0 1px 0 rgba(var(--color-surface-rgb), 0.94) inset,
+    0 18px 45px rgba(var(--color-text-rgb), 0.11);
+  --shadow-floating: 0 22px 60px rgba(var(--color-text-rgb), 0.16);
+  --focus-ring: 0 0 0 4px rgba(var(--color-focus-rgb), 0.20);
 }
 ```
 
-### Color Rules
+### Color rules
 
-- 所有產品 UI 顏色必須引用 CSS variables；禁止在元件內新增硬編 hex、named colors 或任意 rgba。現時 `.container` 內重複定義的 `--primary` / `--secondary` / `--accent` / `--bg` / `--text` 要收斂到 `:root`。
-- 每一個畫面以海軍藍為主要 action 色；陶紅只標示行程重點、緊急提示或最重要的單一動作。
-- 環境漸層 `--gradient-ambient` 只出現喺 `body` 一次。卡片、header 以外的元件不得自行加 gradient，否則多層漸層互相打架，glass 會失去折射對象。
-- 卡片正文必須使用 `--color-text` 或 `--color-text-secondary`。半透明底之上禁止用 `#888` 一類低對比灰：glass 背後的環境色會令實際對比比預期低，所有 glass 上的文字要按最淺的可能底色驗算。
-- **對比驗算基準底色**：`--gradient-ambient` 最淺處係左下暖橙角，實測像素 `#f0e7da`。任何直接坐喺漸層上（冇 glass 卡承托）的文字，一律以呢個值驗算，唔可以用 `--color-bg` 或白色代替 —— 差別足以令一個色由 PASS 變 FAIL。
-- **`--color-border-strong`（`#a9bacb`）不得用作互動元件邊界**：喺白色填充上只有 `1.99:1`，未達 UI 元件所需的 `3:1`。checkbox 圈一類邊界用 `--color-control-border`（`#7e93aa`，`3.16:1`）。
-- **`--color-text-tertiary`（`#6b7c8d`）不得用於正文或連結**：喺 `#f0e7da` 上只有 `3.50:1`，未達 AA。佢只可用於已經坐喺實色卡面上的極次要標示。漸層上的次要文字用 `--color-text-secondary`（`#4a5f73`，`5.40:1`）。
-- semantic 顏色必須同時配合文字、圖示或形狀，不能只靠顏色傳達狀態。
-- finished 行程以中性樣式及清楚標籤表示，不可單靠整張卡片降低 opacity，避免可讀性下降。
-- 全站維持 light theme；未有完整暗色 tokens、地圖及 PWA theme 驗證前，不新增 dark mode。
-
-### Browser chrome and PWA
-
-- `index.html` 的 `<meta name="theme-color">` 同 `vite.config.js` PWA manifest 的 `theme_color` 必須同 `--color-primary`（`#003366`）一致；三者任何一個改動，其餘兩個要同步。
-- `html` 元素保留實色 `--color-bg` 背景，負責 iOS safe-area 同 overscroll 回彈區；漸層只加喺 `body`，避免回彈時露出漸層邊界。
-- manifest `background_color` 用 `--color-bg`（`#edf2ff`），令 splash screen 過渡到 app 時唔會閃白。
+- 所有產品顏色必須引用 CSS variables；元件 CSS 與 JSX 禁止新增硬編 hex、named color 或任意 rgba 色值。
+- 炭黑負責主要操作；Grogu 橄欖綠只佔畫面約 10%，用於 active、upcoming 與 timeline highlight。
+- 風化沙灰是主畫布，舊米白只用於卡片；不得將整頁變成純白或大面積軍綠。
+- 皮革啡只用於需要白字的次要高對比操作，避免以中亮度 Grogu 綠承托細白字。
+- `--gradient-hero` 只用於 hero；`--gradient-page` 只用於全頁環境層。卡片不得各自新增彩色漸層。
+- Sticky navigation 可以使用 `rgba(var(--color-surface-rgb), …)` 毛玻璃；其他大面積卡片使用近實色 surface。
+- Status 永遠同時用文字或圖示表達，不可只靠顏色。
+- PWA `theme_color`、`index.html` theme color 與 hero 深色基準同步使用 `--color-primary` 的實際值。
+- 文字對比以最淺 surface 及最暖背景兩者驗算；正文最少達 WCAG AA。
 
 ## 3. Typography Rules
 
-**Font import and stack**：
-
-字體由 `index.html` 的 `<link>` 載入，唔用 CSS `@import` —— `@import` 會阻塞樣式表解析，多一個來回先開始下載字體。
-
-```html
-<!-- index.html <head> -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" />
-```
-
-`display=swap` 令字體未到之前先用本地中文字族顯示，唔會白畫面。呢個 PWA 離線時字體攞唔到，會一直用 PingFang TC —— 屬預期行為，所以 fallback stack 必須自己企得住。
+**Google Fonts**：
 
 ```css
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700&display=swap');
+
 :root {
+  --font-display: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
   --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
 }
-
-body {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.7;
-  letter-spacing: 0.02em;
-}
 ```
+
+實作時優先在 `index.html` 使用等價 `<link rel="stylesheet">`，避免 CSS `@import` 阻塞；上段 URL 是規範來源。
 
 | Role | Font | Size | Weight | Line Height | Letter Spacing |
 |---|---|---:|---:|---:|---:|
-| Home H1 | Noto Sans TC | `clamp(1.75rem, 5vw, 2.25rem)` | 800 | 1.25 | `-0.01em` |
-| Trip H1 | Noto Sans TC | `clamp(1.5rem, 4.5vw, 2rem)` | 800 | 1.3 | `0` |
-| Section H2 | Noto Sans TC | `clamp(1.25rem, 3vw, 1.5rem)` | 700 | 1.4 | `0` |
-| Card H3 / item title | Noto Sans TC | `1rem` | 700 | 1.5 | `0` |
-| Body / details | Noto Sans TC | `1rem` | 400 | 1.7 | `0.02em` |
-| Secondary body | Noto Sans TC | `0.9375rem` | 400 | 1.65 | `0.02em` |
-| Label / tab | Noto Sans TC | `0.875rem` | 600 | 1.4 | `0.02em` |
-| Badge | Noto Sans TC | `0.75rem` | 700 | 1.3 | `0.04em` |
-| Time / numeric | Noto Sans TC + tabular nums | `0.875rem` | 700 | 1.4 | `0.01em` |
-| Mono / code | system monospace | `0.875rem` | 500 | 1.55 | `0` |
+| Home Hero H1 | Display | `clamp(2.6rem, 9vw, 5rem)` | 600 | 1.08 | `-0.035em` |
+| Trip Hero H1 | Display | `clamp(2rem, 6vw, 3.4rem)` | 600 | 1.16 | `-0.025em` |
+| Section H2 | Display | `clamp(1.45rem, 3.5vw, 2rem)` | 600 | 1.3 | `-0.015em` |
+| Card H3 | Sans | `1.0625rem` | 600 | 1.45 | `-0.01em` |
+| Body | Sans | `1rem` | 400 | 1.75 | `0.015em` |
+| Secondary body | Sans | `0.9375rem` | 400 | 1.65 | `0.015em` |
+| Label / Tab | Sans | `0.8125rem` | 600 | 1.35 | `0.055em` |
+| Time / Numeric | Sans | `0.875rem` | 600 | 1.4 | `0.01em` |
+| Badge | Sans | `0.75rem` | 700 | 1.3 | `0.045em` |
+| Mono / fare | Mono | `0.875rem` | 500 | 1.55 | `0` |
 
-### Typography Rules
+### Typography rules
 
-- 中文正文不得小於 `15px`；主要行程詳情以 `16px` 為目標。
-- 時間、價錢、匯率使用 `font-variant-numeric: tabular-nums`，方便垂直比較。
-- 標題最多兩行；行程名稱過長時自然換行，不截斷關鍵地名。
-- 中英混排先用繁體中文字族，再以 system sans-serif fallback。
-- **Never use**：純英文字體而沒有中文字體 fallback、超幼字重、全段 uppercase、正文 italic、手寫字體。
+- Display serif 只用於 H1/H2、旅程名稱及少量大數字；操作、正文、日期與表格全部使用 sans-serif。
+- 中文正文不得小於 `15px`；主要行程詳情以 `16px`、`line-height: 1.75` 為基準。
+- 大標題最多兩行，利用留白與字體對比建立高級感，不靠粗體堆疊。
+- 時間、價錢、匯率及日期使用 `font-variant-numeric: tabular-nums`。
+- 英文狀態標籤可保留，但不可整段 uppercase；必要時改用「即將出發／旅程完成」。
+- **Never use**：純英文字體而無繁中文字體 fallback、手寫字體、正文 italic、超粗 `800/900` 大標題、全段 uppercase。
 
-### Text Decoration
+### Text decoration decision
 
-- 所有 H1/H2：無漸變、無文字投影，以字重、留白和色彩建立層級。
-- 正文：不加投影、漸變或裝飾底線。
-- 文字連結：預設有可辨識底線，hover 只改顏色和 underline offset。
-- 小標籤可用底色或左側色條，不以 letter spacing 過大的全大寫字作裝飾。
+- Hero H1：無漸變文字、無投影；以 serif、深淺對比與 split reveal 建立層次。
+- Section H2：無漸變、無投影；可有 32px Grogu 橄欖綠短線作 eyebrow divider。
+- Body：無漸變、無投影、無裝飾背景。
+- Link：保留可辨識 underline，hover 改 underline offset 與顏色。
 
 ## 4. Component Stylings
 
-### Spec names vs the code
-
-本章嘅 selector 係**規範用嘅語意名**，唔係 `src/` 入面真實嘅 class 名。呢份係設計規範，
-唔係 API 文檔 —— 揀語意名係為咗講「一個 badge 應該點」，而唔係綁死某個檔案叫咩。
-
-代價係查唔返轉頭。所以對照表放喺呢度，改 code 之前先對一對：
-
-| 規範名 | 實際 class | 位置 |
-|---|---|---|
-| `.pageShell` | `.container` | TravelLayout / Home / CurrencyConverter |
-| `.tripGrid` | `.tripList` | Home |
-| `.interactiveCard` | `.card`、`.tripCard` | TravelLayout / Home |
-| `.dayPanel` | `.daySection` | TravelLayout |
-| `.timelineMarker` | `.timelineItem::before` | TravelLayout（偽元素，唔係獨立 class） |
-| `.navItem` | `.navBtn` | TravelLayout 底部導航 |
-| `.button` | `.itemNavBtn`、`.hotelNavBtn` | TravelLayout 導航掣 |
-| `.textLink` | `.trip-link` | **全域**（`index.css`），資料檔要用呢個 |
-| `.badge` + `data-tone` | `.trip-badge-info`、`.trip-badge-warn` | **全域**（`index.css`） |
-| `.dataTable` | `.fareTable` | TravelLayout 車費表 |
-| `.dataTableTotal` | `.fareSubtotal`、`.fareGrand` | TravelLayout |
-| `.field` | `.input`、`.inputGroup` | CurrencyConverter |
-| `.checkControl` | `.checkCircle` | TravelLayout to-do |
-| `.pageEnter` | `fadeIn` keyframe | TravelLayout |
-
-**未建成嘅：** `.buttonSecondary`（surface 底 + primary 字）喺 code 冇對應 —— 現有掣得
-實色 primary（`.itemNavBtn`）同無邊框 icon 掣（`.clearBtn`）兩種。要做次要掣就跟返本章
-規格，唔好即興再開一種。`.pressable` 同樣係通用按壓行為，唔係一個真 class。
-
-資料檔（`src/pages/*/​*Data.jsx`）嘅 `details` 只可以用**全域** `trip-*` class，
-因為佢哋唔經 CSS modules。
-
-### Shared geometry
-
-```css
-:root {
-  --radius-xs: 6px;   /* inline badge */
-  --radius-sm: 8px;
-  --radius-md: 14px;  /* timeline card、hotel header、spot row */
-  --radius-lg: 16px;  /* todo label、date chip */
-  --radius-xl: 20px;  /* home trip card */
-  --radius-pill: 999px;
-  --control-height: 44px;
-}
-
-*, *::before, *::after { box-sizing: border-box; }
-
-:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 3px;
-}
-```
+以下 selector 是語意規格，實作時映射到現有 CSS Modules class。
 
 ### Buttons
 
@@ -271,275 +190,118 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.625rem 1rem;
+  padding: 0.6875rem 1.125rem;
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
   background: var(--color-primary);
   color: var(--color-text-inverse);
-  font: 700 0.875rem/1.3 var(--font-sans);
+  font: 600 0.875rem/1.3 var(--font-sans);
   text-decoration: none;
   cursor: pointer;
   box-shadow: var(--shadow-subtle);
-  transition: background-color 160ms ease, border-color 160ms ease,
-              box-shadow 160ms ease, transform 120ms ease;
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
 }
-
-.button:hover {
-  background: var(--color-primary-hover);
-  box-shadow: var(--shadow-card);
-  transform: translateY(-1px);
-}
-
-.button:active {
-  background: var(--color-primary-active);
-  box-shadow: var(--shadow-subtle);
-  transform: translateY(0) scale(0.98);
-}
-
-.button:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 3px;
-  box-shadow: var(--focus-ring);
-}
-
+.button:hover { background: var(--color-primary-hover); transform: translateY(-1px); box-shadow: var(--shadow-card); }
+.button:active { background: var(--color-primary-active); transform: translateY(0) scale(0.98); box-shadow: none; }
+.button:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; box-shadow: var(--focus-ring); }
 .button:disabled,
-.button[aria-disabled="true"] {
-  background: var(--color-border);
-  color: var(--color-text-disabled);
-  box-shadow: none;
-  cursor: not-allowed;
-  transform: none;
-}
+.button[aria-disabled="true"] { background: var(--color-surface-muted); color: var(--color-text-disabled); cursor: not-allowed; transform: none; box-shadow: none; }
 
-.buttonSecondary {
-  background: var(--color-surface);
-  color: var(--color-primary);
-  border-color: var(--color-border);
-}
-
-.buttonSecondary:hover {
-  background: var(--color-surface-hover);
-  border-color: var(--color-border-hover);
-}
+.buttonSecondary { background: transparent; color: var(--color-primary); border-color: var(--color-border-strong); box-shadow: none; }
+.buttonSecondary:hover { background: var(--color-primary-soft); border-color: var(--color-primary); }
+.buttonSecondary:active { background: var(--color-surface-muted); }
 ```
 
-### Cards and timeline items
+### Trip cards
 
 ```css
-/* Glass card recipe —— 四個部分缺一不可：半透明底、blur、亮邊、頂部高光 */
-.card {
-  padding: var(--space-3) var(--space-4);
-  border: var(--glass-border-strong);
-  border-radius: var(--radius-md);
-  background: var(--glass-card-bg);
-  backdrop-filter: var(--glass-card-blur);
-  -webkit-backdrop-filter: var(--glass-card-blur);
-  color: var(--color-text);
-  box-shadow: var(--shadow-card), var(--glass-highlight);
-  transition: border-color 180ms ease, box-shadow 180ms ease,
-              transform 180ms ease;
-}
-
-/* 無 backdrop-filter 支援時的後備：加厚實色底，唔可以留半透明 */
-@supports not (backdrop-filter: blur(1px)) {
-  .card { background: rgba(var(--color-surface-rgb), 0.94); }
-}
-
-a.card:hover,
-button.card:hover {
-  background: rgba(var(--color-surface-rgb), 0.72);
-  box-shadow: var(--shadow-raised), var(--glass-highlight);
-  transform: translateY(-2px);
-}
-
-a.card:active,
-button.card:active { transform: translateY(0) scale(0.99); }
-
-a.card:focus-visible,
-button.card:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 3px;
-  box-shadow: var(--focus-ring);
-}
-
-.card[aria-disabled="true"] {
-  background: var(--color-surface-alt);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-color: var(--color-border);
-  color: var(--color-text-disabled);
-  box-shadow: none;
-  pointer-events: none;
-}
-
-.timeline {
-  border-inline-start: 3px solid var(--color-border-strong);
-}
-
-.timelineMarker {
-  background: var(--color-surface);
-  border: 3px solid var(--color-primary);
-}
-
-.timelineItem[data-highlight="true"] .timelineMarker {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-}
-```
-
-### Navigation, date tabs and bottom navigation
-
-```css
-.stickyNav {
-  position: sticky;
-  inset-block-start: 0;
-  z-index: 99;                 /* 低過 bottomNav 嘅 1000 */
-  padding-block: 10px;
-  margin-block-end: 10px;
-  background: var(--glass-sticky-bg);
-  border-block-end: 1px solid rgba(var(--color-surface-rgb), 0.50);
-  backdrop-filter: var(--glass-sticky-blur);
-  -webkit-backdrop-filter: var(--glass-sticky-blur);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
-}
-
-/* Fixed bottom navigation —— 全站最強一級 glass，只此一處 */
-.bottomNav {
-  position: fixed;
-  inset-block-end: calc(var(--space-5) + env(safe-area-inset-bottom));
-  z-index: 1000;
-  border: 1px solid rgba(var(--color-surface-rgb), 0.55);
-  border-radius: var(--radius-pill);
-  background: var(--glass-nav-bg);
-  backdrop-filter: var(--glass-nav-blur);
-  -webkit-backdrop-filter: var(--glass-nav-blur);
-  box-shadow: var(--shadow-floating), var(--glass-highlight);
-}
-
-.navItem {
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0.625rem 1rem;
-  border: var(--glass-border);
+.tripCard {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: var(--glass-chip-bg);
-  backdrop-filter: var(--glass-chip-blur);
-  -webkit-backdrop-filter: var(--glass-chip-blur);
-  color: var(--color-text-secondary);
-  font: 600 0.9rem/1.3 var(--font-sans);
-  box-shadow: var(--shadow-subtle);
-  cursor: pointer;
-  transition: background-color 160ms ease, color 160ms ease,
-              border-color 160ms ease, transform 120ms ease;
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms ease, box-shadow 280ms ease;
 }
-
-.navItem:hover {
-  background: rgba(var(--color-surface-rgb), 0.75);
-  color: var(--color-primary);
-}
-
-.navItem:active { transform: scale(0.97); }
-
-.navItem:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
-  box-shadow: var(--focus-ring);
-}
-
-/* Active chip 轉為實色，喺漸層背景上先夠對比同夠明確 */
-.navItem[aria-pressed="true"],
-.navItem[aria-current="page"] {
-  background: var(--color-primary);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  color: var(--color-text-inverse);
-  border-color: transparent;
-  box-shadow: 0 4px 14px rgba(var(--color-primary-rgb), 0.30);
-}
-
-.navItem:disabled {
-  background: var(--color-surface-alt);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  color: var(--color-text-disabled);
-  border-color: var(--color-border);
-  box-shadow: none;
-  cursor: not-allowed;
-  transform: none;
-}
+.tripCard:hover { transform: translateY(-3px); border-color: var(--color-border-hover); box-shadow: var(--shadow-raised); }
+.tripCard:active { transform: translateY(-1px) scale(0.995); }
+.tripCard:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 4px; box-shadow: var(--focus-ring), var(--shadow-raised); }
+.tripCard[aria-disabled="true"] { color: var(--color-text-disabled); background: var(--color-surface-muted); cursor: not-allowed; transform: none; box-shadow: none; }
 ```
 
-### Tab strip edge controls
+Finished trips use a neutral status badge, never whole-card opacity. Upcoming trips may use one restrained bronze rule or badge.
 
-日期 tab 條係橫向捲動容器，捲軸永遠隱藏（`scrollbar-width: none`）。喺觸控裝置掃得郁，但用滑鼠就等於冇任何捲動途徑 —— 六日行程加 To-Do 一定溢出。兩邊各浮一個圓形箭嘴掣，只喺嗰個方向仲有內容時出現。
+### Date navigation
 
 ```css
-.tabScroller { position: relative; }
+.dateRail {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding-block: 0.625rem;
+  background: rgba(var(--color-surface-rgb), 0.76);
+  border-bottom: 1px solid transparent;
+  backdrop-filter: saturate(140%) blur(12px);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  transition: background-color 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+}
+.dateRail.isScrolled { border-bottom-color: var(--color-border); box-shadow: var(--shadow-subtle); }
 
-.tabNav {
-  position: absolute;
-  inset-block-start: 50%;
-  z-index: 2;
-  display: none;               /* 由 JS 按捲動位置切換 */
-  inline-size: 34px;
-  block-size: 34px;
-  border: var(--glass-border-strong);
+.dateChip {
+  min-height: var(--control-height);
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   background: var(--color-surface);
   color: var(--color-text-secondary);
-  box-shadow: 0 2px 10px rgba(var(--color-text-rgb), 0.18);
-  transform: translateY(-50%);
-  transition: background 200ms ease, color 200ms ease;
+  font: 600 0.8125rem/1 var(--font-sans);
+  cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
-
-.tabNavShown { display: flex; }
-.tabNav:hover { background: var(--color-primary); color: var(--color-text-inverse); }
-.tabNavLeft { inset-inline-start: 8px; }
-.tabNavRight { inset-inline-end: 8px; }
-
-/* 觸控本身掃得郁，兩個掣淨係阻住 tab */
-@media (pointer: coarse) {
-  .tabNavShown { display: none; }
-}
-
-/* chip 唔可以被壓扁：nowrap + 可縮 = 文字爆出格 */
-.dateChip { flex: 0 0 auto; }
+.dateChip:hover { color: var(--color-primary); border-color: var(--color-border-hover); transform: translateY(-1px); }
+.dateChip:active { transform: scale(0.97); }
+.dateChip[aria-selected="true"] { background: var(--color-primary); color: var(--color-text-inverse); border-color: var(--color-primary); }
+.dateChip:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; box-shadow: var(--focus-ring); }
+.dateChip:disabled { background: var(--color-surface-muted); color: var(--color-text-disabled); cursor: not-allowed; transform: none; }
 ```
 
-- 捲動位置用 `scroll` 事件加 `ResizeObserver` 監住，改視窗大細或者換咗日數唔同嘅行程都會重算。
-- 呢兩個掣係 `aria-hidden="true"` + `tabIndex={-1}`，**唔畀 aria-label**。tablist 本身已經有方向鍵、Home/End 同 roving tabindex，鍵盤同螢幕閱讀器用嗰條路；再曝露兩個掣只會喺 Tab 次序度多兩個冗餘停站。呢個係「icon-only control 必須有 aria-label」嘅唯一豁免 —— 前提係已經有等效鍵盤操作。
-- `34 × 34px` 細過 44px 觸控下限，但佢喺 `pointer: coarse` 之下唔會出現，所以只服務滑鼠。任何會喺觸控出現嘅 icon 掣仍然要 44px。
+### Timeline cards
+
+```css
+.timelineCard {
+  padding: 1rem 1.125rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-subtle);
+  transition: border-color 200ms ease, box-shadow 240ms ease, transform 240ms ease;
+}
+.timelineCard:hover { border-color: var(--color-border-hover); box-shadow: var(--shadow-card); transform: translateX(2px); }
+.timelineCard:focus-within { border-color: var(--color-focus); box-shadow: var(--focus-ring); }
+.timelineCard[data-highlight="true"] { border-left: 3px solid var(--color-accent); }
+```
 
 ### Links
 
 ```css
 .textLink {
-  color: var(--color-info);
-  font-weight: 600;
+  color: var(--color-primary);
   text-decoration-line: underline;
-  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(var(--color-primary-rgb), 0.36);
   text-underline-offset: 0.2em;
-  transition: color 160ms ease, text-underline-offset 160ms ease;
+  transition: color 180ms ease, text-decoration-color 180ms ease, text-underline-offset 180ms ease;
 }
-
-.textLink:hover {
-  color: var(--color-primary-hover);
-  text-underline-offset: 0.3em;
-}
-
-.textLink:active { color: var(--color-primary-active); }
-
-.textLink:focus-visible {
-  border-radius: 2px;
-  outline: 2px solid var(--color-focus);
-  outline-offset: 3px;
-}
-
-.textLink[aria-disabled="true"] {
-  color: var(--color-text-disabled);
-  text-decoration: none;
-  pointer-events: none;
-}
+.textLink:hover { color: var(--color-accent-hover); text-decoration-color: currentColor; text-underline-offset: 0.3em; }
+.textLink:active { color: var(--color-accent-active); }
+.textLink:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; border-radius: var(--radius-xs); }
+.textLink[aria-disabled="true"] { color: var(--color-text-disabled); text-decoration-color: transparent; pointer-events: none; }
 ```
 
 ### Tags and badges
@@ -548,299 +310,50 @@ button.card:focus-visible {
 .badge {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
-  padding: 0.25rem 0.625rem;
+  min-height: 1.75rem;
+  padding-inline: 0.625rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
-  background: var(--color-surface-alt);
+  background: var(--color-surface-muted);
   color: var(--color-text-secondary);
   font: 700 0.75rem/1.3 var(--font-sans);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.045em;
 }
-
-.badge[data-tone="success"] {
-  background: var(--color-success-soft);
-  border-color: rgba(var(--color-success-rgb), 0.28);
-  color: var(--color-success);
-}
-
-.badge[data-tone="warning"] {
-  background: var(--color-warning-soft);
-  border-color: rgba(var(--color-warning-rgb), 0.28);
-  color: var(--color-warning);
-}
-
-.badge[data-tone="error"] {
-  background: var(--color-error-soft);
-  border-color: rgba(var(--color-error-rgb), 0.28);
-  color: var(--color-error);
-}
-
-.badge[data-tone="info"] {
-  background: var(--color-info-soft);
-  border-color: rgba(var(--color-info-rgb), 0.28);
-  color: var(--color-info);
-}
+.badge[data-tone="upcoming"] { background: var(--color-accent-soft); color: var(--color-accent-active); border-color: rgba(var(--color-accent-rgb), 0.28); }
+.badge[data-tone="done"] { background: var(--color-success-soft); color: var(--color-success); border-color: rgba(var(--color-success-rgb), 0.24); }
 ```
 
-### Data tables
-
-用於車費、匯率、班次一類「標籤 + 數值」資料。承載喺 card 級 glass 上，數值右對齊並使用 tabular numerals。
+### Todo controls
 
 ```css
-.dataTable {
-  width: 100%;
-  padding: var(--space-3) var(--space-4);
-  border: var(--glass-border-strong);
-  border-radius: var(--radius-md);
-  background: var(--glass-card-bg);
-  backdrop-filter: var(--glass-card-blur);
-  -webkit-backdrop-filter: var(--glass-card-blur);
-  box-shadow: var(--shadow-card), var(--glass-highlight);
-
-  /* 必須係 separate。用 collapse 嘅話瀏覽器會完全忽略 table 自身的
-     padding（CSS 規範明文規定），padding 宣告唔會報錯但亦唔會生效。 */
-  border-collapse: separate;
-  border-spacing: 0;
-}
-
-.dataTable caption {
-  padding-bottom: var(--space-2);
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  text-align: left;
-}
-
-.dataTable th[scope="row"] {
-  padding: 5px 0;
-  font-size: 0.9375rem;
-  font-weight: 400;
-  color: var(--color-text-secondary);
-  text-align: left;
-}
-
-.dataTable td {
-  padding: 5px 0;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: var(--color-text);
-  text-align: right;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-
-/* 小計行靠一條上邊線分隔，唔靠底色 */
-.dataTableTotal th,
-.dataTableTotal td {
-  padding-top: var(--space-2);
-  border-top: 1px solid var(--color-border);
-  color: var(--color-text);
-  font-weight: 700;
-}
-```
-
-### Data table rules
-
-- 用真 `<table>`：`<caption>` 做分組標題、`<th scope="row">` 做標籤欄。唔好用 `<div>` 砌格仔 —— 螢幕閱讀器會讀唔到行列關係。
-- 數值欄一律 `text-align: right` + `font-variant-numeric: tabular-nums` + `white-space: nowrap`，方便垂直比較同避免金額斷行。
-- 金額用字串儲存，唔好用數字：咁「¥900-1,500」一類範圍先可以同定額排喺同一欄，唔使兩套渲染邏輯。
-- 總計橫額用實色 `--color-primary` + `--color-text-inverse`，同表身區分；唔好靠加粗或者放大字體嚟做總計。
-
-### Timetable grids
-
-同上面 `.dataTable` **唔同 pattern，唔好混淆**。`.dataTable` 係「標籤 + 數值」清單（車費、匯率）；呢個係由官方時刻表抄落嚟嘅**矩陣** —— 一個軸係站或者班次，另一個軸係時間。兩者規則相反，各有各嘅理由。
-
-```css
-.trip-timetable-wrap {
-  display: block;
-  overflow-x: auto;                    /* 表自己捲，唔好撐爆版面 */
-  overscroll-behavior-x: contain;      /* 捲到盡唔好觸發瀏覽器返回手勢 */
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-}
-
-.trip-timetable {
-  border-collapse: collapse;
-  inline-size: max-content;
-  min-inline-size: 100%;
-  font-size: 0.8125rem;
-  font-variant-numeric: tabular-nums;
-}
-
-.trip-timetable th,
-.trip-timetable td {
-  padding: 5px var(--space-2);
-  border-block-end: 1px solid var(--color-border);
-  white-space: nowrap;
-  text-align: center;
-}
-
-/* 首欄釘住，其餘直行喺佢後面捲 */
-.trip-timetable thead th:first-child,
-.trip-timetable tbody th {
-  position: sticky;
-  inset-inline-start: 0;
-  z-index: 2;
-  background: var(--color-surface);
-  box-shadow: 3px 0 5px -2px rgba(var(--color-text-rgb), 0.25);
-}
-
-/* 首欄係地名：靠左、准摺行、封頂闊度 */
-.trip-timetable tbody th {
-  text-align: left;
-  white-space: normal;
-  min-inline-size: 6em;
-  max-inline-size: 8.5em;
-  line-height: 1.25;
-}
-
-/* 首欄係時間：同其餘直行一樣置中 */
-.trip-timetable-num tbody th {
-  text-align: center;
-  white-space: nowrap;
-  min-inline-size: 0;
-  max-inline-size: none;
-}
-
-.trip-timetable tr.is-key th,
-.trip-timetable tr.is-key td { background: var(--color-info-soft); color: var(--color-info); font-weight: 700; }
-
-.trip-timetable tr.is-off th,
-.trip-timetable tr.is-off td { color: var(--color-text-tertiary); font-weight: 400; }
-
-.trip-timetable .is-taken { color: var(--color-info); font-weight: 700; }
-.trip-timetable .is-taken-start { border-inline-start: 2px solid var(--color-info); }
-.trip-timetable .is-taken-end   { border-inline-end: 2px solid var(--color-info); }
-```
-
-### Timetable grid rules
-
-- **時間置中，唔係右對齊。** `.dataTable` 嘅右對齊係為咗令長短不一嘅金額個位對齊；矩陣入面每格都係 `H:MM` 等寬，置中先同表頭對得正。
-- **呢類表用 `border-collapse: collapse`。** §8 嗰條禁令針對嘅係 `<table>` 自身帶 padding 嘅情況（`separate` 先生效）。呢度 padding 全部落喺格仔，邊框同圓角由 `.trip-timetable-wrap` 負責，`<table>` 本身冇 padding，所以個陷阱唔成立 —— 而且畫格線一定要 `collapse`。
-- **首欄釘住要有陰影邊。** 冇嘅話後面捲過嚟嘅時間會露半截喺文字底下，睇落似渲染爆咗而唔似釘住。釘住嘅格仔背景必須唔透明，`is-key` 一類有底色嘅行要再明確落一次底色。
-- **表頭角落格要一齊釘。** 淨係釘 `tbody th` 嘅話，捲動時直行標題會同下面啲值錯開。
-- **三種標示各有分工：** `is-key` 標你實際上落車嗰行（成行藍底）、`is-taken` 加 `is-taken-start/end` 框住實際搭嗰幾個直行（只畫左右兩條線，唔好逐格 outline —— 圓角 outline 疊落成直行會變一串波浪）、`is-off` 灰化當日唔行嘅班次（保留住等人一眼睇得出唔關事，唔好刪走）。
-- **只剪走物理上唔可能嘅班次。** 太早到唔到、太夜嘅仍然係後備，剪走等於㩒住人哋唔准改主意；剪咗要喺表底寫明剪咗咩同點解，並附官方時刻表連結。
-
-### Collapsible panels
-
-```css
-.trip-collapse {
-  display: block;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: var(--color-surface);
-}
-
-.trip-collapse > summary {
+.todoControl {
+  min-height: var(--control-height);
   display: flex;
   align-items: center;
-  min-block-size: var(--control-height);
-  padding: 6px var(--space-2);
-  cursor: pointer;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: var(--color-text-secondary);
-  list-style: none;                                  /* Firefox */
-}
-
-.trip-collapse > summary::-webkit-details-marker { display: none; }
-.trip-collapse > summary::after {
-  content: '\25BE';
-  margin-inline-start: auto;
-  transition: transform 200ms ease;
-}
-.trip-collapse[open] > summary::after { transform: rotate(180deg); }
-
-/* 面板已經有邊框，入面張表唔好再畫多一層 */
-.trip-collapse .trip-timetable-wrap {
-  border: 0;
-  border-block-start: 1px solid var(--color-border);
-  border-radius: 0;
-}
-```
-
-- 用原生 `<details>` / `<summary>`，唔好自己砌 —— 免費得到鍵盤操作、螢幕閱讀器展開狀態同瀏覽器內搜尋。
-- **只准摺完整時刻表呢一類大塊參考資料**，而且同一個 timeline item 入面必須已經有純文字寫住實際要搭嗰幾班。摺埋嘅係「全部班次」，唔係「你要搭嗰班」。
-- `summary` 至少 `var(--control-height)` 高，箭嘴用 `::after` 唔好用 emoji（方向要跟 `[open]` 轉）。
-
-### Structured itinerary — UKB26
-
-- Opt-in `days[].presentation: "structured"`; all UKB26 days enable it; other trips retain their existing layout. Existing glass/card tokens and L1 motion remain in use.
-- Cards show time + optional `category` above a semantic h2 title and navigation action; optional `summary` sits between the heading and body. Body line-height is 1.7; title 1.125rem; metadata and summaries at least 0.9375rem.
-- Transport uses global `.trip-route`: semantic ordered list, station names in bold and each onward leg below it, with a continuous line and station markers. Direction, station code, interchange and estimates remain visible.
-- `.trip-route-reference` is an explicit UKB26 exception to the general no-hidden-links rule: only official reference links may collapse under “時刻表與官方交通資料”. No boarding instructions, direction, station, warning or selected departure time may be hidden. No actual departure timetable was added in this preview.
-- Use existing tokens for all color, radius, spacing and elevation. Keep navigation targets ≥44px. At ≤360px, long titles and navigation wrap onto separate rows; route text wraps without horizontal scrolling.
-- Reference summary supports default/hover/active/focus-visible; native details supplies keyboard/expanded state. No disabled state is offered for this always-available disclosure. All route content remains readable without interaction.
-
-- `.trip-departure-options` shows alternative departure/arrival pairs as separate blocks, with a visible action explanation. Both options remain expanded; existing full timetable disclosures are preserved. Day 4 conflicting source times remain explicitly labelled unverified, rather than silently choosing a departure.
-
-### Forms and checklist controls
-
-```css
-.field {
-  width: 100%;
-  min-height: 48px;
-  padding: 0.75rem 0.875rem;
-  border: 2px solid var(--color-border);
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface);
   color: var(--color-text);
-  font: 500 1rem/1.4 var(--font-sans);
-  font-variant-numeric: tabular-nums;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  cursor: pointer;
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
-
-.field:hover { border-color: var(--color-border-hover); }
-
-.field:focus {
-  border-color: var(--color-focus);
-  outline: none;
-  box-shadow: var(--focus-ring);
-}
-
-.field:disabled {
-  background: var(--color-surface-alt);
-  color: var(--color-text-disabled);
-  cursor: not-allowed;
-}
-
-.field[aria-invalid="true"] {
-  border-color: var(--color-error);
-}
-
-.checkControl {
-  inline-size: 26px;
-  block-size: 26px;
-  border: 2px solid var(--color-border-strong);
-  border-radius: 50%;
-  background: var(--color-surface);
-}
-
-input:checked + .checkControl {
-  border-color: var(--color-primary);
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
-}
-
-input:focus-visible + .checkControl {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 3px;
-  box-shadow: var(--focus-ring);
-}
+.todoControl:hover { background: var(--color-surface-hover); border-color: var(--color-border-hover); }
+.todoControl:active { transform: scale(0.995); }
+.todoControl:focus-within { border-color: var(--color-focus); box-shadow: var(--focus-ring); }
+.todoControl[data-complete="true"] { color: var(--color-text-secondary); text-decoration: line-through; background: var(--color-surface-muted); }
+.todoControl[aria-disabled="true"] { color: var(--color-text-disabled); cursor: not-allowed; }
 ```
 
 ## 5. Layout Principles
 
-### Container
+### Containers
 
-- Application max width：`760px`，讓桌面版保持單一、易追蹤的行程閱讀軸。
-- Home card list max width：`360px`（現況 `350px`／匯率工具 `360px`，統一到 `360px`）。行程卡係掃讀用的入口，唔需要拉闊。
-- Text-heavy narrow variant：`680px`。
-- Desktop inline padding：`clamp(1.5rem, 4vw, 2rem)`。
-- Mobile inline padding：`16px`，最窄裝置可降至 `12px`。
-- 必須計算 `env(safe-area-inset-top)` 與 `env(safe-area-inset-bottom)`。
+- App max width：`960px`，畀首頁 hero 與旅程卡更多呼吸空間。
+- 行程內容 reading column：`760px`，timeline、備註及表格維持單欄掃讀。
+- Desktop inline padding：`32px`；tablet：`24px`；mobile：`16px`。
+- Hero 可 full-bleed 至 app container 邊緣，但內容文字仍跟 reading grid 對齊。
 
 ### Spacing scale
 
@@ -850,190 +363,174 @@ input:focus-visible + .checkControl {
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --page-max: 60rem;
+  --reading-max: 47.5rem;
 }
 ```
 
-- Page section gap：`var(--space-8)`。
-- Timeline item gap：`var(--space-6)`。
-- Card internal padding：mobile `var(--space-4)`；desktop `var(--space-5)`。
-- Related text gap：`var(--space-2)`；unrelated content不得只靠換行分隔。
+- Section gap：`clamp(3rem, 8vw, 5.5rem)`。
+- Card gap：`16px` mobile、`20px` desktop。
+- Card padding：最少 `20px`，重要卡 desktop 可到 `32px`。
+- Timeline 每站垂直距離：`28–36px`；同一日內容不可被過多細卡切碎。
 
-### Grid and reading flow
+### Grid
 
 ```css
-.pageShell {
-  width: min(100%, 760px);
-  min-height: 100dvh;
-  margin-inline: auto;
-}
-
 .tripGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-4);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
 }
+.tripGrid > :first-child { grid-column: 1 / -1; }
 
-.cardHead {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  gap: var(--space-3);
+.readingColumn {
+  width: min(100%, var(--reading-max));
+  margin-inline: auto;
 }
 ```
 
-- 行程頁維持 header → 日期 tabs → 酒店提示 → timeline → bottom navigation 的固定順序。
-- 每張 timeline card 只突出一個主要時間和一個主要行動；外部資料連結排列在詳情之後。
-- 日期 tabs 可水平捲動，但首個、目前及下一個日期必須容易看見；不可壓縮文字至難以點按。
-- Bottom navigation 最多四個頂層目的地，優先保留行程、工具、地圖。
-- Desktop 不強行轉為多欄 dashboard；行程是線性時間資訊，單欄較易追蹤。
+首頁第一個 upcoming trip 可跨兩欄，形成不等大但克制的編輯式節奏；已完成旅程保持相同可讀性，不降低整卡 opacity。
 
 ## 6. Depth & Elevation
 
-深度由**三級 glass**同**四級陰影**兩個獨立軸組成。Glass 決定「隔幾遠」，陰影決定「浮幾高」，唔可以混淆。
-
-### Glass tiers
-
-| Tier | Background | Blur | Border | Use |
-|---|---|---|---|---|
-| Chip | `--glass-chip-bg`（0.55） | `blur(8px)` | `--glass-border` | date chip、header 上的 home link、小 pill |
-| Card | `--glass-card-bg`（0.62） | `blur(16px)` | `--glass-border-strong` | timeline card、hotel header、todo label、spot row、home trip card |
-| Nav | `--glass-nav-bg`（0.52） | `saturate(180%) blur(28px)` | `rgba(255,255,255,0.55)` | fixed bottom navigation |
-| Nav（sticky） | `--glass-sticky-bg`（bg 色 0.70） | `saturate(180%) blur(20px)` | 底邊 `rgba(255,255,255,0.50)` | sticky date navigation |
-
-### Shadow levels
-
 | Level | Treatment | Use |
 |---|---|---|
-| Flat | 無陰影；`1px` border | badges、時間標籤、內容分隔 |
-| Subtle | `var(--shadow-subtle)` | date chip、input、列表列 |
-| Card | `var(--shadow-card)` | 一般 glass card 靜止態 |
-| Raised | `var(--shadow-raised)` | 可點擊 card 的 hover 態 |
-| Floating | `var(--shadow-floating)` | fixed bottom navigation、必要浮層 |
+| Flat | 無陰影，使用背景與留白分層 | Page canvas、section、表格底層 |
+| Hairline | `--shadow-subtle` + `--color-border` | 日期 chip、todo、簡單資訊列 |
+| Card | `--shadow-card` | 旅程卡、timeline card、酒店卡 |
+| Raised | `--shadow-raised` | Hovered trip card、重要資訊卡 |
+| Floating | `--shadow-floating` | 臨時 overlay、離線提示；一般內容禁用 |
 
-### Depth rules
+### Elevation rules
 
-- Glass 只有上表三級（sticky nav 是 nav 級的變體）。要新 surface 時揀最接近的一級，唔可以自訂新的 alpha / blur 組合。
-- 每個 glass 元件的 `box-shadow` 必須以 `, var(--glass-highlight)` 結尾。缺咗頂部高光，半透明面會扁塌，睇落似降低咗 opacity 的實色卡而唔係玻璃。
-- Blur 上限 `28px`，而且只有 fixed bottom navigation 用到。捲動內容區內的 glass 一律 `16px` 或以下，控制手機繪製成本。
-- 每個 glass 元件都要有 `-webkit-` 前綴同 `@supports not (backdrop-filter: blur(1px))` 後備；後備一律加厚到 `0.94` alpha 實色，唔可以留半透明。
-- Glass 之上的陰影用低 alpha 純黑（`0.04`–`0.12`）。呢度係本規範對「陰影不用純黑」的唯一例外：品牌色陰影透過半透明白面會偏藍變濁。實色元件（header、active chip、accent 按鈕）仍然用 `rgba(var(--color-primary-rgb), …)` 或 accent 色。
-- Active / selected / disabled 狀態一律轉實色並 `backdrop-filter: none`。狀態要靠對比講清楚，唔可以靠玻璃厚度分辨。
-- 同一元件不可同時使用厚 border、強陰影和最高一級玻璃三種效果。
-- timeline 層級主要靠線、marker、間距和字重表達，不靠多層陰影。
+- 高級感主要靠排版、材質色與留白，不靠大面積 blur 或重陰影。
+- 同一畫面最多兩級可見陰影；不能每個 nested element 都浮起。
+- Shadow 色帶炭黑灰，不使用純黑硬陰影或霓虹 glow。
+- Border 與 shadow 二選一作主要分隔；不可同時過重。
 
 ## 7. Animation & Interaction
 
-**Motion Philosophy**：動效只用來確認操作及維持方向感；旅途中資訊速度永遠比視覺表演重要。  
-**Tier**：L1 精緻靜態  
-**Dependencies**：無外部依賴。
+**Motion philosophy**：慢半拍、短距離、先清晰後華麗；所有動效只使用 `opacity` 與 `transform` 作主要動畫屬性。
+**Tier**：L2 流暢互動。
 
-### Page and section entrance
+### Signature moments
+
+1. **Hero H1 — restrained SplitText**：首頁與行程標題按行淡入上移，總長不超過 `700ms`。
+2. **Section H2 — ScrollFloat**：章節標題進入 viewport 時由 `12px` 下方回位。
+3. **Body / label — ScrollReveal**：旅程 metadata 與 timeline body 以整行為單位 reveal，中文不逐字彈跳。
+4. **Element feedback**：trip card、日期 chip、導航按鈕有細微 lift/press；無磁吸光標與粒子。
+5. **Interactive component — CardNav/PillNav**：日期 rail 在滾動後由透明變成緊湊毛玻璃，active pill 平滑換位。
+6. **Atmosphere — lightweight Grainient**：hero 使用靜態 radial grain/gradient pseudo-element，只有極慢位置漂移；mobile 及 reduced-motion 完全靜止。
+
+### Entrance and reveal
 
 ```css
-@keyframes pageEnter {
-  from { opacity: 0; transform: translateY(8px); }
+@keyframes heroReveal {
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-.pageEnter {
-  animation: pageEnter 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+.heroReveal { animation: heroReveal 680ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 620ms cubic-bezier(0.16, 1, 0.3, 1), transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.dayPanel[aria-hidden="false"] {
-  animation: pageEnter 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
+.reveal.isInView { opacity: 1; transform: translateY(0); }
+.reveal.isInView:nth-child(2) { transition-delay: 70ms; }
+.reveal.isInView:nth-child(3) { transition-delay: 140ms; }
 ```
 
-### Scroll behavior
+### Intersection observer
 
-```css
-html { scroll-behavior: smooth; }
-[id] { scroll-margin-top: 80px; }
+```js
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('isInView');
+    observer.unobserve(entry.target);
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 ```
 
-- 不使用 scroll reveal、parallax、scroll-jacking 或 pinned narrative。
-- 切換日期後可回到內容起點，但須避免蓋過 sticky navigation；焦點管理應跟隨新內容。
-- 橫向捲動容器唔准淨係靠隱藏捲軸交差：滑鼠冇替代操作。要就補邊緣箭嘴掣，並按實際捲動位置顯示／收起。
-- 貼落嚟嘅時刻表喺切換日期後自動捲到標記嘅班次，唔好停喺朝早第一班。用 `getBoundingClientRect()` 差值計，唔好用 `offsetLeft` —— `<td>` 嘅 `offsetParent` 係 `<table>`，遇到 sticky 首欄會計錯。
+React 實作使用等價 hook，必須在 unmount 時 `disconnect()`。
 
-### Hover, press and state feedback
+### Navigation change and subtle parallax
 
-```css
-@media (hover: hover) {
-  .interactiveCard:hover { transform: translateY(-2px); }
-}
+```js
+let ticking = false;
+const updateScrollState = () => {
+  document.documentElement.classList.toggle('hasScrolled', window.scrollY > 24);
+  const heroArt = document.querySelector('[data-parallax]');
+  if (heroArt && window.matchMedia('(hover: hover)').matches) {
+    heroArt.style.transform = `translate3d(0, ${Math.min(window.scrollY * 0.08, 24)}px, 0)`;
+  }
+  ticking = false;
+};
 
-.pressable:active { transform: scale(0.98); }
-
-.interactiveCard,
-.pressable {
-  transition: transform 160ms ease, box-shadow 180ms ease,
-              background-color 160ms ease, border-color 160ms ease;
-}
+window.addEventListener('scroll', () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(updateScrollState);
+}, { passive: true });
 ```
 
-- Checkbox、日期 tab 及 bottom navigation 的狀態切換應在 `120–200ms` 完成。
-- 行程詳情一律完整顯示，不設「睇多啲」摺疊。實測 105 張卡只有 20% 會觸發摺疊，而嗰批正正係交通班次、後備方案同外部連結最密嘅卡 —— 摺疊藏起咗 20 條連結。頁面本來就要捲動，摺疊慳唔到捲動，只係喺捲動之前加一下點擊。
-- Loading 狀態使用靜態文字或低調 opacity pulse；error 狀態不可震動或持續閃爍。
+Parallax 最大位移 `24px`，只作用於 hero 裝飾層，不能令正文或操作控制飄移。
 
 ### Reduced motion
 
 ```css
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
+  .heroReveal,
+  .reveal { opacity: 1 !important; transform: none !important; }
+  [data-parallax] { transform: none !important; }
 }
 ```
+
+### Motion performance limits
+
+- 不使用 `filter: blur()` 動畫、scroll-jacking、全局 custom cursor 或持續 WebGL render。
+- `backdrop-filter` 最大 `12px`，只限 sticky date rail。
+- 所有 scroll/pointer listener 必須 passive 並以 `requestAnimationFrame` 節流。
+- 一頁同時進行的長時間 ambient animation 最多一個。
 
 ## 8. Do's and Don'ts
 
 ### Do
 
-- 以使用者在街上單手查班次、地址和導航為主要情境。
-- 先顯示時間、地點與下一個行動，再顯示補充說明和外部連結。
-- 保持 Home、所有 trip pages、converter、map list 使用同一套 tokens。
-- 所有 icon-only control 提供可讀的 `aria-label`，可見文字優先。
-- 日期、價錢與匯率使用 tabular numerals。
-- 每個互動元件提供 default、hover、active、focus-visible 和 disabled 狀態。
-- 使用 semantic HTML。日期列用完整 tabs pattern：`role="tablist"` + `role="tab"` + `aria-selected` + `aria-controls`，配方向鍵、Home/End 同 roving tabindex（只有選中的 tab 進入 Tab 次序）。`role="tab"` 一旦加上就必須連鍵盤行為一齊做，否則等於向螢幕閱讀器承諾一個唔存在的操作方式。
-- 底部檢視切換用 `aria-pressed` toggle button，唔用 tabs —— 佢哋切換的係整個 view，唔係同一組 tabpanel。
-- 每頁提供 skip link 同 `header` / `main` / `nav` landmark。
-- 會開新視窗的連結必須喺可存取名稱內註明「（新視窗）」。
-- 在真實 iPhone safe area、窄螢幕、桌面 keyboard navigation 下驗證。
-- 對交通警告、後備方案和離線資料使用一致的 semantic badge。
-- 保留旅程 Emoji 作掃讀提示，但配合清楚文字。
-- 保持 glass 只用喺三級 token，並喺深色照片、純白區同淺色漸層邊緣三種底色上驗證可讀性。
-- 保持 `theme-color`、manifest `theme_color` 同 `--color-primary` 三者同步。
+- 使用風化沙灰 canvas、Beskar 米白卡片與 Grogu 綠小面積點綴建立統一材質感。
+- 用 serif display + sans body 的對比建立層級，保持正文高可讀性。
+- 讓 upcoming trip 成為首頁視覺焦點，其他旅程保持安靜但完整。
+- 保留 760px 行程閱讀軸、44px 觸控區、ARIA tabs、skip link 及 keyboard navigation。
+- 用旅程地點、日期、住宿與交通資訊建立內容層級，不用無意義裝飾。
+- 使用真實目的地圖片時，加明確 alt；無圖片時用克制的 tonal hero，而非純色 placeholder。
+- 所有狀態以文字 + 色彩／形狀共同表達。
+- 每次改色同步檢查 PWA browser chrome、manifest 與 WCAG 對比。
 
 ### Don't
 
-- ❌ 不要為每個旅程另建一套顏色、陰影或圓角。
-- ❌ 不要在 JSX inline styles 內硬編視覺值；狀態樣式應由 class 和 tokens 管理。
-- ❌ 不要以整張卡 opacity 降低來表示 finished，這會令文字對比不足。
-- ❌ 不要讓正文或重要外部連結小於 `15px`。
-- ❌ 不要自創第三級以外的 glass（新 alpha、新 blur 值）；揀最接近的既有 tier。
-- ❌ 不要喺捲動內容區內用超過 `blur(16px)`，亦不要層層疊 glass on glass。
-- ❌ 不要慳走 `--glass-highlight` 頂部高光或 `-webkit-` 前綴同 `@supports` 後備。
-- ❌ 不要喺卡片或 header 以外再加 gradient；環境漸層全站只有 `body` 一個。
-- ❌ 不要加入自動播放影片、parallax、WebGL、自訂 cursor 或 scroll-jacking。
-- ❌ 不要用顏色作唯一狀態提示；必須有文字或圖示。
-- ❌ 不要隱藏原生 focus outline 而沒有等效 `focus-visible` 樣式。
-- ❌ 不要令按鈕或可點擊列的觸控區小於 `44 × 44px`。
-- ❌ 不要把固定 bottom navigation 疊在最後一張卡、keyboard 或 safe area 上。
-- ❌ 不要以 hover 才顯示關鍵資訊，手機沒有可靠 hover。
-- ❌ 不要把班次、地址、外部連結摺疊喺展開掣後面。掃讀靠的是時間標籤同標題，唔係靠收起內文。唯一例外係整份官方時刻表：條件係實際要搭嗰幾班已經以純文字寫喺同一個 item 入面，摺埋嘅只係其餘班次（見 Collapsible panels）。
-- ❌ 帶 padding 嘅表格不要用 `border-collapse: collapse` —— 佢會令 `<table>` 自身的 padding 靜靜地失效，文字會貼住卡邊。用 `separate` + `border-spacing: 0`。班次矩陣係例外：padding 落喺格仔、邊框由外層 wrapper 畫，而且畫格線必須用 `collapse`。
-- ❌ 不要為視覺一致而刪減班次方向、站號或後備方案等實用資料。
+- ❌ 不要恢復全頁 glassmorphism、藍紫科技漸層或每張卡獨立 gradient。
+- ❌ 不要以 emoji 取代導航圖示、按鈕文字或狀態說明。
+- ❌ 不要加入霓虹、glow、粒子、3D tilt、custom cursor 或浮誇 cursor effect。
+- ❌ 不要使用超粗標題、全大寫英文、過度 letter-spacing 或細於 15px 的中文正文。
+- ❌ 不要用整卡 opacity 表示 finished；文字對比及可點擊性必須保持。
+- ❌ 不要同時使用三種以上圓角尺度或為每個元件自創 shadow。
+- ❌ 不要把桌面版拉成寬闊 dashboard；行程內容仍是線性閱讀工具。
+- ❌ 不要用 hover 才能發現的重要資訊；mobile 必須完整可用。
+- ❌ 不要做會推動 layout 的動畫，亦不要 animation `width/height/top/left`。
+- ❌ 不要引入新 animation library，除非現有 CSS/IntersectionObserver 無法完成並另行確認。
 
 ## 9. Responsive Behavior
 
@@ -1041,80 +538,46 @@ html { scroll-behavior: smooth; }
 
 | Name | Width | Key changes |
 |---|---:|---|
-| Wide desktop | `> 1024px` | 內容維持 `760px` 單欄置中；加大頁面外圍留白，不拉闊 card |
-| Tablet / small desktop | `601–1024px` | `24–32px` inline padding；header、tabs 和 timeline 對齊同一內容軸 |
-| Mobile | `≤ 600px` | `16px` inline padding；日期 tabs 橫向捲動；bottom navigation 固定並計算 safe area |
-| Compact mobile | `≤ 360px` | `12px` inline padding；次要 nav 文字可縮短但不只剩 icon；card action 可換到下一行 |
+| Large desktop | `> 1024px` | 960px app canvas；首頁兩欄 trip grid；featured trip 跨兩欄 |
+| Tablet / small desktop | `641–1024px` | 760px 單欄內容；trip grid 可保持兩欄至 760px，再按內容自然收窄 |
+| Mobile | `≤ 640px` | 全部單欄；16px gutter；hero 收短；日期 rail 橫向 swipe；卡片取消 hover 位移 |
+| Small mobile | `≤ 380px` | 標題再收細；metadata 分行；酒店 CTA 移到下一行但維持 44px |
 
-**Touch targets**：所有 button、link、tab、checkbox label 最少 `44 × 44px`；主要導航建議 `48px` 高。  
-**Collapsing strategy**：保持單欄；先換行，再移動次要 action 到新一行，最後才縮短非必要副文案。不可水平壓縮正文。
+**Touch targets**：所有 button、link、tab、checkbox label 最少 `44 × 44px`。
+
+**Safe areas**：header、sticky rail、bottom navigation 必須包含 `env(safe-area-inset-*)`。
+**Overflow**：`≤ 600px` 不得有 page-level 橫向 overflow；只有 timetable 與 date rail 可以局部橫向捲動。
 
 ```css
-.pageShell {
-  width: min(100%, 760px);
-  margin-inline: auto;
-  padding-block-end: calc(96px + env(safe-area-inset-bottom));
+@media (max-width: 640px) {
+  .pageShell { padding-inline: 1rem; }
+  .tripGrid { grid-template-columns: 1fr; gap: 1rem; }
+  .tripGrid > :first-child { grid-column: auto; }
+  .tripCard { grid-template-columns: 1fr; padding: 1.25rem; }
+  .tripCard:hover { transform: none; }
+  .hero { min-height: auto; padding: 2.5rem 1.25rem 2rem; border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+  .dateRail { overflow: hidden; }
+  .dateTabs { overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; }
+  .dateChip { scroll-snap-align: start; }
+  .hotelCard { align-items: flex-start; flex-direction: column; }
 }
 
-.dateTabs {
-  display: flex;
-  gap: var(--space-2);
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  scrollbar-width: none;
-  scroll-padding-inline: var(--space-4);
+@media (max-width: 380px) {
+  .tripMeta { display: grid; gap: 0.25rem; }
+  .button,
+  .buttonSecondary { width: 100%; }
 }
 
-.dateTabs::-webkit-scrollbar { display: none; }
-
-@media (max-width: 600px) {
-  .contentGutter { padding-inline: var(--space-4); }
-
-  .cardHead {
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: var(--space-2);
-  }
-
-  /* 置中膠囊，唔拉到成行闊 —— 讓最後一張卡兩側仍然睇到內容 */
-  .bottomNav {
-    inset-inline-start: 50%;
-    transform: translateX(-50%);
-    inset-block-end: calc(var(--space-5) + env(safe-area-inset-bottom));
-    width: max-content;
-    max-width: calc(100% - var(--space-6));
-  }
-
-  .bottomNav > * {
-    min-width: 0;
-    min-height: 44px;
-  }
-}
-
-@media (max-width: 360px) {
-  .contentGutter { padding-inline: var(--space-3); }
-
-  .cardHead { grid-template-columns: 1fr; }
-
-  .cardHead .button {
-    justify-self: start;
-    width: auto;
-  }
-}
-
-@media (min-width: 601px) {
-  .contentGutter { padding-inline: clamp(1.5rem, 4vw, 2rem); }
-  .card { padding: var(--space-5); }
+@media (hover: none) {
+  .tripCard:hover,
+  .timelineCard:hover,
+  .button:hover { transform: none; }
 }
 ```
 
-### Verification gate before implementation is complete
+### Accessibility and offline behavior
 
-- Mobile：`320px`、`375px`、`430px` 寬度無橫向 overflow。
-- Desktop：`768px`、`1280px` 寬度保持清楚單欄閱讀軸。
-- iOS standalone / browser mode：header、sticky tabs、bottom navigation 均不撞 safe area。
-- Keyboard：所有 links、buttons、tabs、checkboxes 的 focus 次序清楚可見。
-- Content stress：長地名、兩行標題、四位數時間／金額、離線及 error 狀態不破版。
-- Contrast：正文、secondary text、badges、disabled state 以 WCAG AA 為最低目標。
-- Spec 合規：新增／改動嘅 CSS 冇違反 §8 Do's and Don'ts；有例外就喺 §4 寫低理由。
-- Token 合規：冇硬編 hex、px 圓角、px 陰影；一律經 `src/index.css` 嘅變數。
-- 文檔同步：新增 component 或改動既有 pattern 後，§4 已補返對應章節同對照表。
+- Focus-visible ring 不得被 overflow container 裁走。
+- ARIA tab semantics、方向鍵、Home/End、roving `tabIndex` 維持現有行為。
+- 圖片未載入或 PWA 離線時，layout 不可塌陷；使用固定 aspect-ratio 與 `--color-surface-muted` fallback。
+- 字體離線時使用系統繁中 serif/sans fallback，不能出現 FOIT 白畫面。

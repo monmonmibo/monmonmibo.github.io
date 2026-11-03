@@ -2,16 +2,34 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import styles from './TravelLayout.module.css';
 import JpyToHkdConverter from '../JpyToHkdConverter';
+import {
+  CalendarIcon,
+  CalculatorIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  HomeIcon,
+  HotelIcon,
+  MapIcon,
+  MapPinIcon,
+} from '../Icons';
 
 const mapsUrl = (query) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+
+const cleanDisplayText = (value) => {
+  if (typeof value !== 'string') return value;
+  return value
+    .replace(/[\p{Extended_Pictographic}\p{Regional_Indicator}\uFE0F]/gu, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+};
 
 // Per-day transport costs. Amounts are strings so a leg with a range
 // ("¥900-1,500") reads the same as a fixed one.
 function FareTable({ fares }) {
   return (
     <section className={styles.fareBlock} aria-labelledby="fareHeading">
-      <h3 id="fareHeading" className={styles.fareHeading}>🚃 車費預算（每人）</h3>
+      <h3 id="fareHeading" className={styles.fareHeading}>車費預算（每人）</h3>
 
       {fares.days.map(day => (
         <table key={day.day} className={styles.fareTable}>
@@ -56,11 +74,61 @@ function readTodos(data) {
 export default function TravelLayout({ data }) {
   const [activeTab, setActiveTab] = useState('day1');
   const [view, setView] = useState('timeline');
+  const [isScrolled, setIsScrolled] = useState(false);
   // Read straight from localStorage on first render. Doing this in an effect
   // instead made the list flash every box unchecked before correcting itself.
   const [todos, setTodos] = useState(() => readTodos(data));
+  const pageRef = useRef(null);
+  const heroArtRef = useRef(null);
 
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+  useEffect(() => {
+    let ticking = false;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const canHover = window.matchMedia('(hover: hover)');
+
+    const updateScrollState = () => {
+      const nextScrolled = window.scrollY > 24;
+      setIsScrolled(current => current === nextScrolled ? current : nextScrolled);
+      if (heroArtRef.current && canHover.matches && !reduceMotion.matches) {
+        heroArtRef.current.style.transform = `translate3d(0, ${Math.min(window.scrollY * 0.08, 24)}px, 0)`;
+      }
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateScrollState);
+    };
+
+    updateScrollState();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const root = pageRef.current;
+    if (!root) return undefined;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add(styles.inView);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+
+    const frame = requestAnimationFrame(() => {
+      root.querySelectorAll('[data-reveal]').forEach(element => observer.observe(element));
+    });
+
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
+  }, [activeTab, view]);
 
   // Inject trip-specific manifest + update document/iOS title
   useEffect(() => {
@@ -80,8 +148,8 @@ export default function TravelLayout({ data }) {
       start_url: window.location.pathname,
       scope: '/',
       display: 'standalone',
-      background_color: '#003366',
-      theme_color: '#003366',
+      background_color: '#cfc7b8',
+      theme_color: '#2a3031',
       icons: [
         { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
         { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
@@ -208,13 +276,23 @@ export default function TravelLayout({ data }) {
     setView(newView);
   };
 
+  const renderViewIcon = (viewId) => {
+    if (viewId === 'tools') return <CalculatorIcon size={18} />;
+    if (viewId === 'map') return <MapIcon size={18} />;
+    return <CalendarIcon size={18} />;
+  };
+
   const renderHotelHeader = (day) => {
     if (!day.hotel) return null;
     return (
-      <div className={styles.hotelHeader}>
-        <span>
-          {day.hotelNote ? `🏨 住：${day.hotel} ｜ ${day.hotelNote}` : `🏨 住：${day.hotel}`}
-        </span>
+      <div className={`${styles.hotelHeader} ${styles.reveal}`} data-reveal>
+        <div className={styles.hotelInfo}>
+          <HotelIcon size={20} />
+          <span>
+            <small>STAY</small>
+            {day.hotelNote ? `${day.hotel} ｜ ${day.hotelNote}` : day.hotel}
+          </span>
+        </div>
         {day.hotelQuery && (
           <a
             href={`https://www.google.com/maps/search/?api=1&query=${day.hotelQuery}`}
@@ -223,7 +301,8 @@ export default function TravelLayout({ data }) {
             className={styles.hotelNavBtn}
             aria-label={`在 Google Maps 開啟 ${day.hotel}（新視窗）`}
           >
-            📍 導航
+            <MapPinIcon size={16} />
+            導航
           </a>
         )}
       </div>
@@ -231,18 +310,29 @@ export default function TravelLayout({ data }) {
   };
 
   return (
-    <div className={styles.container}>
+    <div ref={pageRef} className={styles.container}>
       <a href="#main-content" className={styles.skipLink}>跳至行程內容</a>
 
       <header className={styles.header}>
+        <div ref={heroArtRef} className={styles.heroArt} aria-hidden="true" />
         <div className={styles.headerTop}>
-          <h1>{data.header.title}</h1>
-          {!isStandalone && <Link to="/" className={styles.homeLink}>🏠 主頁</Link>}
+          <p className={styles.eyebrow}>CURATED JOURNEY · {data.id.toUpperCase()}</p>
+          {!isStandalone && (
+            <Link to="/" className={styles.homeLink}>
+              <HomeIcon size={17} />
+              <span>旅程首頁</span>
+            </Link>
+          )}
         </div>
-        <p>{data.header.subtitle}</p>
+        <h1>{cleanDisplayText(data.header.title)}</h1>
+        <p className={styles.headerSubtitle}>{cleanDisplayText(data.header.subtitle)}</p>
+        <dl className={styles.headerMeta} aria-label="行程摘要">
+          <div><dt>日數</dt><dd>{data.days.length} Days</dd></div>
+          <div><dt>行程</dt><dd>{data.days.reduce((total, day) => total + day.timeline.length, 0)} Stops</dd></div>
+        </dl>
       </header>
 
-      <div className={styles.stickyNav}>
+      <div className={`${styles.stickyNav} ${isScrolled ? styles.stickyNavScrolled : ''}`}>
         <div className={styles.tabScroller}>
           <button
             type="button"
@@ -251,7 +341,7 @@ export default function TravelLayout({ data }) {
             className={`${styles.tabNav} ${styles.tabNavLeft} ${tabOverflow.left ? styles.tabNavShown : ''}`}
             onClick={() => scrollTabs(-1)}
           >
-            <span aria-hidden="true">‹</span>
+            <ChevronLeftIcon size={19} />
           </button>
           <button
             type="button"
@@ -260,7 +350,7 @@ export default function TravelLayout({ data }) {
             className={`${styles.tabNav} ${styles.tabNavRight} ${tabOverflow.right ? styles.tabNavShown : ''}`}
             onClick={() => scrollTabs(1)}
           >
-            <span aria-hidden="true">›</span>
+            <ChevronRightIcon size={19} />
           </button>
         <div className={styles.dateTabs} ref={tabsRef} role="tablist" aria-label="行程日期" onKeyDown={handleTabKeyDown}>
           {tabIds.map(id => {
@@ -279,7 +369,7 @@ export default function TravelLayout({ data }) {
                 className={`${styles.dateChip} ${shown ? styles.active : ''}`}
                 onClick={() => handleTabClick(id)}
               >
-                {day ? (day.label || id.replace('day', 'Day ')) : 'To-Do'}
+                {day ? cleanDisplayText(day.label || id.replace('day', 'Day ')) : 'To-Do'}
               </button>
             );
           })}
@@ -303,7 +393,7 @@ export default function TravelLayout({ data }) {
               <div className={styles.timelineContainer}>
                 <div className={styles.timeline}>
                   {day.timeline.map((item, idx) => (
-                    <div key={idx} className={`${styles.timelineItem} ${item.type === 'highlight' ? styles.highlight : ''}`}>
+                    <div key={idx} data-reveal className={`${styles.timelineItem} ${styles.reveal} ${item.type === 'highlight' ? styles.highlight : ''}`}>
                       <div className={styles.itemMeta}>
                         <div className={styles.timeLabel}>{item.time}</div>
                         {day.presentation === 'structured' && item.category && (
@@ -313,8 +403,8 @@ export default function TravelLayout({ data }) {
                       <div className={styles.card}>
                         <div className={styles.cardHead}>
                           {day.presentation === 'structured' ? (
-                            <h2 className={styles.itemTitle}>{item.title}</h2>
-                          ) : <span className={styles.itemTitle}>{item.title}</span>}
+                            <h2 className={styles.itemTitle}>{cleanDisplayText(item.title)}</h2>
+                          ) : <span className={styles.itemTitle}>{cleanDisplayText(item.title)}</span>}
                           {item.mapQuery && (
                             <a
                               href={mapsUrl(item.mapQuery)}
@@ -323,7 +413,8 @@ export default function TravelLayout({ data }) {
                               className={styles.itemNavBtn}
                               aria-label={`在 Google Maps 開啟 ${item.mapQuery}（新視窗）`}
                             >
-                              📍 導航
+                              <MapPinIcon size={16} />
+                              導航
                             </a>
                           )}
                         </div>
@@ -350,9 +441,10 @@ export default function TravelLayout({ data }) {
             className={`${styles.daySection} ${styles.active}`}
           >
             <div className={styles.todoListGroup}>
-              <h3 className={styles.todoListTitle}>📝 必買 & 準備清單</h3>
+              <p className={styles.sectionEyebrow}>BEFORE DEPARTURE</p>
+              <h3 className={styles.todoListTitle}>必買及準備清單</h3>
               {data.todos.map(todo => (
-                <label key={todo.id} className={styles.todoLabel}>
+                <label key={todo.id} data-reveal className={`${styles.todoLabel} ${styles.reveal}`}>
                   <input
                     type="checkbox"
                     checked={!!todos[todo.id]}
@@ -395,7 +487,8 @@ export default function TravelLayout({ data }) {
             ) : (
               // No custom My Map for this trip — fall back to a tappable list of every stop.
               <div className={styles.spotList}>
-                <h3 className={styles.spotListTitle}>{data.mapText || '🗺️ 景點地圖'}</h3>
+                <p className={styles.sectionEyebrow}>PLACES</p>
+                <h3 className={styles.spotListTitle}>{cleanDisplayText(data.mapText || '景點地圖')}</h3>
                 {data.mapQuery && (
                   <a
                     href={mapsUrl(data.mapQuery)}
@@ -404,7 +497,8 @@ export default function TravelLayout({ data }) {
                     className={styles.spotListOpenAll}
                     aria-label={`在 Google Maps 開啟${data.mapQuery}（新視窗）`}
                   >
-                    🌏 在 Google Maps 開啟{data.mapQuery}
+                    <MapIcon size={18} />
+                    在 Google Maps 開啟{data.mapQuery}
                   </a>
                 )}
                 {spots.length > 0 ? (
@@ -414,12 +508,13 @@ export default function TravelLayout({ data }) {
                       href={mapsUrl(spot.query)}
                       target="_blank"
                       rel="noreferrer"
-                      className={styles.spotRow}
+                      data-reveal
+                      className={`${styles.spotRow} ${styles.reveal}`}
                       aria-label={`${spot.dayLabel}：在 Google Maps 開啟 ${spot.title}（新視窗）`}
                     >
                       <span className={styles.spotDay}>{spot.dayLabel}</span>
                       <span className={styles.spotName}>{spot.title}</span>
-                      <span className={styles.spotArrow}>📍</span>
+                      <span className={styles.spotArrow}><MapPinIcon size={18} /></span>
                     </a>
                   ))
                 ) : (
@@ -433,18 +528,19 @@ export default function TravelLayout({ data }) {
 
       <nav className={styles.bottomNav} aria-label="主要檢視">
         {[
-          { id: 'timeline', label: '📅 行程' },
-          { id: 'tools', label: '🧮 工具' },
-          { id: 'map', label: '🗺️ 地圖' },
-        ].map(v => (
+          { id: 'timeline', label: '行程' },
+          { id: 'tools', label: '工具' },
+          { id: 'map', label: '地圖' },
+        ].map(({ id, label }) => (
           <button
-            key={v.id}
+            key={id}
             type="button"
-            aria-pressed={view === v.id}
-            className={`${styles.navBtn} ${view === v.id ? styles.active : ''}`}
-            onClick={() => handleViewClick(v.id)}
+            aria-pressed={view === id}
+            className={`${styles.navBtn} ${view === id ? styles.active : ''}`}
+            onClick={() => handleViewClick(id)}
           >
-            {v.label}
+            {renderViewIcon(id)}
+            <span>{label}</span>
           </button>
         ))}
       </nav>

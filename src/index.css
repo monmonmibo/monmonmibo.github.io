@@ -4,110 +4,118 @@
 :root {
   color-scheme: light;
 
-  /* Ambient background. The gradient is the only one on the site; it gives the
-     glass surfaces something to refract. Its lightest point measures #F0E7DA,
-     which is the baseline every contrast check uses. */
-  --color-bg: #EDF2FF;
-  --color-bg-rgb: 237, 242, 255;
-  --gradient-ambient:
-    radial-gradient(ellipse at 90% 0%, rgba(100, 160, 240, 0.3) 0%, transparent 52%),
-    radial-gradient(ellipse at 8% 92%, rgba(255, 180, 50, 0.25) 0%, transparent 52%);
+  --color-bg: #cfc7b8;
+  --color-bg-rgb: 207, 199, 184;
+  --color-surface: #e8e3d9;
+  --color-surface-rgb: 232, 227, 217;
+  --color-surface-elevated: #f2eee5;
+  --color-surface-alt: #d8d0c1;
+  --color-surface-muted: #d8d0c1;
+  --color-surface-hover: #e0d9cc;
 
-  /* Surfaces */
-  --color-surface: #FFFFFF;
-  --color-surface-rgb: 255, 255, 255;
-  --color-surface-alt: #F5F8FF;
+  --color-text: #252827;
+  --color-text-rgb: 37, 40, 39;
+  --color-text-secondary: #59605c;
+  --color-text-tertiary: #737872;
+  --color-text-inverse: #f2eee5;
+  --color-text-disabled: #929690;
 
-  /* Brand and action. --color-primary must stay in step with the
-     theme-color meta tag and the PWA manifest theme_color. */
-  --color-primary: #003366;
-  --color-primary-rgb: 0, 51, 102;
-  --color-primary-deep: #001F3F;
-  --color-primary-hover: #00284F;
-  --color-primary-soft: #E6F2FF;
-  --gradient-header: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-deep) 100%);
-  /* Darkened from the shipped #D94124, which gave white button text only
-     4.44:1. This reaches 4.94:1; the hue shift is imperceptible. */
-  --color-accent: #CE3A1D;
-  --color-accent-rgb: 206, 58, 29;
-  --color-accent-hover: #B8341A;
+  --color-primary: #2a3031;
+  --color-primary-rgb: 42, 48, 49;
+  --color-primary-deep: #141718;
+  --color-primary-hover: #1e2324;
+  --color-primary-active: #141718;
+  --color-primary-soft: #d8dcda;
 
-  /* Text */
-  --color-text: #2C3E50;
-  --color-text-rgb: 44, 62, 80;
-  --color-text-secondary: #4A5F73;
-  --color-text-tertiary: #6B7C8D;
-  --color-text-inverse: #FFFFFF;
+  --color-accent: #74834d;
+  --color-accent-rgb: 116, 131, 77;
+  --color-accent-hover: #5f6d3d;
+  --color-accent-active: #4a562e;
+  --color-accent-soft: #dde2ce;
 
-  /* Borders. --color-control-border is for interactive boundaries that must
-     clear 3:1 on white (the checkbox ring); the others are decorative. */
-  --color-border: #CCD8E5;
-  --color-border-strong: #A9BACB;
-  --color-control-border: #7E93AA;
-  --color-focus: #176FC1;
-  --color-focus-rgb: 23, 111, 193;
-  --focus-ring: 0 0 0 3px rgba(var(--color-focus-rgb), 0.24);
+  --color-leather: #79543e;
+  --color-leather-rgb: 121, 84, 62;
+  --color-leather-hover: #624130;
+  --color-leather-active: #4e3225;
 
-  /* Semantic. Verified against the glass card surface (#F9F6F1). */
-  --color-success: #247A49;
-  --color-success-soft: #E6F5EC;
-  --color-warning: #9A5B00;
-  --color-warning-soft: #FFF3D6;
-  --color-error: #B52D32;
-  --color-error-soft: #FDE9EA;
-  --color-error-border: #E8A9AC;
-  --color-info: #1565C0;
-  --color-info-soft: #E7F2FD;
+  --color-border: #aaa79e;
+  --color-border-rgb: 170, 167, 158;
+  --color-border-strong: #85847f;
+  --color-border-hover: #676b69;
+  --color-control-border: #626765;
+  --color-focus: #596f3a;
+  --color-focus-rgb: 89, 111, 58;
 
-  /* Glass tiers — three only. Pick the closest; do not invent a fourth. */
-  --glass-chip-bg: rgba(var(--color-surface-rgb), 0.55);
+  --color-success: #526233;
+  --color-success-rgb: 82, 98, 51;
+  --color-success-soft: #dce2cc;
+  --color-warning: #8c5a13;
+  --color-warning-rgb: 140, 90, 19;
+  --color-warning-soft: #eadbbc;
+  --color-error: #9a3e35;
+  --color-error-rgb: 154, 62, 53;
+  --color-error-soft: #f4dfdb;
+  --color-error-border: #d8aaa4;
+  --color-info: #52666d;
+  --color-info-rgb: 82, 102, 109;
+  --color-info-soft: #dce3e4;
+
+  --gradient-page:
+    radial-gradient(circle at 90% 4%, rgba(var(--color-accent-rgb), 0.07), transparent 30%),
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
+  --gradient-ambient: var(--gradient-page);
+  --gradient-hero:
+    radial-gradient(circle at 82% 12%, rgba(var(--color-accent-rgb), 0.18), transparent 34%),
+    linear-gradient(145deg, var(--color-primary) 0%, var(--color-primary-active) 100%);
+  --gradient-header: var(--gradient-hero);
+
+  /* Compatibility aliases for existing utility widgets. New large surfaces stay solid. */
+  --glass-chip-bg: rgba(var(--color-surface-rgb), 0.86);
   --glass-chip-blur: blur(8px);
-  --glass-card-bg: rgba(var(--color-surface-rgb), 0.62);
-  --glass-card-blur: blur(16px);
-  --glass-nav-bg: rgba(var(--color-surface-rgb), 0.52);
-  --glass-nav-blur: saturate(180%) blur(28px);
-  --glass-sticky-bg: rgba(var(--color-bg-rgb), 0.7);
-  --glass-sticky-blur: saturate(180%) blur(20px);
-
-  --glass-border: 1px solid rgba(var(--color-surface-rgb), 0.6);
-  --glass-border-strong: 1px solid rgba(var(--color-surface-rgb), 0.75);
+  --glass-card-bg: var(--color-surface);
+  --glass-card-blur: none;
+  --glass-nav-bg: rgba(var(--color-surface-rgb), 0.88);
+  --glass-nav-blur: saturate(140%) blur(12px);
+  --glass-sticky-bg: rgba(var(--color-surface-rgb), 0.76);
+  --glass-sticky-blur: saturate(140%) blur(12px);
+  --glass-border: 1px solid var(--color-border);
+  --glass-border-strong: 1px solid var(--color-border);
   --glass-highlight: inset 0 1px 0 rgba(var(--color-surface-rgb), 0.9);
 
-  /* Depth. Low-alpha black under glass, brand-tinted under solid fills. */
-  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
-  --shadow-raised: 0 6px 20px rgba(0, 0, 0, 0.09);
-  --shadow-floating: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-header: 0 4px 24px rgba(var(--color-primary-rgb), 0.4);
-  --shadow-primary: 0 4px 14px rgba(var(--color-primary-rgb), 0.3);
-  --shadow-accent: 0 2px 8px rgba(var(--color-accent-rgb), 0.35);
+  --shadow-subtle: 0 1px 2px rgba(var(--color-text-rgb), 0.05);
+  --shadow-card: 0 1px 0 rgba(var(--color-surface-rgb), 0.9) inset, 0 10px 30px rgba(var(--color-text-rgb), 0.07);
+  --shadow-raised: 0 1px 0 rgba(var(--color-surface-rgb), 0.94) inset, 0 18px 45px rgba(var(--color-text-rgb), 0.11);
+  --shadow-floating: 0 22px 60px rgba(var(--color-text-rgb), 0.16);
+  --shadow-header: 0 22px 54px rgba(var(--color-primary-rgb), 0.2);
+  --shadow-primary: 0 8px 24px rgba(var(--color-primary-rgb), 0.2);
+  --shadow-accent: 0 8px 22px rgba(var(--color-accent-rgb), 0.2);
+  --shadow-leather: 0 8px 22px rgba(var(--color-leather-rgb), 0.22);
+  --focus-ring: 0 0 0 4px rgba(var(--color-focus-rgb), 0.2);
 
-  /* Geometry */
   --radius-xs: 6px;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
   --radius-pill: 999px;
   --control-height: 44px;
 
-  /* Spacing */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
 
-  /* Layout */
-  --page-max: 760px;
-  --card-max: 360px;
+  --page-max: 60rem;
+  --reading-max: 47.5rem;
+  --card-max: 26rem;
 
-  /* Type. Noto Sans TC loads from index.html; the local Chinese faces carry
-     the design on their own when it is unavailable (offline, blocked). */
+  --font-display: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
   --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui,
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
@@ -142,7 +150,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100dvh;
-  background: var(--gradient-ambient), var(--color-bg);
+  background: var(--gradient-page);
+  background-attachment: fixed;
 }
 
 /* Times, prices and rates line up column-wise for quick comparison */
