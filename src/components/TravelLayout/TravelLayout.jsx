@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import { useState, useEffect, useLayoutEffect, useMemo, useRef, useCallback } from 'react';
 import styles from './TravelLayout.module.css';
 import JpyToHkdConverter from '../JpyToHkdConverter';
 import {
@@ -74,12 +74,20 @@ function readTodos(data) {
 export default function TravelLayout({ data }) {
   const [activeTab, setActiveTab] = useState('day1');
   const [view, setView] = useState('timeline');
+  const [hasOpenedMap, setHasOpenedMap] = useState(false);
+  const viewScrollPositions = useRef({ timeline: 0, tools: 0, map: 0 });
   const [isScrolled, setIsScrolled] = useState(false);
   // Read straight from localStorage on first render. Doing this in an effect
   // instead made the list flash every box unchecked before correcting itself.
   const [todos, setTodos] = useState(() => readTodos(data));
 
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+  // Restore after the new view mounts, before paint; the previous view may
+  // have a very different height and its scroll offset must not carry over.
+  useLayoutEffect(() => {
+    window.scrollTo({ top: viewScrollPositions.current[view], left: 0, behavior: 'instant' });
+  }, [view]);
 
   useEffect(() => {
     let ticking = false;
@@ -179,7 +187,7 @@ export default function TravelLayout({ data }) {
 
   // Arrow keys move between tabs, per the ARIA tabs pattern. Without this,
   // role="tab" would promise a keyboard behaviour the rail did not have.
-  // Tab 條兩邊嘅圓形箭嘴掣：捲到邊就收起嗰邊個掣（Google Maps 果種）
+  // Hide each date-rail arrow when its corresponding scroll boundary is reached.
   const tabsRef = useRef(null);
   const [tabOverflow, setTabOverflow] = useState({ left: false, right: false });
 
@@ -201,7 +209,7 @@ export default function TravelLayout({ data }) {
       el.removeEventListener('scroll', syncTabOverflow);
       ro.disconnect();
     };
-  }, [syncTabOverflow, tabIds.length]);
+  }, [syncTabOverflow, tabIds.length, view]);
 
   const scrollTabs = (dir) => {
     const el = tabsRef.current;
@@ -209,8 +217,8 @@ export default function TravelLayout({ data }) {
     el.scrollBy({ left: dir * Math.max(el.clientWidth * 0.6, 180), behavior: 'smooth' });
   };
 
-  // A pasted timetable opens on 1便, but the run that matters is deep to the
-  // right. Nudge each one so the marked column is the first thing in view.
+  // Timetables start at the first column, while the planned departure may be
+  // farther right. Scroll to its marked column, keeping station labels visible.
   useEffect(() => {
     if (view !== 'timeline') return;
     const panel = document.getElementById(`panel-${activeTab}`);
@@ -243,6 +251,9 @@ export default function TravelLayout({ data }) {
   };
 
   const handleViewClick = (newView) => {
+    if (newView === view) return;
+    viewScrollPositions.current[view] = window.scrollY;
+    if (newView === 'map') setHasOpenedMap(true);
     setView(newView);
   };
 
@@ -301,50 +312,52 @@ export default function TravelLayout({ data }) {
         </dl>
       </header>
 
-      <div className={`${styles.stickyNav} ${isScrolled ? styles.stickyNavScrolled : ''}`}>
-        <div className={styles.tabScroller}>
-          <button
-            type="button"
-            aria-hidden="true"
-            tabIndex={-1}
-            className={`${styles.tabNav} ${styles.tabNavLeft} ${tabOverflow.left ? styles.tabNavShown : ''}`}
-            onClick={() => scrollTabs(-1)}
-          >
-            <ChevronLeftIcon size={19} />
-          </button>
-          <button
-            type="button"
-            aria-hidden="true"
-            tabIndex={-1}
-            className={`${styles.tabNav} ${styles.tabNavRight} ${tabOverflow.right ? styles.tabNavShown : ''}`}
-            onClick={() => scrollTabs(1)}
-          >
-            <ChevronRightIcon size={19} />
-          </button>
-        <div className={styles.dateTabs} ref={tabsRef} role="tablist" aria-label="行程日期" onKeyDown={handleTabKeyDown}>
-          {tabIds.map(id => {
-            const day = data.days.find(d => d.id === id);
-            const selected = activeTab === id;
-            const shown = selected && view === 'timeline';
-            return (
-              <button
-                key={id}
-                id={`tab-${id}`}
-                type="button"
-                role="tab"
-                aria-selected={selected}
-                aria-controls={shown ? `panel-${id}` : undefined}
-                tabIndex={selected ? 0 : -1}
-                className={`${styles.dateChip} ${shown ? styles.active : ''}`}
-                onClick={() => handleTabClick(id)}
-              >
-                {day ? cleanDisplayText(day.label || id.replace('day', 'Day ')) : 'To-Do'}
-              </button>
-            );
-          })}
+      {view === 'timeline' && (
+        <div className={`${styles.stickyNav} ${isScrolled ? styles.stickyNavScrolled : ''}`}>
+          <div className={styles.tabScroller}>
+            <button
+              type="button"
+              aria-hidden="true"
+              tabIndex={-1}
+              className={`${styles.tabNav} ${styles.tabNavLeft} ${tabOverflow.left ? styles.tabNavShown : ''}`}
+              onClick={() => scrollTabs(-1)}
+            >
+              <ChevronLeftIcon size={19} />
+            </button>
+            <button
+              type="button"
+              aria-hidden="true"
+              tabIndex={-1}
+              className={`${styles.tabNav} ${styles.tabNavRight} ${tabOverflow.right ? styles.tabNavShown : ''}`}
+              onClick={() => scrollTabs(1)}
+            >
+              <ChevronRightIcon size={19} />
+            </button>
+          <div className={styles.dateTabs} ref={tabsRef} role="tablist" aria-label="行程日期" onKeyDown={handleTabKeyDown}>
+            {tabIds.map(id => {
+              const day = data.days.find(d => d.id === id);
+              const selected = activeTab === id;
+              const shown = selected && view === 'timeline';
+              return (
+                <button
+                  key={id}
+                  id={`tab-${id}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={selected}
+                  aria-controls={shown ? `panel-${id}` : undefined}
+                  tabIndex={selected ? 0 : -1}
+                  className={`${styles.dateChip} ${shown ? styles.active : ''}`}
+                  onClick={() => handleTabClick(id)}
+                >
+                  {day ? cleanDisplayText(day.label || id.replace('day', 'Day ')) : 'To-Do'}
+                </button>
+              );
+            })}
+          </div>
+          </div>
         </div>
-        </div>
-      </div>
+      )}
 
       <main id="main-content">
         {/* Day Sections */}
@@ -439,8 +452,8 @@ export default function TravelLayout({ data }) {
         )}
 
         {/* Map */}
-        {view === 'map' && (
-          <div className={`${styles.daySection} ${styles.active}`}>
+        {hasOpenedMap && (
+          <div hidden={view !== 'map'} className={`${styles.daySection} ${view === 'map' ? styles.active : ''}`}>
             {data.mapIframe ? (
               <div className={styles.mapFrame}>
                 <iframe

@@ -41,6 +41,8 @@ depth、動效、Do's & Don'ts、responsive）。**任何觸及視覺嘅改動�
 
 ## 行程資料點寫
 
+Code comments 統一用英文，著重解釋原因及非直觀行為；介面文字、行程內容及中文專案文件保留原有語言。
+
 每個行程一個資料夾：`src/pages/<CODE>/<code>Data.jsx`（例：`TAK26/tak26Data.jsx`），
 配一個三行嘅 page component。全部行程共用 `components/TravelLayout` 渲染，
 所以**加功能通常改 TravelLayout，唔係逐個行程改**。

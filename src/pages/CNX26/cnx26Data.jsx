@@ -110,21 +110,28 @@ export const cnx26Data = {
           mapQuery: 'MAYA Lifestyle Shopping Center Chiang Mai',
           details: (
             <>
-              One Nimman 行完再去附近 MAYA 行商場，之後前往晚餐；如果想慢慢行，可縮短其中一站。<br />
+              One Nimman 行完再去附近 MAYA 行商場，之後按腳休息，再前往晚餐；購物時間可按按摩預約調整。<br />
               營業時間：10:00–22:00。<br />
               <a href="https://mayashoppingcenter.com/" target="_blank" rel="noreferrer" className="trip-link">MAYA Lifestyle Shopping Center（官方）</a>
             </>
           ),
         },
         {
-          time: '晚上（時間待定）',
+          time: 'Shopping 後、晚餐前（建議約18:00）',
+          category: '按摩',
+          title: '腳底按摩（店舖待定）',
+          summary: '11月27日（五）· 建議45–60分鐘 · 未預約',
+          details: 'One Nimman 同 MAYA shopping 後按腳休息，建議預留45–60分鐘；先考慮寧曼購物區附近店舖，實際店舖、價格及可約時段待確認。預留前往古城 Baan Landai 的交通時間，按摩及購物如有延誤需調整，避免趕最後點餐。',
+        },
+        {
+          time: '按摩後（建議約19:30，待訂位）',
           category: '晚餐',
           title: 'Baan Landai Fine Thai Cuisine',
           summary: '11月27日（五）· 古城店 · 未訂位',
           mapQuery: 'Baan Landai Fine Thai Cuisine 252/13 Prapokklao Road Chiang Mai',
           details: (
             <>
-              One Nimman同MAYA逛街後，前往古城店Baan Landai Fine Thai Cuisine食泰菜；預留由寧曼前往古城的交通時間。用餐時間待定，未訂位。<br />
+              One Nimman同MAYA逛街、腳底按摩後，前往古城店Baan Landai Fine Thai Cuisine食泰菜；預留由寧曼前往古城的交通時間。建議約19:30入座，實際時間待預約確認，未訂位。<br />
               古城店晚餐17:00–22:00，最後點餐20:30，星期一休息；Day 2係星期五。<br />
               <a href="https://www.baan-landai.com/" target="_blank" rel="noreferrer" className="trip-link">Baan Landai（官方・古城店預約及位置）</a>
             </>
@@ -229,14 +236,36 @@ export const cnx26Data = {
       } : {
         timeline: [
           {
-            time: '08:30（建議出發）',
+            time: '09:00 酒店出發（待預訂）',
             category: '包車',
             title: '一日包車：酒店 → Mon Jam／湄林山區',
-            summary: '11月30日（一）· 預留08:30–17:00 · 包車待預訂',
-            details: '由 Narinthra Heritage 出發，一日包車去晒苗族木頭車同 Maekee Sheep House，包含司機等候及回程。預訂時確認服務時數、山區附加費、停車／過路費及超時收費；以下時間為建議安排，按司機路線、車程及現場情況調整。',
+            summary: '11月30日（一）· JunoAndMe.Travel 蒙占山包車 · 已選方案，預訂狀態待確認',
+            details: (
+              <>
+                已選 JunoAndMe.Travel 清邁在地包車的蒙占山方案；由 Narinthra Heritage 酒店接送。以下價錢及條款按你提供的海報記錄，未代表已預訂或付款。<br />
+                HKD950／車，包油費、司機10小時服務、行程路線諮詢、餐廳預約協助及廣東話客服跟進；不包括門票及餐飲。<br />
+                服務時段07:00–19:00內自選10小時；超過10小時或19:00後，加時費THB200／小時。跨區行程需補油錢，金額向包車公司確認。<br />
+                按海報路線安排09:00–19:00包車：網紅餐廳早餐 → 山上花田 → 苗族木頭車（額外加入）→ 羊農場 → 過山車 → 文青市集 → 酒店。木頭車暫放花田後，最終順序及各站停留時間由包車公司確認，包含回程須控制於10小時內。<br />
+                預訂前確認車型、人數、接送及停車／過路費安排，並請公司確認是否包含指定羊農場與苗族木頭車。
+              </>
+            ),
           },
           {
-            time: '10:00–11:30（建議）',
+            time: '上車後（時間待確認）',
+            category: '早餐',
+            title: '網紅餐廳早餐（店名待確認）',
+            summary: '海報路線第1站 · 餐費自付',
+            details: '按包車海報安排早餐，餐廳名稱及位置待公司提供；未訂位。',
+          },
+          {
+            time: '早餐後（時間待確認）',
+            category: '景點',
+            title: '山上花田（名稱待確認）',
+            summary: '海報路線第2站 · 門票自付',
+            details: '按海報安排山上花田，實際園區、星期一開放情況、花況及門票待公司確認。',
+          },
+          {
+            time: '花田後（次序待確認）',
             category: '體驗',
             title: '必玩：Formula Hmong 苗族木頭車',
             summary: 'Mon Jam 山區 · 預留排隊及體驗時間',
@@ -249,16 +278,16 @@ export const cnx26Data = {
             ),
           },
           {
-            time: '12:00–13:00（建議）',
+            time: '中午（時間待確認）',
             category: '午餐',
             title: 'Mon Jam／湄林山區午餐',
-            details: '木頭車玩完後喺山區食午餐，餐廳待定，再由包車前往綿羊農場。',
+            details: '午餐地點及是否需要額外停站按早餐時間、肚餓程度及司機路線決定；餐費自付。',
           },
           {
-            time: '13:30–15:00（建議）',
+            time: '下午（時間待確認）',
             category: '農場',
             title: 'Maekee Sheep House 綿羊農場',
-            summary: '睇羊、餵羊、山景 · 預留約1.5小時',
+            summary: '指定 Maekee Sheep House · 待公司確認接送路線',
             mapQuery: 'Maekee Sheep House 72 Mae Raem Mae Rim Chiang Mai',
             details: (
               <>
@@ -272,12 +301,26 @@ export const cnx26Data = {
             ),
           },
           {
-            time: '15:00後回程 · 約17:00返酒店（預留）',
+            time: '羊農場後（時間待確認）',
+            category: '體驗',
+            title: '過山車（場地待確認）',
+            summary: '海報路線 · 與苗族木頭車分開安排 · 費用自付',
+            details: '保留海報的過山車體驗，場地名稱、星期一開放情況、票價及乘坐限制待公司確認；不代替 Formula Hmong 苗族木頭車。',
+          },
+          {
+            time: '過山車後（時間待確認）',
+            category: '市集',
+            title: '文青市集（名稱待確認）',
+            summary: '海報路線最後一站 · 11月30日星期一',
+            details: '市集名稱及位置待公司提供，先確認星期一有開放，再安排停留及回程時間。',
+          },
+          {
+            time: '市集後回程 · 19:00前返酒店（計劃）',
             category: '包車',
-            title: 'Maekee Sheep House → Narinthra Heritage',
+            title: '文青市集 → Narinthra Heritage',
             summary: '返市區休息 · 晚餐待定',
             mapQuery: `${heritageHotel} Chiang Mai`,
-            details: '由包車接返酒店，抵達時間視山路及市區交通而定。傍晚休息後再出去食晚飯；當日下午不安排固定時間的 Daydream 預約。',
+            details: '計劃09:00上車、19:00前由包車送返酒店，包含所有停站及回程。實際能否完成全部景點須由公司確認；如遇排隊或塞車，先與司機協調停留時間及加時費。返酒店休息後再食晚飯。',
           },
           {
             time: '晚上',

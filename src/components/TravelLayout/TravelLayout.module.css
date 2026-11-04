@@ -22,10 +22,11 @@
 }
 
 .container {
+  box-sizing: border-box;
   width: min(100%, var(--reading-max));
   min-height: 100dvh;
   margin-inline: auto;
-  padding-bottom: calc(7rem + env(safe-area-inset-bottom));
+  padding-bottom: calc(var(--space-12) + var(--space-12) + env(safe-area-inset-bottom));
   color: var(--color-text);
 }
 
