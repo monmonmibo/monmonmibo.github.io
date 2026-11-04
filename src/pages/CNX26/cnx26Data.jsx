@@ -148,7 +148,14 @@ export const cnx26Data = {
           mapQuery: `${heritageHotel} Chiang Mai`,
           details: '11月28日轉住 Narinthra Heritage，住到12月1日。酒店可辦理入住及退房的時間待確認。',
         },
-        ...placeholderDay(3).timeline,
+        {
+          time: '16:00–17:30（建議・未預約）',
+          category: '按摩',
+          title: 'Giving Tree Massage 古城店 · 熱石按摩90分鐘',
+          mapQuery: 'Giving Tree Massage 5/13 Rachadamnoen Road Old Town Chiang Mai',
+          summary: '1.5小時 · Old Town 古城店 · 晚餐前放鬆',
+          details: '轉酒店、放低行李後，安排1.5小時熱石按摩。選定 Old Town 古城店（5/13 Rachadamnoen Road，電話+66 53 326 185），配合 Narinthra Heritage 住宿；預約時確認90分鐘療程是否包含全程熱石或組合按摩、價格及可預約時段。預留到店及更衣時間，晚餐安排18:00後；未訂位。',
+        },
       ],
     },
     ...[4, 5].map((number) => ({
@@ -181,7 +188,61 @@ export const cnx26Data = {
             details: '返酒店休息，叫 Cake Baan Piemsuk 招牌 Coconut Pie（椰子批）外賣喺酒店食，唔安排到店。當日先確認外賣平台／店舖有貨、送達範圍同時間，亦可請酒店協助查詢；未落單。',
           },
         ],
-      } : {}),
+      } : {
+        timeline: [
+          {
+            time: '08:30（建議出發）',
+            category: '包車',
+            title: '一日包車：酒店 → Mon Jam／湄林山區',
+            summary: '11月30日（一）· 預留08:30–17:00 · 包車待預訂',
+            details: '由 Narinthra Heritage 出發，一日包車去晒苗族木頭車同 Maekee Sheep House，包含司機等候及回程。預訂時確認服務時數、山區附加費、停車／過路費及超時收費；以下時間為建議安排，按司機路線、車程及現場情況調整。',
+          },
+          {
+            time: '10:00–11:30（建議）',
+            category: '體驗',
+            title: '必玩：Formula Hmong 苗族木頭車',
+            summary: 'Mon Jam 山區 · 預留排隊及體驗時間',
+            mapQuery: 'Formula Hmong Mon Jam Mae Raem Mae Rim Chiang Mai',
+            details: (
+              <>
+                玩苗族傳統木造 Go-kart，預留排隊及現場活動時間。當日開放時間、收費及乘坐規則仍待營運方確認，出發前先查詢；未預約。<br />
+                <a href="https://maps.google.com/?cid=14049603271662662961" target="_blank" rel="noreferrer" className="trip-link">Formula Hmong 地點資料（Google Maps）</a>
+              </>
+            ),
+          },
+          {
+            time: '12:00–13:00（建議）',
+            category: '午餐',
+            title: 'Mon Jam／湄林山區午餐',
+            details: '木頭車玩完後喺山區食午餐，餐廳待定，再由包車前往綿羊農場。',
+          },
+          {
+            time: '13:30–15:00（建議）',
+            category: '農場',
+            title: 'Maekee Sheep House 綿羊農場',
+            summary: '睇羊、餵羊、山景 · 預留約1.5小時',
+            mapQuery: 'Maekee Sheep House 72 Mae Raem Mae Rim Chiang Mai',
+            details: (
+              <>
+                慢慢行農場、餵羊同睇山景，亦可喺咖啡店休息。<br />
+                地址：บ้านแม่ขิ 72 Mae Raem, Mae Rim District, Chiang Mai 50180。<br />
+                電話：+66 84 206 4536。<br />
+                營業時間：每日07:30–18:00（按你提供的 Google 商家資料；Day 5 係星期一）。門票及當日安排出發前再確認。<br />
+                <a href="https://maps.google.com/?cid=11157055430989473519" target="_blank" rel="noreferrer" className="trip-link">Maekee Sheep House（Google Maps）</a>
+                <a href="https://www.facebook.com/100094733004940" target="_blank" rel="noreferrer" className="trip-link">Maekee Sheep House（店家 Facebook）</a>
+              </>
+            ),
+          },
+          {
+            time: '15:00後回程 · 約17:00返酒店（預留）',
+            category: '包車',
+            title: 'Maekee Sheep House → Narinthra Heritage',
+            summary: '返市區休息 · 晚餐待定',
+            mapQuery: `${heritageHotel} Chiang Mai`,
+            details: '由包車接返酒店，抵達時間視山路及市區交通而定。傍晚休息後再出去食晚飯；當日下午不安排固定時間的 Daydream 預約。',
+          },
+        ],
+      }),
     })),
     {
       id: 'day6',
