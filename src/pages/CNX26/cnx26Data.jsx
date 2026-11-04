@@ -212,10 +212,18 @@ export const cnx26Data = {
             details: '返酒店食完椰子批後，預留交通時間前往 Suriwong 分店，計劃16:00開始洗頭及頭部護理。套餐未選，按之前價目表療程約75–125分鐘，預計17:15–18:05完成；晚餐預留18:30後。實際可約時段、套餐內容及價格向店舖確認，未預約。',
           },
           {
-            time: '18:30 後',
+            time: '18:45–19:00（建議）',
             category: '晚餐',
-            title: '晚餐待定',
-            details: 'Daydream 洗頭療程後食晚飯，餐廳及確實用餐時間待定。',
+            title: 'OWL brasserie',
+            summary: '11月29日（日）· 古城 Arak Road · 未訂位',
+            mapQuery: 'OWL brasserie 65/1 Arak Road Chiang Mai',
+            details: (
+              <>
+                Daydream Suriwong 洗頭療程後，預留交通時間搭車前往 OWL，建議18:45–19:00入座，按療程完成時間調整；未訂位。<br />
+                地址：65/1 Arak Road。星期二至日11:00–22:00，星期一休息；Day 4係星期日。<br />
+                <a href="https://www.owlbrasserie.com/location" target="_blank" rel="noreferrer" className="trip-link">OWL（官方・位置及營業時間）</a>
+              </>
+            ),
           },
         ],
       } : {
