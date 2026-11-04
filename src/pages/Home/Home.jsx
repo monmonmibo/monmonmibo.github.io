@@ -103,7 +103,7 @@ export default function Home() {
           <div className={styles.sectionHeading}><h2 id="past-trips">過往旅程</h2><span>{country === '全部' ? `${archived.length} 個旅程` : `${visibleTrips.length} / ${archived.length} 個旅程`}</span></div>
           <div className={styles.filters} role="group" aria-label="按國家篩選過往旅程">
             {['全部', ...new Set(archived.map(trip => trip.country))].map(option => (
-              <button key={option} type="button" aria-pressed={country === option} onClick={() => setCountry(option)}>{option}</button>
+              <button className={styles.filterButton} key={option} type="button" aria-pressed={country === option} onClick={() => setCountry(option)}>{option}</button>
             ))}
           </div>
           <div className={styles.tripGrid} aria-live="polite">

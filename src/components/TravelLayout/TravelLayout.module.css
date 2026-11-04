@@ -43,7 +43,7 @@
 }
 .headerTop { display:flex; align-items:center; justify-content:space-between; gap:var(--space-3); margin-bottom:var(--space-4); }
 .eyebrow, .sectionEyebrow { margin:0; color:var(--color-text-secondary); font-size:0.9375rem; font-weight:600; }
-.homeLink { display:inline-flex; align-items:center; justify-content:center; gap:var(--space-2); min-height:var(--control-height); padding:var(--space-2) var(--space-3); border-radius:var(--radius-sm); color:var(--color-primary); background:var(--color-primary-soft); text-decoration:none; font-size:0.9375rem; font-weight:600; transition:background-color 180ms; }
+.homeLink { composes: small from "../Button.module.css"; border-radius:var(--radius-sm); color:var(--color-primary); background:var(--color-primary-soft); text-decoration:none; font-size:0.9375rem; font-weight:600; transition:background-color 180ms; }
 .header h1 { margin:0; font-family:var(--font-sans); font-size:clamp(1.75rem,5vw,2rem); line-height:1.35; letter-spacing:-0.035em; font-weight:750; overflow-wrap:anywhere; }
 .headerSubtitle { margin:var(--space-2) 0 0; color:var(--color-text-secondary); font-size:0.9375rem; }
 .headerMeta { display:flex; gap:var(--space-5); margin:var(--space-3) 0 0; }
@@ -55,7 +55,7 @@
   position: sticky;
   top: 0;
   z-index: 99;
-  padding-block: 0.625rem;
+  padding-block: var(--space-2);
   margin-bottom: var(--space-5);
   background: var(--color-surface);
   border-bottom: 1px solid transparent;
@@ -68,53 +68,53 @@
   box-shadow: var(--shadow-subtle);
 }
 
-.tabScroller { position: relative; }
+.dateControls {
+  display: grid;
+  grid-template-columns: var(--control-height) minmax(0, 1fr) var(--control-height);
+  align-items: center;
+  gap: var(--button-group-gap);
+  padding-inline: var(--space-5);
+}
+
+.dateScrollButton {
+  composes: icon from "../Button.module.css";
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-text);
+  transition: background-color 180ms;
+}
+.dateScrollButton:enabled:hover { background: var(--color-surface-hover); }
+.dateScrollButton:enabled:active { background: var(--color-surface-muted); }
+.dateScrollButton:disabled {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text-disabled);
+  cursor: default;
+}
 
 .dateTabs {
+  min-width: 0;
   display: flex;
-  gap: var(--space-3);
+  gap: var(--button-group-gap);
   /* Horizontal scrolling creates a scrollport that also clips vertically.
      Keep enough block padding for the 5px focus outline + offset. */
-  padding: 0.375rem var(--space-5);
+  padding: var(--space-2);
   overflow-x: auto;
   overscroll-behavior-x: contain;
-  scroll-padding-inline: var(--space-5);
+  scroll-padding-inline: var(--space-2);
+  /* A scrollbar would shift the rail's centre below the date button centres. */
   scrollbar-width: none;
 }
 
 .dateTabs::-webkit-scrollbar { display: none; }
 
-.tabNav {
-  position: absolute;
-  top: 50%;
-  z-index: 2;
-  width: 36px;
-  height: 36px;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  background: var(--color-surface-elevated);
-  color: var(--color-primary);
-  box-shadow: var(--shadow-card);
-  cursor: pointer;
-  transform: translateY(-50%);
-  transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
-}
-
-.tabNavShown { display: flex; }
-.tabNavLeft { left: var(--space-2); }
-.tabNavRight { right: var(--space-2); }
-
 .dateChip {
-  min-height: var(--control-height);
+  composes: small from "../Button.module.css";
   flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.625rem 1rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   background: var(--color-surface);
@@ -177,12 +177,9 @@
 .hotelNavBtn,
 .itemNavBtn,
 .spotListOpenAll {
-  min-height: var(--control-height);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-  padding: 0.625rem 1rem;
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
   background: var(--color-primary);
@@ -195,7 +192,9 @@
   transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
 }
 
-.hotelNavBtn { background: var(--color-leather); box-shadow: var(--shadow-leather); }
+.hotelNavBtn { composes: small from "../Button.module.css"; background: var(--color-leather); box-shadow: var(--shadow-leather); }
+
+.itemNavBtn { composes: small from "../Button.module.css"; }
 
 .timelineContainer { padding: 0 var(--space-5); }
 
@@ -372,8 +371,8 @@
 .todoLabel:has(input:checked) { background: var(--color-surface-muted); }
 .todoLabel input:focus-visible ~ .checkCircle { outline: 2px solid var(--color-focus); outline-offset: 3px; box-shadow: var(--focus-ring); }
 
-.bottomNav { position:fixed; z-index:110; bottom:0; left:50%; transform:translateX(-50%); display:flex; width:min(100%,var(--reading-max)); padding:var(--space-2) var(--space-4) calc(var(--space-2) + env(safe-area-inset-bottom)); background:var(--color-surface); border-top:1px solid var(--color-border); box-shadow:var(--shadow-subtle); }
-.navBtn { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:var(--space-1); min-height:52px; padding:var(--space-2); border:0; border-radius:var(--radius-sm); background:transparent; color:var(--color-text-secondary); font-family:var(--font-sans); font-size:0.8125rem; font-weight:600; cursor:pointer; transition:color 180ms,background-color 180ms; }
+.bottomNav { position:fixed; z-index:110; bottom:0; left:50%; transform:translateX(-50%); display:flex; gap:var(--button-group-gap); width:min(100%,var(--reading-max)); padding:var(--space-2) var(--space-4) calc(var(--space-2) + env(safe-area-inset-bottom)); background:var(--color-surface); border-top:1px solid var(--color-border); box-shadow:var(--shadow-subtle); }
+.navBtn { composes: default from "../Button.module.css"; flex:1; flex-direction:column; border:0; border-radius:var(--radius-sm); background:transparent; color:var(--color-text-secondary); font-family:var(--font-sans); font-size:0.8125rem; font-weight:600; cursor:pointer; transition:color 180ms,background-color 180ms; }
 .navBtn.active { background:var(--color-primary-soft); color:var(--color-primary); }
 
 .toolsSection { padding: var(--space-3) var(--space-5) 0; }
@@ -389,7 +388,7 @@
 
 .mapIframe { display: block; width: 100%; height: 100%; border: 0; }
 
-.spotListOpenAll { width: 100%; margin-bottom: var(--space-5); }
+.spotListOpenAll { composes: default from "../Button.module.css"; width: 100%; margin-bottom: var(--space-5); }
 .spotRow { color: inherit; text-decoration: none; }
 .spotDay { flex: 0 0 auto; padding: 0.25rem 0.5rem; border-radius: var(--radius-xs); background: var(--color-primary-soft); color: var(--color-primary); font-size: 0.75rem; font-weight: 700; }
 .spotName { min-width: 0; flex: 1; color: var(--color-text); font-size: 1rem; font-weight: 600; line-height: 1.4; }
@@ -442,7 +441,6 @@
 .fareNotes li { margin-bottom: var(--space-2); }
 
 .homeLink:focus-visible,
-.tabNav:focus-visible,
 .dateChip:focus-visible,
 .hotelNavBtn:focus-visible,
 .itemNavBtn:focus-visible,
@@ -458,7 +456,7 @@
 .itemNavBtn:active,
 .spotListOpenAll:active,
 .dateChip:active,
-.navBtn:active { transform: scale(0.97); }
+.navBtn:active { transform: none; }
 
 
 
@@ -469,43 +467,40 @@
 
 @media (hover: hover) {
   .homeLink:hover { background:var(--color-surface-hover); color:var(--color-primary-hover); }
-  .tabNav:hover { background: var(--color-primary); color: var(--color-text-inverse); }
-  .dateChip:hover { color: var(--color-primary); border-color: var(--color-border-hover); transform: translateY(-1px); }
+  .dateChip:hover { color: var(--color-primary); border-color: var(--color-border-hover); transform: none; }
   .dateChip.active:hover { background: var(--color-primary-hover); color: var(--color-text-inverse); }
   .card:hover { border-color: var(--color-border-hover); }
-  .hotelNavBtn:hover { background: var(--color-leather-hover); transform: translateY(-1px); }
+  .hotelNavBtn:hover { background: var(--color-leather-hover); transform: none; }
   .itemNavBtn:hover,
-  .spotListOpenAll:hover { background: var(--color-primary-hover); transform: translateY(-1px); }
+  .spotListOpenAll:hover { background: var(--color-primary-hover); transform: none; }
   .todoLabel:hover,
   .spotRow:hover { background: var(--color-surface-hover); border-color: var(--color-border-hover); box-shadow: var(--shadow-card); }
   .navBtn:hover { color: var(--color-primary); }
   .navBtn.active:hover { background: var(--color-primary-soft); color: var(--color-primary); }
 }
 
-@media (pointer: coarse) {
-  .tabNavShown { display: none; }
-}
-
 @media (max-width: 640px) {
   .header { padding:calc(var(--space-4) + env(safe-area-inset-top)) var(--space-4) var(--space-5); }
   .header h1 { font-size:1.75rem; }
-  .dateTabs { padding-inline:var(--space-4); scroll-snap-type:x proximity; }
+  .dateControls { padding-inline:var(--space-4); }
+  .dateTabs { scroll-snap-type:x proximity; }
   .dateChip { scroll-snap-align:start; }
   .hotelHeader { margin-inline:var(--space-4); padding:var(--space-3); align-items:center; }
   .hotelInfo { min-width:0; }
   .hotelInfo span { overflow-wrap:anywhere; }
-  .hotelNavBtn { flex-shrink:0; padding-inline:var(--space-3); }
+  .hotelNavBtn { flex-shrink:0; }
   .timelineContainer { padding-inline:var(--space-4); }
   .timeline { padding-left:1rem; margin-left:0; }
   .timelineItem::before { left:calc(-1rem - 6px); }
   .cardHead { align-items:flex-start; }
   .itemTitle { min-width:0; overflow-wrap:anywhere; font-size:1.125rem; }
-  .itemNavBtn { flex-shrink:0; padding-inline:var(--space-3); }
+  .itemNavBtn { flex-shrink:0; }
   .todoListGroup, .spotList, .toolsSection { padding-inline:var(--space-4); }
   .mapFrame { margin-inline:var(--space-4); }
 }
 @media (max-width:360px) {
   .header { padding-inline:var(--space-3); }
+  .dateControls { padding-inline:var(--space-3); }
   .timelineContainer { padding-inline:var(--space-3); }
   .cardHead { flex-wrap:wrap; }
   .itemTitle { flex-basis:100%; }

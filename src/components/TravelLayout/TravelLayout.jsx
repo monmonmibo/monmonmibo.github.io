@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useLayoutEffect, useMemo, useRef, useCallback } from 'react';
+import { useState, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import styles from './TravelLayout.module.css';
 import JpyToHkdConverter from '../JpyToHkdConverter';
 import {
@@ -185,36 +185,34 @@ export default function TravelLayout({ data }) {
   // Every id in the date rail, in visual order — drives arrow-key navigation
   const tabIds = [...data.days.map(d => d.id), ...(data.todos ? ['todo'] : [])];
 
-  // Arrow keys move between tabs, per the ARIA tabs pattern. Without this,
-  // role="tab" would promise a keyboard behaviour the rail did not have.
-  // Hide each date-rail arrow when its corresponding scroll boundary is reached.
   const tabsRef = useRef(null);
   const [tabOverflow, setTabOverflow] = useState({ left: false, right: false });
 
-  const syncTabOverflow = useCallback(() => {
-    const el = tabsRef.current;
-    if (!el) return;
-    const max = el.scrollWidth - el.clientWidth;
-    setTabOverflow({ left: el.scrollLeft > 1, right: el.scrollLeft < max - 1 });
-  }, []);
-
   useEffect(() => {
-    const el = tabsRef.current;
-    if (!el) return;
-    syncTabOverflow();
-    el.addEventListener('scroll', syncTabOverflow, { passive: true });
-    const ro = new ResizeObserver(syncTabOverflow);
-    ro.observe(el);
+    const rail = tabsRef.current;
+    if (!rail) return;
+    const update = () => setTabOverflow({
+      left: rail.scrollLeft > 1,
+      right: rail.scrollLeft < rail.scrollWidth - rail.clientWidth - 1,
+    });
+    const frame = requestAnimationFrame(update);
+    const observer = new ResizeObserver(update);
+    observer.observe(rail);
+    rail.addEventListener('scroll', update, { passive: true });
     return () => {
-      el.removeEventListener('scroll', syncTabOverflow);
-      ro.disconnect();
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      rail.removeEventListener('scroll', update);
     };
-  }, [syncTabOverflow, tabIds.length, view]);
+  }, [data.id, tabIds.length, view]);
 
-  const scrollTabs = (dir) => {
-    const el = tabsRef.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * Math.max(el.clientWidth * 0.6, 180), behavior: 'smooth' });
+  const scrollTabs = (direction) => {
+    const rail = tabsRef.current;
+    if (!rail) return;
+    rail.scrollBy({
+      left: direction * rail.clientWidth * 0.75,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+    });
   };
 
   // Timetables start at the first column, while the planned departure may be
@@ -236,6 +234,7 @@ export default function TravelLayout({ data }) {
     });
   }, [activeTab, view]);
 
+  // Moving focus also scrolls the selected date into the rail viewport.
   const handleTabKeyDown = (e) => {
     const map = { ArrowRight: 1, ArrowLeft: -1, Home: 'first', End: 'last' };
     const move = map[e.key];
@@ -247,7 +246,11 @@ export default function TravelLayout({ data }) {
       : move === 'last' ? tabIds[tabIds.length - 1]
       : tabIds[(i + move + tabIds.length) % tabIds.length];
     handleTabClick(next);
-    requestAnimationFrame(() => document.getElementById(`tab-${next}`)?.focus());
+    requestAnimationFrame(() => {
+      const tab = document.getElementById(`tab-${next}`);
+      tab?.focus({ preventScroll: true });
+      tab?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    });
   };
 
   const handleViewClick = (newView) => {
@@ -314,26 +317,11 @@ export default function TravelLayout({ data }) {
 
       {view === 'timeline' && (
         <div className={`${styles.stickyNav} ${isScrolled ? styles.stickyNavScrolled : ''}`}>
-          <div className={styles.tabScroller}>
-            <button
-              type="button"
-              aria-hidden="true"
-              tabIndex={-1}
-              className={`${styles.tabNav} ${styles.tabNavLeft} ${tabOverflow.left ? styles.tabNavShown : ''}`}
-              onClick={() => scrollTabs(-1)}
-            >
-              <ChevronLeftIcon size={19} />
+          <div className={styles.dateControls}>
+            <button type="button" className={styles.dateScrollButton} aria-label="向左捲動日期" aria-controls="trip-date-tabs" disabled={!tabOverflow.left} onClick={() => scrollTabs(-1)}>
+              <ChevronLeftIcon size={20} />
             </button>
-            <button
-              type="button"
-              aria-hidden="true"
-              tabIndex={-1}
-              className={`${styles.tabNav} ${styles.tabNavRight} ${tabOverflow.right ? styles.tabNavShown : ''}`}
-              onClick={() => scrollTabs(1)}
-            >
-              <ChevronRightIcon size={19} />
-            </button>
-          <div className={styles.dateTabs} ref={tabsRef} role="tablist" aria-label="行程日期" onKeyDown={handleTabKeyDown}>
+          <div id="trip-date-tabs" ref={tabsRef} className={styles.dateTabs} role="tablist" aria-label="行程日期" onKeyDown={handleTabKeyDown}>
             {tabIds.map(id => {
               const day = data.days.find(d => d.id === id);
               const selected = activeTab === id;
@@ -355,6 +343,9 @@ export default function TravelLayout({ data }) {
               );
             })}
           </div>
+            <button type="button" className={styles.dateScrollButton} aria-label="向右捲動日期" aria-controls="trip-date-tabs" disabled={!tabOverflow.right} onClick={() => scrollTabs(1)}>
+              <ChevronRightIcon size={20} />
+            </button>
           </div>
         </div>
       )}

@@ -38,6 +38,22 @@ PWA theme-color、靜態及行程 manifest 同步改為主色。
 - 卡片連結：hover 邊框與輕陰影增強，active 回位，focus-visible 同按鈕；disabled（如有）不可導航並有文字狀態，不能只加 aria-disabled。
 - Disclosure：hover 淺燕麥底、active 顏色加深、focus-visible 清晰；原生 open 狀態箭嘴旋轉。不提供無用途的 disabled 狀態。
 
+### Button 尺寸與間距
+
+尺寸由 `src/components/Button.module.css` 共用，數值與間距由 `src/index.css` tokens 統一供應。尺寸與顏色／用途獨立；`default` 尺寸唔代表一定係主 CTA。
+
+| 尺寸 | Padding（上下／左右） | 最小點擊範圍 | 使用位置 |
+| --- | --- | --- | --- |
+| `small` | 8px／12px | 44×44px | 主頁連結、日期／To-Do tabs、國家篩選、酒店及行程導航 |
+| `default` | 12px／16px | 44×44px | 底部檢視導航、地圖「全部開啟」操作 |
+| `icon`（small 變體） | 四邊 8px | 44×44px | 日期捲動箭嘴、匯率清除輸入 |
+
+兩級只靠 padding 區分密度，唔縮細觸控範圍；hover／active 不位移或縮放按鈕；內容可以令高度超過 44px，不固定文字按鈕高度。圖示按鈕用 44×44px，保留原有 aria-label。底部導航沿用圖示在上、文字在下。
+按鈕內容 gap 同按鈕組 gap 統一 8px（`--button-content-gap`／`--button-group-gap`）；日期 rail 上下留 8px，避免裁切 focus outline；底部容器沿用上下 8px、左右 16px，另加 safe area。
+日期捲動控制與日期列放在同一行，採用 `44px minmax(0, 1fr) 44px` 三欄：左按鈕、可橫向捲動日期、右按鈕，欄間距 8px，外側留白跟內容對齊。兩個按鈕一直顯示，到達對應邊界時用原生 disabled 停用；不隱藏留空、不絕對定位疊在日期上、不另外加一行。日期文字只在中間 scrollport 內裁切，不能伸到按鈕下面。保留原生橫向捲動、方向鍵、Home／End 切換及選中日期捲入可視範圍；reduced-motion 下按鈕捲動即時完成。
+日期列所有裝置均隱藏捲軸但保持可捲動；左右箭嘴與日期按鈕的垂直中心對齊。箭嘴預設透明底、`--color-border` 淡邊框、無陰影，保持 44×44px 點擊範圍；hover／active 沿用淺底回饋，disabled 保持透明底並用 `--color-text-disabled` 表達停用。保留清晰 focus-visible 外框。
+兩級 padding 使用 `--button-small-padding-*`／`--button-default-padding-*`，最小尺寸用 `--control-height`。手機不再另行覆寫導航 padding；卡片連結、待辦列與 disclosure 保留各自內容版面，唔當文字按鈕套尺寸。
+
 ## 5. Layout Principles
 
 行程維持約 760px 單欄閱讀軸；首頁桌面可用雙欄，手機單欄。

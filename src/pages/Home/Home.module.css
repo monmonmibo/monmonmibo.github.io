@@ -21,8 +21,9 @@
 .featuredDate { display:flex; align-items:center; gap:var(--space-2); margin:0; font-variant-numeric:tabular-nums; color:var(--color-text); font-size:1rem; }
 .highlights { color:var(--color-text-secondary); font-size:0.9375rem; margin:var(--space-3) 0 var(--space-6); }
 .featuredFooter { display:flex; align-items:center; justify-content:space-between; gap:var(--space-3); margin-top:auto; padding:var(--space-3) var(--space-4); border-radius:var(--radius-sm); background:var(--color-primary); color:var(--color-text-inverse); font-weight:600; min-height:48px; transition:background-color 180ms; }
-.filters { display:flex; flex-wrap:wrap; gap:var(--space-2); margin-bottom:var(--space-4); }
-.filters button { min-height:44px; padding:var(--space-2) var(--space-4); border:1px solid var(--color-border); border-radius:var(--radius-pill); background:var(--color-surface); color:var(--color-text); font:500 0.9375rem/1.5 var(--font-sans); cursor:pointer; transition:background-color 180ms,border-color 180ms; }
+.filters { display:flex; flex-wrap:wrap; gap:var(--button-group-gap); margin-bottom:var(--space-4); }
+.filterButton { composes: small from "../../components/Button.module.css"; }
+.filters button { border:1px solid var(--color-border); border-radius:var(--radius-pill); background:var(--color-surface); color:var(--color-text); font:500 0.9375rem/1.5 var(--font-sans); cursor:pointer; transition:background-color 180ms,border-color 180ms; }
 .filters button[aria-pressed=true] { background:var(--color-text); color:var(--color-text-inverse); border-color:var(--color-text); }
 .tripGrid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-4); }
 .tripCard { display:flex; align-items:center; gap:var(--space-4); min-width:0; padding:var(--space-4); border:1px solid var(--color-border); border-radius:var(--radius-md); color:var(--color-text); text-decoration:none; transition:box-shadow 180ms,background-color 180ms; }

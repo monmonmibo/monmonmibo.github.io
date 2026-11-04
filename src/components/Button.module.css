@@ -1,0 +1,30 @@
+.small,
+.default {
+  box-sizing: border-box;
+  min-width: var(--control-height);
+  min-height: var(--control-height);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--button-content-gap);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.small {
+  padding: var(--button-small-padding-y) var(--button-small-padding-x);
+}
+
+.default {
+  padding: var(--button-default-padding-y) var(--button-default-padding-x);
+}
+
+/* Icon controls keep a full target without extra label padding. */
+.icon {
+  composes: small;
+  width: var(--control-height);
+  height: var(--control-height);
+  flex-shrink: 0;
+  padding: var(--space-2);
+}
