@@ -58,10 +58,12 @@ export const cnx26Data = {
           details: '2026年11月26日 14:00 後可辦理入住（酒店當地時間）。當日 18:50 落機，抵達酒店後 Check-in、放低行李，再去食晚飯。',
         },
         {
-          time: 'Check-in 後',
+          time: 'Check-in 後（建議20:30–21:00）',
           category: '晚餐',
-          title: '清邁第一晚晚餐',
-          details: 'Check-in 後食晚飯，餐廳待定。',
+          title: 'Lumi - Italian Restaurant',
+          summary: '11月26日（四）· 寧曼Soi 9 · 未訂位',
+          mapQuery: 'Lumi Italian Restaurant 22/2 Nimman Soi 9 Chiang Mai',
+          details: '18:50落機後先到酒店Check-in、放低行李，再前往寧曼Soi 9的Lumi食意大利菜。20:30–21:00為建議到店範圍，按航班、入境及交通調整；預約時確認最遲入座及廚房截單時間，未訂位。',
         },
       ],
     },
@@ -115,12 +117,18 @@ export const cnx26Data = {
           ),
         },
         {
-          time: '晚上（暫定）',
-          category: '晚餐候選',
-          title: 'Lumi - Italian Restaurant',
-          summary: '想食清單 · 建議寧曼住宿期間去，日期未定',
-          mapQuery: 'Lumi Italian Restaurant 22/2 Nimman Soi 9 Chiang Mai',
-          details: '餐廳位於寧曼 Soi 9，先暫放 Day 2 晚餐候選，方便之後按其他行程調動；未訂位，晚餐時間及營業安排待確認。',
+          time: '晚上（時間待定）',
+          category: '晚餐',
+          title: 'Baan Landai Fine Thai Cuisine',
+          summary: '11月27日（五）· 古城店 · 未訂位',
+          mapQuery: 'Baan Landai Fine Thai Cuisine 252/13 Prapokklao Road Chiang Mai',
+          details: (
+            <>
+              One Nimman同MAYA逛街後，前往古城店Baan Landai Fine Thai Cuisine食泰菜；預留由寧曼前往古城的交通時間。用餐時間待定，未訂位。<br />
+              古城店晚餐17:00–22:00，最後點餐20:30，星期一休息；Day 2係星期五。<br />
+              <a href="https://www.baan-landai.com/" target="_blank" rel="noreferrer" className="trip-link">Baan Landai（官方・古城店預約及位置）</a>
+            </>
+          ),
         },
       ],
     },
@@ -156,6 +164,14 @@ export const cnx26Data = {
           summary: '1.5小時 · Old Town 古城店 · 晚餐前放鬆',
           details: '轉酒店、放低行李後，安排1.5小時熱石按摩。選定 Old Town 古城店（5/13 Rachadamnoen Road，電話+66 53 326 185），配合 Narinthra Heritage 住宿；預約時確認90分鐘療程是否包含全程熱石或組合按摩、價格及可預約時段。預留到店及更衣時間，晚餐安排18:00後；未訂位。',
         },
+        {
+          time: '18:00 後',
+          category: '晚餐',
+          title: 'Kung Yim Shop (2nd Branch)',
+          summary: '11月28日（六）· 第二分店 · 未訂位',
+          mapQuery: 'Kung Yim Shop 2nd Branch 90 Ratchawong Road Chiang Mai',
+          details: 'Giving Tree 古城店熱石按摩後，預留交通時間前往 Kung Yim 第二分店（90 Ratchawong Road）。安排18:00後食晚飯，確實用餐時間待定；未訂位。',
+        },
       ],
     },
     ...[4, 5].map((number) => ({
@@ -186,6 +202,20 @@ export const cnx26Data = {
             title: '酒店下午茶：Cake Baan Piemsuk 椰子批',
             summary: '必食 Coconut Pie · 叫外賣返 Narinthra Heritage',
             details: '返酒店休息，叫 Cake Baan Piemsuk 招牌 Coconut Pie（椰子批）外賣喺酒店食，唔安排到店。當日先確認外賣平台／店舖有貨、送達範圍同時間，亦可請酒店協助查詢；未落單。',
+          },
+          {
+            time: '16:00（計劃・待預約）',
+            category: 'Head Spa',
+            title: 'Daydream Sleep Salon · Suriwong 分店洗頭',
+            summary: '11月29日（日）· 套餐待選 · 晚餐前放鬆',
+            mapQuery: 'Daydream sleep salon at Suriwong 99/1-2 Sridonchai Road Chiang Mai',
+            details: '返酒店食完椰子批後，預留交通時間前往 Suriwong 分店，計劃16:00開始洗頭及頭部護理。套餐未選，按之前價目表療程約75–125分鐘，預計17:15–18:05完成；晚餐預留18:30後。實際可約時段、套餐內容及價格向店舖確認，未預約。',
+          },
+          {
+            time: '18:30 後',
+            category: '晚餐',
+            title: '晚餐待定',
+            details: 'Daydream 洗頭療程後食晚飯，餐廳及確實用餐時間待定。',
           },
         ],
       } : {
@@ -240,6 +270,12 @@ export const cnx26Data = {
             summary: '返市區休息 · 晚餐待定',
             mapQuery: `${heritageHotel} Chiang Mai`,
             details: '由包車接返酒店，抵達時間視山路及市區交通而定。傍晚休息後再出去食晚飯；當日下午不安排固定時間的 Daydream 預約。',
+          },
+          {
+            time: '晚上',
+            category: '晚餐',
+            title: '晚餐待定',
+            details: '包車返到酒店、稍作休息後食晚飯，餐廳及用餐時間待定。',
           },
         ],
       }),
