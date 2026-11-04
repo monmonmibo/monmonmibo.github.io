@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRightIcon } from '../../components/Icons';
+import { ArrowRightIcon, CalendarIcon, SuitcaseIcon } from '../../components/Icons';
 import styles from './Home.module.css';
 
 const trips = [
@@ -68,98 +68,57 @@ const trips = [
 ];
 
 export default function Home() {
-  const pageRef = useRef(null);
+  const [country, setCountry] = useState('全部');
+  const upcoming = trips.find(trip => trip.featured);
+  const archived = trips.filter(trip => !trip.featured);
 
-  useEffect(() => {
-    const root = pageRef.current;
-    if (!root) return undefined;
-
-    const elements = root.querySelectorAll('[data-reveal]');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add(styles.inView);
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 0.12 });
-
-    elements.forEach((element) => observer.observe(element));
-    return () => observer.disconnect();
-  }, []);
+  const visibleTrips = archived.filter(trip => country === '全部' || trip.country === country);
 
   return (
-    <div ref={pageRef} className={styles.container}>
-      <header className={styles.hero}>
-        <div className={styles.heroGrain} aria-hidden="true" />
-        <div className={styles.heroContent}>
-          <p className={styles.eyebrow}>MONMONMIBO</p>
-          <h1 className={styles.title}>我的行程</h1>
-          <p className={styles.subtitle}>下一站：清邁 · 2026年11–12月</p>
-        </div>
-        <dl className={styles.stats} aria-label="旅程摘要">
-          <div>
-            <dt>旅程</dt>
-            <dd>{String(trips.length).padStart(2, '0')}</dd>
-          </div>
-          <div>
-            <dt>目的地</dt>
-            <dd>03</dd>
-          </div>
-          <div>
-            <dt>下一站</dt>
-            <dd>CNX</dd>
-          </div>
-        </dl>
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <Link to="/" className={styles.brand}><SuitcaseIcon size={25} /><span>MonMonMibo<small>旅程，隨身帶住。</small></span></Link>
+        <span className={styles.tripCount}>{trips.length} 個旅程</span>
       </header>
-
       <main className={styles.main}>
-        <div className={styles.sectionHeading} data-reveal>
-          <div>
-            <p className={styles.sectionEyebrow}>JOURNEYS</p>
-            <h2>旅程收藏</h2>
-          </div>
-          <p>由即將啟程，到已成回憶。</p>
+        <div className={styles.intro}>
+          <h1>我的旅程</h1>
+          <p>計劃下一趟，亦留住去過嘅地方。</p>
         </div>
-
-        <div className={styles.tripGrid} aria-label="行程列表">
-          {trips.map((trip, index) => (
-            <Link
-              key={trip.to}
-              to={trip.to}
-              data-reveal
-              className={`${styles.tripCard} ${trip.featured ? styles.tripCardFeatured : ''}`}
-              aria-label={`開啟${trip.destination}${trip.duration}行程`}
-            >
-              <div className={styles.cardTopline}>
-                <span className={styles.tripIndex}>{String(index + 1).padStart(2, '0')}</span>
-                <span className={`${styles.statusTag} ${trip.featured ? styles.statusUpcoming : styles.statusDone}`}>
-                  {trip.status}
-                </span>
-              </div>
-
-              <div className={styles.tripInfo}>
-                <p className={styles.tripCode}>{trip.code} · {trip.country}</p>
-                <h3>{trip.destination}</h3>
-                <p className={styles.highlights}>{trip.highlights}</p>
-              </div>
-
-              <div className={styles.cardFooter}>
-                <p>
-                  <span>{trip.date}</span>
-                  <span>{trip.duration}</span>
-                </p>
-                <span className={styles.cardAction} aria-hidden="true">
-                  <ArrowRightIcon size={19} />
-                </span>
+        {upcoming && (
+          <section className={styles.upcoming} aria-labelledby="next-trip">
+            <div className={styles.sectionHeading}><h2 id="next-trip">下一趟旅程</h2><span>即將出發</span></div>
+            <Link to={upcoming.to} className={styles.featuredCard}>
+              <div className={styles.featuredBody}>
+              <div className={styles.featuredTop}><span className={styles.statusTag}>{upcoming.country} · {upcoming.duration}</span></div>
+              <h3>{upcoming.destination}</h3>
+              <p className={styles.featuredDate}><CalendarIcon size={17} />{upcoming.date}</p>
+              <p className={styles.highlights}>{upcoming.highlights}</p>
+              <div className={styles.featuredFooter}><span>查看行程</span><ArrowRightIcon size={20} /></div>
               </div>
             </Link>
-          ))}
-        </div>
+          </section>
+        )}
+        <section aria-labelledby="past-trips">
+          <div className={styles.sectionHeading}><h2 id="past-trips">過往旅程</h2><span>{country === '全部' ? `${archived.length} 個旅程` : `${visibleTrips.length} / ${archived.length} 個旅程`}</span></div>
+          <div className={styles.filters} role="group" aria-label="按國家篩選過往旅程">
+            {['全部', ...new Set(archived.map(trip => trip.country))].map(option => (
+              <button key={option} type="button" aria-pressed={country === option} onClick={() => setCountry(option)}>{option}</button>
+            ))}
+          </div>
+          <div className={styles.tripGrid} aria-live="polite">
+            {visibleTrips.map(trip => (
+              <Link key={trip.to} to={trip.to} className={styles.tripCard} aria-label={`開啟${trip.destination}行程`}>
+                <div className={styles.tripInfo}><span className={styles.country}>{trip.country}</span><h3>{trip.destination}</h3><p>{trip.date} · {trip.duration}</p></div>
+                <span className={styles.cardAction} aria-hidden="true"><ArrowRightIcon size={18} /></span>
+              </Link>
+            ))}
+          </div>
+        </section>
+        <aside className={styles.helper}><span aria-hidden="true">↗</span><p>出發前打開行程，預先載入資料，旅途中亦可離線查看。</p></aside>
       </main>
-
       <footer className={styles.footer}>
-        <span>MonMonMibo</span>
-        <span>Private journeys, carefully kept.</span>
+        <span>MonMonMibo · 每一趟，都好好出發。</span>
       </footer>
     </div>
   );

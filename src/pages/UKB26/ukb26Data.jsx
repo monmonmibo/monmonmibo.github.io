@@ -201,14 +201,10 @@ export const ukb26Data = {
         {
           time: "晚上",
           category: "晚餐",
-          title: "🍣 晚餐：新鮮壽司大餐",
-          mapQuery: "神戸三宮 寿司",
-          details: (
-            <>
-              回到三宮後，享用高品質的日本壽司。<br/>
-              推薦：三宮站周邊的職人手作壽司店或人氣迴轉壽司。
-            </>
-          )
+          title: "🍲 晚餐：すき焼き しゃぶしゃぶ 一芯",
+          summary: "三宮晚餐 · 壽喜燒",
+          mapQuery: "すき焼き しゃぶしゃぶ 一芯 神戸三宮",
+          details: "晚上喺「すき焼き しゃぶしゃぶ 一芯」食壽喜燒。"
         }
       ]
     },
@@ -275,14 +271,10 @@ export const ukb26Data = {
         {
           time: "晚上",
           category: "晚餐",
-          title: "🥩 晚餐：日式燒肉大餐",
-          mapQuery: "神戸三宮 焼肉",
-          details: (
-            <>
-              回到三宮後，享用豐富的燒肉料理。<br/>
-              推薦：三宮站附近的「燒肉一蘭」或其他高品質和牛燒肉店。
-            </>
-          )
+          title: "🍣 晚餐：鮨ななお 三宮",
+          summary: "三宮晚餐 · 壽司",
+          mapQuery: "鮨ななお 三宮",
+          details: "返到三宮後，晚上喺「鮨ななお 三宮」食壽司。"
         }
       ]
     },
@@ -313,7 +305,7 @@ export const ukb26Data = {
           time: "10:15 起",
           category: "Shopping",
           title: "🛍️ Highway Oasis：買物與午餐",
-          summary: "早走：趕 12:59 車 · 慢慢逛：搭 14:49 車",
+          summary: "午餐同購物後，前往淡路夢舞台",
           type: "highlight",
           mapQuery: "淡路ハイウェイオアシス",
           details: (
@@ -325,312 +317,41 @@ export const ukb26Data = {
           )
         },
         {
-          time: "12:59 / 14:49",
-          category: "交通",
-          title: "⛪ 轉乘：淡路夢舞台",
-          type: "highlight",
+          time: "午餐後",
+          category: "景點",
+          title: "⛪ 淡路夢舞台散策",
+          summary: "行完夢舞台後，下午提早返神戶",
           mapQuery: "淡路夢舞台",
           details: (
             <>
-              <div className="trip-departure-options" aria-label="去夢舞台兩個班次方案">
-                <p><strong>早走 · 12:59 → 13:41</strong><span>午餐及購物提早完成，12:59 前到 A1 停車場候車。</span></p>
-                <p><strong>慢慢逛 · 14:49 → 15:31</strong><span>可留多啲時間買物、午餐；14:49 前到站。</span></p>
-              </div>
-              <ol className="trip-route" aria-label="交通路線">
-                <li><strong>Highway Oasis · A1 停車場</strong><span>搭乘北部周遊巴士「反時計回り」方向，兩個方案擇一</span></li>
-                <li><strong>淡路夢舞台前</strong><span>早班 13:41／遲班 15:31 到達，落車後遊覽夢舞台</span></li>
-              </ol>
-              <span className="trip-note-orange">⚠️ 班次較疏，請務必看準時間上車。</span><br/>
-              <span className="trip-badge-warn">⚠️ 「反時計回り」只喺 3-11 月嘅土日祝運行 —— Day 5 係星期日先有車，平日完全冇</span>
-              <span className="trip-note-muted">藍色兩行係上車（A1駐車場）同落車（淡路夢舞台前）嘅站，框住嘅 4便 / 5便 就係行程用嗰兩班。</span>
-              <details className="trip-collapse">
-                <summary>🚌 去程時刻表：反時計回り 全站（3-11 月土日祝限定）</summary>
-                <span className="trip-timetable-wrap">
-                  <table className="trip-timetable">
-                    <thead>
-                      <tr>
-                        <th scope="col">巴士站</th>
-                        <th scope="col">3便</th>
-                        <th scope="col" className="is-taken is-taken-start">4便</th>
-                        <th scope="col" className="is-taken is-taken-end">5便</th>
-                        <th scope="col">6便</th>
-                        <th scope="col">7便</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">岩屋PT</th>
-                        <td>11:00</td>
-                        <td className="is-taken is-taken-start">12:50</td>
-                        <td className="is-taken is-taken-end">14:40</td>
-                        <td>16:40</td>
-                        <td>17:00</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">淡路IC高速バス停前</th>
-                        <td>11:08</td>
-                        <td className="is-taken is-taken-start">12:58</td>
-                        <td className="is-taken is-taken-end">14:48</td>
-                        <td>16:48</td>
-                        <td>17:08</td>
-                      </tr>
-                      <tr className="is-key">
-                        <th scope="row">淡路ハイウェイオアシス・A1駐車場</th>
-                        <td>11:09</td>
-                        <td className="is-taken is-taken-start">12:59</td>
-                        <td className="is-taken is-taken-end">14:49</td>
-                        <td>16:49</td>
-                        <td>17:09</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">県立淡路島公園</th>
-                        <td>11:14</td>
-                        <td className="is-taken is-taken-start">13:04</td>
-                        <td className="is-taken is-taken-end">14:54</td>
-                        <td>16:54</td>
-                        <td>17:14</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">禅坊靖寧前</th>
-                        <td>11:16</td>
-                        <td className="is-taken is-taken-start">13:06</td>
-                        <td className="is-taken is-taken-end">14:56</td>
-                        <td>16:56</td>
-                        <td>17:16</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">グリナリウム淡路島</th>
-                        <td>11:19</td>
-                        <td className="is-taken is-taken-start">13:09</td>
-                        <td className="is-taken is-taken-end">14:59</td>
-                        <td>16:59</td>
-                        <td>17:19</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">県立淡路景観園芸学校</th>
-                        <td>11:22</td>
-                        <td className="is-taken is-taken-start">13:12</td>
-                        <td className="is-taken is-taken-end">15:02</td>
-                        <td>17:02</td>
-                        <td>17:22</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Awaji Nature Lab & Resort</th>
-                        <td>11:23</td>
-                        <td className="is-taken is-taken-start">13:13</td>
-                        <td className="is-taken is-taken-end">15:03</td>
-                        <td>17:03</td>
-                        <td>17:23</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">淡路カントリーガーデン</th>
-                        <td>11:25</td>
-                        <td className="is-taken is-taken-start">13:15</td>
-                        <td className="is-taken is-taken-end">15:05</td>
-                        <td>17:05</td>
-                        <td>17:25</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">あわじ花さじき</th>
-                        <td>11:30</td>
-                        <td className="is-taken is-taken-start">13:20</td>
-                        <td className="is-taken is-taken-end">15:10</td>
-                        <td>17:10</td>
-                        <td>17:30</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">ハーモニーファーム淡路</th>
-                        <td>11:31</td>
-                        <td className="is-taken is-taken-start">13:21</td>
-                        <td className="is-taken is-taken-end">15:11</td>
-                        <td>17:11</td>
-                        <td>17:31</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">東浦BT</th>
-                        <td>11:43</td>
-                        <td className="is-taken is-taken-start">13:33</td>
-                        <td className="is-taken is-taken-end">15:23</td>
-                        <td>17:23</td>
-                        <td>17:43</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">立石川</th>
-                        <td>11:45</td>
-                        <td className="is-taken is-taken-start">13:35</td>
-                        <td className="is-taken is-taken-end">15:25</td>
-                        <td>17:25</td>
-                        <td>17:45</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">大磯ユーアールエー前</th>
-                        <td>11:47</td>
-                        <td className="is-taken is-taken-start">13:37</td>
-                        <td className="is-taken is-taken-end">15:27</td>
-                        <td>17:27</td>
-                        <td>17:47</td>
-                      </tr>
-                      <tr className="is-key">
-                        <th scope="row">淡路夢舞台前</th>
-                        <td>11:51</td>
-                        <td className="is-taken is-taken-start">13:41</td>
-                        <td className="is-taken is-taken-end">15:31</td>
-                        <td>17:31</td>
-                        <td>17:51</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">国営明石海峡公園淡路口前</th>
-                        <td>11:56</td>
-                        <td className="is-taken is-taken-start">13:46</td>
-                        <td className="is-taken is-taken-end">15:36</td>
-                        <td>17:36</td>
-                        <td>17:56</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">岩屋PT（終點）</th>
-                        <td>12:03</td>
-                        <td className="is-taken is-taken-start">13:53</td>
-                        <td className="is-taken is-taken-end">15:43</td>
-                        <td>17:43</td>
-                        <td>18:03</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </span>
-                <span className="trip-note-muted">只剪走 1便/2便 —— 佢哋喺你哋到 Highway Oasis（10:15）之前已經開走。6便/7便 留低做保險。</span>
-              </details>
+              離開 Highway Oasis 後前往淡路夢舞台，行完再出發返三宮。<br/>
               <a href="https://www.honshi-bus.co.jp/local/view/11" target="_blank" rel="noreferrer" className="trip-link" aria-label="北部周遊巴士 (Route 10) 詳情（新視窗）">🔗 北部周遊巴士 (Route 10) 詳情</a>
               <a href="https://www.city.awaji.lg.jp/soshiki/toshisoumu/26263.html" target="_blank" rel="noreferrer" className="trip-link" aria-label="あわ神あわ姫バス 路線圖・時刻表（淡路市官方・令和8年3月1日起）（新視窗）">🔗 あわ神あわ姫バス 路線圖・時刻表（淡路市官方・令和8年3月1日起）</a>
             </>
           )
         },
         {
-          time: "18:00",
-          category: "晚餐",
-          title: "🍽️ 晚餐：夢舞台展望臺餐廳",
+          time: "下午 3 點幾",
+          category: "交通",
+          title: "🚌 淡路島 → 三宮",
+          summary: "實際提早回程 · 下午 3 點幾由淡路島出發",
           type: "highlight",
-          mapQuery: "淡路夢舞台 百段苑",
+          mapQuery: "神戸三宮駅",
           details: (
             <>
-              就在百段苑旁的大樓內，有多間優質餐廳：<br/>
-              • <strong>2F KITORA：</strong>新鮮海鮮、壽司 🍣<br/>
-              • <strong>1F YUME TERRACE：</strong>優質淡路牛料理 🥩<br/>
-              <span className="trip-note-muted">*營業至 21:00，吃飽後走幾步即達巴士站。</span>
+              行完淡路夢舞台後，下午 3 點幾由淡路島出發返三宮。<br/>
+              <a href="https://www.yumebutai.co.jp/wp/wp-content/themes/yumebutai/images/access/pdf/bus_timetable_maiko2024_12.pdf" target="_blank" rel="noreferrer" className="trip-link" aria-label="淡路夢舞台前 → 三宮 回程時刻表（夢舞台官方 PDF・2024年12月版）（新視窗）">🔗 淡路夢舞台前 → 三宮 回程時刻表（夢舞台官方 PDF・2024年12月版）</a>
             </>
           )
         },
         {
-          time: "19:15 / 20:15",
-          category: "交通",
-          title: "🚌 夢舞台晚間回神戶",
+          time: "晚上",
+          category: "晚餐",
+          title: "🥩 晚餐：雌牛専門店 板前焼肉一牛 神戸三宮店",
+          summary: "三宮晚餐 · 燒肉",
           type: "highlight",
-          mapQuery: "淡路夢舞台前 バス停",
-          details: (
-            <>
-              <ol className="trip-route" aria-label="交通路線">
-                <li><strong>淡路夢舞台前</strong><span>晚餐後搭高速巴士返三宮</span></li>
-                <li><strong>建議 20:15 → 21:02 三宮</strong><span>早走可揀 19:15 → 20:02 三宮；兩班擇一</span></li>
-              </ol>
-              <span className="trip-note-muted">Day 5 係星期日 —— 灰色「平日」班次搭唔到，藍色兩行係行程用嗰兩班。</span>
-              <details className="trip-collapse">
-                <summary>🚌 回程時刻表：夢舞台前 → 三宮（大磯号）</summary>
-                <span className="trip-timetable-wrap">
-                  <table className="trip-timetable trip-timetable-num">
-                    <thead>
-                      <tr>
-                        <th scope="col">夢舞台前</th>
-                        <th scope="col">高速舞子</th>
-                        <th scope="col">三宮</th>
-                        <th scope="col">新神戸</th>
-                        <th scope="col">運行日</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">16:15</th>
-                        <td>16:35</td>
-                        <td>17:02</td>
-                        <td>17:12</td>
-                        <td>每日</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">16:45</th>
-                        <td>17:05</td>
-                        <td>17:32</td>
-                        <td>17:42</td>
-                        <td>每日</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">17:15</th>
-                        <td>17:35</td>
-                        <td>18:02</td>
-                        <td>18:12</td>
-                        <td>土日祝</td>
-                      </tr>
-                      <tr className="is-off">
-                        <th scope="row">17:35</th>
-                        <td>17:55</td>
-                        <td>18:22</td>
-                        <td>18:32</td>
-                        <td>平日</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">17:45</th>
-                        <td>18:05</td>
-                        <td>18:32</td>
-                        <td>18:42</td>
-                        <td>土日祝</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">18:15</th>
-                        <td>18:35</td>
-                        <td>19:02</td>
-                        <td>19:12</td>
-                        <td>每日</td>
-                      </tr>
-                      <tr className="is-off">
-                        <th scope="row">18:45</th>
-                        <td>19:05</td>
-                        <td>—</td>
-                        <td>—</td>
-                        <td>平日</td>
-                      </tr>
-                      <tr className="is-key">
-                        <th scope="row">19:15</th>
-                        <td>19:35</td>
-                        <td>20:02</td>
-                        <td>20:12</td>
-                        <td>每日</td>
-                      </tr>
-                      <tr className="is-key">
-                        <th scope="row">20:15</th>
-                        <td>20:35</td>
-                        <td>21:02</td>
-                        <td>21:12</td>
-                        <td>每日</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">21:15</th>
-                        <td>21:35</td>
-                        <td>22:02</td>
-                        <td>22:12</td>
-                        <td>每日</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">21:55</th>
-                        <td>22:11</td>
-                        <td>22:38</td>
-                        <td>22:48</td>
-                        <td>每日</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </span>
-                <span className="trip-note-muted">只列 16:15 之後嘅回程班次；去程早班 13:41、遲班 15:31 到夢舞台。更早回程班次見下面官方 PDF。</span>
-              </details>
-              <a href="https://www.yumebutai.co.jp/wp/wp-content/themes/yumebutai/images/access/pdf/bus_timetable_maiko2024_12.pdf" target="_blank" rel="noreferrer" className="trip-link" aria-label="淡路夢舞台前 → 三宮 回程時刻表（夢舞台官方 PDF・2024年12月版）（新視窗）">🔗 淡路夢舞台前 → 三宮 回程時刻表（夢舞台官方 PDF・2024年12月版）</a>
-            </>
-          )
+          mapQuery: "雌牛専門店 板前焼肉一牛 神戸三宮店",
+          details: "返到三宮後，晚上喺「雌牛専門店 板前焼肉一牛 神戸三宮店」食燒肉。"
         }
       ]
     },

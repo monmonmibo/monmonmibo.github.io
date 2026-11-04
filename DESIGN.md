@@ -1,583 +1,545 @@
-# MonMonMibo Design System
+---
+version: alpha
+name: Airbnb-design-analysis
+description: A warm, generous consumer marketplace anchored on a clean white canvas and Airbnb Rausch (#ff385c), the single brand voltage that carries every primary CTA, search-button orb, and rating dot. Type runs Airbnb Cereal VF at modest weights — display sits at 22–28px in weight 500/600 rather than the heavy 700+ that fintech and enterprise systems use; the brand trusts photography and generous whitespace over typographic muscle. Three product entries (Homes, Experiences, Services) sit in the top nav with hand-illustrated 32-icon glyphs and "NEW" badges, signaling a marketplace expansion rather than a feature dump. Pill-shaped search bars (`{rounded.full}`), softly rounded property cards (`{rounded.lg}` ~14px), and 32px button radii read as friendly and human — there is no hard corner anywhere except the body grid.
 
-> 將每次旅程整理成一本安靜、精準、值得收藏的數碼旅程冊。
+colors:
+  primary: "#ff385c"
+  primary-active: "#e00b41"
+  primary-disabled: "#ffd1da"
+  primary-error-text: "#c13515"
+  primary-error-text-hover: "#b32505"
+  luxe: "#460479"
+  plus: "#92174d"
+  ink: "#222222"
+  body: "#3f3f3f"
+  muted: "#6a6a6a"
+  muted-soft: "#929292"
+  hairline: "#dddddd"
+  hairline-soft: "#ebebeb"
+  border-strong: "#c1c1c1"
+  canvas: "#ffffff"
+  surface-soft: "#f7f7f7"
+  surface-card: "#ffffff"
+  surface-strong: "#f2f2f2"
+  on-primary: "#ffffff"
+  on-dark: "#ffffff"
+  legal-link: "#428bff"
+  star-rating: "#222222"
+  scrim: "#000000"
 
-本文件是 MonMonMibo 全站視覺、互動與響應式實作的唯一設計依據。設計方向融合 Airbnb 的旅行溫度、Apple 的克制留白，以及 Stripe 的精準層級；功能與可讀性仍然優先。
+typography:
+  display-xl:
+    fontFamily: "'Airbnb Cereal VF', Circular, -apple-system, system-ui, Roboto, 'Helvetica Neue', sans-serif"
+    fontSize: 28px
+    fontWeight: 700
+    lineHeight: 1.43
+    letterSpacing: 0
+  display-lg:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 22px
+    fontWeight: 500
+    lineHeight: 1.18
+    letterSpacing: -0.44px
+  display-md:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 21px
+    fontWeight: 700
+    lineHeight: 1.43
+    letterSpacing: 0
+  display-sm:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 20px
+    fontWeight: 600
+    lineHeight: 1.20
+    letterSpacing: -0.18px
+  title-md:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.25
+    letterSpacing: 0
+  title-sm:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.25
+    letterSpacing: 0
+  rating-display:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 64px
+    fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: -1px
+  body-md:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0
+  body-sm:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    letterSpacing: 0
+  caption:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.29
+    letterSpacing: 0
+  caption-sm:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.23
+    letterSpacing: 0
+  badge:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 11px
+    fontWeight: 600
+    lineHeight: 1.18
+    letterSpacing: 0
+  micro-label:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 12px
+    fontWeight: 700
+    lineHeight: 1.33
+    letterSpacing: 0
+  uppercase-tag:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 8px
+    fontWeight: 700
+    lineHeight: 1.25
+    letterSpacing: 0.32px
+    textTransform: uppercase
+  button-md:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.25
+    letterSpacing: 0
+  button-sm:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.29
+    letterSpacing: 0
+  link:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.43
+    letterSpacing: 0
+  nav-link:
+    fontFamily: "'Airbnb Cereal VF', Circular, sans-serif"
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.25
+    letterSpacing: 0
 
-## 1. Visual Theme & Atmosphere
+rounded:
+  none: 0px
+  xs: 4px
+  sm: 8px
+  md: 14px
+  lg: 20px
+  xl: 32px
+  full: 9999px
 
-**Style**：Beskar Travel Archive（復古太空旅程檔案風）
+spacing:
+  xxs: 2px
+  xs: 4px
+  sm: 8px
+  md: 12px
+  base: 16px
+  lg: 24px
+  xl: 32px
+  xxl: 48px
+  section: 64px
 
-**Keywords**：克制、風化金屬、舊米白、軍用精準、觸感、旅程感、收藏感、可信賴
+components:
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.on-primary}"
+    typography: "{typography.button-md}"
+    rounded: "{rounded.sm}"
+    padding: 14px 24px
+    height: 48px
+  button-primary-active:
+    backgroundColor: "{colors.primary-active}"
+    textColor: "{colors.on-primary}"
+    rounded: "{rounded.sm}"
+  button-primary-disabled:
+    backgroundColor: "{colors.primary-disabled}"
+    textColor: "{colors.on-primary}"
+    rounded: "{rounded.sm}"
+  button-secondary:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
+    typography: "{typography.button-md}"
+    rounded: "{rounded.sm}"
+    padding: 13px 23px
+    height: 48px
+  button-tertiary-text:
+    backgroundColor: transparent
+    textColor: "{colors.ink}"
+    typography: "{typography.button-md}"
+  button-pill-rausch:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.on-primary}"
+    typography: "{typography.button-sm}"
+    rounded: "{rounded.full}"
+    padding: 10px 20px
+  search-orb:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.on-primary}"
+    rounded: "{rounded.full}"
+    height: 48px
+  icon-button-circle:
+    backgroundColor: "{colors.surface-strong}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.full}"
+    height: 32px
+  icon-button-outline:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.full}"
+    height: 40px
+  top-nav:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
+    typography: "{typography.nav-link}"
+    height: 80px
+  product-tab-active:
+    backgroundColor: transparent
+    textColor: "{colors.ink}"
+    typography: "{typography.nav-link}"
+    rounded: "{rounded.none}"
+  product-tab-inactive:
+    backgroundColor: transparent
+    textColor: "{colors.muted}"
+    typography: "{typography.nav-link}"
+  search-bar-pill:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.full}"
+    padding: 14px 24px
+    height: 64px
+  search-field-segment:
+    backgroundColor: transparent
+    textColor: "{colors.ink}"
+    typography: "{typography.caption}"
+    padding: 8px 24px
+  category-strip:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.muted}"
+    typography: "{typography.button-sm}"
+  category-tab-active:
+    backgroundColor: transparent
+    textColor: "{colors.ink}"
+    typography: "{typography.button-sm}"
+    rounded: "{rounded.none}"
+  property-card:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.md}"
+  property-card-photo:
+    rounded: "{rounded.md}"
+  experience-card:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
+    typography: "{typography.title-md}"
+    rounded: "{rounded.md}"
+  city-link-block:
+    backgroundColor: transparent
+    textColor: "{colors.ink}"
+    typography: "{typography.title-sm}"
+  rating-display-card:
+    backgroundColor: transparent
+    textColor: "{colors.ink}"
+    typography: "{typography.rating-display}"
+  guest-favorite-badge:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
+    typography: "{typography.badge}"
+    rounded: "{rounded.full}"
+    padding: 4px 10px
+  new-tag:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
+    typography: "{typography.uppercase-tag}"
+    rounded: "{rounded.full}"
+    padding: 2px 6px
+  amenity-row:
+    backgroundColor: transparent
+    textColor: "{colors.ink}"
+    typography: "{typography.body-md}"
+    padding: 12px 0
+  reviews-card:
+    backgroundColor: transparent
+    textColor: "{colors.ink}"
+    typography: "{typography.body-sm}"
+  host-card:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.md}"
+    padding: 24px
+  reservation-card:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body-md}"
+    rounded: "{rounded.md}"
+    padding: 24px
+  date-picker-day:
+    backgroundColor: transparent
+    textColor: "{colors.ink}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.full}"
+  date-picker-day-selected:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.on-dark}"
+    rounded: "{rounded.full}"
+  text-input:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body-md}"
+    rounded: "{rounded.sm}"
+    padding: 14px 12px
+    height: 56px
+  footer-light:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body-sm}"
+    padding: 48px 80px
+  footer-link:
+    backgroundColor: transparent
+    textColor: "{colors.ink}"
+    typography: "{typography.body-sm}"
+  legal-band:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.muted}"
+    typography: "{typography.caption-sm}"
+---
 
-**Tone**：像賞金獵人太空船內保存良好的私人旅程檔案——粗獷但精準，不是霓虹科幻介面，也不是常見 AI SaaS。
-**Feel**：像打開一冊由風化金屬、舊米紙和皮革保護的星際航行紀錄。
+## Overview
 
-**Interaction Tier**：L2 流暢互動
-**Dependencies**：React + CSS Modules + 原生 `IntersectionObserver`；不新增 GSAP、Lenis、Three.js 或 WebGL。動效概念參考 reactbits/vue-bits，但以輕量 CSS 和現有 React 實作。
+Airbnb is the canonical example of a generous, photography-led consumer marketplace. The base canvas is **pure white** (`{colors.canvas}` — #ffffff) with deep near-black ink (`{colors.ink}` — #222222) for headlines and body, and a single voltage of **Rausch** (`{colors.primary}` — #ff385c) carrying every primary CTA, the search-button orb, the heart save state, and inline brand links. There is no secondary brand color in mainline marketing — the **Luxe purple** (`{colors.luxe}` — #460479) and **Plus magenta** (`{colors.plus}` — #92174d) tokens are sub-brand accents that only appear inside Airbnb Luxe / Plus contexts.
 
-### Design direction
+Type runs **Airbnb Cereal VF** (a custom variable font Airbnb licenses), with **Circular** as the historic in-house fallback and a system stack underneath. Cereal sits at modest weights — display headlines render at 22–28px in weight 500–600, not the heavy 700+ weights that financial or enterprise systems lean on. The hero h1 ("Inspiration for future getaways") on the homepage is just 28px / 700, which would feel small on a typical SaaS page; here it works because the layout leans on photography (city collage, property cards) for visual weight rather than typographic muscle.
 
-- 由「藍橙玻璃工具感」轉為「Beskar 銀灰 + 舊米白 + Grogu 橄欖綠點綴」。
-- 大部分介面改用近實色 surface；玻璃只保留於 sticky navigation，避免全頁半透明造成廉價感。
-- 首頁以大型編輯式標題、旅程數字摘要及有節奏的旅程卡建立第一印象。
-- 行程頁維持單欄掃讀，但用更清晰的日期層級、細緻 timeline、酒店資訊卡及目的地 hero 提升質感。
-- Emoji 只作快速辨識的輔助訊號，不作主要圖示、標題裝飾或唯一語意來源。
+The shape language is **soft**. Buttons are 8px radius (`{rounded.sm}`), property cards are ~14px (`{rounded.md}`), the search bar is fully pill-shaped (`{rounded.full}`), wishlist hearts and search orbs are circles (`{rounded.full}`), and category strip rounded corners run at 32px (`{rounded.xl}`). There is essentially no hard corner anywhere except the body grid itself — every interactive element is rounded.
 
-## 2. Color Palette & Roles
+**Key Characteristics:**
+- Single accent color: `{colors.primary}` (#ff385c — "Rausch") carries every primary CTA, the search orb, the heart save state, and the brand wordmark. Used scarcely — most pages are 90% white + ink with one or two Rausch moments.
+- Custom variable type: `Airbnb Cereal VF`. Display weights sit at 500–700, body at 400. Modest weight is intentional — the system trusts photography for visual heft.
+- Three-product top nav: Homes, Experiences, Services — each with a hand-illustrated 32px icon and "NEW" badges (`{component.new-tag}`) on the two newer products. Active tab uses an underline rule (`{component.product-tab-active}`).
+- Pill-shaped global search bar: white surface, fully rounded (`{rounded.full}`), divided by 1px hairlines into Where / When / Who segments, terminated by a circular Rausch search orb (`{component.search-orb}`).
+- Property cards are photo-first: aspect-ratio rectangles with `{rounded.md}` corner clipping, swipeable image carousel, "Guest favorite" floating badge top-left, heart icon top-right, then 4–5 lines of meta beneath.
+- Editorial dropdowns (footer, language picker) are clean text columns over the white canvas — no card surface, no shadow.
+- The design system caps elevation at one shadow tier (`box-shadow: rgba(0,0,0,0.02) 0 0 0 1px, rgba(0,0,0,0.04) 0 2px 6px, rgba(0,0,0,0.1) 0 4px 8px`) — used on hover-floated cards and search/account dropdowns.
+- 8px base spacing system, with major sections at `{spacing.section}` (64px) — generous but not airy enough to feel editorial-magazine; the marketplace density wants more cards per scroll.
 
-```css
-:root {
-  color-scheme: light;
+## Colors
 
-  /* Canvas and surfaces */
-  --color-bg: #cfc7b8;
-  --color-bg-rgb: 207, 199, 184;
-  --color-surface: #e8e3d9;
-  --color-surface-rgb: 232, 227, 217;
-  --color-surface-elevated: #f2eee5;
-  --color-surface-muted: #d8d0c1;
-  --color-surface-hover: #e0d9cc;
+### Brand & Accent
+- **Rausch** (`{colors.primary}` — #ff385c): The single brand color. Used for primary CTA backgrounds (Reserve, Continue), the search orb, the heart save state on property cards, and inline brand links. The most recognizable color in consumer travel.
+- **Rausch Active** (`{colors.primary-active}` — #e00b41): The press / pointer-down variant — slightly more saturated. Used on `{component.button-primary-active}`.
+- **Rausch Disabled** (`{colors.primary-disabled}` — #ffd1da): A pale tint used on disabled CTAs.
+- **Luxe Purple** (`{colors.luxe}` — #460479): Sub-brand accent for Airbnb Luxe. Only appears inside Luxe-branded surfaces — never in mainline marketing.
+- **Plus Magenta** (`{colors.plus}` — #92174d): Sub-brand accent for Airbnb Plus. Same scoping as Luxe — sub-product only.
 
-  /* Ink */
-  --color-text: #252827;
-  --color-text-rgb: 37, 40, 39;
-  --color-text-secondary: #59605c;
-  --color-text-tertiary: #737872;
-  --color-text-inverse: #f2eee5;
-  --color-text-disabled: #929690;
+### Surface
+- **Canvas** (`{colors.canvas}` — #ffffff): The default page floor for every public page. Airbnb does not have a dark mode on the public web.
+- **Surface Soft** (`{colors.surface-soft}` — #f7f7f7): The lightest fill — used on disabled fields, sub-nav hover backgrounds, and the inline search filter band.
+- **Surface Strong** (`{colors.surface-strong}` — #f2f2f2): Slightly heavier fill — circular icon-button surface (e.g., the breadcrumb back-arrow and listing toolbar buttons).
 
-  /* Brand: Mandalorian helmet charcoal */
-  --color-primary: #2a3031;
-  --color-primary-rgb: 42, 48, 49;
-  --color-primary-hover: #1e2324;
-  --color-primary-active: #141718;
-  --color-primary-soft: #d8dcda;
+### Hairlines & Borders
+- **Hairline** (`{colors.hairline}` — #dddddd): The default 1px border tone — search bar dividers, table separators, footer column splitters, card 1px borders.
+- **Hairline Soft** (`{colors.hairline-soft}` — #ebebeb): A lighter divider used on long-scrolling editorial body separators.
+- **Border Strong** (`{colors.border-strong}` — #c1c1c1): A heavier stroke used on disabled outline buttons and form input outlines after focus.
 
-  /* Accent: Grogu olive, decorative and selected-state use only */
-  --color-accent: #74834d;
-  --color-accent-rgb: 116, 131, 77;
-  --color-accent-hover: #5f6d3d;
-  --color-accent-active: #4a562e;
-  --color-accent-soft: #dde2ce;
+### Text
+- **Ink** (`{colors.ink}` — #222222): The dominant text color on light surfaces. Display headlines, body paragraphs, primary nav links, and most inline link text. Never pure black.
+- **Body** (`{colors.body}` — #3f3f3f): A secondary running-text color used inside long-form review and amenity copy where ink would feel too heavy.
+- **Muted** (`{colors.muted}` — #6a6a6a): Sub-titles inside city link blocks ("Cottage rentals", "Villa rentals"), inactive product-tab labels, footer category sub-labels, "View all" links.
+- **Muted Soft** (`{colors.muted-soft}` — #929292): Disabled link text. Used very sparingly.
+- **Star Rating** (`{colors.star-rating}` — #222222): The same ink token — Airbnb's star icon and "4.81" rating numbers all render in ink rather than a yellow/gold color, which is a deliberate brand choice (yellow stars feel cheap in travel context).
+- **On Primary** (`{colors.on-primary}` — #ffffff): White text on Rausch CTAs.
 
-  /* Leather: high-contrast secondary action */
-  --color-leather: #79543e;
-  --color-leather-rgb: 121, 84, 62;
-  --color-leather-hover: #624130;
-  --color-leather-active: #4e3225;
+### Semantic
+- **Error** (`{colors.primary-error-text}` — #c13515): Inline error text for form validation. Distinct from Rausch — slightly darker, more saturated red.
+- **Error Hover** (`{colors.primary-error-text-hover}` — #b32505): Darkens on link hover.
+- **Legal Link Blue** (`{colors.legal-link}` — #428bff): Inline links inside legal copy (Privacy, Terms). Only used inside the legal sub-band.
 
-  /* Borders and focus */
-  --color-border: #aaa79e;
-  --color-border-rgb: 170, 167, 158;
-  --color-border-strong: #85847f;
-  --color-border-hover: #676b69;
-  --color-control-border: #626765;
-  --color-focus: #596f3a;
-  --color-focus-rgb: 89, 111, 58;
+### Scrim
+- **Scrim** (`{colors.scrim}` — #000000 at 50% opacity): The global modal backdrop tone — date picker, login dialog, language picker. Stored as the base hex; opacity is applied at render time.
 
-  /* Semantic */
-  --color-success: #526233;
-  --color-success-rgb: 82, 98, 51;
-  --color-success-soft: #dce2cc;
-  --color-warning: #8c5a13;
-  --color-warning-rgb: 140, 90, 19;
-  --color-warning-soft: #eadbbc;
-  --color-error: #9a3e35;
-  --color-error-rgb: 154, 62, 53;
-  --color-error-soft: #f4dfdb;
-  --color-info: #52666d;
-  --color-info-rgb: 82, 102, 109;
-  --color-info-soft: #dce3e4;
+## Typography
 
-  /* Atmospheric layers */
-  --gradient-hero:
-    radial-gradient(circle at 82% 12%, rgba(var(--color-accent-rgb), 0.18), transparent 34%),
-    linear-gradient(145deg, var(--color-primary) 0%, var(--color-primary-active) 100%);
-  --gradient-page:
-    radial-gradient(circle at 90% 4%, rgba(var(--color-accent-rgb), 0.07), transparent 30%),
-    linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
+### Font Family
+The system runs **Airbnb Cereal VF** for everything — display, body, navigation, captions, microcopy. Fallbacks walk `Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif`. **Circular** is the historic in-house typeface still kept as the first non-variable fallback; system stacks back it up.
 
-  /* Geometry */
-  --radius-xs: 6px;
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 22px;
-  --radius-xl: 30px;
-  --radius-pill: 999px;
-  --control-height: 44px;
+There is no separate display family. The variable font carries the entire scale.
 
-  /* Elevation */
-  --shadow-subtle: 0 1px 2px rgba(var(--color-text-rgb), 0.05);
-  --shadow-card:
-    0 1px 0 rgba(var(--color-surface-rgb), 0.90) inset,
-    0 10px 30px rgba(var(--color-text-rgb), 0.07);
-  --shadow-raised:
-    0 1px 0 rgba(var(--color-surface-rgb), 0.94) inset,
-    0 18px 45px rgba(var(--color-text-rgb), 0.11);
-  --shadow-floating: 0 22px 60px rgba(var(--color-text-rgb), 0.16);
-  --focus-ring: 0 0 0 4px rgba(var(--color-focus-rgb), 0.20);
-}
-```
+### Hierarchy
 
-### Color rules
+| Token | Size | Weight | Line Height | Letter Spacing | Use |
+|---|---|---|---|---|---|
+| `{typography.rating-display}` | 64px | 700 | 1.1 | -1px | Listing detail rating display ("4.81") |
+| `{typography.display-xl}` | 28px | 700 | 1.43 | 0 | Homepage h1 ("Inspiration for future getaways") |
+| `{typography.display-lg}` | 22px | 500 | 1.18 | -0.44px | Listing detail h1 ("Close to Fethiye Aliyah Bali Beach…") |
+| `{typography.display-md}` | 21px | 700 | 1.43 | 0 | Section heads inside listing detail ("What this place offers") |
+| `{typography.display-sm}` | 20px | 600 | 1.20 | -0.18px | Sub-section titles ("Things to know") |
+| `{typography.title-md}` | 16px | 600 | 1.25 | 0 | City link block titles ("Wilmington", "Athens") |
+| `{typography.title-sm}` | 16px | 500 | 1.25 | 0 | Footer column heads ("Support", "Hosting", "Airbnb") |
+| `{typography.body-md}` | 16px | 400 | 1.5 | 0 | Default running-text inside listing copy |
+| `{typography.body-sm}` | 14px | 400 | 1.43 | 0 | Card meta lines, dates, prices, distance text |
+| `{typography.caption}` | 14px | 500 | 1.29 | 0 | Search field segment labels ("Where", "When", "Who") |
+| `{typography.caption-sm}` | 13px | 400 | 1.23 | 0 | Footer legal line ("© 2026 Airbnb, Inc.") |
+| `{typography.badge}` | 11px | 600 | 1.18 | 0 | "Guest favorite" floating badge text |
+| `{typography.micro-label}` | 12px | 700 | 1.33 | 0 | Card amenity micro-labels ("Inline 6") |
+| `{typography.uppercase-tag}` | 8px | 700 | 1.25 | 0.32px (uppercase) | "NEW" badge on product nav tabs |
+| `{typography.button-md}` | 16px | 500 | 1.25 | 0 | Primary CTA button labels |
+| `{typography.button-sm}` | 14px | 500 | 1.29 | 0 | Pill button labels (category strip) |
+| `{typography.link}` | 14px | 400 | 1.43 | 0 | Inline body links |
+| `{typography.nav-link}` | 16px | 600 | 1.25 | 0 | Top product-nav labels (Homes, Experiences, Services) |
 
-- 所有產品顏色必須引用 CSS variables；元件 CSS 與 JSX 禁止新增硬編 hex、named color 或任意 rgba 色值。
-- 炭黑負責主要操作；Grogu 橄欖綠只佔畫面約 10%，用於 active、upcoming 與 timeline highlight。
-- 風化沙灰是主畫布，舊米白只用於卡片；不得將整頁變成純白或大面積軍綠。
-- 皮革啡只用於需要白字的次要高對比操作，避免以中亮度 Grogu 綠承托細白字。
-- `--gradient-hero` 只用於 hero；`--gradient-page` 只用於全頁環境層。卡片不得各自新增彩色漸層。
-- Sticky navigation 可以使用 `rgba(var(--color-surface-rgb), …)` 毛玻璃；其他大面積卡片使用近實色 surface。
-- Status 永遠同時用文字或圖示表達，不可只靠顏色。
-- PWA `theme_color`、`index.html` theme color 與 hero 深色基準同步使用 `--color-primary` 的實際值。
-- 文字對比以最淺 surface 及最暖背景兩者驗算；正文最少達 WCAG AA。
+### Principles
+Display weights stay modest. The homepage h1 at 28px / 700 is deliberately small — it tucks under the search bar so photography and the city-link grid carry visual hierarchy. The listing-detail h1 at 22px / 500 is even quieter; the listing photo banner does the work above it.
 
-## 3. Typography Rules
+The single typographically loud moment in the entire system is the **rating display** (`{typography.rating-display}` — 64px / 700) on listing pages. That is the only place the system trusts type alone to carry hierarchy — rating numbers are a peak trust signal, so they get the loudest treatment.
 
-**Google Fonts**：
+### Note on Font Substitutes
+If Airbnb Cereal VF and Circular are unavailable, **Inter** is the closest open-source substitute. Adjust display headlines down by ~2% in line-height to match Cereal's slightly tighter cap height; otherwise the proportions transfer cleanly.
 
-```css
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700&display=swap');
+## Layout
 
-:root {
-  --font-display: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
-  --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
-  --font-mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
-}
-```
+### Spacing System
+- **Base unit:** 4px (with 2px micro-step).
+- **Tokens:** `{spacing.xxs}` 2px · `{spacing.xs}` 4px · `{spacing.sm}` 8px · `{spacing.md}` 12px · `{spacing.base}` 16px · `{spacing.lg}` 24px · `{spacing.xl}` 32px · `{spacing.xxl}` 48px · `{spacing.section}` 64px.
+- **Section padding (vertical):** `{spacing.section}` (64px) for major page bands; tighter than typical SaaS marketing (80–96px) because marketplace pages need higher card density per scroll.
+- **Card internal padding:** `{spacing.lg}` (24px) for `{component.host-card}` and `{component.reservation-card}`; `{spacing.base}` (16px) for property-card meta block; `{spacing.sm}` (8px) for caption / date-row gutters.
+- **Gutters:** `{spacing.base}` (16px) between cards in the homepage city grid; `{spacing.lg}` (24px) inside footer column gutters; `{spacing.xs}` (4px) on dense category-strip dividers.
 
-實作時優先在 `index.html` 使用等價 `<link rel="stylesheet">`，避免 CSS `@import` 阻塞；上段 URL 是規範來源。
+### Grid & Container
+- **Max content width:** ~1280px centered on the homepage and editorial pages. Listing detail pages cap closer to 1080px to keep the photo banner and reservation rail readable.
+- **City link grid (homepage footer):** 6-column grid at desktop with each cell housing a city name in `{typography.title-md}` and a category sub-label in `{typography.body-sm}` muted.
+- **Listing detail:** 2-column with photo / amenity body on the left (~64% width) and a sticky reservation card (`{component.reservation-card}`) on the right (~32%).
+- **Footer:** 3-column link list (Support / Hosting / Airbnb) at desktop, collapsing to 1-column on mobile.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing |
-|---|---|---:|---:|---:|---:|
-| Home Hero H1 | Display | `clamp(2.6rem, 9vw, 5rem)` | 600 | 1.08 | `-0.035em` |
-| Trip Hero H1 | Display | `clamp(2rem, 6vw, 3.4rem)` | 600 | 1.16 | `-0.025em` |
-| Section H2 | Display | `clamp(1.45rem, 3.5vw, 2rem)` | 600 | 1.3 | `-0.015em` |
-| Card H3 | Sans | `1.0625rem` | 600 | 1.45 | `-0.01em` |
-| Body | Sans | `1rem` | 400 | 1.75 | `0.015em` |
-| Secondary body | Sans | `0.9375rem` | 400 | 1.65 | `0.015em` |
-| Label / Tab | Sans | `0.8125rem` | 600 | 1.35 | `0.055em` |
-| Time / Numeric | Sans | `0.875rem` | 600 | 1.4 | `0.01em` |
-| Badge | Sans | `0.75rem` | 700 | 1.3 | `0.045em` |
-| Mono / fare | Mono | `0.875rem` | 500 | 1.55 | `0` |
+### Whitespace Philosophy
+The system gives editorial bands 64px of vertical breathing room but compresses card grids — property and city-link cards sit just 16px apart. The contrast is intentional: the page reads as "open hero, dense marketplace below," reinforcing the marketplace nature without overwhelming the visitor at the fold.
 
-### Typography rules
+## Elevation
 
-- Display serif 只用於 H1/H2、旅程名稱及少量大數字；操作、正文、日期與表格全部使用 sans-serif。
-- 中文正文不得小於 `15px`；主要行程詳情以 `16px`、`line-height: 1.75` 為基準。
-- 大標題最多兩行，利用留白與字體對比建立高級感，不靠粗體堆疊。
-- 時間、價錢、匯率及日期使用 `font-variant-numeric: tabular-nums`。
-- 英文狀態標籤可保留，但不可整段 uppercase；必要時改用「即將出發／旅程完成」。
-- **Never use**：純英文字體而無繁中文字體 fallback、手寫字體、正文 italic、超粗 `800/900` 大標題、全段 uppercase。
+The system has essentially **one shadow tier** plus the flat baseline.
 
-### Text decoration decision
+- **Flat (no shadow):** Body, hero, footer, all editorial bands — 95% of surfaces.
+- **Card hover float:** `box-shadow: rgba(0, 0, 0, 0.02) 0 0 0 1px, rgba(0, 0, 0, 0.04) 0 2px 6px 0, rgba(0, 0, 0, 0.1) 0 4px 8px 0` — applied to property cards on pointer hover, the search bar at rest, and the dropdown menus (account menu, language picker, date picker). This is the single shadow definition in the entire system.
+- **Modal scrim:** `{colors.scrim}` rendered at 50% opacity — the global modal backdrop. Used on date pickers, login dialogs, language picker.
 
-- Hero H1：無漸變文字、無投影；以 serif、深淺對比與 split reveal 建立層次。
-- Section H2：無漸變、無投影；可有 32px Grogu 橄欖綠短線作 eyebrow divider。
-- Body：無漸變、無投影、無裝飾背景。
-- Link：保留可辨識 underline，hover 改 underline offset 與顏色。
+There are no progressive elevation tiers — the system either has the one shadow or none. Depth comes from photography, the white-on-white surface separation, and rounded-corner clipping rather than from layered shadows.
 
-## 4. Component Stylings
-
-以下 selector 是語意規格，實作時映射到現有 CSS Modules class。
+## Components
 
 ### Buttons
 
-```css
-.button {
-  min-height: var(--control-height);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.6875rem 1.125rem;
-  border: 1px solid transparent;
-  border-radius: var(--radius-pill);
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
-  font: 600 0.875rem/1.3 var(--font-sans);
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: var(--shadow-subtle);
-  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
-}
-.button:hover { background: var(--color-primary-hover); transform: translateY(-1px); box-shadow: var(--shadow-card); }
-.button:active { background: var(--color-primary-active); transform: translateY(0) scale(0.98); box-shadow: none; }
-.button:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; box-shadow: var(--focus-ring); }
-.button:disabled,
-.button[aria-disabled="true"] { background: var(--color-surface-muted); color: var(--color-text-disabled); cursor: not-allowed; transform: none; box-shadow: none; }
+**`button-primary`** — Rausch fill, white text, 8px radius, 14×24px padding, 48px height, weight 500. The most common CTA across the system: "Reserve", "Continue", "Search", account-flow primaries.
 
-.buttonSecondary { background: transparent; color: var(--color-primary); border-color: var(--color-border-strong); box-shadow: none; }
-.buttonSecondary:hover { background: var(--color-primary-soft); border-color: var(--color-primary); }
-.buttonSecondary:active { background: var(--color-surface-muted); }
-```
+**`button-primary-active`** — The press state. Background flips to `{colors.primary-active}`. No transform, no shadow change.
 
-### Trip cards
+**`button-primary-disabled`** — Pale Rausch tint at #ffd1da with white text. Cursor not-allowed.
 
-```css
-.tripCard {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1rem;
-  padding: clamp(1.25rem, 4vw, 2rem);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
-  color: var(--color-text);
-  text-decoration: none;
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
-  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms ease, box-shadow 280ms ease;
-}
-.tripCard:hover { transform: translateY(-3px); border-color: var(--color-border-hover); box-shadow: var(--shadow-raised); }
-.tripCard:active { transform: translateY(-1px) scale(0.995); }
-.tripCard:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 4px; box-shadow: var(--focus-ring), var(--shadow-raised); }
-.tripCard[aria-disabled="true"] { color: var(--color-text-disabled); background: var(--color-surface-muted); cursor: not-allowed; transform: none; box-shadow: none; }
-```
+**`button-secondary`** — White fill with ink text and a 1px ink outline. 8px radius. Used for "Save", "Cancel", and inverse CTAs over Rausch surfaces.
 
-Finished trips use a neutral status badge, never whole-card opacity. Upcoming trips may use one restrained bronze rule or badge.
+**`button-tertiary-text`** — Plain ink text, no surface, no border. Underlined on hover. Used for "Show more" type links and modal close labels.
 
-### Date navigation
+**`button-pill-rausch`** — A pill-shaped Rausch CTA used on featured cells (e.g., "Become a host" sub-CTA) — 9999px radius, 10×20px padding, 14px label.
 
-```css
-.dateRail {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  padding-block: 0.625rem;
-  background: rgba(var(--color-surface-rgb), 0.76);
-  border-bottom: 1px solid transparent;
-  backdrop-filter: saturate(140%) blur(12px);
-  -webkit-backdrop-filter: saturate(140%) blur(12px);
-  transition: background-color 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
-}
-.dateRail.isScrolled { border-bottom-color: var(--color-border); box-shadow: var(--shadow-subtle); }
+### Search Surface
 
-.dateChip {
-  min-height: var(--control-height);
-  padding: 0.625rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  background: var(--color-surface);
-  color: var(--color-text-secondary);
-  font: 600 0.8125rem/1 var(--font-sans);
-  cursor: pointer;
-  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
-}
-.dateChip:hover { color: var(--color-primary); border-color: var(--color-border-hover); transform: translateY(-1px); }
-.dateChip:active { transform: scale(0.97); }
-.dateChip[aria-selected="true"] { background: var(--color-primary); color: var(--color-text-inverse); border-color: var(--color-primary); }
-.dateChip:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; box-shadow: var(--focus-ring); }
-.dateChip:disabled { background: var(--color-surface-muted); color: var(--color-text-disabled); cursor: not-allowed; transform: none; }
-```
+**`search-bar-pill`** — The signature global search bar. White fill, 9999px radius, 64px height, 1px hairline 1px-shadow border. Internally divided by vertical hairline rules into `{component.search-field-segment}` cells (Where / When / Who). Each segment holds an uppercase caption label above a placeholder line in `{typography.caption}`.
 
-### Timeline cards
+**`search-orb`** — The circular Rausch orb terminating the right edge of the search bar. 48×48px, fully rounded, white magnifying-glass icon centered. The hottest single color moment on the homepage.
 
-```css
-.timelineCard {
-  padding: 1rem 1.125rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-subtle);
-  transition: border-color 200ms ease, box-shadow 240ms ease, transform 240ms ease;
-}
-.timelineCard:hover { border-color: var(--color-border-hover); box-shadow: var(--shadow-card); transform: translateX(2px); }
-.timelineCard:focus-within { border-color: var(--color-focus); box-shadow: var(--focus-ring); }
-.timelineCard[data-highlight="true"] { border-left: 3px solid var(--color-accent); }
-```
+### Top Navigation
 
-### Links
+**`top-nav`** — White surface, 80px height, 1px bottom hairline. The Airbnb wordmark sits flush left, the three product tabs (Homes / Experiences / Services) sit in the dead center, and account utilities (host link, language globe, account menu) sit flush right.
 
-```css
-.textLink {
-  color: var(--color-primary);
-  text-decoration-line: underline;
-  text-decoration-color: rgba(var(--color-primary-rgb), 0.36);
-  text-underline-offset: 0.2em;
-  transition: color 180ms ease, text-decoration-color 180ms ease, text-underline-offset 180ms ease;
-}
-.textLink:hover { color: var(--color-accent-hover); text-decoration-color: currentColor; text-underline-offset: 0.3em; }
-.textLink:active { color: var(--color-accent-active); }
-.textLink:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; border-radius: var(--radius-xs); }
-.textLink[aria-disabled="true"] { color: var(--color-text-disabled); text-decoration-color: transparent; pointer-events: none; }
-```
+**`product-tab-active`** — Ink label in `{typography.nav-link}`, 32px hand-illustrated icon, 2px ink underline rule beneath the icon-label pair.
 
-### Tags and badges
+**`product-tab-inactive`** — Muted label, illustrated icon, no underline. Becomes active on click.
 
-```css
-.badge {
-  display: inline-flex;
-  align-items: center;
-  min-height: 1.75rem;
-  padding-inline: 0.625rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  background: var(--color-surface-muted);
-  color: var(--color-text-secondary);
-  font: 700 0.75rem/1.3 var(--font-sans);
-  letter-spacing: 0.045em;
-}
-.badge[data-tone="upcoming"] { background: var(--color-accent-soft); color: var(--color-accent-active); border-color: rgba(var(--color-accent-rgb), 0.28); }
-.badge[data-tone="done"] { background: var(--color-success-soft); color: var(--color-success); border-color: rgba(var(--color-success-rgb), 0.24); }
-```
+**`new-tag`** — A tiny rounded-pill badge (`{rounded.full}`) anchored top-right of an icon, carrying the uppercase "NEW" label in `{typography.uppercase-tag}` (8px / 700 with 0.32px tracking, uppercase). Used on Experiences and Services to signal recency.
 
-### Todo controls
+### Listing Cards
 
-```css
-.todoControl {
-  min-height: var(--control-height);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  color: var(--color-text);
-  cursor: pointer;
-  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
-}
-.todoControl:hover { background: var(--color-surface-hover); border-color: var(--color-border-hover); }
-.todoControl:active { transform: scale(0.995); }
-.todoControl:focus-within { border-color: var(--color-focus); box-shadow: var(--focus-ring); }
-.todoControl[data-complete="true"] { color: var(--color-text-secondary); text-decoration: line-through; background: var(--color-surface-muted); }
-.todoControl[aria-disabled="true"] { color: var(--color-text-disabled); cursor: not-allowed; }
-```
+**`property-card`** — A photo-first card. 1:1 aspect-ratio image with `{rounded.md}` corner clipping, image carousel dots overlay, "Guest favorite" floating badge top-left (`{component.guest-favorite-badge}`), and a heart icon top-right (`{component.icon-button-circle}` in default outlined state, Rausch-filled when saved). Beneath the image: 4–5 lines of meta — title (`{typography.title-md}`), distance / dates (`{typography.body-sm}` muted), and price ("$X night") right-aligned.
 
-## 5. Layout Principles
+**`property-card-photo`** — The photo plate itself, separated as a token because some surfaces (wishlist, search results) reuse just the photo without the meta block.
 
-### Containers
+**`experience-card`** — A taller-aspect card (4:5) for experience listings. Same `{rounded.md}` clipping, floating "NEW" badge top-left, heart top-right, and a single-line title beneath.
 
-- App max width：`960px`，畀首頁 hero 與旅程卡更多呼吸空間。
-- 行程內容 reading column：`760px`，timeline、備註及表格維持單欄掃讀。
-- Desktop inline padding：`32px`；tablet：`24px`；mobile：`16px`。
-- Hero 可 full-bleed 至 app container 邊緣，但內容文字仍跟 reading grid 對齊。
+**`guest-favorite-badge`** — White rounded pill (`{rounded.full}`) at 11px / 600 weight. Sits over the photo with the system's only shadow tier applied for elevation.
 
-### Spacing scale
+### Listing Detail
 
-```css
-:root {
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.5rem;
-  --space-6: 2rem;
-  --space-7: 3rem;
-  --space-8: 4.5rem;
-  --page-max: 60rem;
-  --reading-max: 47.5rem;
-}
-```
+**`rating-display-card`** — The signature listing-detail moment. A 64px / 700 rating number ("4.81") flanked left and right by tiny laurel-wreath SVG ornaments. Beneath the rating: "Guest favorite" tagline and a row of ink stat columns. The largest typographic weight in the whole system.
 
-- Section gap：`clamp(3rem, 8vw, 5.5rem)`。
-- Card gap：`16px` mobile、`20px` desktop。
-- Card padding：最少 `20px`，重要卡 desktop 可到 `32px`。
-- Timeline 每站垂直距離：`28–36px`；同一日內容不可被過多細卡切碎。
+**`amenity-row`** — A 1-column list of amenity icons + ink labels in `{typography.body-md}`. 12px row padding, no border between rows; section is closed by a 1px hairline divider above and below.
 
-### Grid
+**`reviews-card`** — A 2-column grid of review excerpts. Each column holds an author row (avatar, name, date) above a 3-line excerpt with "Show more" tertiary link.
 
-```css
-.tripGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
-}
-.tripGrid > :first-child { grid-column: 1 / -1; }
+**`host-card`** — A white card with `{rounded.md}` rounding and 24px padding holding a host avatar, name, "Superhost" badge, response-rate stat, and a "Contact host" `{component.button-secondary}`.
 
-.readingColumn {
-  width: min(100%, var(--reading-max));
-  margin-inline: auto;
-}
-```
+**`reservation-card`** — The sticky right-rail card on listing detail pages. White surface, `{rounded.md}` rounding, 1px hairline border, 1px shadow tier elevation, 24px padding. Contains: nightly price (`{typography.display-md}` ink), date-range selector, guest-count stepper, "Reserve" primary CTA full-width, and a fee breakdown stack beneath in `{typography.body-sm}`.
 
-首頁第一個 upcoming trip 可跨兩欄，形成不等大但克制的編輯式節奏；已完成旅程保持相同可讀性，不降低整卡 opacity。
+### Date Picker
 
-## 6. Depth & Elevation
+**`date-picker-day`** — A 40×40px circular cell carrying the day number in `{typography.body-sm}`. Default state is transparent fill, ink text.
 
-| Level | Treatment | Use |
+**`date-picker-day-selected`** — Ink fill, white text, full circle (`{rounded.full}`). Range states between two selected days carry a `{colors.surface-soft}` lozenge background that connects them.
+
+### Forms
+
+**`text-input`** — White surface, 1px hairline outline, `{rounded.sm}` 8px radius, 56px height, 14×12px padding. Stacked label above (in `{typography.caption}` muted), placeholder text in `{typography.body-md}` muted. On focus, the border thickens to 2px ink and the border color flips to `{colors.ink}` — no glow, no ring.
+
+### Footer
+
+**`footer-light`** — White surface (matches the page canvas — Airbnb has no contrast footer), 48×80px padding. Three columns of link blocks (Support / Hosting / Airbnb), separated by generous 24px gutters. Each column heads with a `{typography.title-sm}` ink label and stacks `{component.footer-link}` rows in `{typography.body-sm}` ink.
+
+**`legal-band`** — A bottom strip beneath the footer columns carrying the copyright line, language picker (globe icon + "English (US)" link), currency picker, and social icons (Facebook, X, Instagram). All text in muted `{colors.muted}` at `{typography.caption-sm}`.
+
+## Responsive Behavior
+
+| Name | Width | Key Changes |
 |---|---|---|
-| Flat | 無陰影，使用背景與留白分層 | Page canvas、section、表格底層 |
-| Hairline | `--shadow-subtle` + `--color-border` | 日期 chip、todo、簡單資訊列 |
-| Card | `--shadow-card` | 旅程卡、timeline card、酒店卡 |
-| Raised | `--shadow-raised` | Hovered trip card、重要資訊卡 |
-| Floating | `--shadow-floating` | 臨時 overlay、離線提示；一般內容禁用 |
+| Mobile | < 744px | Top nav collapses to logo + hamburger; product tabs hide behind a sheet; search bar collapses to a single tappable pill; property cards stack 1-up; city grid 1-column; listing detail collapses reservation card to a sticky bottom bar. |
+| Tablet | 744–1128px | Top nav keeps product tabs but search bar narrows; property cards 2-up; city grid 2–3 column; reservation card stays sticky right-rail at narrower width. |
+| Desktop | 1128–1440px | Full top nav with three product tabs centered; search bar at full pill width with all 3 segments visible; property cards 4-up; city grid 6-column; listing detail 2-column with reservation rail. |
+| Wide | > 1440px | Content width caps at 1440px on listing/search pages and ~1280px on editorial; gutters absorb the rest. |
 
-### Elevation rules
+### Touch Targets
+- Primary CTAs at minimum 48×48px (above WCAG AAA).
+- Search orb is 48×48px circular — the most-tapped element on the page.
+- Heart save button is 32×32px circular — borderline for AAA but compensated by a generous 12px padding inside the photo card.
+- Date-picker day cells are 40×40px circular.
 
-- 高級感主要靠排版、材質色與留白，不靠大面積 blur 或重陰影。
-- 同一畫面最多兩級可見陰影；不能每個 nested element 都浮起。
-- Shadow 色帶炭黑灰，不使用純黑硬陰影或霓虹 glow。
-- Border 與 shadow 二選一作主要分隔；不可同時過重。
+### Collapsing Strategy
+- Top product tabs collapse into a hamburger sheet below 744px.
+- Search bar's 3 segments collapse into a single-tap entry that opens a full-screen search overlay on mobile.
+- Property and city-link grids drop column counts cleanly at each breakpoint — never reflow rows; always reduce columns.
+- Reservation card on listing detail switches from sticky right-rail to a sticky bottom bar on mobile, carrying just the "Reserve" CTA + nightly price summary.
 
-## 7. Animation & Interaction
+## Known Gaps
 
-**Motion philosophy**：慢半拍、短距離、先清晰後華麗；所有動效只使用 `opacity` 與 `transform` 作主要動畫屬性。
-**Tier**：L2 流暢互動。
-
-### Signature moments
-
-1. **Hero H1 — restrained SplitText**：首頁與行程標題按行淡入上移，總長不超過 `700ms`。
-2. **Section H2 — ScrollFloat**：章節標題進入 viewport 時由 `12px` 下方回位。
-3. **Body / label — ScrollReveal**：旅程 metadata 與 timeline body 以整行為單位 reveal，中文不逐字彈跳。
-4. **Element feedback**：trip card、日期 chip、導航按鈕有細微 lift/press；無磁吸光標與粒子。
-5. **Interactive component — CardNav/PillNav**：日期 rail 在滾動後由透明變成緊湊毛玻璃，active pill 平滑換位。
-6. **Atmosphere — lightweight Grainient**：hero 使用靜態 radial grain/gradient pseudo-element，只有極慢位置漂移；mobile 及 reduced-motion 完全靜止。
-
-### Entrance and reveal
-
-```css
-@keyframes heroReveal {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.heroReveal { animation: heroReveal 680ms cubic-bezier(0.16, 1, 0.3, 1) both; }
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 620ms cubic-bezier(0.16, 1, 0.3, 1), transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal.isInView { opacity: 1; transform: translateY(0); }
-.reveal.isInView:nth-child(2) { transition-delay: 70ms; }
-.reveal.isInView:nth-child(3) { transition-delay: 140ms; }
-```
-
-### Intersection observer
-
-```js
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('isInView');
-    observer.unobserve(entry.target);
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
-```
-
-React 實作使用等價 hook，必須在 unmount 時 `disconnect()`。
-
-### Navigation change and subtle parallax
-
-```js
-let ticking = false;
-const updateScrollState = () => {
-  document.documentElement.classList.toggle('hasScrolled', window.scrollY > 24);
-  const heroArt = document.querySelector('[data-parallax]');
-  if (heroArt && window.matchMedia('(hover: hover)').matches) {
-    heroArt.style.transform = `translate3d(0, ${Math.min(window.scrollY * 0.08, 24)}px, 0)`;
-  }
-  ticking = false;
-};
-
-window.addEventListener('scroll', () => {
-  if (ticking) return;
-  ticking = true;
-  requestAnimationFrame(updateScrollState);
-}, { passive: true });
-```
-
-Parallax 最大位移 `24px`，只作用於 hero 裝飾層，不能令正文或操作控制飄移。
-
-### Reduced motion
-
-```css
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .heroReveal,
-  .reveal { opacity: 1 !important; transform: none !important; }
-  [data-parallax] { transform: none !important; }
-}
-```
-
-### Motion performance limits
-
-- 不使用 `filter: blur()` 動畫、scroll-jacking、全局 custom cursor 或持續 WebGL render。
-- `backdrop-filter` 最大 `12px`，只限 sticky date rail。
-- 所有 scroll/pointer listener 必須 passive 並以 `requestAnimationFrame` 節流。
-- 一頁同時進行的長時間 ambient animation 最多一個。
-
-## 8. Do's and Don'ts
-
-### Do
-
-- 使用風化沙灰 canvas、Beskar 米白卡片與 Grogu 綠小面積點綴建立統一材質感。
-- 用 serif display + sans body 的對比建立層級，保持正文高可讀性。
-- 讓 upcoming trip 成為首頁視覺焦點，其他旅程保持安靜但完整。
-- 保留 760px 行程閱讀軸、44px 觸控區、ARIA tabs、skip link 及 keyboard navigation。
-- 用旅程地點、日期、住宿與交通資訊建立內容層級，不用無意義裝飾。
-- 使用真實目的地圖片時，加明確 alt；無圖片時用克制的 tonal hero，而非純色 placeholder。
-- 所有狀態以文字 + 色彩／形狀共同表達。
-- 每次改色同步檢查 PWA browser chrome、manifest 與 WCAG 對比。
-
-### Don't
-
-- ❌ 不要恢復全頁 glassmorphism、藍紫科技漸層或每張卡獨立 gradient。
-- ❌ 不要以 emoji 取代導航圖示、按鈕文字或狀態說明。
-- ❌ 不要加入霓虹、glow、粒子、3D tilt、custom cursor 或浮誇 cursor effect。
-- ❌ 不要使用超粗標題、全大寫英文、過度 letter-spacing 或細於 15px 的中文正文。
-- ❌ 不要用整卡 opacity 表示 finished；文字對比及可點擊性必須保持。
-- ❌ 不要同時使用三種以上圓角尺度或為每個元件自創 shadow。
-- ❌ 不要把桌面版拉成寬闊 dashboard；行程內容仍是線性閱讀工具。
-- ❌ 不要用 hover 才能發現的重要資訊；mobile 必須完整可用。
-- ❌ 不要做會推動 layout 的動畫，亦不要 animation `width/height/top/left`。
-- ❌ 不要引入新 animation library，除非現有 CSS/IntersectionObserver 無法完成並另行確認。
-
-## 9. Responsive Behavior
-
-### Breakpoints
-
-| Name | Width | Key changes |
-|---|---:|---|
-| Large desktop | `> 1024px` | 960px app canvas；首頁兩欄 trip grid；featured trip 跨兩欄 |
-| Tablet / small desktop | `641–1024px` | 760px 單欄內容；trip grid 可保持兩欄至 760px，再按內容自然收窄 |
-| Mobile | `≤ 640px` | 全部單欄；16px gutter；hero 收短；日期 rail 橫向 swipe；卡片取消 hover 位移 |
-| Small mobile | `≤ 380px` | 標題再收細；metadata 分行；酒店 CTA 移到下一行但維持 44px |
-
-**Touch targets**：所有 button、link、tab、checkbox label 最少 `44 × 44px`。
-
-**Safe areas**：header、sticky rail、bottom navigation 必須包含 `env(safe-area-inset-*)`。
-**Overflow**：`≤ 600px` 不得有 page-level 橫向 overflow；只有 timetable 與 date rail 可以局部橫向捲動。
-
-```css
-@media (max-width: 640px) {
-  .pageShell { padding-inline: 1rem; }
-  .tripGrid { grid-template-columns: 1fr; gap: 1rem; }
-  .tripGrid > :first-child { grid-column: auto; }
-  .tripCard { grid-template-columns: 1fr; padding: 1.25rem; }
-  .tripCard:hover { transform: none; }
-  .hero { min-height: auto; padding: 2.5rem 1.25rem 2rem; border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
-  .dateRail { overflow: hidden; }
-  .dateTabs { overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; }
-  .dateChip { scroll-snap-align: start; }
-  .hotelCard { align-items: flex-start; flex-direction: column; }
-}
-
-@media (max-width: 380px) {
-  .tripMeta { display: grid; gap: 0.25rem; }
-  .button,
-  .buttonSecondary { width: 100%; }
-}
-
-@media (hover: none) {
-  .tripCard:hover,
-  .timelineCard:hover,
-  .button:hover { transform: none; }
-}
-```
-
-### Accessibility and offline behavior
-
-- Focus-visible ring 不得被 overflow container 裁走。
-- ARIA tab semantics、方向鍵、Home/End、roving `tabIndex` 維持現有行為。
-- 圖片未載入或 PWA 離線時，layout 不可塌陷；使用固定 aspect-ratio 與 `--color-surface-muted` fallback。
-- 字體離線時使用系統繁中 serif/sans fallback，不能出現 FOIT 白畫面。
+- **Hover state colors:** intentionally not documented per the global no-hover policy — Airbnb's actual `:hover` styling for property cards is a subtle elevation lift, but precise extraction is unreliable.
+- **Loading states / skeleton screens:** not visible on the extracted surfaces.
+- **Map view styling:** the search-results map uses Mapbox-tinted tiles with custom Rausch markers; not captured here.
+- **Form input error states:** error text color (`{colors.primary-error-text}`) is documented, but the full input outline + helper-text combination on validation failure was not visible in the captured surfaces.
+- **Sub-brand palettes:** Luxe (`{colors.luxe}`) and Plus (`{colors.plus}`) are documented as tokens, but their full sub-system (typography overrides, surface treatment) lives on separate sub-domains and is not captured here.

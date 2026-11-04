@@ -1,3 +1,10 @@
+import ThbToHkdConverter from '../../components/ThbToHkdConverter';
+
+const nimmanHotel = '清邁晚安寧曼13精品酒店';
+const nimmanHotelQuery = encodeURIComponent(nimmanHotel);
+const heritageHotel = 'Narinthra Heritage';
+const heritageHotelQuery = encodeURIComponent(`${heritageHotel} Chiang Mai`);
+
 const placeholderDay = (number) => ({
   id: `day${number}`,
   label: `Day ${number}`,
@@ -17,9 +24,198 @@ export const cnx26Data = {
   id: 'cnx26',
   header: {
     title: 'Chiang Mai Trip',
-    subtitle: '清邁 6日5夜｜2026年11–12月',
+    subtitle: '清邁 6日5夜｜2026年11月26日–12月1日',
   },
-  days: Array.from({ length: 6 }, (_, index) => placeholderDay(index + 1)),
+  days: [
+    {
+      id: 'day1',
+      label: 'Day 1 (四)',
+      presentation: 'structured',
+      hotel: nimmanHotel,
+      hotelQuery: nimmanHotelQuery,
+      hotelNote: '11月26日入住 → 11月28日退房 · 共2晚',
+      timeline: [
+        {
+          time: '16:45',
+          category: '航班',
+          title: '去程航班起飛',
+          summary: '出發前往清邁',
+          details: '16:45 起飛，預計 18:50 抵達清邁；航班時間按各地當地時間顯示。',
+        },
+        {
+          time: '18:50',
+          category: '抵達',
+          title: '抵達清邁機場',
+          mapQuery: 'Chiang Mai International Airport',
+          details: '落機後辦理入境、領取行李，再前往清邁晚安寧曼13精品酒店；交通安排待補。',
+        },
+        {
+          time: '抵達酒店後',
+          category: '酒店',
+          title: '清邁晚安寧曼13精品酒店 Check-in ＆ 放行李',
+          mapQuery: nimmanHotel,
+          summary: '入住後直接食晚飯',
+          details: '2026年11月26日 14:00 後可辦理入住（酒店當地時間）。當日 18:50 落機，抵達酒店後 Check-in、放低行李，再去食晚飯。',
+        },
+        {
+          time: 'Check-in 後',
+          category: '晚餐',
+          title: '清邁第一晚晚餐',
+          details: 'Check-in 後食晚飯，餐廳待定。',
+        },
+      ],
+    },
+    {
+      ...placeholderDay(2),
+      label: 'Day 2 (五)',
+      hotel: nimmanHotel,
+      hotelQuery: nimmanHotelQuery,
+      hotelNote: '11月27日續住 · 翌日12:00前退房',
+      timeline: [
+        {
+          time: '14:00–15:30（建議）',
+          category: '下午茶',
+          title: 'The Baristro Asian Style · 飲抹茶',
+          summary: '必去 · 入店坐低飲抹茶',
+          mapQuery: 'The Baristro Asian Style Chiang Mai',
+          details: (
+            <>
+              寧曼住宿期間安排去清邁大學附近的 The Baristro Asian Style，入店坐低飲抹茶、慢慢休息。<br />
+              營業時間：08:00–18:00；以上為建議到訪時間，並非預約。<br />
+              <a href="https://www.thailandtravel.or.jp/thebaristroasianstyle/" target="_blank" rel="noreferrer" className="trip-link">The Baristro Asian Style（泰國觀光局）</a>
+            </>
+          ),
+        },
+        {
+          time: '16:00–17:00（建議）',
+          category: 'Shopping',
+          title: '尼曼一號 One Nimman',
+          summary: '寧曼逛街 · 商店、手作及市集空間',
+          mapQuery: 'One Nimman Chiang Mai',
+          details: (
+            <>
+              Baristro 飲完抹茶後，搭車返寧曼區行 One Nimman，睇下設計小店、手信同市集空間。<br />
+              營業時間：每日 11:00–21:00，夜市區至22:00；當日有咩市集或活動以官方公告為準。<br />
+              <a href="https://www.onenimman.com/en/" target="_blank" rel="noreferrer" className="trip-link">One Nimman（官方）</a>
+            </>
+          ),
+        },
+        {
+          time: '17:00–18:00（建議）',
+          category: 'Shopping',
+          title: 'MAYA Lifestyle Shopping Center',
+          summary: '接住行附近商場 · 時間可按購物興趣調整',
+          mapQuery: 'MAYA Lifestyle Shopping Center Chiang Mai',
+          details: (
+            <>
+              One Nimman 行完再去附近 MAYA 行商場，之後前往晚餐；如果想慢慢行，可縮短其中一站。<br />
+              營業時間：10:00–22:00。<br />
+              <a href="https://mayashoppingcenter.com/" target="_blank" rel="noreferrer" className="trip-link">MAYA Lifestyle Shopping Center（官方）</a>
+            </>
+          ),
+        },
+        {
+          time: '晚上（暫定）',
+          category: '晚餐候選',
+          title: 'Lumi - Italian Restaurant',
+          summary: '想食清單 · 建議寧曼住宿期間去，日期未定',
+          mapQuery: 'Lumi Italian Restaurant 22/2 Nimman Soi 9 Chiang Mai',
+          details: '餐廳位於寧曼 Soi 9，先暫放 Day 2 晚餐候選，方便之後按其他行程調動；未訂位，晚餐時間及營業安排待確認。',
+        },
+      ],
+    },
+    {
+      id: 'day3',
+      label: 'Day 3 (六)',
+      presentation: 'structured',
+      hotel: heritageHotel,
+      hotelQuery: heritageHotelQuery,
+      hotelNote: '11月28日入住 → 12月1日退房 · 共3晚',
+      timeline: [
+        {
+          time: '12:00 前',
+          category: '酒店',
+          title: '清邁晚安寧曼13精品酒店 Check-out',
+          summary: '11月28日退房 · 酒店當地時間',
+          mapQuery: nimmanHotel,
+          details: '2026年11月28日 12:00 前辦理退房，之後轉住 Narinthra Heritage；轉酒店交通及行李安排待補。',
+        },
+        {
+          time: '入住時間待確認',
+          category: '酒店',
+          title: 'Narinthra Heritage Check-in ＆ 放行李',
+          summary: '11月28日至12月1日 · 連住3晚',
+          mapQuery: `${heritageHotel} Chiang Mai`,
+          details: '11月28日轉住 Narinthra Heritage，住到12月1日。酒店可辦理入住及退房的時間待確認。',
+        },
+        ...placeholderDay(3).timeline,
+      ],
+    },
+    ...[4, 5].map((number) => ({
+      ...placeholderDay(number),
+      label: `Day ${number} (${number === 4 ? '日' : '一'})`,
+      hotel: heritageHotel,
+      hotelQuery: heritageHotelQuery,
+      hotelNote: `11月${number === 4 ? 29 : 30}日續住 · 12月1日退房`,
+      ...(number === 4 ? {
+        timeline: [
+          {
+            time: '08:30–11:30（建議）',
+            category: '市集',
+            title: 'Jing Jai Market（真心市集）',
+            summary: '必去 · 11月29日星期日 · 週末早市',
+            mapQuery: 'Jing Jai Market Chiang Mai',
+            details: (
+              <>
+                早上去真心市集食早餐、行手作同農夫攤檔，預留約3小時慢慢行。<br />
+                週末市集：星期六、日 06:30–15:00；園區商店時間另計。<br />
+                <a href="https://www.jingjaicentralchiangmai.com/market" target="_blank" rel="noreferrer" className="trip-link">Jing Jai Market（官方時間）</a>
+              </>
+            ),
+          },
+          {
+            time: '下午（建議約15:00）',
+            category: '下午茶',
+            title: '酒店下午茶：Cake Baan Piemsuk 椰子批',
+            summary: '必食 Coconut Pie · 叫外賣返 Narinthra Heritage',
+            details: '返酒店休息，叫 Cake Baan Piemsuk 招牌 Coconut Pie（椰子批）外賣喺酒店食，唔安排到店。當日先確認外賣平台／店舖有貨、送達範圍同時間，亦可請酒店協助查詢；未落單。',
+          },
+        ],
+      } : {}),
+    })),
+    {
+      id: 'day6',
+      label: 'Day 6 (二)',
+      presentation: 'structured',
+      hotel: heritageHotel,
+      hotelQuery: heritageHotelQuery,
+      hotelNote: '12月1日早上退房 · 前往機場',
+      timeline: [
+        {
+          time: '早上',
+          category: '交通',
+          title: 'Narinthra Heritage Check-out → 清邁機場',
+          mapQuery: 'Chiang Mai International Airport',
+          details: '12月1日早上由 Narinthra Heritage 退房後前往清邁機場，準備搭乘10:35航班；酒店出發時間及交通安排待補。',
+        },
+        {
+          time: '10:35',
+          category: '航班',
+          title: '回程航班起飛',
+          summary: '清邁出發 · 14:20 抵達',
+          details: '10:35 由清邁起飛，預計 14:20 抵達；航班時間按各地當地時間顯示。',
+        },
+        {
+          time: '14:20',
+          category: '抵達',
+          title: '回程航班抵達',
+          details: '落機後辦理入境及領取行李，結束清邁旅程。',
+        },
+      ],
+    },
+  ],
+  customTools: <ThbToHkdConverter />,
   mapQuery: 'Chiang Mai, Thailand',
   mapText: '清邁行程地圖',
+  mapIframe: 'https://www.google.com/maps/d/u/0/embed?mid=1sn628tieMgDbKlki4kzxrjdMt6n10SM&ehbc=2E312F',
 };
