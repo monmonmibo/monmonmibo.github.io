@@ -1,6 +1,7 @@
 import { useId, useState } from 'react';
 import styles from './CurrencyConverter.module.css';
 import useCurrencyRate from './useCurrencyRate';
+import { ArrowDownIcon, CalculatorIcon } from './Icons';
 
 export default function CurrencyConverter({
   baseCurrency,
@@ -44,7 +45,7 @@ export default function CurrencyConverter({
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>{title}</h3>
+      <h2 className={styles.title}><CalculatorIcon size={22} />{title}</h2>
 
       <div className={styles.inputGroup}>
         <label className={styles.label} htmlFor={inputId}>{inputLabel}</label>
@@ -71,7 +72,7 @@ export default function CurrencyConverter({
         </div>
       </div>
 
-      <div className={styles.divider}>⬇️</div>
+      <div className={styles.divider}><ArrowDownIcon size={24} /></div>
 
       <div className={styles.result}>
         <span className={styles.amount}>{displayValue}</span>
@@ -80,7 +81,7 @@ export default function CurrencyConverter({
 
       {isOffline && (
         <div className={styles.offlineBanner}>
-          📵 離線中，顯示上次儲存匯率
+          離線中，顯示上次儲存匯率
         </div>
       )}
       <div className={styles.rateInfo}>

@@ -9,7 +9,7 @@ export default function VndToHkdConverter() {
   return (
     <CurrencyConverter
       baseCurrency="vnd"
-      title="💸 即時匯率計算"
+      title="即時匯率計算"
       inputLabel="越南盾 (VND)"
       placeholder="₫"
       formatResult={(amount, rate) => formatHKD(amount * rate)}

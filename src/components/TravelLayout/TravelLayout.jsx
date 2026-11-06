@@ -75,6 +75,7 @@ export default function TravelLayout({ data }) {
   const [activeTab, setActiveTab] = useState('day1');
   const [view, setView] = useState('timeline');
   const [hasOpenedMap, setHasOpenedMap] = useState(false);
+  const [hasOpenedTools, setHasOpenedTools] = useState(false);
   const viewScrollPositions = useRef({ timeline: 0, tools: 0, map: 0 });
   const [isScrolled, setIsScrolled] = useState(false);
   // Read straight from localStorage on first render. Doing this in an effect
@@ -257,6 +258,7 @@ export default function TravelLayout({ data }) {
     if (newView === view) return;
     viewScrollPositions.current[view] = window.scrollY;
     if (newView === 'map') setHasOpenedMap(true);
+    if (newView === 'tools') setHasOpenedTools(true);
     setView(newView);
   };
 
@@ -360,7 +362,7 @@ export default function TravelLayout({ data }) {
               role="tabpanel"
               aria-labelledby={`tab-${day.id}`}
               tabIndex={0}
-              className={`${styles.daySection} ${styles.active} ${day.presentation === 'structured' ? styles.structuredDay : ''}`}
+              className={`${styles.daySection} ${styles.active} ${styles.structuredDay}`}
             >
               {renderHotelHeader(day)}
               <div className={styles.timelineContainer}>
@@ -369,15 +371,13 @@ export default function TravelLayout({ data }) {
                     <div key={idx} className={`${styles.timelineItem} ${item.type === 'highlight' ? styles.highlight : ''}`}>
                       <div className={styles.itemMeta}>
                         <div className={styles.timeLabel}>{item.time}</div>
-                        {day.presentation === 'structured' && item.category && (
+                        {item.category && (
                           <span className={styles.itemCategory}>{item.category}</span>
                         )}
                       </div>
                       <div className={styles.card}>
                         <div className={styles.cardHead}>
-                          {day.presentation === 'structured' ? (
-                            <h2 className={styles.itemTitle}>{cleanDisplayText(item.title)}</h2>
-                          ) : <span className={styles.itemTitle}>{cleanDisplayText(item.title)}</span>}
+                          <h2 className={styles.itemTitle}>{cleanDisplayText(item.title)}</h2>
                           {item.mapQuery && (
                             <a
                               href={mapsUrl(item.mapQuery)}
@@ -391,7 +391,7 @@ export default function TravelLayout({ data }) {
                             </a>
                           )}
                         </div>
-                        {day.presentation === 'structured' && item.summary && (
+                        {item.summary && (
                           <p className={styles.itemSummary}>{item.summary}</p>
                         )}
                         <div className={styles.details}>{item.details}</div>
@@ -435,8 +435,8 @@ export default function TravelLayout({ data }) {
         )}
 
         {/* Tools */}
-        {view === 'tools' && (
-          <div className={`${styles.daySection} ${styles.active} ${styles.toolsSection}`}>
+        {hasOpenedTools && (
+          <div hidden={view !== 'tools'} className={`${styles.daySection} ${view === 'tools' ? styles.active : ''} ${styles.toolsSection}`}>
             {data.customTools ? data.customTools : <JpyToHkdConverter />}
             {data.fares && <FareTable fares={data.fares} />}
           </div>

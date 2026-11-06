@@ -4,7 +4,7 @@ export default function JpyToHkdConverter() {
   return (
     <CurrencyConverter
       baseCurrency="jpy"
-      title="💴 即時匯率計算"
+      title="即時匯率計算"
       inputLabel="日圓 (JPY)"
       placeholder="¥"
       formatResult={(amount, rate) => (amount * rate).toFixed(2)}

@@ -22,6 +22,10 @@ export function ArrowRightIcon(props) {
   return <IconBase {...props}><path d="M5 12h14M13 6l6 6-6 6" /></IconBase>;
 }
 
+export function ArrowDownIcon(props) {
+  return <IconBase {...props}><path d="M12 5v14M6 13l6 6 6-6" /></IconBase>;
+}
+
 export function CalendarIcon(props) {
   return <IconBase {...props}><path d="M8 2v4M16 2v4M3 10h18" /><rect x="3" y="4" width="18" height="18" rx="3" /></IconBase>;
 }

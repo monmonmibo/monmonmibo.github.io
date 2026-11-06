@@ -9,7 +9,7 @@ export default function ThbToHkdConverter() {
   return (
     <CurrencyConverter
       baseCurrency="thb"
-      title="💵 即時匯率計算"
+      title="即時匯率計算"
       inputLabel="泰銖 (THB)"
       placeholder="฿"
       formatResult={(amount, rate) => formatHKD(amount * rate)}

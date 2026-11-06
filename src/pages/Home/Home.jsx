@@ -11,7 +11,7 @@ const trips = [
     country: '泰國',
     date: '2026.11 — 12',
     duration: '6日5夜',
-    highlights: '2026 冬季清邁 · 詳細行程待編排',
+    highlights: '寧曼逛街 · 按摩放鬆 · 蒙占山包車',
     status: '即將出發',
     featured: true,
   },

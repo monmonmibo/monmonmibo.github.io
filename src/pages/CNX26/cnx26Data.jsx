@@ -121,21 +121,13 @@ export const cnx26Data = {
           category: '按摩',
           title: '腳底按摩（店舖待定）',
           summary: '11月27日（五）· 建議45–60分鐘 · 未預約',
-          details: 'One Nimman 同 MAYA shopping 後按腳休息，建議預留45–60分鐘；先考慮寧曼購物區附近店舖，實際店舖、價格及可約時段待確認。預留前往古城 Baan Landai 的交通時間，按摩及購物如有延誤需調整，避免趕最後點餐。',
+          details: 'One Nimman 同 MAYA shopping 後按腳休息，建議預留45–60分鐘；先考慮寧曼購物區附近店舖，實際店舖、價格及可約時段待確認。按摩後再食晚飯，餐廳及用餐時間待定。',
         },
         {
-          time: '按摩後（建議約19:30，待訂位）',
+          time: '按摩後（時間待定）',
           category: '晚餐',
-          title: 'Baan Landai Fine Thai Cuisine',
-          summary: '11月27日（五）· 古城店 · 未訂位',
-          mapQuery: 'Baan Landai Fine Thai Cuisine 252/13 Prapokklao Road Chiang Mai',
-          details: (
-            <>
-              One Nimman同MAYA逛街、腳底按摩後，前往古城店Baan Landai Fine Thai Cuisine食泰菜；預留由寧曼前往古城的交通時間。建議約19:30入座，實際時間待預約確認，未訂位。<br />
-              古城店晚餐17:00–22:00，最後點餐20:30，星期一休息；Day 2係星期五。<br />
-              <a href="https://www.baan-landai.com/" target="_blank" rel="noreferrer" className="trip-link">Baan Landai（官方・古城店預約及位置）</a>
-            </>
-          ),
+          title: '晚餐待定',
+          details: 'One Nimman同MAYA逛街、腳底按摩後食晚飯，餐廳待定。Baan Landai改去Day 5湄林分店。',
         },
       ],
     },
@@ -164,20 +156,20 @@ export const cnx26Data = {
           details: '11月28日轉住 Narinthra Heritage，住到12月1日。酒店可辦理入住及退房的時間待確認。',
         },
         {
-          time: '16:00–17:30（建議・未預約）',
+          time: '18:00（已預約）',
           category: '按摩',
-          title: 'Giving Tree Massage 古城店 · 熱石按摩90分鐘',
+          title: 'Giving Tree Massage 古城店 · 2小時按摩／腳底按摩',
           mapQuery: 'Giving Tree Massage 5/13 Rachadamnoen Road Old Town Chiang Mai',
-          summary: '1.5小時 · Old Town 古城店 · 晚餐前放鬆',
-          details: '轉酒店、放低行李後，安排1.5小時熱石按摩。選定 Old Town 古城店（5/13 Rachadamnoen Road，電話+66 53 326 185），配合 Narinthra Heritage 住宿；預約時確認90分鐘療程是否包含全程熱石或組合按摩、價格及可預約時段。預留到店及更衣時間，晚餐安排18:00後；未訂位。',
+          summary: '11月28日（六）· 4人 · 已預約18:00',
+          details: '已預約11月28日星期六18:00，4人到 Giving Tree Old Town 古城店（5/13 Rachadamnoen Road，電話+66 53 326 185）。店舖已確認：2人2小時按摩、2人1小時腳底按摩，預計分別20:00及19:00完成。原先要求香薰油按摩，但確認訊息未註明按摩種類，仍需向店舖核實。預留提早到店、更衣及之後前往晚餐的交通時間。',
         },
         {
-          time: '18:00 後',
+          time: '按摩後（建議20:30左右）',
           category: '晚餐',
           title: 'Kung Yim Shop (2nd Branch)',
           summary: '11月28日（六）· 第二分店 · 未訂位',
           mapQuery: 'Kung Yim Shop 2nd Branch 90 Ratchawong Road Chiang Mai',
-          details: 'Giving Tree 古城店熱石按摩後，預留交通時間前往 Kung Yim 第二分店（90 Ratchawong Road）。安排18:00後食晚飯，確實用餐時間待定；未訂位。',
+          details: 'Giving Tree 古城店按摩後，等齊4人，預留更衣及交通時間前往 Kung Yim 第二分店（90 Ratchawong Road），建議20:30左右食晚飯；實際入座及最後點餐時間待確認，未訂位。',
         },
       ],
     },
@@ -211,22 +203,22 @@ export const cnx26Data = {
             details: '返酒店休息，叫 Cake Baan Piemsuk 招牌 Coconut Pie（椰子批）外賣喺酒店食，唔安排到店。當日先確認外賣平台／店舖有貨、送達範圍同時間，亦可請酒店協助查詢；未落單。',
           },
           {
-            time: '16:00（計劃・待預約）',
+            time: '18:15（已預約）',
             category: 'Head Spa',
             title: 'Daydream Sleep Salon · Suriwong 分店洗頭',
-            summary: '11月29日（日）· 套餐待選 · 晚餐前放鬆',
+            summary: '11月29日（日）· 4人 · 已預約18:15',
             mapQuery: 'Daydream sleep salon at Suriwong 99/1-2 Sridonchai Road Chiang Mai',
-            details: '返酒店食完椰子批後，預留交通時間前往 Suriwong 分店，計劃16:00開始洗頭及頭部護理。套餐未選，按之前價目表療程約75–125分鐘，預計17:15–18:05完成；晚餐預留18:30後。實際可約時段、套餐內容及價格向店舖確認，未預約。',
+            details: '已預約11月29日星期日18:15，4人到 Suriwong 分店洗頭及頭部護理。預留交通及提早到店時間；已確認套餐：3人 Better Sleep、1人 Head to Toe，全部100分鐘，預計19:55完成。訂金金額THB1,200，是否已付款未記錄。之後再去 OWL 晚餐。',
           },
           {
-            time: '18:45–19:00（建議）',
+            time: '洗頭後（入座時間待確認）',
             category: '晚餐',
             title: 'OWL brasserie',
             summary: '11月29日（日）· 古城 Arak Road · 未訂位',
             mapQuery: 'OWL brasserie 65/1 Arak Road Chiang Mai',
             details: (
               <>
-                Daydream Suriwong 洗頭療程後，預留交通時間搭車前往 OWL，建議18:45–19:00入座，按療程完成時間調整；未訂位。<br />
+                Daydream Suriwong 18:15洗頭療程後，預留交通時間搭車前往 OWL；需按已訂套餐時長確認晚餐入座及廚房最後點餐時間，未訂位。<br />
                 地址：65/1 Arak Road。星期二至日11:00–22:00，星期一休息；Day 4係星期日。<br />
                 <a href="https://www.owlbrasserie.com/location" target="_blank" rel="noreferrer" className="trip-link">OWL（官方・位置及營業時間）</a>
               </>
@@ -236,17 +228,17 @@ export const cnx26Data = {
       } : {
         timeline: [
           {
-            time: '09:00 酒店出發（待預訂）',
+            time: '09:00 酒店出發（包車已預訂）',
             category: '包車',
             title: '一日包車：酒店 → Mon Jam／湄林山區',
-            summary: '11月30日（一）· JunoAndMe.Travel 蒙占山包車 · 已選方案，預訂狀態待確認',
+            summary: '11月30日（一）· JunoAndMe.Travel 蒙占山包車 · 已預訂 · 預留OT至21:00',
             details: (
               <>
-                已選 JunoAndMe.Travel 清邁在地包車的蒙占山方案；由 Narinthra Heritage 酒店接送。以下價錢及條款按你提供的海報記錄，未代表已預訂或付款。<br />
+                已預訂 JunoAndMe.Travel 清邁在地包車蒙占山方案，09:00由 Narinthra Heritage 出發，晚餐後送返酒店，預留OT至21:00；付款狀態未記錄。以下價錢及條款按你提供的資料記錄。<br />
                 HKD950／車，包油費、司機10小時服務、行程路線諮詢、餐廳預約協助及廣東話客服跟進；不包括門票及餐飲。<br />
-                服務時段07:00–19:00內自選10小時；超過10小時或19:00後，加時費THB200／小時。跨區行程需補油錢，金額向包車公司確認。<br />
-                按海報路線安排09:00–19:00包車：網紅餐廳早餐 → 山上花田 → 苗族木頭車（額外加入）→ 羊農場 → 過山車 → 文青市集 → 酒店。木頭車暫放花田後，最終順序及各站停留時間由包車公司確認，包含回程須控制於10小時內。<br />
-                預訂前確認車型、人數、接送及停車／過路費安排，並請公司確認是否包含指定羊農場與苗族木頭車。
+                基本服務09:00–19:00共10小時；19:00後延續每小時THB200，預留至21:00，2小時OT預算THB400／車。建議21:00前結束，保障司機休息；不足一小時計法及跨區補油費向公司確認。<br />
+                行程路線：網紅餐廳早餐 → 山上花田 → 苗族木頭車（額外加入）→ 羊農場 → 過山車 → 文青市集 → Baan Landai Mae Rim晚餐 → 酒店。木頭車暫放花田後，最終順序及各站停留時間由包車公司確認，19:00晚餐後由司機等候及送返酒店，計劃21:00前結束。<br />
+                出發前核對車型、人數、接送及停車／過路費安排，並請公司確認是否包含指定羊農場與苗族木頭車。
               </>
             ),
           },
@@ -315,18 +307,28 @@ export const cnx26Data = {
             details: '市集名稱及位置待公司提供，先確認星期一有開放，再安排停留及回程時間。',
           },
           {
-            time: '市集後回程 · 19:00前返酒店（計劃）',
-            category: '包車',
-            title: '文青市集 → Narinthra Heritage',
-            summary: '返市區休息 · 晚餐待定',
-            mapQuery: `${heritageHotel} Chiang Mai`,
-            details: '計劃09:00上車、19:00前由包車送返酒店，包含所有停站及回程。實際能否完成全部景點須由公司確認；如遇排隊或塞車，先與司機協調停留時間及加時費。返酒店休息後再食晚飯。',
+            time: '19:00 晚餐（待訂位）',
+            category: '晚餐',
+            title: 'Baan Landai Mae Rim · 湄林分店',
+            summary: '11月30日（一）· 司機接送及等候 · 未訂位',
+            mapQuery: 'Baan Landai Mae Rim 225 Kad Farang Mae Sa Mae Rim Chiang Mai',
+            details: (
+              <>
+                包車行程後由司機送去湄林分店食晚飯，食完再送返 Narinthra Heritage；不先回酒店。安排19:00晚餐，餐廳訂位待確認。<br />
+                地址：225 Kad Farang, Mae Sa, Mae Rim。電話：+66 64 469 2929。<br />
+                官方時間11:00–22:00，最後點餐21:00，星期二休息；Day 5係星期一。<br />
+                19:00後用餐等候及送返酒店按OT計費，THB200／小時，預留至21:00共THB400／車；同司機協調用餐及回程時間。<br />
+                <a href="https://www.baan-landai.com/en/mae-rim/" target="_blank" rel="noreferrer" className="trip-link">Baan Landai Mae Rim（官方・位置及營業時間）</a>
+              </>
+            ),
           },
           {
-            time: '晚上',
-            category: '晚餐',
-            title: '晚餐待定',
-            details: '包車返到酒店、稍作休息後食晚飯，餐廳及用餐時間待定。',
+            time: '晚餐後 · 預留OT至21:00',
+            category: '包車',
+            title: 'Baan Landai Mae Rim → Narinthra Heritage',
+            summary: '司機等候及送返酒店 · OT預算THB400／車',
+            mapQuery: `${heritageHotel} Chiang Mai`,
+            details: '19:00晚餐後由司機直接送返酒店。包車已預訂09:00開始，基本10小時至19:00，另預留OT至21:00，按THB200／小時計，2小時預算THB400／車。與司機協調離店時間，目標21:00前結束行程。',
           },
         ],
       }),

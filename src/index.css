@@ -184,7 +184,7 @@ body {
 }
 
 .trip-badge-warn {
-  font-size: 0.75rem;
+  font-size: 0.9375rem;
   padding: 2px var(--space-2);
   border-radius: var(--radius-xs);
   background: var(--color-error-soft);
@@ -196,7 +196,7 @@ body {
 }
 
 .trip-badge-info {
-  font-size: 0.75rem;
+  font-size: 0.9375rem;
   padding: 2px var(--space-2);
   border-radius: var(--radius-xs);
   background: var(--color-info-soft);
