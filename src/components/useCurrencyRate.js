@@ -73,7 +73,7 @@ export default function useCurrencyRate(baseCurrency, { refreshIntervalMs = 5 * 
         if (cached) {
           applyRate(cached, true);
         } else {
-          setError('無法獲取匯率，請連接網絡後重試');
+          setError('暫時攞唔到匯率。請連接網絡後再試。');
           setLoading(false);
         }
       }

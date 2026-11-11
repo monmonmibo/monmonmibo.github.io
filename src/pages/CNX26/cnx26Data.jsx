@@ -14,8 +14,8 @@ const placeholderDay = (number) => ({
       time: '待定',
       category: '待編排',
       title: `Day ${number} 行程待編排`,
-      summary: '暫未加入景點、交通或用餐安排。',
-      details: '確定航班、住宿及想去的地方後，再補充這一日的詳細行程。',
+      summary: '呢日暫時未有景點、交通同用餐安排。',
+      details: '等航班、住宿同想去嘅地方確定咗，再補返當日行程。',
     },
   ],
 });
@@ -29,6 +29,7 @@ export const cnx26Data = {
   days: [
     {
       id: 'day1',
+      date: '2026-11-26',
       label: 'Day 1 (四)',
       presentation: 'structured',
       hotel: nimmanHotel,
@@ -40,14 +41,14 @@ export const cnx26Data = {
           category: '航班',
           title: '去程航班起飛',
           summary: '出發前往清邁',
-          details: '16:45 起飛，預計 18:50 抵達清邁；航班時間按各地當地時間顯示。',
+          details: '16:45 起飛，預計 18:50 到清邁。起飛同抵達時間都以當地時間為準。',
         },
         {
           time: '18:50',
           category: '抵達',
           title: '抵達清邁機場',
           mapQuery: 'Chiang Mai International Airport',
-          details: '落機後辦理入境、領取行李，再前往清邁晚安寧曼13精品酒店；交通安排待補。',
+          details: '落機後辦入境同拎行李，再去清邁晚安寧曼13精品酒店。去酒店嘅交通稍後再定。',
         },
         {
           time: '抵達酒店後',
@@ -69,6 +70,7 @@ export const cnx26Data = {
     },
     {
       ...placeholderDay(2),
+      date: '2026-11-27',
       label: 'Day 2 (五)',
       hotel: nimmanHotel,
       hotelQuery: nimmanHotelQuery,
@@ -133,6 +135,7 @@ export const cnx26Data = {
     },
     {
       id: 'day3',
+      date: '2026-11-28',
       label: 'Day 3 (六)',
       presentation: 'structured',
       hotel: heritageHotel,
@@ -161,7 +164,7 @@ export const cnx26Data = {
           title: 'Giving Tree Massage 古城店 · 2小時按摩／腳底按摩',
           mapQuery: 'Giving Tree Massage 5/13 Rachadamnoen Road Old Town Chiang Mai',
           summary: '11月28日（六）· 4人 · 已預約18:00',
-          details: '已預約11月28日星期六18:00，4人到 Giving Tree Old Town 古城店（5/13 Rachadamnoen Road，電話+66 53 326 185）。店舖已確認：2人2小時按摩、2人1小時腳底按摩，預計分別20:00及19:00完成。原先要求香薰油按摩，但確認訊息未註明按摩種類，仍需向店舖核實。預留提早到店、更衣及之後前往晚餐的交通時間。',
+          details: '已訂 11 月 28 日（星期六）18:00，4 人到 Giving Tree Old Town 古城店（5/13 Rachadamnoen Road，電話 +66 53 326 185）。店舖確認咗兩個安排。2 人做 2 小時按摩，預計 20:00 完成。另 2 人做 1 小時腳底按摩，預計 19:00 完成。原本要求香薰油按摩，確認訊息冇寫明按摩種類，要再問店舖。記得預留提早到店、更衣同去食晚飯嘅交通時間。',
         },
         {
           time: '按摩後（建議20:30左右）',
@@ -175,6 +178,7 @@ export const cnx26Data = {
     },
     ...[4, 5].map((number) => ({
       ...placeholderDay(number),
+      date: number === 4 ? '2026-11-29' : '2026-11-30',
       label: `Day ${number} (${number === 4 ? '日' : '一'})`,
       hotel: heritageHotel,
       hotelQuery: heritageHotelQuery,
@@ -208,7 +212,7 @@ export const cnx26Data = {
             title: 'Daydream Sleep Salon · Suriwong 分店洗頭',
             summary: '11月29日（日）· 4人 · 已預約18:15',
             mapQuery: 'Daydream sleep salon at Suriwong 99/1-2 Sridonchai Road Chiang Mai',
-            details: '已預約11月29日星期日18:15，4人到 Suriwong 分店洗頭及頭部護理。預留交通及提早到店時間；已確認套餐：3人 Better Sleep、1人 Head to Toe，全部100分鐘，預計19:55完成。訂金金額THB1,200，是否已付款未記錄。之後再去 OWL 晚餐。',
+            details: '已訂 11 月 29 日（星期日）18:15，4 人到 Suriwong 分店洗頭同做頭部護理。預留車程，提早到店。已確認 3 人做 Better Sleep，1 人做 Head to Toe。兩款都係 100 分鐘，預計 19:55 完成，之後去 OWL 食晚飯。訂金係 THB 1,200，付款狀態未記錄。',
           },
           {
             time: '洗頭後（入座時間待確認）',
@@ -218,7 +222,7 @@ export const cnx26Data = {
             mapQuery: 'OWL brasserie 65/1 Arak Road Chiang Mai',
             details: (
               <>
-                Daydream Suriwong 18:15洗頭療程後，預留交通時間搭車前往 OWL；需按已訂套餐時長確認晚餐入座及廚房最後點餐時間，未訂位。<br />
+                喺 Daydream Suriwong 做完 18:15 開始嘅療程後，預留車程去 OWL。晚餐未訂位，先按已訂套餐嘅時間，向餐廳確認幾點可以入座同廚房幾點截單。<br />
                 地址：65/1 Arak Road。星期二至日11:00–22:00，星期一休息；Day 4係星期日。<br />
                 <a href="https://www.owlbrasserie.com/location" target="_blank" rel="noreferrer" className="trip-link">OWL（官方・位置及營業時間）</a>
               </>
@@ -273,7 +277,7 @@ export const cnx26Data = {
             time: '中午（時間待確認）',
             category: '午餐',
             title: 'Mon Jam／湄林山區午餐',
-            details: '午餐地點及是否需要額外停站按早餐時間、肚餓程度及司機路線決定；餐費自付。',
+            details: '睇早餐食得幾晏、到時肚唔肚餓同司機路線，再決定去邊度食午餐、需唔需要加站。餐費自付。',
           },
           {
             time: '下午（時間待確認）',
@@ -304,7 +308,7 @@ export const cnx26Data = {
             category: '市集',
             title: '文青市集（名稱待確認）',
             summary: '海報路線最後一站 · 11月30日星期一',
-            details: '市集名稱及位置待公司提供，先確認星期一有開放，再安排停留及回程時間。',
+            details: '等包車公司提供市集名稱同位置，確認星期一有開，再定留幾耐同幾點回程。',
           },
           {
             time: '19:00 晚餐（待訂位）',
@@ -335,6 +339,7 @@ export const cnx26Data = {
     })),
     {
       id: 'day6',
+      date: '2026-12-01',
       label: 'Day 6 (二)',
       presentation: 'structured',
       hotel: heritageHotel,
@@ -353,7 +358,7 @@ export const cnx26Data = {
           category: '航班',
           title: '回程航班起飛',
           summary: '清邁出發 · 14:20 抵達',
-          details: '10:35 由清邁起飛，預計 14:20 抵達；航班時間按各地當地時間顯示。',
+          details: '10:35 由清邁起飛，預計 14:20 抵達。起飛同抵達時間都以當地時間為準。',
         },
         {
           time: '14:20',

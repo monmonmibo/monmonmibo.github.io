@@ -9,7 +9,7 @@ const trips = [
     code: 'CNX 26',
     destination: '清邁',
     country: '泰國',
-    date: '2026.11 — 12',
+    date: '2026 年 11 月 26 日至 12 月 1 日',
     duration: '6日5夜',
     highlights: '寧曼逛街 · 按摩放鬆 · 蒙占山包車',
     status: '即將出發',
@@ -23,7 +23,7 @@ const trips = [
     date: '2026.10 — 11',
     duration: '6日5夜',
     highlights: '六甲山露營 · 有馬溫泉 · 淡路島',
-    status: '旅程完成',
+    status: '已完成',
   },
   {
     to: '/tak26',
@@ -33,7 +33,7 @@ const trips = [
     date: '2026.09',
     duration: '5日4夜',
     highlights: '兒島牛仔 · 小豆島 · 高松市集',
-    status: '旅程完成',
+    status: '已完成',
   },
   {
     to: '/danang26',
@@ -43,7 +43,7 @@ const trips = [
     date: '2026.04',
     duration: '5日4夜',
     highlights: '會安古城 · 海岸 · 越南料理',
-    status: '旅程完成',
+    status: '已完成',
   },
   {
     to: '/ngo26',
@@ -53,7 +53,7 @@ const trips = [
     date: '2026.01',
     duration: '5日4夜',
     highlights: '蟹料理 · 港水族館 · 大須商店街',
-    status: '旅程完成',
+    status: '已完成',
   },
   {
     to: '/cnx25',
@@ -63,7 +63,7 @@ const trips = [
     date: '2025.12',
     duration: '6日5夜',
     highlights: '慢活 · 手作藝術村 · 夜間動物園',
-    status: '旅程完成',
+    status: '已完成',
   },
 ];
 
@@ -77,24 +77,20 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Link to="/" className={styles.brand}><SuitcaseIcon size={25} /><span>MonMonMibo<small>旅程，隨身帶住。</small></span></Link>
-        <span className={styles.tripCount}>{trips.length} 個旅程</span>
+        <Link to="/" className={styles.brand}><SuitcaseIcon size={25} /><span>MonMonMibo</span></Link>
       </header>
       <main className={styles.main}>
-        <div className={styles.intro}>
-          <h1>我的旅程</h1>
-          <p>計劃下一趟，亦留住去過嘅地方。</p>
-        </div>
+        <h1 className={styles.pageTitle}>我的旅程</h1>
         {upcoming && (
           <section className={styles.upcoming} aria-labelledby="next-trip">
-            <div className={styles.sectionHeading}><h2 id="next-trip">下一趟旅程</h2><span>即將出發</span></div>
             <Link to={upcoming.to} className={styles.featuredCard}>
               <div className={styles.featuredBody}>
-              <div className={styles.featuredTop}><span className={styles.statusTag}>{upcoming.country} · {upcoming.duration}</span></div>
-              <h3>{upcoming.destination}</h3>
-              <p className={styles.featuredDate}><CalendarIcon size={17} />{upcoming.date}</p>
-              <p className={styles.highlights}>{upcoming.highlights}</p>
-              <div className={styles.featuredFooter}><span>查看行程</span><ArrowRightIcon size={20} /></div>
+                <h2 id="next-trip" className={styles.featuredLabel}>下一趟旅程</h2>
+                <p className={styles.destination}>{upcoming.destination}</p>
+                <p className={styles.featuredDate}><CalendarIcon size={17} />{upcoming.date}</p>
+                <p className={styles.featuredMeta}>{upcoming.country} · {upcoming.duration}</p>
+                <p className={styles.highlights}>{upcoming.highlights}</p>
+                <span className={styles.featuredFooter}>查看行程<ArrowRightIcon size={20} /></span>
               </div>
             </Link>
           </section>
@@ -109,16 +105,19 @@ export default function Home() {
           <div className={styles.tripGrid} aria-live="polite">
             {visibleTrips.map(trip => (
               <Link key={trip.to} to={trip.to} className={styles.tripCard} aria-label={`開啟${trip.destination}行程`}>
-                <div className={styles.tripInfo}><span className={styles.country}>{trip.country}</span><h3>{trip.destination}</h3><p>{trip.date} · {trip.duration}</p></div>
+                <div className={styles.tripInfo}>
+                  <h3>{trip.destination}</h3>
+                  <p>{trip.country} · {trip.date} · {trip.duration}</p>
+                </div>
                 <span className={styles.cardAction} aria-hidden="true"><ArrowRightIcon size={18} /></span>
               </Link>
             ))}
           </div>
         </section>
-        <aside className={styles.helper}><span aria-hidden="true">↗</span><p>出發前打開行程，預先載入資料，旅途中亦可離線查看。</p></aside>
+        <aside className={styles.helper}><span aria-hidden="true">↗</span><p>出發前用網絡開一次行程，之後冇網絡都可以睇返已載入嘅資料。</p></aside>
       </main>
       <footer className={styles.footer}>
-        <span>MonMonMibo · 每一趟，都好好出發。</span>
+        <span>MonMonMibo</span>
       </footer>
     </div>
   );

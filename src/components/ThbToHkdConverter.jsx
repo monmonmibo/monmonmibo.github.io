@@ -9,14 +9,14 @@ export default function ThbToHkdConverter() {
   return (
     <CurrencyConverter
       baseCurrency="thb"
-      title="即時匯率計算"
+      title="匯率換算"
       inputLabel="泰銖 (THB)"
       placeholder="฿"
       formatResult={(amount, rate) => formatHKD(amount * rate)}
       summaryLine={(rate, date) => (
         <>
           100 THB ≈ {formatHKD(rate * 100)} HKD<br />
-          更新日期: {date}
+          匯率日期：{date}
         </>
       )}
     />

@@ -32,7 +32,7 @@ export const ukb26Data = {
           category: "酒店",
           title: "🏨 Hotel Monterey Kobe Check-in & 休息",
           mapQuery: "ホテルモントレ神戸",
-          details: "15:00 後辦理入住並放下行李，稍作休息回一回電。"
+          details: "15:00 後辦理入住，放低行李休息吓。"
         },
         {
           time: "17:00",
@@ -76,7 +76,7 @@ export const ukb26Data = {
           category: "早餐",
           title: "🍳 三宮悠閒早餐",
           mapQuery: "神戸三宮駅",
-          details: "將大行李寄存在酒店或儲物櫃，輕裝上山（或攜帶必要行李）。"
+          details: "將大件行李寄存喺酒店或儲物櫃，帶必需品上山。"
         },
         {
           time: "13:30",
@@ -196,7 +196,7 @@ export const ukb26Data = {
           category: "Shopping",
           title: "🛍️ 三宮 Shopping",
           mapQuery: "三宮センター街",
-          details: "放低行李後輕裝出發，行下三宮中心街、Mint Kobe 或百貨公司，慢慢 Shopping、買手信。"
+          details: "放低行李後，可以去三宮中心街、Mint Kobe 或百貨公司逛街買手信。"
         },
         {
           time: "晚上",
@@ -381,7 +381,7 @@ export const ukb26Data = {
           title: "💼 取回行李 & 往巴士站",
           type: "highlight",
           mapQuery: "神姫バス 神戸三宮バスターミナル",
-          details: "13:00 回酒店取行李，預留步行、購票及候車時間；建議 13:20 前到機場巴士乘車處，準備搭 13:40 班次。"
+          details: "13:00 返酒店拎行李。預留行路、買飛同等車時間，建議 13:20 前到機場巴士站，搭 13:40 嗰班車。"
         },
         {
           time: "13:40",

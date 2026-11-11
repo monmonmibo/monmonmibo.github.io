@@ -16,7 +16,7 @@ export const cnx25Data = {
           time: "Morning",
           title: "🛬 抵達清邁機場 (CNX)",
           type: "highlight",
-          details: "Call Grab 直去酒店 (約15分鐘)"
+          details: "叫 Grab 直接去酒店，車程約 15 分鐘。"
         },
         {
           time: "11:00",
@@ -83,7 +83,7 @@ export const cnx25Data = {
         {
           time: "14:45",
           title: "🚕 Call Grab 去動物園",
-          details: "車程約 5-8 分鐘 (超近)"
+          details: "車程約 5–8 分鐘。"
         },
         {
           time: "15:30",
@@ -117,7 +117,7 @@ export const cnx25Data = {
         {
           time: "09:00",
           title: "🔑 Check-out MAYU",
-          details: "帶行李去 Phra Singh 寄存"
+          details: "去 Phra Singh 寄存行李。"
         },
         {
           time: "10:30",
@@ -128,12 +128,12 @@ export const cnx25Data = {
           time: "12:30",
           title: "🍢 午餐：Jing Jai Market",
           type: "highlight",
-          details: "直接在市集內享用美食"
+          details: "喺市集入面食嘢。"
         },
         {
           time: "14:00",
           title: "🛎️ Check-in Phra Singh Village",
-          details: "辦理入住手續"
+          details: "到酒店辦理入住。"
         },
         {
           time: "14:30",
@@ -234,7 +234,7 @@ export const cnx25Data = {
         {
           time: "18:00",
           title: "🥘 晚餐：Miss Ju",
-          details: "Farewell Dinner"
+          details: "清邁最後一晚嘅晚餐"
         },
         {
           time: "21:00",
@@ -250,7 +250,7 @@ export const cnx25Data = {
         {
           time: "Morning",
           title: "👋 🏨 Check-out",
-          details: "準備啟程回家"
+          details: "準備返屋企。"
         },
         {
           time: "--:--",

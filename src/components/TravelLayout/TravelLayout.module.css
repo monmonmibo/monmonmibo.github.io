@@ -36,15 +36,14 @@
 }
 
 .header {
-  padding: calc(var(--space-5) + env(safe-area-inset-top)) var(--space-5) var(--space-6);
+  padding: calc(var(--space-5) + env(safe-area-inset-top)) var(--space-5) var(--space-4);
   color: var(--color-text);
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
 }
-.headerTop { display:flex; align-items:center; justify-content:space-between; gap:var(--space-3); margin-bottom:var(--space-4); }
-.eyebrow, .sectionEyebrow { margin:0; color:var(--color-text-secondary); font-size:0.9375rem; font-weight:600; }
-.homeLink { composes: small from "../Button.module.css"; border-radius:var(--radius-sm); color:var(--color-primary); background:var(--color-primary-soft); text-decoration:none; font-size:0.9375rem; font-weight:600; transition:background-color 180ms; }
-.header h1 { margin:0; font-family:var(--font-sans); font-size:clamp(1.75rem,5vw,2rem); line-height:1.35; letter-spacing:-0.035em; font-weight:750; overflow-wrap:anywhere; }
+.headerTop { display:flex; align-items:center; justify-content:space-between; gap:var(--space-3); }
+.homeLink { flex-shrink:0; white-space:nowrap; composes: small from "../Button.module.css"; border-radius:var(--radius-sm); color:var(--color-primary); background:var(--color-primary-soft); text-decoration:none; font-size:0.9375rem; font-weight:600; transition:background-color 180ms; }
+.header h1 { margin:0; font-family:var(--font-sans); font-size:clamp(1.75rem,5vw,2rem); line-height:1.3; letter-spacing:-0.025em; font-weight:600; overflow-wrap:anywhere; }
 .headerSubtitle { margin:var(--space-2) 0 0; color:var(--color-text-secondary); font-size:0.9375rem; }
 .headerMeta { display:flex; gap:var(--space-5); margin:var(--space-3) 0 0; }
 .headerMeta div { display:flex; align-items:baseline; gap:var(--space-2); }
@@ -158,14 +157,16 @@
   color: var(--color-accent);
 }
 
-.hotelInfo span {
+.hotelDetails {
   min-width: 0;
   display: grid;
-  gap: 0.125rem;
+  gap: var(--space-1);
   color: var(--color-text);
   font-size: 0.9375rem;
-  font-weight: 600;
 }
+
+.hotelDetails strong { font-weight: 600; }
+.hotelNote { color: var(--color-text-secondary); overflow-wrap: anywhere; }
 
 .hotelInfo small {
   color: var(--color-accent);
@@ -198,6 +199,23 @@
 
 .timelineContainer { padding: 0 var(--space-5); }
 
+.stopDirectory { margin: 0 var(--space-5) var(--space-4); }
+.stopDirectory > summary { padding-inline: var(--space-3); font-size: 0.9375rem; }
+.stopDirectory ol { margin: 0; padding: 0; list-style: none; }
+.stopDirectory li { border-top: 1px solid var(--color-border); }
+.stopDirectory button {
+  width: 100%;
+  min-height: var(--control-height);
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.stopDirectory button:hover { background: var(--color-surface-hover); }
+
 .timeline {
   position: relative;
   margin-left: 0.5rem;
@@ -207,7 +225,7 @@
 
 .timelineItem {
   position: relative;
-  margin-bottom: clamp(1.75rem, 5vw, 2.25rem);
+  margin-bottom: var(--space-6);
 }
 
 .timelineItem::before {
@@ -259,7 +277,7 @@
 }
 
 .card {
-  padding: 1rem 1.125rem;
+  padding: var(--space-4);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface);
@@ -377,6 +395,29 @@
 
 .toolsSection { padding: var(--space-3) var(--space-5) 0; }
 
+.mapControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--button-group-gap);
+  margin: 0 var(--space-5) var(--space-3);
+}
+
+.mapModeButton {
+  composes: small from "../Button.module.css";
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.mapModeButton[aria-pressed="true"] {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
 .mapFrame {
   height: min(80vh, 46rem);
   margin: 0 var(--space-5);
@@ -390,7 +431,9 @@
 
 .spotListOpenAll { composes: default from "../Button.module.css"; width: 100%; margin-bottom: var(--space-5); }
 .spotRow { color: inherit; text-decoration: none; }
-.spotDay { flex: 0 0 auto; padding: 0.25rem 0.5rem; border-radius: var(--radius-xs); background: var(--color-primary-soft); color: var(--color-primary); font-size: 0.75rem; font-weight: 700; }
+.spotGroup + .spotGroup { margin-top: var(--space-5); }
+.spotGroup h3 { margin: 0 0 var(--space-2); color: var(--color-primary); font-size: 1rem; }
+.spotGroup ul { margin: 0; padding: 0; list-style: none; }
 .spotName { min-width: 0; flex: 1; color: var(--color-text); font-size: 1rem; font-weight: 600; line-height: 1.4; }
 .spotArrow { flex: 0 0 auto; display: inline-flex; color: var(--color-accent); }
 .spotEmpty { padding: var(--space-7) 0; color: var(--color-text-secondary); text-align: center; }
@@ -446,6 +489,7 @@
 .itemNavBtn:focus-visible,
 .navBtn:focus-visible,
 .spotListOpenAll:focus-visible,
+.mapModeButton:focus-visible,
 .spotRow:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 3px;
@@ -480,28 +524,45 @@
 }
 
 @media (max-width: 640px) {
-  .header { padding:calc(var(--space-4) + env(safe-area-inset-top)) var(--space-4) var(--space-5); }
+  .header { padding:calc(var(--space-4) + env(safe-area-inset-top)) var(--space-4) var(--space-4); }
   .header h1 { font-size:1.75rem; }
-  .dateControls { padding-inline:var(--space-4); }
-  .dateTabs { scroll-snap-type:x proximity; }
-  .dateChip { scroll-snap-align:start; }
+  .dateControls {
+    grid-template-columns: minmax(0, 1fr);
+    padding-inline: var(--space-4);
+  }
+  .dateControls .dateScrollButton { display: none; }
+  .dateTabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 0;
+    overflow: visible;
+  }
+  .dateTabs .dateChip {
+    padding-inline: var(--space-2);
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.25;
+  }
   .hotelHeader { margin-inline:var(--space-4); padding:var(--space-3); align-items:center; }
   .hotelInfo { min-width:0; }
-  .hotelInfo span { overflow-wrap:anywhere; }
+  .hotelDetails { overflow-wrap:anywhere; }
   .hotelNavBtn { flex-shrink:0; }
   .timelineContainer { padding-inline:var(--space-4); }
+  .stopDirectory { margin-inline:var(--space-4); }
   .timeline { padding-left:1rem; margin-left:0; }
   .timelineItem::before { left:calc(-1rem - 6px); }
   .cardHead { align-items:flex-start; }
   .itemTitle { min-width:0; overflow-wrap:anywhere; font-size:1.125rem; }
   .itemNavBtn { flex-shrink:0; }
   .todoListGroup, .spotList, .toolsSection { padding-inline:var(--space-4); }
-  .mapFrame { margin-inline:var(--space-4); }
+  .mapFrame, .mapControls { margin-inline:var(--space-4); }
 }
 @media (max-width:360px) {
   .header { padding-inline:var(--space-3); }
   .dateControls { padding-inline:var(--space-3); }
   .timelineContainer { padding-inline:var(--space-3); }
+  .stopDirectory { margin-inline:var(--space-3); }
   .cardHead { flex-wrap:wrap; }
   .itemTitle { flex-basis:100%; }
   .hotelHeader { flex-wrap:wrap; }
@@ -513,10 +574,8 @@
 
 .hotelInfo > svg { flex-shrink: 0; }
 
-/* Airbnb reference: ink-selected dates, outlined utility actions, one accent. */
-.header h1 { font-size:1.75rem; font-weight:600; }
+/* Keep utility actions outlined and give the selected date the primary colour. */
 .homeLink { background:var(--color-surface); color:var(--color-text); border:1px solid var(--color-border); border-radius:var(--radius-sm); }
-.dateChip.active { background:var(--color-text); border-color:var(--color-text); color:var(--color-text-inverse); box-shadow:none; }
 .hotelHeader { border-left:1px solid var(--color-border); box-shadow:none; }
 .hotelInfo { color:var(--color-text); }
 .hotelInfo small { color:var(--color-text-secondary); }
@@ -527,7 +586,7 @@
 .hotelNavBtn, .itemNavBtn { background:var(--color-surface); color:var(--color-text); border:1px solid var(--color-control-border); border-radius:var(--radius-sm); box-shadow:none; font-weight:500; }
 @media (hover:hover) {
   .homeLink:hover { background:var(--color-surface-hover); color:var(--color-text); }
-  .dateChip.active:hover { background:var(--color-text); color:var(--color-text-inverse); }
+  .dateChip.active:hover { background:var(--color-primary-hover); color:var(--color-text-inverse); }
   .hotelNavBtn:hover, .itemNavBtn:hover { background:var(--color-surface-hover); color:var(--color-text); transform:none; }
 }
 .hotelNavBtn:active, .itemNavBtn:active { background:var(--color-surface-muted); transform:none; }

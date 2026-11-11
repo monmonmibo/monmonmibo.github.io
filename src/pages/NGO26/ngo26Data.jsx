@@ -14,7 +14,7 @@ export const ngo26Data = {
           time: "14:30",
           title: "🛬 抵達中部國際機場 (NGO)",
           type: "highlight",
-          details: "搭名鐵 u-sky 到名古屋站 (約28分鐘)"
+          details: "搭名鐵 μ-SKY 去名古屋站，車程約 28 分鐘。"
         },
         {
           time: "16:00",
@@ -49,7 +49,7 @@ export const ngo26Data = {
         {
           time: "09:30",
           title: "🚇 出發往東山公園",
-          details: "搭東山線直達（約20-25分鐘）🐨"
+          details: "搭東山線直達，車程約 20–25 分鐘。"
         },
         {
           time: "10:00",
@@ -125,12 +125,12 @@ export const ngo26Data = {
           time: "09:30",
           title: "🐋 名古屋港水族館",
           type: "highlight",
-          details: "看虎鯨和海豚表演 🐬"
+          details: "睇虎鯨同海豚表演。"
         },
         {
           time: "12:30",
           title: "🍔 午餐：水族館內小食店",
-          details: "喺水族館入面醫肚"
+          details: "喺水族館入面食午餐。"
         },
         {
           time: "14:30",
@@ -170,7 +170,7 @@ export const ngo26Data = {
         {
           time: "13:00",
           title: "🛍️ 名古屋站地下街",
-          details: "最後衝刺買手信、零食"
+          details: "出發前買埋手信同零食。"
         },
         {
           time: "15:30",

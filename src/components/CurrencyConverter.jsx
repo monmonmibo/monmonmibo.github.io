@@ -30,7 +30,7 @@ export default function CurrencyConverter({
   if (loading) {
     return (
       <div className={styles.container}>
-        <div className={styles.loading}>載入匯率中...</div>
+        <div className={styles.loading}>載入匯率中…</div>
       </div>
     );
   }
@@ -81,12 +81,12 @@ export default function CurrencyConverter({
 
       {isOffline && (
         <div className={styles.offlineBanner}>
-          離線中，顯示上次儲存匯率
+          暫時更新唔到匯率，現正顯示上次儲存嘅匯率。
         </div>
       )}
       <div className={styles.rateInfo}>
         {summaryLine(rate, date)}
-        {lastUpdatedAt ? <><br />最後更新: {lastUpdatedAt}</> : null}
+        {lastUpdatedAt ? <><br />最後更新時間：{lastUpdatedAt}</> : null}
       </div>
     </div>
   );

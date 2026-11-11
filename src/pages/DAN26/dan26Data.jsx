@@ -62,7 +62,7 @@ export const dan26Data = {
           time: "16:30",
           title: "💆 頭療：Cassia Spa",
           type: "highlight",
-          details: "90mins"
+          details: "90 分鐘"
         },
         {
           time: "18:30",
@@ -80,7 +80,7 @@ export const dan26Data = {
         {
           time: "Morning",
           title: "😴 訓到自然醒",
-          details: "慢慢嘆個 morning，唔使趕行程"
+          details: "朝早慢慢嚟，唔使趕行程。"
         },
         {
           time: "13:00",
@@ -103,7 +103,7 @@ export const dan26Data = {
           time: "8:30PM",
           title: "🍷 晚餐：Le Comptoir Danang",
           type: "highlight",
-          details: "Apr 17, 2026 • Booked • 3 小時慢慢食"
+          details: "已訂 2026 年 4 月 17 日。預留 3 小時慢慢食。"
         },
         {
           time: "11:00PM",
@@ -120,19 +120,19 @@ export const dan26Data = {
         {
           time: "11:00",
           title: "😴 訓醒先出發",
-          details: "慢慢早餐、整理好先出門"
+          details: "慢慢食早餐，執好嘢先出門。"
         },
         {
           time: "12:00",
           title: "🚕 出發去會安舊城",
           type: "highlight",
-          details: "由峴港去會安，車程約 45 - 60 分鐘"
+          details: "由峴港去會安，車程約 45–60 分鐘。"
         },
         {
           time: "13:00",
           title: "🏮 會安舊城漫步",
           type: "highlight",
-          details: "沿河邊、古屋、黃牆打卡影相"
+          details: "沿河邊行，順路影古屋同黃牆。"
         },
         {
           time: "14:00",
@@ -142,13 +142,13 @@ export const dan26Data = {
         {
           time: "15:30",
           title: "☕ Cafe / 休息",
-          details: "揾間河邊 cafe 坐一陣，避暑抖下"
+          details: "搵間河邊咖啡店坐陣，避一避暑。"
         },
         {
           time: "16:45",
           title: "🦶 腳底按摩",
           type: "highlight",
-          details: "晚餐前放鬆一下對隻腳"
+          details: "晚餐前做腳底按摩，休息吓。"
         },
         {
           time: "17:30",
@@ -183,7 +183,7 @@ export const dan26Data = {
           time: "12:30",
           title: "🍜 午餐",
           type: "highlight",
-          details: "先食個舒服午餐，再開始下午行程"
+          details: "先食午餐，再出發。"
         },
         {
           time: "14:00",
@@ -212,7 +212,7 @@ export const dan26Data = {
         {
           time: "12:00PM",
           title: "🏨 Checkout",
-          details: "Check out 後拎行李出發"
+          details: "退房後拎埋行李出發。"
         },
         {
           time: "12:30PM",

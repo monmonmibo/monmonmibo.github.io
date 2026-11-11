@@ -9,14 +9,14 @@ export default function VndToHkdConverter() {
   return (
     <CurrencyConverter
       baseCurrency="vnd"
-      title="即時匯率計算"
+      title="匯率換算"
       inputLabel="越南盾 (VND)"
       placeholder="₫"
       formatResult={(amount, rate) => formatHKD(amount * rate)}
       summaryLine={(rate, date) => (
         <>
           1,000 VND ≈ {formatHKD(rate * 1000)} HKD<br />
-          更新日期: {date}
+          匯率日期：{date}
         </>
       )}
     />
