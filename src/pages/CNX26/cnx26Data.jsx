@@ -98,7 +98,7 @@ export const cnx26Data = {
           mapQuery: 'One Nimman Chiang Mai',
           details: (
             <>
-              Baristro 飲完抹茶後，搭車返寧曼區行 One Nimman，睇下設計小店、手信同市集空間。<br />
+              Baristro 飲完抹茶後，搭車返寧曼區行 One Nimman。逛完約16:50搭車去 Waroros Market，趕喺日市收市前到。<br />
               營業時間：每日 11:00–21:00，夜市區至22:00；當日有咩市集或活動以官方公告為準。<br />
               <a href="https://www.onenimman.com/en/" target="_blank" rel="noreferrer" className="trip-link">One Nimman（官方）</a>
             </>
@@ -135,16 +135,18 @@ export const cnx26Data = {
           ),
         },
         {
-          time: '有時間先去（可略過）',
+          time: '行 One Nimman 期間',
           category: 'Shopping',
-          title: 'MAYA Lifestyle Shopping Center',
-          summary: '彈性一站 · 優先預時間去 Waroros Market',
-          mapQuery: 'MAYA Lifestyle Shopping Center Chiang Mai',
+          title: 'PAÑPURI WELLNESS SUITE One Nimman',
+          summary: 'One Nimman 1樓 B區 · 逛香氛及護理產品',
+          mapQuery: 'PAÑPURI WELLNESS SUITE One Nimman Chiang Mai',
           details: (
             <>
-              One Nimman 行完如果仲早，可以快逛附近嘅 MAYA。預留搭車時間，盡量16:50左右離開寧曼去 Waroros Market。<br />
-              營業時間：10:00–22:00。<br />
-              <a href="https://mayashoppingcenter.com/" target="_blank" rel="noreferrer" className="trip-link">MAYA Lifestyle Shopping Center（官方）</a>
+              11月27日（五）行 One Nimman 時，順路到 1 樓 B 區睇香氛及護理產品。<br />
+              官方列星期五精品店11:00–21:00，Wellness Suite 10:00–22:00。<br />
+              <a href="https://panpuri.com/about/our-stores/discover-our-stores/panpuri-sensorial-boutique-one-nimman/" target="_blank" rel="noreferrer" className="trip-link">PAÑPURI 精品店（官方）</a>
+              {' · '}
+              <a href="https://panpuriwellness.com/location/panpuri-wellness-suite-one-nimman/" target="_blank" rel="noreferrer" className="trip-link">PAÑPURI Wellness Suite（官方）</a>
             </>
           ),
         },
@@ -258,6 +260,33 @@ export const cnx26Data = {
                 早上去真心市集食早餐、行手作同農夫攤檔，預留約3小時慢慢行。<br />
                 週末市集：星期六、日 06:30–15:00；園區商店時間另計。<br />
                 <a href="https://www.jingjaicentralchiangmai.com/market" target="_blank" rel="noreferrer" className="trip-link">Jing Jai Market（官方時間）</a>
+              </>
+            ),
+          },
+          {
+            time: '12:00–14:00（建議）',
+            category: '午餐・購物',
+            title: 'Central Festival Chiang Mai · 午餐同逛街',
+            summary: '真心市集後搭車去 Fa Ham · 商場內食午餐',
+            mapQuery: 'Central Chiangmai Central Festival Fa Ham Chiang Mai',
+            details: (
+              <>
+                11月29日（日）行完真心市集，直接搭車去 Fa Ham 嘅 Central Chiangmai（Central Festival）。喺商場食午餐同逛街，約14:00離開返酒店食椰子批。<br />
+                商場星期日10:00開門，個別餐廳營業時間另計。<br />
+                <a href="https://shoppingcenter.centralpattana.co.th/branch/central-chiangmai/tourist" target="_blank" rel="noreferrer" className="trip-link">Central Chiangmai（商場官方）</a>
+              </>
+            ),
+          },
+          {
+            time: '逛 Central Festival 期間',
+            category: 'Shopping',
+            title: 'KanVela Craft Chocolate · 買手工朱古力',
+            summary: 'Central Chiangmai 分店 · 商場4樓',
+            mapQuery: 'Kanvela Craft Chocolate Central Chiangmai 4th floor Fa Ham',
+            details: (
+              <>
+                11月29日（日）喺商場食完午餐，順路上4樓去 KanVela 買手工朱古力。分店營業時間以店方為準。<br />
+                <a href="https://www.kanvelachocolate.com/contact" target="_blank" rel="noreferrer" className="trip-link">KanVela 官方分店資料</a>
               </>
             ),
           },
