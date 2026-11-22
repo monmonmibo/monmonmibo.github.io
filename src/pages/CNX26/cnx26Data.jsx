@@ -91,7 +91,7 @@ export const cnx26Data = {
           ),
         },
         {
-          time: '16:00–17:00（建議）',
+          time: '16:00–16:50（建議）',
           category: 'Shopping',
           title: '尼曼一號 One Nimman',
           summary: '寧曼逛街 · 商店、手作及市集空間',
@@ -105,25 +105,71 @@ export const cnx26Data = {
           ),
         },
         {
-          time: '17:00–18:00（建議）',
+          time: '行 One Nimman 期間',
+          category: 'Shopping',
+          title: 'trra wellness store · 買生薑滾珠油',
+          summary: 'One Nimman 寧曼分店 · C2-035',
+          mapQuery: 'trra wellness store One Nimman Chiang Mai',
+          details: (
+            <>
+              11月27日（五）行 One Nimman 時順路去 C2-035，問店員有冇生薑滾珠油（ginger roll-on）。分店營業時間同現貨待確認。<br />
+              <a href="https://www.trra-world.com/en/store" target="_blank" rel="noreferrer" className="trip-link">trra 官方分店資料</a>
+              {' · '}
+              <a href="https://www.onenimman.com/floor-plan/" target="_blank" rel="noreferrer" className="trip-link">One Nimman 店舖位置</a>
+            </>
+          ),
+        },
+        {
+          time: '行 One Nimman 期間',
+          category: 'Shopping',
+          title: 'SOAP FOR SOUL โซป ฟอร์ โซล · 清邁手工皂',
+          summary: 'One Nimman 寧曼一號 · 1樓 A111',
+          mapQuery: 'SOAP FOR SOUL โซป ฟอร์ โซล One Nimman Chiang Mai',
+          details: (
+            <>
+              11月27日（五）行 One Nimman 時，順路去 1 樓 A111 睇清邁手工皂。分店營業時間待確認。<br />
+              <a href="https://linktr.ee/soapforsoul" target="_blank" rel="noreferrer" className="trip-link">SOAP FOR SOUL 官方分店資料</a>
+              {' · '}
+              <a href="https://www.onenimman.com/floor-plan/" target="_blank" rel="noreferrer" className="trip-link">One Nimman 店舖位置</a>
+            </>
+          ),
+        },
+        {
+          time: '有時間先去（可略過）',
           category: 'Shopping',
           title: 'MAYA Lifestyle Shopping Center',
-          summary: '接住行附近商場 · 時間可按購物興趣調整',
+          summary: '彈性一站 · 優先預時間去 Waroros Market',
           mapQuery: 'MAYA Lifestyle Shopping Center Chiang Mai',
           details: (
             <>
-              One Nimman 行完再去附近 MAYA 行商場，之後按腳休息，再前往晚餐；購物時間可按按摩預約調整。<br />
+              One Nimman 行完如果仲早，可以快逛附近嘅 MAYA。預留搭車時間，盡量16:50左右離開寧曼去 Waroros Market。<br />
               營業時間：10:00–22:00。<br />
               <a href="https://mayashoppingcenter.com/" target="_blank" rel="noreferrer" className="trip-link">MAYA Lifestyle Shopping Center（官方）</a>
             </>
           ),
         },
         {
-          time: 'Shopping 後、晚餐前（建議約18:00）',
+          time: '17:15–18:00（建議）',
+          category: '市集',
+          title: 'Waroros Market（Kad Luang）· 收市前行日市',
+          summary: '趁18:00前行室內日市 · 之後喺 Chang Moi 按腳',
+          mapQuery: 'Waroros Market Wichayanon Road Chiang Mai',
+          details: (
+            <>
+              11月27日（五）由寧曼搭車去 Waroros Market，收市前行室內日市。泰國觀光局資料列日市至18:00，個別檔口可能提早收。<br />
+              收市後可以沿 Wichayanon Road 行去附近 Ton Lam Yai 花市一帶，再去按腳。由 Waroros Market 直接步行去 Kung Yim 第二分店約350米（5分鐘）。<br />
+              <a href="https://api.tat.or.th/upload/live/multimedia/9017/E-Brochure_Chiang_Mai_%28Th%29.pdf" target="_blank" rel="noreferrer" className="trip-link">Waroros Market（泰國觀光局）</a>
+              {' · '}
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Warorot+Market+Chiang+Mai&destination=Kung+Yim+Shop+2nd+Branch+90+Ratchawong+Road+Chiang+Mai&travelmode=walking" target="_blank" rel="noreferrer" className="trip-link">步行去 Kung Yim</a>
+            </>
+          ),
+        },
+        {
+          time: '18:30–19:30（建議）',
           category: '按摩',
-          title: '腳底按摩（店舖待定）',
-          summary: '11月27日（五）· 建議45–60分鐘 · 未預約',
-          details: 'One Nimman 同 MAYA shopping 後按腳休息，建議預留45–60分鐘；先考慮寧曼購物區附近店舖，實際店舖、價格及可約時段待確認。按完腳預留時間搭車去 Kung Yim 第二分店。',
+          title: 'Chang Moi 腳底按摩（店舖待定）',
+          summary: '市集同餐廳附近 · 建議60分鐘 · 未預約',
+          details: '11月27日（五）行完日市後，建議喺 Chang Moi 搵 Kung Yim 第二分店附近嘅店舖按腳。店舖、價格同可約時段待確認。按完腳預留時間步行去餐廳，20:00已訂位。',
         },
         {
           time: '20:00（已訂位）',
@@ -131,7 +177,7 @@ export const cnx26Data = {
           title: 'Kung Yim Shop (2nd Branch)',
           summary: '11月27日（五）· 第二分店 · 已訂位',
           mapQuery: 'Kung Yim Shop 2nd Branch 90 Ratchawong Road Chiang Mai',
-          details: '寧曼按完腳後搭車去第二分店（90 Ratchawong Road）食晚飯。',
+          details: '喺 Chang Moi 按完腳後，步行到第二分店（90 Ratchawong Road）赴20:00訂位。',
         },
       ],
     },
@@ -159,6 +205,22 @@ export const cnx26Data = {
           summary: '11月28日至12月1日 · 連住3晚',
           mapQuery: `${heritageHotel} Chiang Mai`,
           details: '11月28日轉住 Narinthra Heritage，住到12月1日。酒店可辦理入住及退房的時間待確認。',
+        },
+        {
+          time: '15:30（建議）',
+          category: '甜品',
+          title: 'MINTNIMAL · 薄荷朱古力雪糕',
+          summary: '清邁古城 · 放低行李後，按摩前',
+          mapQuery: 'MINTNIMAL 65 Prapokklao Road Chiang Mai',
+          details: (
+            <>
+              11月28日（六）喺 Narinthra Heritage 放低行李後，去古城 65 Prapokklao Road 食薄荷朱古力雪糕，再去 Giving Tree 古城店赴 18:00 按摩預約。<br />
+              店舖資料列星期六 10:00–18:00，出發前可向店方確認當日營業時間。<br />
+              <a href="https://www.facebook.com/profile.php?id=100086635999983" target="_blank" rel="noreferrer" className="trip-link">MINTNIMAL 店方 Facebook</a>
+              {' · '}
+              <a href="https://chiangmailocal.org/listing/mintnimal/" target="_blank" rel="noreferrer" className="trip-link">地址及營業時間參考</a>
+            </>
+          ),
         },
         {
           time: '18:00（已預約）',
