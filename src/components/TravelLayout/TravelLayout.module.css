@@ -143,7 +143,6 @@
   margin: 0 var(--space-5) var(--space-6);
   padding: var(--space-4) var(--space-5);
   border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-accent);
   border-radius: var(--radius-md);
   background: var(--color-surface);
   box-shadow: var(--shadow-card);
@@ -576,7 +575,7 @@
 
 /* Keep utility actions outlined and give the selected date the primary colour. */
 .homeLink { background:var(--color-surface); color:var(--color-text); border:1px solid var(--color-border); border-radius:var(--radius-sm); }
-.hotelHeader { border-left:1px solid var(--color-border); box-shadow:none; }
+.hotelHeader { box-shadow:none; }
 .hotelInfo { color:var(--color-text); }
 .hotelInfo small { color:var(--color-text-secondary); }
 .timeLabel { background:var(--color-surface-muted); color:var(--color-text); border-color:transparent; }

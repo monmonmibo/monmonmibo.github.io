@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useState, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import styles from './TravelLayout.module.css';
 import JpyToHkdConverter from '../JpyToHkdConverter';
@@ -84,7 +84,11 @@ function readTodos(data) {
 }
 
 export default function TravelLayout({ data }) {
-  const [activeTab, setActiveTab] = useState('day1');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const requestedDay = searchParams.get('day');
+  const activeTab = requestedDay === 'todo' && data.todos
+    ? 'todo'
+    : data.days.find(day => day.id === requestedDay || day.date === requestedDay)?.id ?? data.days[0]?.id;
   const [view, setView] = useState('timeline');
   const [hasOpenedMap, setHasOpenedMap] = useState(false);
   const [mapMode, setMapMode] = useState('map');
@@ -188,7 +192,12 @@ export default function TravelLayout({ data }) {
   };
 
   const handleTabClick = (dayId) => {
-    setActiveTab(dayId);
+    if (dayId !== activeTab) {
+      const day = data.days.find(day => day.id === dayId);
+      const nextParams = new URLSearchParams(searchParams);
+      nextParams.set('day', day?.date || dayId);
+      setSearchParams(nextParams);
+    }
     setView('timeline');
     window.scrollTo(0, 0);
   };
@@ -207,6 +216,22 @@ export default function TravelLayout({ data }) {
 
   const tabsRef = useRef(null);
   const [tabOverflow, setTabOverflow] = useState({ left: false, right: false });
+
+  useLayoutEffect(() => {
+    const rail = tabsRef.current;
+    const selectedTab = rail?.querySelector('[aria-selected="true"]');
+    if (!selectedTab) return;
+
+    // Reveal a linked date without moving the page vertically.
+    const railBounds = rail.getBoundingClientRect();
+    const tabBounds = selectedTab.getBoundingClientRect();
+    const padding = parseFloat(getComputedStyle(rail).scrollPaddingInlineStart) || 0;
+    if (tabBounds.left < railBounds.left + padding) {
+      rail.scrollLeft += tabBounds.left - railBounds.left - padding;
+    } else if (tabBounds.right > railBounds.right - padding) {
+      rail.scrollLeft += tabBounds.right - railBounds.right + padding;
+    }
+  }, [activeTab, view]);
 
   useEffect(() => {
     const rail = tabsRef.current;

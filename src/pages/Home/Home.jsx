@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRightIcon, CalendarIcon, SuitcaseIcon } from '../../components/Icons';
+import { cnx26Data } from '../CNX26/cnx26Data';
 import styles from './Home.module.css';
 
 const trips = [
@@ -9,11 +10,10 @@ const trips = [
     code: 'CNX 26',
     destination: '清邁',
     country: '泰國',
-    date: '2026 年 11 月 26 日至 12 月 1 日',
+    startDate: cnx26Data.days[0].date,
+    endDate: cnx26Data.days.at(-1).date,
     duration: '6日5夜',
     highlights: '寧曼逛街 · 按摩放鬆 · 蒙占山包車',
-    status: '即將出發',
-    featured: true,
   },
   {
     to: '/ukb26',
@@ -67,10 +67,67 @@ const trips = [
   },
 ];
 
+const hongKongDate = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Asia/Hong_Kong',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+});
+
+function todayInHongKong(now = new Date()) {
+  const parts = hongKongDate.formatToParts(now);
+  const value = type => parts.find(part => part.type === type).value;
+  return `${value('year')}-${value('month')}-${value('day')}`;
+}
+
+function getTripStatus(trip, today) {
+  if (!trip.startDate || !trip.endDate) return trip.status;
+  if (today < trip.startDate) return '即將出發';
+  if (today <= trip.endDate) return '旅程進行中';
+  return '已完成';
+}
+
+function tripDateLabel(trip) {
+  if (!trip.startDate || !trip.endDate) return trip.date;
+
+  const [startYear, startMonth, startDay] = trip.startDate.split('-').map(Number);
+  const [endYear, endMonth, endDay] = trip.endDate.split('-').map(Number);
+  const start = `${startYear} 年 ${startMonth} 月 ${startDay} 日`;
+  if (trip.startDate === trip.endDate) return start;
+
+  const end = `${endMonth} 月 ${endDay} 日`;
+  return `${start}至 ${startYear === endYear ? end : `${endYear} 年 ${end}`}`;
+}
+
 export default function Home() {
   const [country, setCountry] = useState('全部');
-  const upcoming = trips.find(trip => trip.featured);
-  const archived = trips.filter(trip => !trip.featured);
+  const [today, setToday] = useState(todayInHongKong);
+
+  useEffect(() => {
+    let timer;
+    const refreshDate = () => {
+      clearTimeout(timer);
+      const now = new Date();
+      const date = todayInHongKong(now);
+      setToday(date);
+      const midnight = Date.parse(`${date}T00:00:00+08:00`) + 86_400_000;
+      timer = setTimeout(refreshDate, midnight - now.getTime());
+    };
+
+    refreshDate();
+    document.addEventListener('visibilitychange', refreshDate);
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('visibilitychange', refreshDate);
+    };
+  }, []);
+
+  const tripsWithStatus = trips.map(trip => ({ ...trip, status: getTripStatus(trip, today) }));
+  const currentTrips = tripsWithStatus
+    .filter(trip => trip.status !== '已完成')
+    .sort((a, b) => a.startDate.localeCompare(b.startDate));
+  const nextTrip = currentTrips.find(trip => trip.status === '即將出發');
+  const archived = tripsWithStatus.filter(trip => trip.status === '已完成');
 
   const visibleTrips = archived.filter(trip => country === '全部' || trip.country === country);
 
@@ -81,20 +138,22 @@ export default function Home() {
       </header>
       <main className={styles.main}>
         <h1 className={styles.pageTitle}>我的旅程</h1>
-        {upcoming && (
-          <section className={styles.upcoming} aria-labelledby="next-trip">
-            <Link to={upcoming.to} className={styles.featuredCard}>
+        {currentTrips.map(trip => (
+          <section className={styles.upcoming} key={trip.code} aria-labelledby={`trip-${trip.to.slice(1)}`}>
+            <Link to={trip.to} className={styles.featuredCard}>
               <div className={styles.featuredBody}>
-                <h2 id="next-trip" className={styles.featuredLabel}>下一趟旅程</h2>
-                <p className={styles.destination}>{upcoming.destination}</p>
-                <p className={styles.featuredDate}><CalendarIcon size={17} />{upcoming.date}</p>
-                <p className={styles.featuredMeta}>{upcoming.country} · {upcoming.duration}</p>
-                <p className={styles.highlights}>{upcoming.highlights}</p>
+                <h2 id={`trip-${trip.to.slice(1)}`} className={styles.featuredLabel}>
+                  {trip === nextTrip ? '下一趟旅程 · 即將出發' : trip.status}
+                </h2>
+                <p className={styles.destination}>{trip.destination}</p>
+                <p className={styles.featuredDate}><CalendarIcon size={17} />{tripDateLabel(trip)}</p>
+                <p className={styles.featuredMeta}>{trip.country} · {trip.duration}</p>
+                <p className={styles.highlights}>{trip.highlights}</p>
                 <span className={styles.featuredFooter}>查看行程<ArrowRightIcon size={20} /></span>
               </div>
             </Link>
           </section>
-        )}
+        ))}
         <section aria-labelledby="past-trips">
           <div className={styles.sectionHeading}><h2 id="past-trips">過往旅程</h2><span>{country === '全部' ? `${archived.length} 個旅程` : `${visibleTrips.length} / ${archived.length} 個旅程`}</span></div>
           <div className={styles.filters} role="group" aria-label="按國家篩選過往旅程">
@@ -104,10 +163,10 @@ export default function Home() {
           </div>
           <div className={styles.tripGrid} aria-live="polite">
             {visibleTrips.map(trip => (
-              <Link key={trip.to} to={trip.to} className={styles.tripCard} aria-label={`開啟${trip.destination}行程`}>
+              <Link key={trip.to} to={trip.to} className={styles.tripCard} aria-label={`開啟${trip.destination}行程，${tripDateLabel(trip)}`}>
                 <div className={styles.tripInfo}>
                   <h3>{trip.destination}</h3>
-                  <p>{trip.country} · {trip.date} · {trip.duration}</p>
+                  <p>{trip.country} · {tripDateLabel(trip)} · {trip.duration}</p>
                 </div>
                 <span className={styles.cardAction} aria-hidden="true"><ArrowRightIcon size={18} /></span>
               </Link>
